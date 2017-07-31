@@ -1,0 +1,126 @@
+<resources>
+	<string name="app_name">Accounting</string>
+
+
+	<!-- 常用按鈕 -->
+	<string name="btn_new">新增</string>
+	<string name="btn_save">儲存</string>
+	<string name="btn_del">刪除</string>
+	<string name="btn_cancel">取消</string>
+
+
+	<!-- 主畫面 Navigation Drawer -->
+	<!-- 分類:常用 -->
+	<string name="nav_title_common">常用</string>
+	<string name="nav_expenses">支出</string>
+	<string name="nav_income">收入</string>
+	<string name="nav_statistics">統計</string>
+	<!-- 分類:設定 -->
+	<string name="nav_title_setting">設定</string>
+	<string name="nav_budgeting">預算編列</string>
+	<string name="nav_account_management">帳戶管理</string>
+	<string name="nav_currency_selection">貨幣選擇</string>
+	<string name="nav_password_setting">密碼設定</string>
+	<string name="nav_expenses_category_management">支出類別管理</string>
+	<string name="nav_income_category_management">收入類別管理</string>
+	<!-- 分類:其他 -->
+	<string name="nav_title_others">其他</string>
+	<string name="nav_export_file">匯出檔案</string>
+	<string name="nav_cloud_backup">雲端備份</string>
+	<string name="nav_about_us">關於我們</string>
+	<string name="nav_give_praise">給予好評</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+
+	<string name="action_settings">Settings</string>
+
+	<!-- ExpensesFragment 支出 -->
+	<string name="title_expenses">支出</string>
+	<string name="tv_this_day_expenses">本日支出</string>
+	<string name="tv_this_month">本月</string>
+	<string name="tv_remaining_budget">剩餘預算</string>
+	<string name="tv_total_budget">預算總額</string>
+	<string name="tv_budget_percent">%1$d</string>
+	<string name="tv_percent">%</string>
+	<string name="menu_date">日期</string>
+	<string name="menu_new">新增</string>
+
+	<!-- ExpensesNewEditFragment 新增編輯支出 -->
+	<string name="title_expenses_new">新增支出</string>
+	<string name="title_expenses_edit">編輯支出</string>
+	<string name="tv_money">金額</string>
+	<string name="tv_category">類別</string>
+	<string name="tv_choose_category_hint">請選擇類別</string>
+	<string name="tv_description">描述</string>
+	<string name="tv_account">帳戶</string>
+	<string name="tv_cash">現金</string>
+	<string name="tv_fixed_charge">固定支出</string>
+	<string name="tv_none">無</string>
+	<string name="msg_input_money_category">請輸入金額和類別</string>
+	<string name="msg_input_money">請輸入金額</string>
+	<string name="msg_input_category">請輸入類別</string>
+	<string name="msg_expenses_del_confirm">確定刪除此紀錄?</string>
+
+	<!-- IncomeFragment 收入 -->
+	<string name="title_income">收入</string>
+	<string name="tv_income">收入</string>
+	<string name="tv_this_day">本日</string>
+	<string name="tv_income_percent">%1$d</string>
+
+	<!-- IncomeNewEditFragment 新增編輯收入 -->
+	<string name="title_income_new">新增收入</string>
+	<string name="title_income_edit">編輯收入</string>
+	<string name="tv_stable_income">固定收入</string>
+	<string name="msg_income_del_confirm">確定刪除此紀錄?</string>
+
+	<!-- StatisticsFragment 統計 -->
+	<string name="title_statistics">統計</string>
+
+	<!-- 類別名稱 -->
+	<string name="category_afternoon_tea">下午茶</string>
+	<string name="category_dinner">晚餐</string>
+	<string name="category_fitness">健身</string>
+	<string name="category_house">房租</string>
+	<string name="category_house_1">房租-1</string>
+	<string name="category_lunch">午餐</string>
+	<string name="category_medical">醫療</string>
+	<string name="category_other">其他</string>
+	<string name="category_parenting">育兒</string>
+	<string name="category_pet">寵物</string>
+	<string name="category_phone">電話</string>
+	<string name="category_refueling">加油</string>
+	<string name="category_swim">游泳</string>
+	<string name="category_traffic">交通</string>
+	<string name="category_video_game">電玩</string>
+
+	<!-- item_category 類別Item -->
+	<string name="tv_delete">刪除</string>
+	<string name="iv_category_icon">類別圖示</string>
+
+	<!-- CategoryMgmtFragment 類別管理 不分支出或收入-->
+	<string name="et_name_hint">名稱</string>
+	<string name="tv_category_deleted">%s已刪除</string>
+	<string name="hint_category_mgmt">左滑刪除項目\n長按移動項目順序</string>
+	<string name="hint_input_category_name">請輸入名稱</string>
+	<string name="hint_repeated_category">此類別已存在</string>
+	<string name="msg_category_del_confirm">確定刪除此類別?</string>
+	<string name="msg_category_del_confirm_hint">注意:此類別的所有紀錄將會一併刪除</string>
+
+	<!-- ExpensesCategoryMgmtFragment 支出類別管理 -->
+	<string name="title_expenses_category_mgmt">支出類別管理</string>
+
+	<!-- ExpensesCategoryNewEditFragment 新增編輯支出類別 -->
+	<string name="title_expenses_category_new">新增支出類別</string>
+	<string name="title_expenses_category_edit">編輯支出類別</string>
+
+	<!-- IncomeCategoryMgmtFragment 收入類別管理 -->
+	<string name="title_income_category_mgmt">收入類別管理</string>
+
+	<!-- IncomeCategoryNewEditFragment 新增編輯收入類別 -->
+	<string name="title_income_category_new">新增收入類別</string>
+	<string name="title_income_category_edit">編輯收入類別</string>
+
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

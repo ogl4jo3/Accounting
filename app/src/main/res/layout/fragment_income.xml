@@ -1,0 +1,82 @@
+<LinearLayout
+	style="@style/frame_expenses_income"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	tools:context=".common.income.IncomeFragment">
+
+	<TextView
+		android:id="@+id/tv_date"
+		style="@style/TextStyle.f5"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:gravity="center_horizontal"
+		tools:text="2017/07/08"/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/rv_income_item"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="6"
+		android:scrollbars="vertical"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:gravity="center_vertical"
+		android:orientation="horizontal">
+
+		<TextView
+			style="@style/TextStyle.f4"
+			android:text="@string/tv_income"/>
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				style="@style/TextStyle.f3"
+				android:text="@string/tv_this_day"/>
+
+			<TextView
+				android:id="@+id/tv_this_day_income"
+				style="@style/TextStyle.f3"
+				android:layout_width="match_parent"
+				android:gravity="end"
+				tools:text="100"/>
+		</LinearLayout>
+
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				style="@style/TextStyle.f3"
+				android:text="@string/tv_this_month"/>
+
+			<TextView
+				android:id="@+id/tv_this_month_income"
+				style="@style/TextStyle.f3"
+				android:layout_width="match_parent"
+				android:gravity="end"
+				tools:text="10000"/>
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/tv_income_percent"
+			style="@style/TextStyle.f4"
+			tools:text="10"/>
+
+		<TextView
+			style="@style/TextStyle.f4"
+			android:text="@string/tv_percent"/>
+	</LinearLayout>
+
+</LinearLayout>
