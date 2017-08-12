@@ -17,12 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ogl4jo3.accounting.R;
+import com.example.ogl4jo3.accounting.setting.accountmanagement.Account;
+import com.example.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
 import com.example.ogl4jo3.accounting.setting.categorymanagement.Category;
 import com.example.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
 import com.example.ogl4jo3.utility.database.MyDBHelper;
 import com.example.ogl4jo3.utility.dialog.CategoryDialogFragment;
 import com.example.ogl4jo3.utility.string.StringUtil;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,11 +44,13 @@ public class IncomeNewEditFragment extends Fragment
 	private ImageView ivCategoryIcon;   //類別圖示
 	private TextView tvCategoryName;    //類別名稱
 	private LinearLayout llAccount;    //帳戶
+	private TextView tvAccountName;    //帳戶名稱
 	private LinearLayout llStableIncome;    //固定收入
 	private EditText etDescription;   //描述
 	private Button btnNew; //新增按鈕
 
 	private int categoryId = -1;  //類別ID  未選擇時為-1
+	private Account account;
 
 	//編輯時用
 	private Income income;
@@ -86,6 +93,8 @@ public class IncomeNewEditFragment extends Fragment
 			incomeJson = getArguments().getString(INCOME_JSON);
 		}
 		income = new Gson().fromJson(incomeJson, Income.class);
+		SQLiteDatabase sqLiteDatabase = MyDBHelper.getDatabase(getActivity());
+		account = new AccountDAO(sqLiteDatabase).getDefaultAccount();
 	}
 
 	@Override
@@ -116,6 +125,7 @@ public class IncomeNewEditFragment extends Fragment
 		ivCategoryIcon = (ImageView) view.findViewById(R.id.iv_category_icon);
 		tvCategoryName = (TextView) view.findViewById(R.id.tv_category_name);
 		llAccount = (LinearLayout) view.findViewById(R.id.ll_account);
+		tvAccountName = (TextView) view.findViewById(R.id.tv_account_name);
 		llStableIncome = (LinearLayout) view.findViewById(R.id.ll_stable_income);
 		etDescription = (EditText) view.findViewById(R.id.et_description);
 		btnNew = (Button) view.findViewById(R.id.btn_new);
@@ -140,8 +150,10 @@ public class IncomeNewEditFragment extends Fragment
 			Category category = new CategoryDAO(db).getIncomeData(categoryId);
 			ivCategoryIcon.setImageResource(category.getIcon());
 			tvCategoryName.setText(category.getName());
+			account = new AccountDAO(db).getAccountByName(income.getAccountName());
 			etDescription.setText(income.getDescription());
 		}
+		tvAccountName.setText(account.getName());
 	}
 
 	/**
@@ -182,6 +194,7 @@ public class IncomeNewEditFragment extends Fragment
 				Income income = new Income();
 				income.setPrice(price);
 				income.setCategoryId(categoryId);
+				income.setAccountName(account.getName());
 				income.setDescription(description);
 				income.setRecordTime(dateStr);
 				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
@@ -195,14 +208,34 @@ public class IncomeNewEditFragment extends Fragment
 
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(getActivity(), "尚無此功能，待開發", Toast.LENGTH_SHORT).show();
+				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
+				final List<Account> accountList = new AccountDAO(db).getAll();
+				final List<String> accountsName = new ArrayList<>();
+				for (Account account : accountList) {
+					accountsName.add(account.getName());
+				}
+
+				new AlertDialog.Builder(getActivity()).setTitle(R.string.msg_choose_account)
+						.setItems(accountsName.toArray(new String[accountsName.size()]),
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog, int position) {
+										String accountName = accountsName.get(position);
+										tvAccountName.setText(accountName);
+										account = accountList.get(position);
+
+									}
+								}).show();
 			}
 		});
 		llStableIncome.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(getActivity(), "尚無此功能，待開發", Toast.LENGTH_SHORT).show();
+				//TODO:
+				Toast.makeText(getActivity(), getString(R.string.msg_todo), Toast.LENGTH_SHORT)
+						.show();
 			}
 		});
 		//編輯用
@@ -222,6 +255,7 @@ public class IncomeNewEditFragment extends Fragment
 
 				income.setPrice(price);
 				income.setCategoryId(categoryId);
+				income.setAccountName(account.getName());
 				income.setDescription(description);
 				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 				new IncomeDAO(db).saveIncomeData(income);

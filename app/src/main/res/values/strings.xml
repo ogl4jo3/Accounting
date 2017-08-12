@@ -51,6 +51,7 @@
 	<string name="tv_money">金額</string>
 	<string name="tv_category">類別</string>
 	<string name="tv_choose_category_hint">請選擇類別</string>
+	<string name="msg_choose_account">請選取帳戶?</string>
 	<string name="tv_description">描述</string>
 	<string name="tv_account">帳戶</string>
 	<string name="tv_cash">現金</string>
@@ -75,6 +76,52 @@
 
 	<!-- StatisticsFragment 統計 -->
 	<string name="title_statistics">統計</string>
+	<string name="tv_between_date">~</string>
+	<string name="tv_custom">自訂</string>
+	<string name="tv_last_month">上月</string>
+	<string name="tv_half_year">半年</string>
+	<string name="tv_one_year">一年</string>
+	<!-- ExpensesStatisticsFragment 統計 -->
+	<string name="title_expenses_statistics">支出統計</string>
+	<string name="char_number">#</string>
+	<string name="tv_percentage">百分比</string>
+	<string name="tv_price">金額</string>
+	<!-- IncomeStatisticsFragment 收入統計 -->
+	<string name="title_income_statistics">收入統計</string>
+	<!-- AccountStatisticsFragment 帳戶統計 -->
+	<string name="title_account_statistics">帳戶統計</string>
+	<!-- BudgetStatisticsFragment 預算統計 -->
+	<string name="title_budget_statistics">預算統計</string>
+
+	<!-- BudgetingFragment 預算編列 -->
+	<string name="title_budgeting">預算編列</string>
+
+	<!-- AccountMgmtFragment 帳戶管理 -->
+	<string name="title_account_mgmt">帳戶管理</string>
+	<string name="iv_account_category">帳戶類別</string>
+	<string name="tv_account_category_cash">現金</string>
+	<string name="tv_account_category_card">卡片</string>
+	<string name="tv_account_category_bank">銀行</string>
+	<string name="tv_default">(預設)</string>
+
+	<!-- AccountNewEditFragment 新增/編輯帳戶 -->
+	<string name="title_account_new">新增帳戶</string>
+	<string name="title_account_edit">編輯帳戶</string>
+	<string name="tv_account_name">帳戶名稱</string>
+	<string name="tv_starting_amount">起始金額</string>
+	<string name="tv_account_category">帳戶類別</string>
+	<string name="tv_default_account">預設帳戶</string>
+	<string name="hint_input_account_name">請輸入帳戶名稱</string>
+	<string name="msg_account_del_confirm">確定刪除此帳戶?</string>
+	<string name="msg_account_del_confirm_hint">注意:此帳戶的所有紀錄將會一併刪除</string>
+	<string name="msg_account_deleted">帳戶:%s已刪除</string>
+	<string name="msg_input_account_name">請輸入帳戶名稱</string>
+	<!-- 帳戶類別 -->
+	<string-array name="accountCategories">
+		<item>現金</item>
+		<item>卡片</item>
+		<item>銀行</item>
+	</string-array>
 
 	<!-- 類別名稱 -->
 	<string name="category_afternoon_tea">下午茶</string>
@@ -99,7 +146,7 @@
 
 	<!-- CategoryMgmtFragment 類別管理 不分支出或收入-->
 	<string name="et_name_hint">名稱</string>
-	<string name="tv_category_deleted">%s已刪除</string>
+	<string name="msg_category_deleted">%s已刪除</string>
 	<string name="hint_category_mgmt">左滑刪除項目\n長按移動項目順序</string>
 	<string name="hint_input_category_name">請輸入名稱</string>
 	<string name="hint_repeated_category">此類別已存在</string>
@@ -121,6 +168,8 @@
 	<string name="title_income_category_edit">編輯收入類別</string>
 
 
+	<!-- TODO: msg 尚未開發功能 -->
+	<string name="msg_todo">尚無此功能，待開發</string>
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

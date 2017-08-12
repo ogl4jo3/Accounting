@@ -11,10 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.ogl4jo3.accounting.common.expenses.ExpensesFragment;
 import com.example.ogl4jo3.accounting.common.income.IncomeFragment;
 import com.example.ogl4jo3.accounting.common.statistics.StatisticsFragment;
+import com.example.ogl4jo3.accounting.setting.accountmanagement.AccountMgmtFragment;
+import com.example.ogl4jo3.accounting.setting.budgeting.BudgetingFragment;
 import com.example.ogl4jo3.accounting.setting.categorymanagement.expenses.ExpensesCategoryMgmtFragment;
 import com.example.ogl4jo3.accounting.setting.categorymanagement.income.IncomeCategoryMgmtFragment;
 import com.example.ogl4jo3.utility.keyboard.KeyboardUtil;
@@ -99,12 +102,26 @@ public class MainActivity extends AppCompatActivity
 				break;
 			//設定
 			case R.id.nav_budgeting:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
+				BudgetingFragment budgetingFragment = BudgetingFragment.newInstance("", "");
+				fragmentManager.beginTransaction()
+						.replace(R.id.layout_main_content, budgetingFragment,
+								BudgetingFragment.BUDGETING_FRAGMENT_TAG).commit();
 				break;
 			case R.id.nav_account_management:
+				AccountMgmtFragment accountMgmtFragment = AccountMgmtFragment.newInstance("", "");
+				fragmentManager.beginTransaction()
+						.replace(R.id.layout_main_content, accountMgmtFragment,
+								AccountMgmtFragment.ACCOUNT_MGMT_FRAGMENT_TAG).commit();
 				break;
 			case R.id.nav_currency_selection:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.nav_password_setting:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.nav_expenses_category_management:
 				ExpensesCategoryMgmtFragment expensesCategoryMgmtFragment =
@@ -125,12 +142,20 @@ public class MainActivity extends AppCompatActivity
 				break;
 			// 其他
 			case R.id.nav_export_file:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.nav_cloud_backup:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.nav_about_us:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.nav_give_praise:
+				//TODO:
+				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
 				break;
 		}
 

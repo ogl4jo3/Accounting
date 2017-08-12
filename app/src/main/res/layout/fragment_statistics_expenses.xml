@@ -1,0 +1,58 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context="com.example.ogl4jo3.accounting.common.statistics.expenses_income.expenses.ExpensesStatisticsFragment">
+
+	<include layout="@layout/content_statistics_date"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:paddingBottom="2dp"
+		android:paddingLeft="4dp"
+		android:paddingRight="4dp"
+		android:paddingTop="2dp">
+
+		<TextView
+			style="@style/TextStyle.f3"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:gravity="center_horizontal"
+			android:text="@string/char_number"/>
+
+		<TextView
+			style="@style/TextStyle.f3"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="4.5"
+			android:gravity="center_horizontal"
+			android:text="@string/tv_category"/>
+
+
+		<TextView
+			style="@style/TextStyle.f3"
+			android:layout_width="0dp"
+			android:layout_weight="2"
+			android:gravity="center_horizontal"
+			android:text="@string/tv_percentage"/>
+
+		<TextView
+			style="@style/TextStyle.f3"
+			android:layout_width="0dp"
+			android:layout_weight="3"
+			android:gravity="end"
+			android:text="@string/tv_price"/>
+	</LinearLayout>
+
+	<LinearLayout style="@style/Sep_line_h"/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/rv_statistics"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+</LinearLayout>

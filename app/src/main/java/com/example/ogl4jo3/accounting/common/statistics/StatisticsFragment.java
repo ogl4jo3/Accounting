@@ -1,12 +1,20 @@
 package com.example.ogl4jo3.accounting.common.statistics;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ogl4jo3.accounting.R;
+import com.example.ogl4jo3.accounting.common.statistics.account.AccountStatisticsFragment;
+import com.example.ogl4jo3.accounting.common.statistics.budget.BudgetStatisticsFragment;
+import com.example.ogl4jo3.accounting.common.statistics.expenses_income.expenses.ExpensesStatisticsFragment;
+import com.example.ogl4jo3.accounting.common.statistics.expenses_income.income.IncomeStatisticsFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +22,7 @@ import com.example.ogl4jo3.accounting.R;
  * create an instance of this fragment.
  */
 public class StatisticsFragment extends Fragment {
+
 	public static final String STATISTICS_FRAGMENT_TAG = "STATISTICS_FRAGMENT_TAG";
 
 	// TODO: Rename parameter arguments, choose names that match
@@ -57,10 +66,27 @@ public class StatisticsFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	                         Bundle savedInstanceState) {
 		getActivity().setTitle(R.string.title_statistics);
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_statistics, container, false);
+
+		List<String> pageTitles = new ArrayList<>();
+		List<Fragment> fragmentList = new ArrayList<>();
+		fragmentList.add(ExpensesStatisticsFragment.newInstance("", ""));
+		pageTitles.add(getString(R.string.title_expenses_statistics));
+		fragmentList.add(IncomeStatisticsFragment.newInstance("", ""));
+		pageTitles.add(getString(R.string.title_income_statistics));
+		fragmentList.add(AccountStatisticsFragment.newInstance("", ""));
+		pageTitles.add(getString(R.string.title_account_statistics));
+		fragmentList.add(BudgetStatisticsFragment.newInstance("", ""));
+		pageTitles.add(getString(R.string.title_budget_statistics));
+
+		ViewPager vpStatistics = (ViewPager) view.findViewById(R.id.vp_statistics);
+		StatisticsPagerAdapter statisticsPagerAdapter =
+				new StatisticsPagerAdapter(getFragmentManager(), pageTitles, fragmentList);
+		vpStatistics.setAdapter(statisticsPagerAdapter);
 
 		return view;
 	}

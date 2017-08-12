@@ -10,6 +10,7 @@ public class Income {
 	private int id;             //ID
 	private int price;          //金額
 	private int categoryId;     //類別ID
+	private String accountName;      //帳戶名稱
 	private String description; //描述
 	private String recordTime;  //紀錄時間
 
@@ -37,6 +38,14 @@ public class Income {
 		this.categoryId = categoryId;
 	}
 
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -55,6 +64,6 @@ public class Income {
 
 	public String toString() {
 		return "id:" + id + ", price:" + price + ", categoryId:" + categoryId + ", description:" +
-				description + ", recordTime:" + recordTime;
+				description+ ", accountName:" + accountName + ", recordTime:" + recordTime;
 	}
 }

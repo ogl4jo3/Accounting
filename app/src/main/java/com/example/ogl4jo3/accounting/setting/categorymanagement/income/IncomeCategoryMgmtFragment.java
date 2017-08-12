@@ -91,7 +91,7 @@ public class IncomeCategoryMgmtFragment extends Fragment {
 
 		getActivity().setTitle(R.string.title_income_category_mgmt);
 		// Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.fragment_income_category_mgmt, container, false);
+		View view = inflater.inflate(R.layout.fragment_category_mgmt_income, container, false);
 		KeyboardUtil.closeKeyboard(getActivity());
 		initCategoryList(); //需放在onCreateView，從編輯頁跳回時才會重載資料
 		initUI(view);

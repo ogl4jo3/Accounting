@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.ogl4jo3.accounting.common.expenses.ExpensesDAO;
 import com.example.ogl4jo3.accounting.common.income.IncomeDAO;
+import com.example.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
 import com.example.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
 
 /**
@@ -16,7 +17,7 @@ import com.example.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
 public class MyDBHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "mydata"; // 資料庫名稱
-	private static final int DATABASE_VERSION = 49; // 版本,此一數字一改(不管變大變小),資料即刪並重建
+	private static final int DATABASE_VERSION = 55; // 版本,此一數字一改(不管變大變小),資料即刪並重建
 	private static SQLiteDatabase database;
 	private Context context;
 
@@ -43,9 +44,11 @@ public class MyDBHelper extends SQLiteOpenHelper {
 		sqLiteDatabase.execSQL(CategoryDAO.CREATE_INCOME_CATEGORY_TABLE);
 		sqLiteDatabase.execSQL(ExpensesDAO.CREATE_EXPENSES_TABLE);
 		sqLiteDatabase.execSQL(IncomeDAO.CREATE_INCOME_TABLE);
+		sqLiteDatabase.execSQL(AccountDAO.CREATE_EXPENSES_TABLE);
 		// 初始化資料
 		CategoryDAO.initExpensesData(context, sqLiteDatabase);//支出類別
 		CategoryDAO.initIncomeData(context, sqLiteDatabase);//收入類別
+		AccountDAO.initData(context, sqLiteDatabase);//支出類別
 
 	}
 
@@ -56,6 +59,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 		sqLiteDatabase.execSQL(CategoryDAO.DROP_INCOME_CATEGORY_TABLE);
 		sqLiteDatabase.execSQL(ExpensesDAO.DROP_EXPENSES_TABLE);
 		sqLiteDatabase.execSQL(IncomeDAO.DROP_INCOME_TABLE);
+		sqLiteDatabase.execSQL(AccountDAO.DROP_EXPENSES_TABLE);
 		// 呼叫onCreate建立新版的表格
 		onCreate(sqLiteDatabase);
 

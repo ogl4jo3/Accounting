@@ -30,6 +30,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:support-v13:25.2.0'
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
     compile 'com.google.code.gson:gson:2.8.0'
     testCompile 'junit:junit:4.12'

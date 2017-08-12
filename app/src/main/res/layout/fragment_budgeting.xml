@@ -1,0 +1,110 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:paddingBottom="4dp"
+	android:paddingLeft="8dp"
+	android:paddingRight="8dp"
+	android:paddingTop="4dp"
+	tools:context="com.example.ogl4jo3.accounting.setting.budgeting.BudgetingFragment">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			style="@style/TextStyle.f5"
+			android:text="總預算"
+			/>
+
+		<TextView
+			style="@style/TextStyle.f5"
+			tools:text="10,000"/>
+	</LinearLayout>
+
+	<!-- TODO:　改為ListView -->
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal"
+		android:padding="2dp">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_money"/>
+
+		<TextView
+			style="@style/TextStyle.f3"
+			android:text="現金"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="end"
+			android:orientation="horizontal">
+
+			<TextView
+				style="@style/TextStyle.f3"
+				android:text="$9903"/>
+
+			<TextView
+				style="@style/TextStyle.f3"
+				android:text="/"/>
+
+			<TextView
+				style="@style/TextStyle.f3"
+				android:text="10000"/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:orientation="vertical">
+
+		<TextView
+			style="@style/TextStyle.f2"
+			android:drawableLeft="@drawable/ic_calendar"
+			android:drawableStart="@drawable/ic_calendar"
+			android:gravity="center_vertical"
+			android:text="預算週期"
+			/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="end|center_vertical"
+			android:orientation="horizontal">
+
+			<TextView
+				style="@style/TextStyle.f4"
+				android:text="起始於每月第"/>
+
+			<NumberPicker
+				android:id="@+id/number_picker"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				/>
+
+			<TextView
+				style="@style/TextStyle.f4"
+				android:text="天"/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<Button
+		android:id="@+id/btn_setting"
+		style="@style/Normal_btn"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:clickable="false"
+		android:text="設定"
+		android:textColor="@color/gray_dark"/>
+
+</LinearLayout>

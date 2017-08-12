@@ -69,16 +69,15 @@ public class ExpensesCategoryNewEditFragment extends Fragment {
 	 * Use this factory method to create a new instance of
 	 * this fragment using the provided parameters.
 	 *
-	 * @param param1 Parameter 1.
-	 * @param param2 Parameter 2.
+	 * @param newEdit Parameter 1.
+	 * @param categoryJson Parameter 2.
 	 * @return A new instance of fragment ExpensesCategoryNewEditFragment.
 	 */
-	// TODO: Rename and change types and number of parameters
-	public static ExpensesCategoryNewEditFragment newInstance(String param1, String param2) {
+	public static ExpensesCategoryNewEditFragment newInstance(String newEdit, String categoryJson) {
 		ExpensesCategoryNewEditFragment fragment = new ExpensesCategoryNewEditFragment();
 		Bundle args = new Bundle();
-		args.putString(NEW_EDIT, param1);
-		args.putString(CATEGORY_JSON, param2);
+		args.putString(NEW_EDIT, newEdit);
+		args.putString(CATEGORY_JSON, categoryJson);
 		fragment.setArguments(args);
 		return fragment;
 	}
@@ -244,7 +243,7 @@ public class ExpensesCategoryNewEditFragment extends Fragment {
 						SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 						new CategoryDAO(db).deleteExpensesData(category);
 						Toast.makeText(getActivity(), getActivity().getResources()
-										.getString(R.string.tv_category_deleted, category.getName()),
+										.getString(R.string.msg_category_deleted, category.getName()),
 								Toast.LENGTH_SHORT).show();
 						fragmentManager.popBackStack();
 					}

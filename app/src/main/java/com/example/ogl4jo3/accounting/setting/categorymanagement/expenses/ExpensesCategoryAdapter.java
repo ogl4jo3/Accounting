@@ -78,7 +78,7 @@ public class ExpensesCategoryAdapter extends CategoryAdapter {
 		new CategoryDAO(db).deleteExpensesData(categoryList.get(position));
 
 		Toast.makeText(mContext, mContext.getResources()
-						.getString(R.string.tv_category_deleted, categoryList.get(position).getName()),
+						.getString(R.string.msg_category_deleted, categoryList.get(position).getName()),
 				Toast.LENGTH_SHORT).show();
 		categoryList.remove(position);
 		notifyItemRemoved(position);
