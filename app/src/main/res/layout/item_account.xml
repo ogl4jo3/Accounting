@@ -18,8 +18,9 @@
 		android:src="@drawable/ic_account_category_cash"/>
 
 	<LinearLayout
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		android:layout_weight="1"
 		android:orientation="vertical"
 		android:padding="2dp">
 
@@ -30,26 +31,43 @@
 
 			<TextView
 				android:id="@+id/tv_account_name"
-				style="@style/TextStyle.f4"
+				style="@style/TextStyle.f3"
 				tools:text="帳戶名稱"/>
 
 			<TextView
 				android:id="@+id/tv_default_account"
-				style="@style/TextStyle.f3"
+				style="@style/TextStyle.f2"
 				android:text="@string/tv_default"
 				android:visibility="gone"/>
 		</LinearLayout>
 
 		<TextView
 			android:id="@+id/tv_account_category_name"
-			style="@style/TextStyle.f3"
+			style="@style/TextStyle.f2"
 			tools:text="現金"/>
 	</LinearLayout>
 
-	<TextView
-		android:id="@+id/tv_account_balance"
-		style="@style/TextStyle.f4"
-		android:layout_width="match_parent"
-		android:gravity="end"
-		tools:text="$500"/>
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		android:padding="2dp">
+
+		<TextView
+			style="@style/TextStyle.f1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/tv_account_balance"/>
+
+
+		<TextView
+			android:id="@+id/tv_account_balance"
+			style="@style/TextStyle.f4"
+			android:layout_width="match_parent"
+			android:gravity="end"
+			tools:text="$500"/>
+
+	</LinearLayout>
+
 </LinearLayout>

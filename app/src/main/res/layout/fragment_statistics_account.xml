@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="com.example.ogl4jo3.accounting.common.statistics.account.AccountStatisticsFragment">
+	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.common.statistics.account.AccountStatisticsFragment">
 
 	<include layout="@layout/content_statistics_date"/>
 

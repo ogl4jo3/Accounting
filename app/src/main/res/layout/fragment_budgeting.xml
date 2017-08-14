@@ -8,7 +8,7 @@
 	android:paddingLeft="8dp"
 	android:paddingRight="8dp"
 	android:paddingTop="4dp"
-	tools:context="com.example.ogl4jo3.accounting.setting.budgeting.BudgetingFragment">
+	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.setting.budgeting.BudgetingFragment">
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -17,50 +17,23 @@
 
 		<TextView
 			style="@style/TextStyle.f5"
-			android:text="總預算"
+			android:text="@string/tv_total_budget"
 			/>
 
 		<TextView
+			android:id="@+id/tv_total_budget"
 			style="@style/TextStyle.f5"
-			tools:text="10,000"/>
+			android:layout_width="match_parent"
+			android:gravity="end"
+			tools:text="$10,000"/>
 	</LinearLayout>
 
-	<!-- TODO:　改為ListView -->
-	<LinearLayout
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/rv_account_budgeting"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_weight="1"
-		android:orientation="horizontal"
-		android:padding="2dp">
+		android:layout_weight="1"/>
 
-		<ImageView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:src="@drawable/ic_money"/>
-
-		<TextView
-			style="@style/TextStyle.f3"
-			android:text="現金"/>
-
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:orientation="horizontal">
-
-			<TextView
-				style="@style/TextStyle.f3"
-				android:text="$9903"/>
-
-			<TextView
-				style="@style/TextStyle.f3"
-				android:text="/"/>
-
-			<TextView
-				style="@style/TextStyle.f3"
-				android:text="10000"/>
-		</LinearLayout>
-	</LinearLayout>
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -73,7 +46,7 @@
 			android:drawableLeft="@drawable/ic_calendar"
 			android:drawableStart="@drawable/ic_calendar"
 			android:gravity="center_vertical"
-			android:text="預算週期"
+			android:text="@string/tv_budget_cycle"
 			/>
 
 		<LinearLayout
@@ -84,7 +57,7 @@
 
 			<TextView
 				style="@style/TextStyle.f4"
-				android:text="起始於每月第"/>
+				android:text="@string/msg_budgeting_start_day_1"/>
 
 			<NumberPicker
 				android:id="@+id/number_picker"
@@ -94,7 +67,7 @@
 
 			<TextView
 				style="@style/TextStyle.f4"
-				android:text="天"/>
+				android:text="@string/msg_budgeting_start_day_2"/>
 		</LinearLayout>
 	</LinearLayout>
 
@@ -104,7 +77,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:clickable="false"
-		android:text="設定"
+		android:text="@string/btn_setting"
 		android:textColor="@color/gray_dark"/>
 
 </LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="2dp"
+              android:paddingLeft="8dp"
+              android:paddingRight="8dp"
+              android:paddingTop="2dp">
+
+	<ImageView
+		android:id="@+id/iv_account_category_icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:contentDescription="@string/iv_account_category"
+		android:src="@drawable/ic_account_category_cash"/>
+
+
+	<TextView
+		android:id="@+id/tv_account_name"
+		style="@style/TextStyle.f4"
+		tools:text="帳戶名稱"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="end"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/tv_remaining_budget"
+			style="@style/TextStyle.f4"
+			tools:text="$9903"/>
+
+		<TextView
+			style="@style/TextStyle.f4"
+			android:text="/"/>
+
+		<TextView
+			android:id="@+id/tv_budget"
+			style="@style/TextStyle.f4"
+			tools:text="10000"/>
+	</LinearLayout>
+
+</LinearLayout>

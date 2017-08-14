@@ -5,7 +5,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="com.example.ogl4jo3.accounting.MainActivity">
+	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.MainActivity">
 
 	<android.support.design.widget.AppBarLayout
 		android:layout_width="match_parent"

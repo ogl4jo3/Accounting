@@ -17,7 +17,6 @@
 		android:layout_width="wrap_content"
 		tools:text="2017-07-08"/>
 
-	<!-- TODO:尚無帳戶相關功能 -->
 	<TextView
 		android:id="@+id/tv_account"
 		style="@style/TextStyle.f3"

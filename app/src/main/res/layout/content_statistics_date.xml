@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
-              tools:context="com.example.ogl4jo3.accounting.common.statistics.expenses_income.expenses.ExpensesStatisticsFragment">
+              tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.common.statistics.expenses_income.expenses.ExpensesStatisticsFragment">
 
 	<LinearLayout
 		android:layout_width="match_parent"

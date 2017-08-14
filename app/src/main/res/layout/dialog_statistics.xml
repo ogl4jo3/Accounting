@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:padding="4dp"
-              tools:context="com.example.ogl4jo3.utility.dialog.StatisticsDialogFragment">
+              tools:context="ogl4jo3.shaowei.ogl4jo3.utility.dialog.StatisticsDialogFragment">
 
 	<LinearLayout
 		android:layout_width="match_parent"
