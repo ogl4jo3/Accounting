@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import ogl4jo3.shaowei.ogl4jo3.accounting.R;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.Account;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.Category;
@@ -103,10 +104,10 @@ public class ExpensesNewEditFragment extends Fragment
 	                         Bundle savedInstanceState) {
 		//新增、編輯標題
 		getActivity().setTitle(
-				StringUtil.isNullorEmpty(expensesJson) ? ogl4jo3.shaowei.ogl4jo3.accounting.R.string.title_expenses_new :
-						ogl4jo3.shaowei.ogl4jo3.accounting.R.string.title_expenses_edit);
+				StringUtil.isNullorEmpty(expensesJson) ? R.string.title_expenses_new :
+						R.string.title_expenses_edit);
 		// Inflate the layout for this fragment
-		View view = inflater.inflate(ogl4jo3.shaowei.ogl4jo3.accounting.R.layout.fragment_expenses_new_edit, container, false);
+		View view = inflater.inflate(R.layout.fragment_expenses_new_edit, container, false);
 		initUI(view);
 		setViewData();
 		setOnClickListener();
@@ -120,19 +121,19 @@ public class ExpensesNewEditFragment extends Fragment
 	 * @param view View
 	 */
 	private void initUI(View view) {
-		tvDate = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_date);
-		etMoney = (EditText) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.et_money);
-		llCategory = (LinearLayout) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.ll_category);
-		ivCategoryIcon = (ImageView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.iv_category_icon);
-		tvCategoryName = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_category_name);
-		llAccount = (LinearLayout) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.ll_account);
-		tvAccountName = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_account_name);
-		llFixedCharge = (LinearLayout) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.ll_fixed_charge);
-		etDescription = (EditText) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.et_description);
-		btnNew = (Button) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.btn_new);
+		tvDate = (TextView) view.findViewById(R.id.tv_date);
+		etMoney = (EditText) view.findViewById(R.id.et_money);
+		llCategory = (LinearLayout) view.findViewById(R.id.ll_category);
+		ivCategoryIcon = (ImageView) view.findViewById(R.id.iv_category_icon);
+		tvCategoryName = (TextView) view.findViewById(R.id.tv_category_name);
+		llAccount = (LinearLayout) view.findViewById(R.id.ll_account);
+		tvAccountName = (TextView) view.findViewById(R.id.tv_account_name);
+		llFixedCharge = (LinearLayout) view.findViewById(R.id.ll_fixed_charge);
+		etDescription = (EditText) view.findViewById(R.id.et_description);
+		btnNew = (Button) view.findViewById(R.id.btn_new);
 		//編輯時用
-		btnSave = (Button) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.btn_save);
-		btnDel = (Button) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.btn_del);
+		btnSave = (Button) view.findViewById(R.id.btn_save);
+		btnDel = (Button) view.findViewById(R.id.btn_del);
 	}
 
 	/**
@@ -178,15 +179,19 @@ public class ExpensesNewEditFragment extends Fragment
 				String priceStr = etMoney.getText().toString();
 				String description = etDescription.getText().toString();
 				if (priceStr.isEmpty() && categoryId == -1) {
-					Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_input_money_category,
+					Toast.makeText(getActivity(), R.string.msg_input_money_category_account,
 							Toast.LENGTH_SHORT).show();
 					return;
 				} else if (priceStr.isEmpty()) {
-					Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_input_money, Toast.LENGTH_SHORT)
+					Toast.makeText(getActivity(), R.string.msg_input_money, Toast.LENGTH_SHORT)
 							.show();
 					return;
 				} else if (categoryId == -1) {
-					Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_input_category, Toast.LENGTH_SHORT)
+					Toast.makeText(getActivity(), R.string.msg_input_category, Toast.LENGTH_SHORT)
+							.show();
+					return;
+				} else if (StringUtil.isNullorEmpty(account.getName())) {
+					Toast.makeText(getActivity(), R.string.msg_input_account, Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
@@ -216,8 +221,7 @@ public class ExpensesNewEditFragment extends Fragment
 					accountsName.add(account.getName());
 				}
 
-				new AlertDialog.Builder(getActivity()).setTitle(
-						ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_choose_account)
+				new AlertDialog.Builder(getActivity()).setTitle(R.string.msg_choose_account)
 						.setItems(accountsName.toArray(new String[accountsName.size()]),
 								new DialogInterface.OnClickListener() {
 
@@ -236,7 +240,7 @@ public class ExpensesNewEditFragment extends Fragment
 			@Override
 			public void onClick(View view) {
 				//TODO:
-				Toast.makeText(getActivity(), getString(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo), Toast.LENGTH_SHORT)
+				Toast.makeText(getActivity(), getString(R.string.msg_todo), Toast.LENGTH_SHORT)
 						.show();
 			}
 		});
@@ -248,7 +252,7 @@ public class ExpensesNewEditFragment extends Fragment
 				String priceStr = etMoney.getText().toString();
 				String description = etDescription.getText().toString();
 				if (priceStr.isEmpty()) {
-					Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_input_money, Toast.LENGTH_SHORT)
+					Toast.makeText(getActivity(), R.string.msg_input_money, Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
@@ -271,8 +275,8 @@ public class ExpensesNewEditFragment extends Fragment
 			@Override
 			public void onClick(View view) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setTitle(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_expenses_del_confirm);
-				builder.setPositiveButton(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.btn_del, new DialogInterface.OnClickListener() {
+				builder.setTitle(R.string.msg_expenses_del_confirm);
+				builder.setPositiveButton(R.string.btn_del, new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialogInterface, int i) {
@@ -284,7 +288,7 @@ public class ExpensesNewEditFragment extends Fragment
 						dialogInterface.dismiss();
 					}
 				});
-				builder.setNegativeButton(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.btn_cancel,
+				builder.setNegativeButton(R.string.btn_cancel,
 						new DialogInterface.OnClickListener() {
 
 							@Override

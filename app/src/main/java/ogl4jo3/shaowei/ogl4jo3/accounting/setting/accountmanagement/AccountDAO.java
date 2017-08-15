@@ -64,7 +64,10 @@ public class AccountDAO {
 	 * @return 新增成功
 	 */
 	public boolean newAccount(Account account) {
-		//TODO:帳戶名稱不可重複
+		//帳戶名稱不可重複
+		if (accountNameCount(account.getName()) > 0) {
+			return false;
+		}
 		// 建立準備新增資料的ContentValues物件
 		ContentValues contentValues = new ContentValues();
 
@@ -97,7 +100,10 @@ public class AccountDAO {
 	 * 儲存原有資料
 	 */
 	public boolean saveData(Account account) {
-		//TODO:帳戶名稱不可重複
+		//帳戶名稱不可重複
+		if (accountNameCount(account.getName()) > 1) {
+			return false;
+		}
 		// 建立準備修改資料的ContentValues物件
 		ContentValues contentValues = new ContentValues();
 
@@ -182,6 +188,7 @@ public class AccountDAO {
 		//Log.d(TAG, "NumberOfAccounts: "+result);
 		return result;
 	}
+
 	/**
 	 * 取得所有帳戶預算總和
 	 */
@@ -198,7 +205,6 @@ public class AccountDAO {
 		//Log.d(TAG, "NumberOfAccounts: "+result);
 		return result;
 	}
-
 
 	/**
 	 * 取得預設帳戶
@@ -254,6 +260,29 @@ public class AccountDAO {
 
 		cursor.close();
 		return result;
+	}
+
+	/**
+	 * 檢查帳戶名稱是否已存在用
+	 *
+	 * @param accountName 帳戶名稱
+	 * @return 此帳戶名稱數量
+	 */
+	public int accountNameCount(String accountName) {
+
+		int count = 0;
+		String queryString = "SELECT COUNT(" + KEY_ID + ") FROM " + ACCOUNT_TABLE_NAME + " WHERE " +
+				NAME_COLUMN + "=?";
+		String[] selectionArgs = new String[]{accountName};
+
+		Cursor cursor = database.rawQuery(queryString, selectionArgs);
+
+		if (cursor.moveToNext()) {
+			count = cursor.getInt(0);
+		}
+		cursor.close();
+		//Log.d(TAG, "NumberOfAccounts: "+result);
+		return count;
 	}
 
 	/**

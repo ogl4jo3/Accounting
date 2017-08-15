@@ -17,6 +17,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import ogl4jo3.shaowei.ogl4jo3.accounting.R;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.statistics.expenses_income.StatisticsItem;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.Account;
@@ -26,12 +33,6 @@ import ogl4jo3.shaowei.ogl4jo3.utility.date.DateUtil;
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesHelper;
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesTag;
 import ogl4jo3.shaowei.ogl4jo3.utility.string.StringUtil;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +55,7 @@ public class IncomeStatisticsFragment extends Fragment {
 	private RecyclerView.LayoutManager mLayoutManager;
 	private IncomeStatisticsAdapter mAdapter;
 
+	private int tvDefaultBgColor;//TextView 預設的背景顏色
 	private List<Account> accountList;  //所有帳戶
 	private List<String> accountsName;  //所有帳戶名稱
 	private String budgetStartDay;//預算起始日
@@ -108,7 +110,9 @@ public class IncomeStatisticsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View view = inflater.inflate(ogl4jo3.shaowei.ogl4jo3.accounting.R.layout.fragment_statistics_income, container, false);
+		View view = inflater.inflate(
+				ogl4jo3.shaowei.ogl4jo3.accounting.R.layout.fragment_statistics_income, container,
+				false);
 		initUI(view);
 		setViewData();
 		setRecyclerView();
@@ -161,14 +165,22 @@ public class IncomeStatisticsFragment extends Fragment {
 	private void initUI(View view) {
 		spAccount = (Spinner) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.sp_account);
 		tvCustom = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_custom);
-		tvLastMonth = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_last_month);
-		tvThisMonth = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_this_month);
-		tvHalfYear = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_half_year);
-		tvOneYear = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_one_year);
-		tvFromDate = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_from_date);
+		tvLastMonth =
+				(TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_last_month);
+		tvThisMonth =
+				(TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_this_month);
+		tvHalfYear =
+				(TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_half_year);
+		tvOneYear =
+				(TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_one_year);
+		tvFromDate =
+				(TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_from_date);
 		tvToDate = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_to_date);
-		tvTotalIncome = (TextView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_total_income);
-		mRecyclerView = (RecyclerView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.rv_statistics);
+		tvTotalIncome = (TextView) view
+				.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.tv_total_income);
+		mRecyclerView = (RecyclerView) view
+				.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.rv_statistics);
+		tvDefaultBgColor = tvCustom.getDrawingCacheBackgroundColor();
 	}
 
 	/**
@@ -321,7 +333,8 @@ public class IncomeStatisticsFragment extends Fragment {
 			@Override
 			public void onClick(View view) {
 				//TODO:尚無實際功能
-				Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo,
+						Toast.LENGTH_SHORT).show();
 				setTvClicked(tvLastMonth);
 
 			}
@@ -345,7 +358,8 @@ public class IncomeStatisticsFragment extends Fragment {
 			@Override
 			public void onClick(View view) {
 				//TODO:尚無實際功能
-				Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo,
+						Toast.LENGTH_SHORT).show();
 				setTvClicked(tvHalfYear);
 			}
 		});
@@ -354,7 +368,8 @@ public class IncomeStatisticsFragment extends Fragment {
 			@Override
 			public void onClick(View view) {
 				//TODO:尚無實際功能
-				Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_todo,
+						Toast.LENGTH_SHORT).show();
 				setTvClicked(tvOneYear);
 			}
 		});
@@ -378,15 +393,13 @@ public class IncomeStatisticsFragment extends Fragment {
 	 * 全部取消反白，再將此TextView背景反白
 	 */
 	private void setTvClicked(TextView tvClicked) {
-		tvCustom.setBackgroundColor(ContextCompat.getColor(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.color.default_color));
-		tvLastMonth
-				.setBackgroundColor(ContextCompat.getColor(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.color.default_color));
-		tvThisMonth
-				.setBackgroundColor(ContextCompat.getColor(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.color.default_color));
-		tvHalfYear.setBackgroundColor(ContextCompat.getColor(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.color.default_color));
-		tvOneYear.setBackgroundColor(ContextCompat.getColor(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.color.default_color));
+		tvCustom.setBackgroundColor(tvDefaultBgColor);
+		tvLastMonth.setBackgroundColor(tvDefaultBgColor);
+		tvThisMonth.setBackgroundColor(tvDefaultBgColor);
+		tvHalfYear.setBackgroundColor(tvDefaultBgColor);
+		tvOneYear.setBackgroundColor(tvDefaultBgColor);
 
-		tvClicked.setBackgroundColor(ContextCompat.getColor(getActivity(), ogl4jo3.shaowei.ogl4jo3.accounting.R.color.gray_press));
+		tvClicked.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.gray_press));
 	}
 
 }

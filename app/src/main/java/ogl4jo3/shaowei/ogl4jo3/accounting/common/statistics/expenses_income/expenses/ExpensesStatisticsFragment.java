@@ -55,6 +55,7 @@ public class ExpensesStatisticsFragment extends Fragment {
 	private RecyclerView.LayoutManager mLayoutManager;
 	private ExpensesStatisticsAdapter mAdapter;
 
+	private int tvDefaultBgColor;//TextView 預設的背景顏色
 	private List<Account> accountList;  //所有帳戶
 	private List<String> accountsName;  //所有帳戶名稱
 	private String budgetStartDay;//預算起始日
@@ -168,6 +169,8 @@ public class ExpensesStatisticsFragment extends Fragment {
 		tvToDate = (TextView) view.findViewById(R.id.tv_to_date);
 		tvTotalExpenses = (TextView) view.findViewById(R.id.tv_total_expenses);
 		mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_statistics);
+		tvDefaultBgColor = tvCustom.getDrawingCacheBackgroundColor();
+
 	}
 
 	/**
@@ -378,13 +381,11 @@ public class ExpensesStatisticsFragment extends Fragment {
 	 * 全部取消反白，再將此TextView背景反白
 	 */
 	private void setTvClicked(TextView tvClicked) {
-		tvCustom.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.default_color));
-		tvLastMonth
-				.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.default_color));
-		tvThisMonth
-				.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.default_color));
-		tvHalfYear.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.default_color));
-		tvOneYear.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.default_color));
+		tvCustom.setBackgroundColor(tvDefaultBgColor);
+		tvLastMonth.setBackgroundColor(tvDefaultBgColor);
+		tvThisMonth.setBackgroundColor(tvDefaultBgColor);
+		tvHalfYear.setBackgroundColor(tvDefaultBgColor);
+		tvOneYear.setBackgroundColor(tvDefaultBgColor);
 
 		tvClicked.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.gray_press));
 	}

@@ -171,9 +171,14 @@ public class AccountNewEditFragment extends Fragment {
 
 			@Override
 			public void onClick(View view) {
+				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 				String accountName = etAccountName.getText().toString();
 				if (StringUtil.isNullorEmpty(accountName)) {
 					Toast.makeText(getActivity(), R.string.msg_input_account_name,
+							Toast.LENGTH_SHORT).show();
+					return;
+				} else if (new AccountDAO(db).accountNameCount(accountName) > 0) {
+					Toast.makeText(getActivity(), R.string.msg_account_name_exist,
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
@@ -183,7 +188,6 @@ public class AccountNewEditFragment extends Fragment {
 				account.setCategory(spAccountCategory.getSelectedItemPosition());
 				account.setDefaultAccount(swDefaultAccount.isChecked());
 
-				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 				new AccountDAO(db).newAccount(account);
 
 				FragmentManager fragmentManager = getFragmentManager();
@@ -195,9 +199,14 @@ public class AccountNewEditFragment extends Fragment {
 
 			@Override
 			public void onClick(View view) {
+				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 				String accountName = etAccountName.getText().toString();
 				if (StringUtil.isNullorEmpty(accountName)) {
 					Toast.makeText(getActivity(), R.string.msg_input_account_name,
+							Toast.LENGTH_SHORT).show();
+					return;
+				} else if (new AccountDAO(db).accountNameCount(accountName) > 1) {
+					Toast.makeText(getActivity(), R.string.msg_account_name_exist,
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
@@ -208,7 +217,6 @@ public class AccountNewEditFragment extends Fragment {
 				accountNew.setCategory(spAccountCategory.getSelectedItemPosition());
 				accountNew.setDefaultAccount(swDefaultAccount.isChecked());
 
-				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 				new AccountDAO(db).saveData(accountNew);
 
 				FragmentManager fragmentManager = getFragmentManager();
@@ -228,7 +236,8 @@ public class AccountNewEditFragment extends Fragment {
 					public void onClick(DialogInterface dialogInterface, int i) {
 						SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 						new AccountDAO(db).delAccount(account);
-						Toast.makeText(getActivity(), getString(R.string.msg_account_deleted, account.getName()),
+						Toast.makeText(getActivity(),
+								getString(R.string.msg_account_deleted, account.getName()),
 								Toast.LENGTH_SHORT).show();
 
 						FragmentManager fragmentManager = getFragmentManager();

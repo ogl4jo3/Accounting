@@ -19,15 +19,18 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.Category;
-import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
-import ogl4jo3.shaowei.ogl4jo3.utility.database.MyDBHelper;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import ogl4jo3.shaowei.ogl4jo3.accounting.R;
+import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.Category;
+import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
+import ogl4jo3.shaowei.ogl4jo3.utility.database.MyDBHelper;
+import ogl4jo3.shaowei.ogl4jo3.utility.keyboard.KeyboardUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,19 +98,21 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View view = inflater.inflate(ogl4jo3.shaowei.ogl4jo3.accounting.R.layout.fragment_category_new_edit, container, false);
+		View view = inflater.inflate(R.layout.fragment_category_new_edit, container, false);
 		initUI(view);
 		fragmentManager = getFragmentManager();
 		setGridViewIcon();  //設置GridView相關
 
 		if (newEdit.equalsIgnoreCase("new")) {  //新增
-			getActivity().setTitle(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.title_income_category_new);
-			ivCategoryIcon.setImageResource(ogl4jo3.shaowei.ogl4jo3.accounting.R.drawable.ic_category_other);
-			categoryIcon = ogl4jo3.shaowei.ogl4jo3.accounting.R.drawable.ic_category_other;
+			getActivity().setTitle(
+					ogl4jo3.shaowei.ogl4jo3.accounting.R.string.title_income_category_new);
+			ivCategoryIcon.setImageResource(R.drawable.ic_category_other);
+			categoryIcon = R.drawable.ic_category_other;
 			categoryID = -1;
 			btnDel.setVisibility(View.GONE);    //新增時隱藏刪除按鈕
 		} else {     //編輯
-			getActivity().setTitle(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.title_income_category_edit);
+			getActivity().setTitle(
+					ogl4jo3.shaowei.ogl4jo3.accounting.R.string.title_income_category_edit);
 			ivCategoryIcon.setImageResource(category.getIcon());
 			categoryIcon = category.getIcon();
 			categoryID = category.getId();
@@ -133,11 +138,11 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 	 * @param view View
 	 */
 	private void initUI(View view) {
-		ivCategoryIcon = (ImageView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.iv_icon);
-		etCategoryName = (EditText) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.et_name);
-		btnSave = (Button) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.btn_new);
-		btnDel = (Button) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.btn_del);
-		gridViewIcon = (GridView) view.findViewById(ogl4jo3.shaowei.ogl4jo3.accounting.R.id.gv_category_icon);
+		ivCategoryIcon = (ImageView) view.findViewById(R.id.iv_icon);
+		etCategoryName = (EditText) view.findViewById(R.id.et_name);
+		btnSave = (Button) view.findViewById(R.id.btn_new);
+		btnDel = (Button) view.findViewById(R.id.btn_del);
+		gridViewIcon = (GridView) view.findViewById(R.id.gv_category_icon);
 	}
 
 	/**
@@ -145,8 +150,8 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 	 */
 	private void setGridViewIcon() {
 		gridViewAdapter =
-				new SimpleAdapter(this.getActivity(), mapData, ogl4jo3.shaowei.ogl4jo3.accounting.R.layout.item_category_icon,
-						new String[]{mapIconKey}, new int[]{ogl4jo3.shaowei.ogl4jo3.accounting.R.id.iv_icon});
+				new SimpleAdapter(this.getActivity(), mapData, R.layout.item_category_icon,
+						new String[]{mapIconKey}, new int[]{R.id.iv_icon});
 		//gridViewIcon.setNumColumns(5);
 		gridViewIcon.setAdapter(gridViewAdapter);
 		gridViewIcon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -155,6 +160,7 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				ivCategoryIcon.setImageResource(iconArray[position]);
 				categoryIcon = iconArray[position];
+				KeyboardUtil.closeKeyboard(getActivity());
 				//Toast.makeText(getActivity(), "你選擇了" + position, Toast.LENGTH_SHORT).show();
 			}
 		});
@@ -177,7 +183,7 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 	 */
 	private void setIconArray() {
 		Resources res = getResources();
-		TypedArray icons = res.obtainTypedArray(ogl4jo3.shaowei.ogl4jo3.accounting.R.array.category_icon);
+		TypedArray icons = res.obtainTypedArray(R.array.category_icon);
 		iconAmount = icons.length();
 		iconArray = new int[iconAmount];
 		for (int i = 0; i < iconAmount; i++) {
@@ -200,12 +206,14 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 				SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 				String categoryName = etCategoryName.getText().toString();
 				if (categoryName.isEmpty()) {
-					Toast.makeText(getActivity(), getString(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.hint_input_category_name),
+					Toast.makeText(getActivity(), getString(
+							ogl4jo3.shaowei.ogl4jo3.accounting.R.string.hint_input_category_name),
 							Toast.LENGTH_SHORT).show();
 					return;
 				} else if (new CategoryDAO(db)
 						.checkIncomeRepeated(categoryName, categoryIcon, categoryID)) {//檢查是否重複
-					Toast.makeText(getActivity(), getString(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.hint_repeated_category),
+					Toast.makeText(getActivity(), getString(
+							ogl4jo3.shaowei.ogl4jo3.accounting.R.string.hint_repeated_category),
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
@@ -230,20 +238,23 @@ public class IncomeCategoryNewEditFragment extends Fragment {
 			public void onClick(View view) {
 				//刪除
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setTitle(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_category_del_confirm);
-				builder.setMessage(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_category_del_confirm_hint);
-				builder.setPositiveButton(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.btn_del, new DialogInterface.OnClickListener() {
+				builder.setTitle(
+						ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_category_del_confirm);
+				builder.setMessage(
+						ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_category_del_confirm_hint);
+				builder.setPositiveButton(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.btn_del,
+						new DialogInterface.OnClickListener() {
 
-					@Override
-					public void onClick(DialogInterface dialogInterface, int i) {
-						SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
-						new CategoryDAO(db).deleteIncomeData(category);
-						Toast.makeText(getActivity(),
-								getString(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_category_deleted, category.getName()),
-								Toast.LENGTH_SHORT).show();
-						fragmentManager.popBackStack();
-					}
-				});
+							@Override
+							public void onClick(DialogInterface dialogInterface, int i) {
+								SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
+								new CategoryDAO(db).deleteIncomeData(category);
+								Toast.makeText(getActivity(), getString(
+										ogl4jo3.shaowei.ogl4jo3.accounting.R.string.msg_category_deleted,
+										category.getName()), Toast.LENGTH_SHORT).show();
+								fragmentManager.popBackStack();
+							}
+						});
 				builder.setNegativeButton(ogl4jo3.shaowei.ogl4jo3.accounting.R.string.btn_cancel,
 						new DialogInterface.OnClickListener() {
 

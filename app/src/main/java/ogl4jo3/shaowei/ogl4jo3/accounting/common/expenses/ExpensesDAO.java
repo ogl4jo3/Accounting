@@ -4,17 +4,17 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.statistics.expenses_income.StatisticsItem;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.Category;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
 import ogl4jo3.shaowei.ogl4jo3.utility.date.DateUtil;
 import ogl4jo3.shaowei.ogl4jo3.utility.string.StringUtil;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 /**
  * 支出 資料庫存取
@@ -38,9 +38,10 @@ public class ExpensesDAO {
 	// CREATE_TABLE SQL指令
 	public static final String CREATE_EXPENSES_TABLE =
 			"CREATE TABLE IF NOT EXISTS " + EXPENSES_TABLE_NAME + " (" + KEY_ID +
-					" INTEGER PRIMARY KEY AUTOINCREMENT, " + PRICE_COLUMN + " INTEGER," +
-					CATEGORY_COLUMN + " INTEGER," + ACCOUNT_NAME_COLUMN + " VARCHAR," +
-					DESCRIPTION_COLUMN + " VARCHAR," + RECORD_TIME_COLUMN + " DATETIME NOT NULL);";
+					" INTEGER PRIMARY KEY AUTOINCREMENT, " + PRICE_COLUMN + " INTEGER NOT NULL," +
+					CATEGORY_COLUMN + " INTEGER NOT NULL," + ACCOUNT_NAME_COLUMN + " VARCHAR NOT " +
+					"NULL" + "," + DESCRIPTION_COLUMN + " VARCHAR," + RECORD_TIME_COLUMN +
+					" DATETIME NOT NULL);";
 	// DROP_TABLE SQL指令
 	public static final String DROP_EXPENSES_TABLE = "DROP TABLE IF EXISTS " + EXPENSES_TABLE_NAME;
 

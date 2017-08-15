@@ -178,7 +178,7 @@ public class IncomeNewEditFragment extends Fragment
 				String priceStr = etMoney.getText().toString();
 				String description = etDescription.getText().toString();
 				if (priceStr.isEmpty() && categoryId == -1) {
-					Toast.makeText(getActivity(), R.string.msg_input_money_category,
+					Toast.makeText(getActivity(), R.string.msg_input_money_category_account,
 							Toast.LENGTH_SHORT).show();
 					return;
 				} else if (priceStr.isEmpty()) {
@@ -187,6 +187,10 @@ public class IncomeNewEditFragment extends Fragment
 					return;
 				} else if (categoryId == -1) {
 					Toast.makeText(getActivity(), R.string.msg_input_category, Toast.LENGTH_SHORT)
+							.show();
+					return;
+				} else if (StringUtil.isNullorEmpty(account.getName())) {
+					Toast.makeText(getActivity(), R.string.msg_input_account, Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
