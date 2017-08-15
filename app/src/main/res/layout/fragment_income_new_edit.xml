@@ -116,7 +116,7 @@
 			android:id="@+id/tv_account_name"
 			style="@style/TextStyle.f3"
 			android:layout_gravity="end"
-			android:text="@string/tv_cash"/>
+			android:text="@string/tv_choose_category_hint"/>
 
 	</LinearLayout>
 

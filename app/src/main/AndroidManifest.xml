@@ -12,6 +12,7 @@
 		<activity
 			android:name="ogl4jo3.shaowei.ogl4jo3.accounting.MainActivity"
 			android:label="@string/app_name"
+			android:screenOrientation="portrait"
 			android:theme="@style/AppTheme.NoActionBar"
 			android:windowSoftInputMode="adjustPan">
 			<intent-filter>

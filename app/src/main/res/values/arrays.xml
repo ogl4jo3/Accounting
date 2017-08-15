@@ -8,6 +8,7 @@
 		<item>@drawable/ic_category_dessert</item>
 		<item>@drawable/ic_category_house</item>
 		<item>@drawable/ic_category_house_1</item>
+		<item>@drawable/ic_category_fitness</item>
 		<item>@drawable/ic_category_gift</item>
 		<item>@drawable/ic_category_medical</item>
 		<item>@drawable/ic_category_parenting</item>
@@ -30,6 +31,7 @@
 		<item>@string/category_dessert</item>
 		<item>@string/category_house</item>
 		<item>@string/category_house_1</item>
+		<item>@string/category_fitness</item>
 		<item>@string/category_gift</item>
 		<item>@string/category_medical</item>
 		<item>@string/category_parenting</item>

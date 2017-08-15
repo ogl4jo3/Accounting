@@ -3,6 +3,6 @@
 
 	<item android:drawable="@color/gray_press" android:state_pressed="true"/>
 	<item android:drawable="@color/gray_press" android:state_focused="true"/>
-	<item android:drawable="?android:colorBackground" tools:targetApi="lollipop"/>
+	<!--<item android:drawable="?android:colorBackground" tools:targetApi="lollipop"/>-->
 
 </selector>
