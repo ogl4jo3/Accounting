@@ -17,21 +17,24 @@
 			tools:text="2017/07/08"/>
 	</LinearLayout>
 
+	<!--TODO:沒資料時顯示-->
+	<TextView
+		android:id="@+id/tv_no_data"
+		style="@style/TextStyle.f4"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="5"
+		android:visibility="gone"
+		android:gravity="center"
+		android:text="@string/tv_this_day_no_expenses"
+		android:textColor="@color/gray_dark"/>
+
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/rv_expenses_item"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="5"
 		android:scrollbars="vertical"/>
-
-	<!--TODO:沒資料時隱藏-->
-	<TextView
-		android:id="@+id/tv_no_data"
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="5"
-		android:text="本日尚未新增支出"
-		android:visibility="gone"/>
 
 	<LinearLayout
 		android:layout_width="match_parent"

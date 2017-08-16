@@ -16,6 +16,11 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import ogl4jo3.shaowei.ogl4jo3.accounting.R;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.Account;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
@@ -24,11 +29,6 @@ import ogl4jo3.shaowei.ogl4jo3.utility.date.DateUtil;
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesHelper;
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesTag;
 import ogl4jo3.shaowei.ogl4jo3.utility.string.StringUtil;
-
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +45,7 @@ public class ExpensesFragment extends Fragment {
 	private TextView tvRemainingBudget; //剩餘預算
 	private TextView tvTotalBudget;     //預算總額
 	private TextView tvBudgetPercent;   //預算百分比
+	private TextView tvNoData;  //沒資料時顯示
 	private RecyclerView rvExpensesItem;
 	private RecyclerView.LayoutManager mLayoutManager;
 	private ExpensesAdapter mAdapter;
@@ -185,6 +186,13 @@ public class ExpensesFragment extends Fragment {
 		/*for (int i = 0; i < expensesList.size(); i++) {
 			Log.d(TAG, "after listExpenses(" + i + "): " + expensesList.get(i).toString());
 		}*/
+		if (expensesList.size() <= 0) {//若沒資料時，顯示無資料
+			rvExpensesItem.setVisibility(View.GONE);
+			tvNoData.setVisibility(View.VISIBLE);
+		} else {
+			rvExpensesItem.setVisibility(View.VISIBLE);
+			tvNoData.setVisibility(View.GONE);
+		}
 	}
 
 	/**
@@ -193,6 +201,7 @@ public class ExpensesFragment extends Fragment {
 	 * @param view View
 	 */
 	private void initUI(View view) {
+		tvNoData = (TextView) view.findViewById(R.id.tv_no_data);
 		rvExpensesItem = (RecyclerView) view.findViewById(R.id.rv_expenses_item);
 		tvDate = (TextView) view.findViewById(R.id.tv_date);
 		tvThisDayExpenses = (TextView) view.findViewById(R.id.tv_this_day_expenses);
@@ -257,6 +266,14 @@ public class ExpensesFragment extends Fragment {
 		//更新預算餘額、百分比
 		tvRemainingBudget.setText(StringUtil.toMoneyStr(totalRemainingBudget));
 		tvBudgetPercent.setText(String.valueOf(budgetPercent));
+
+		if (expensesList.size() <= 0) {//若沒資料時，顯示無資料
+			rvExpensesItem.setVisibility(View.GONE);
+			tvNoData.setVisibility(View.VISIBLE);
+		} else {
+			rvExpensesItem.setVisibility(View.VISIBLE);
+			tvNoData.setVisibility(View.GONE);
+		}
 	}
 
 	/**

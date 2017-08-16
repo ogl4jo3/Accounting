@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Accounting</string>
+	<string name="app_name">記事本</string>
 
 
 	<!-- 常用按鈕 -->
@@ -38,6 +38,7 @@
 	<string name="str_money">$%1$d</string>
 	<!-- ExpensesFragment 支出 -->
 	<string name="title_expenses">支出</string>
+	<string name="tv_this_day_no_expenses">本日尚未新增支出</string>
 	<string name="tv_this_day_expenses">本日支出</string>
 	<string name="tv_this_month">本月</string>
 	<string name="tv_remaining_budget">剩餘預算</string>
@@ -68,6 +69,7 @@
 
 	<!-- IncomeFragment 收入 -->
 	<string name="title_income">收入</string>
+	<string name="tv_this_day_no_income">本日尚未新增收入</string>
 	<string name="tv_income">收入</string>
 	<string name="tv_this_day">本日</string>
 	<string name="tv_income_percent">%1$d</string>

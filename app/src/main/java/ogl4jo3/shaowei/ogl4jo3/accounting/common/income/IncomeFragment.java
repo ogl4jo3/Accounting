@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,8 +29,6 @@ import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesHelper
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesTag;
 import ogl4jo3.shaowei.ogl4jo3.utility.string.StringUtil;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link IncomeFragment#newInstance} factory method to
@@ -46,7 +43,7 @@ public class IncomeFragment extends Fragment {
 	private TextView tvThisDayIncome;   //本日收入
 	private TextView tvThisMonthIncome; //本月收入
 	private TextView tvIncomePercent;   //收入百分比
-
+	private TextView tvNoData;//沒資料時顯示
 	private RecyclerView rvIncomeItem;
 	private RecyclerView.LayoutManager mLayoutManager;
 	private IncomeAdapter mAdapter;
@@ -175,8 +172,12 @@ public class IncomeFragment extends Fragment {
 	private void initIncomeList() {
 		SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 		incomeList = new IncomeDAO(db).getByDate(dateStr);
-		for (int i = 0; i < incomeList.size(); i++) {
-			Log.d(TAG, "after incomeList(" + i + "): " + incomeList.get(i).toString());
+		if (incomeList.size() <= 0) {
+			rvIncomeItem.setVisibility(View.GONE);
+			tvNoData.setVisibility(View.VISIBLE);
+		} else {
+			rvIncomeItem.setVisibility(View.VISIBLE);
+			tvNoData.setVisibility(View.GONE);
 		}
 	}
 
@@ -186,6 +187,7 @@ public class IncomeFragment extends Fragment {
 	 * @param view View
 	 */
 	private void initUI(View view) {
+		tvNoData = (TextView) view.findViewById(R.id.tv_no_data);
 		rvIncomeItem = (RecyclerView) view.findViewById(R.id.rv_income_item);
 		tvDate = (TextView) view.findViewById(R.id.tv_date);
 		tvThisDayIncome = (TextView) view.findViewById(R.id.tv_this_day_income);
@@ -262,6 +264,14 @@ public class IncomeFragment extends Fragment {
 		tvThisMonthIncome.setText(StringUtil.toMoneyStr(thisMonthIncome));
 		//更新收入百分比欄位
 		tvIncomePercent.setText(String.valueOf(incomePercent));
+
+		if (incomeList.size() <= 0) {
+			rvIncomeItem.setVisibility(View.GONE);
+			tvNoData.setVisibility(View.VISIBLE);
+		} else {
+			rvIncomeItem.setVisibility(View.VISIBLE);
+			tvNoData.setVisibility(View.GONE);
+		}
 	}
 
 	/**
