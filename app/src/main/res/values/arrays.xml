@@ -47,4 +47,12 @@
 		<item>@string/category_investment</item>
 		<item>@string/category_subsidy</item>
 	</array>
+
+	<!-- 所有使用教學畫面 -->
+	<array name="use_teaching">
+		<item>@drawable/use_teaching_function_menu</item>
+		<item>@drawable/use_teaching_new_expenses</item>
+		<item>@drawable/use_teaching_choose_date</item>
+		<item>@drawable/use_teaching_custom_date</item>
+	</array>
 </resources>

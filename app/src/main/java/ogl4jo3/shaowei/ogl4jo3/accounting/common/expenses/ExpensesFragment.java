@@ -161,6 +161,10 @@ public class ExpensesFragment extends Fragment {
 
 		} else if (id == R.id.menu_new) {
 
+			//TODO:待刪除，測試用，將第一次使用改為是
+			new SharedPreferencesHelper(getActivity(), SharedPreferencesTag.prefsData)
+					.setBoolean(SharedPreferencesTag.prefsFirstUse, true);
+
 			FragmentManager fragmentManager = getFragmentManager();
 			ExpensesNewEditFragment expensesNewEditFragment =
 					ExpensesNewEditFragment.newInstance(tvDate.getText().toString(), "");

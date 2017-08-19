@@ -34,13 +34,21 @@
 		android:gravity="center_horizontal"
 		tools:text="其他"/>
 
-	<TextView
-		android:id="@+id/tv_percentage"
-		style="@style/TextStyle.f4"
+	<LinearLayout
 		android:layout_width="0dp"
+		android:layout_height="wrap_content"
 		android:layout_weight="2"
-		android:gravity="center_horizontal"
-		tools:text="99%"/>
+		android:gravity="end">
+
+		<TextView
+			android:id="@+id/tv_percentage"
+			style="@style/TextStyle.f4"
+			tools:text="99"/>
+
+		<TextView
+			style="@style/TextStyle.f4"
+			android:text="@string/tv_percent"/>
+	</LinearLayout>
 
 	<TextView
 		android:id="@+id/tv_price"

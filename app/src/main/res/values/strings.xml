@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">記事本</string>
+	<string name="app_name">記帳本</string>
 
 
 	<!-- 常用按鈕 -->
@@ -9,6 +9,9 @@
 	<string name="btn_cancel">取消</string>
 	<string name="btn_setting">設定</string>
 
+	<!-- menu -->
+	<string name="menu_start_directly">直接開始</string>
+	<string name="menu_hint">提示</string>
 
 	<!-- 主畫面 Navigation Drawer -->
 	<!-- 分類:常用 -->
@@ -28,6 +31,7 @@
 	<string name="nav_title_others">其他</string>
 	<string name="nav_export_file">匯出檔案</string>
 	<string name="nav_cloud_backup">雲端備份</string>
+	<string name="nav_use_teaching">使用教學</string>
 	<string name="nav_about_us">關於我們</string>
 	<string name="nav_give_praise">給予好評</string>
 	<string name="navigation_drawer_open">Open navigation drawer</string>

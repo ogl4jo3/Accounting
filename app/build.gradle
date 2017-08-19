@@ -7,8 +7,8 @@ android {
         applicationId "ogl4jo3.shaowei.ogl4jo3.accounting"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 4
-        versionName "0.0.4"
+        versionCode 5
+        versionName "0.0.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

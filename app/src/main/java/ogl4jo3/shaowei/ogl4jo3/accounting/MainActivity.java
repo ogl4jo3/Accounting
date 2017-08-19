@@ -1,6 +1,7 @@
 package ogl4jo3.shaowei.ogl4jo3.accounting;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -146,6 +147,11 @@ public class MainActivity extends AppCompatActivity
 			case R.id.nav_cloud_backup:
 				//TODO:
 				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
+				break;
+			case R.id.nav_use_teaching:
+				Intent intent = new Intent(MainActivity.this, UseTeachingActivity.class);
+				startActivity(intent);
+				finish();
 				break;
 			case R.id.nav_about_us:
 				//TODO:

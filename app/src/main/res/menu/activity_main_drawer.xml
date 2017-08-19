@@ -61,6 +61,10 @@
 					android:icon="@drawable/ic_nav_cloud_backup"
 					android:title="@string/nav_cloud_backup"/>
 				<item
+					android:id="@+id/nav_use_teaching"
+					android:icon="@drawable/ic_nav_use_teaching"
+					android:title="@string/nav_use_teaching"/>
+				<item
 					android:id="@+id/nav_about_us"
 					android:icon="@drawable/ic_nav_about_us"
 					android:title="@string/nav_about_us"/>

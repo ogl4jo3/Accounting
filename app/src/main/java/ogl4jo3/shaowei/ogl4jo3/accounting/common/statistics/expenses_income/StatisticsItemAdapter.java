@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import ogl4jo3.shaowei.ogl4jo3.accounting.R;
 import ogl4jo3.shaowei.ogl4jo3.utility.string.StringUtil;
-
-import java.util.List;
 
 /**
  * 支出、收入共用 統計Item的Adapter
@@ -45,7 +45,7 @@ public abstract class StatisticsItemAdapter
 
 	@Override
 	public void onBindViewHolder(final ViewHolder holder, int position) {
-		holder.tvNumber.setText(String.valueOf(position+1));
+		holder.tvNumber.setText(String.valueOf(position + 1));
 		holder.ivIcon.setImageResource(statisticsItems.get(position).getIcon());
 		holder.tvName.setText(statisticsItems.get(position).getName());
 		holder.tvPercentage.setText(String.valueOf(statisticsItems.get(position).getPercentage()));
