@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import ogl4jo3.shaowei.ogl4jo3.accounting.useteaching.UseTeachingActivity;
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesHelper;
 import ogl4jo3.shaowei.ogl4jo3.utility.sharedpreferences.SharedPreferencesTag;
 

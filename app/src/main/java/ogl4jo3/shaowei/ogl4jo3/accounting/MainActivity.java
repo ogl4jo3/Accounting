@@ -21,6 +21,7 @@ import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.AccountMgmtF
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.budgeting.BudgetingFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.expenses.ExpensesCategoryMgmtFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.income.IncomeCategoryMgmtFragment;
+import ogl4jo3.shaowei.ogl4jo3.accounting.useteaching.UseTeachingActivity;
 import ogl4jo3.shaowei.ogl4jo3.utility.keyboard.KeyboardUtil;
 
 public class MainActivity extends AppCompatActivity

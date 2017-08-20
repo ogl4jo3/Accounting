@@ -1,6 +1,6 @@
 <resources>
 	<string name="app_name">記帳本</string>
-
+	<string name="iv_launch">記帳本</string>
 
 	<!-- 常用按鈕 -->
 	<string name="btn_new">新增</string>
@@ -10,7 +10,6 @@
 	<string name="btn_setting">設定</string>
 
 	<!-- menu -->
-	<string name="menu_start_directly">直接開始</string>
 	<string name="menu_hint">提示</string>
 
 	<!-- 主畫面 Navigation Drawer -->
@@ -38,6 +37,9 @@
 	<string name="navigation_drawer_close">Close navigation drawer</string>
 
 	<string name="action_settings">Settings</string>
+
+	<!-- UseTeaching 使用教學 -->
+	<string name="btn_start_use">開始使用</string>
 
 	<string name="str_money">$%1$d</string>
 	<!-- ExpensesFragment 支出 -->
@@ -200,4 +202,7 @@
 
 	<!-- TODO: msg 尚未開發功能 -->
 	<string name="msg_todo">尚無此功能，待開發</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

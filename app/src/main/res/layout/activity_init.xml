@@ -10,6 +10,7 @@
 	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.InitActivity">
 
 	<ImageView
+		android:contentDescription="@string/iv_launch"
 		android:layout_width="120dp"
 		android:layout_height="120dp"
 		android:src="@mipmap/ic_launcher"/>

@@ -20,7 +20,7 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".UseTeachingActivity"
+			android:name=".useteaching.UseTeachingActivity"
 			android:screenOrientation="portrait"
 			android:theme="@style/AppTheme.NoActionBar">
 		</activity>

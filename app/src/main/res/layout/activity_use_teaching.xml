@@ -7,7 +7,7 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical"
 	android:padding="20dp"
-	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.UseTeachingActivity">
+	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.useteaching.UseTeachingActivity">
 
 	<android.support.v4.view.ViewPager
 		android:id="@+id/viewPager_use_teaching"
