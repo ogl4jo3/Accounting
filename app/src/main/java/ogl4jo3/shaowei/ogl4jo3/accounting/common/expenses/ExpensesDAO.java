@@ -262,11 +262,12 @@ public class ExpensesDAO {
 
 	/**
 	 * 取得所有資料
+	 * 依照紀錄時間排序
 	 *
 	 * @return listExpenses
 	 */
-	public List<Expenses> getAll() {
-		String orderBy = KEY_ID + " ASC";
+	public List<Expenses> getAllOrderByRecordTime() {
+		String orderBy = RECORD_TIME_COLUMN + " ASC";
 		List<Expenses> result = new ArrayList<>();
 		Cursor cursor = database.query(EXPENSES_TABLE_NAME, null, null, null, null, null, orderBy);
 

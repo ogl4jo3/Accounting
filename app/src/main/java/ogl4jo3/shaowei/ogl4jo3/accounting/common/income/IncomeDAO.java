@@ -262,11 +262,12 @@ public class IncomeDAO {
 
 	/**
 	 * 取得所有資料
+	 * 依照紀錄時間排序
 	 *
 	 * @return listIncome
 	 */
-	public List<Income> getAll() {
-		String orderBy = KEY_ID + " ASC";
+	public List<Income> getAllOrderByRecordTime() {
+		String orderBy = RECORD_TIME_COLUMN + " ASC";
 		List<Income> result = new ArrayList<>();
 		Cursor cursor = database.query(INCOME_TABLE_NAME, null, null, null, null, null, orderBy);
 

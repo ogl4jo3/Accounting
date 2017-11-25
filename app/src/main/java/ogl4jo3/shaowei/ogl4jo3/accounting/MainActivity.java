@@ -2,7 +2,10 @@ package ogl4jo3.shaowei.ogl4jo3.accounting;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +17,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.opencsv.CSVWriter;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
+import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesFragment;
+import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.statistics.StatisticsFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.AccountMgmtFragment;
@@ -22,6 +34,8 @@ import ogl4jo3.shaowei.ogl4jo3.accounting.setting.budgeting.BudgetingFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.expenses.ExpensesCategoryMgmtFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.income.IncomeCategoryMgmtFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.useteaching.UseTeachingActivity;
+import ogl4jo3.shaowei.ogl4jo3.utility.csv.CsvUtil;
+import ogl4jo3.shaowei.ogl4jo3.utility.database.MyDBHelper;
 import ogl4jo3.shaowei.ogl4jo3.utility.keyboard.KeyboardUtil;
 
 public class MainActivity extends AppCompatActivity
@@ -142,8 +156,50 @@ public class MainActivity extends AppCompatActivity
 				break;
 			// 其他
 			case R.id.nav_export_file:
-				//TODO:
-				Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
+				String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+				String fileName = "AccountingData.csv";
+				String filePath = baseDir + File.separator + fileName;
+				File file = new File(filePath);
+
+				CSVWriter csvWriter = null;
+				try {
+					csvWriter = new CSVWriter(new FileWriter(file));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				SQLiteDatabase db = MyDBHelper.getDatabase(this);
+				List<String[]> expensesList = CsvUtil.getExpenseIncomeStringArrays(this,
+						new ExpensesDAO(db).getAllOrderByRecordTime(),
+						new IncomeDAO(db).getAllOrderByRecordTime());
+
+				if (csvWriter != null) {
+					csvWriter.writeAll(expensesList);
+				}
+
+				try {
+					if (csvWriter != null) {
+						csvWriter.close();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				Uri fileUri = Uri.fromFile(file);
+
+				Intent emailIntent = new Intent(Intent.ACTION_SEND);
+				emailIntent.setType("message/rfc822");
+				emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+				emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Accounting Data");
+				emailIntent.putExtra(Intent.EXTRA_TEXT, "Accounting Data Exporting");
+				// the attachment
+				emailIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+				try {
+					startActivity(Intent.createChooser(emailIntent, "Send mail"));
+				} catch (android.content.ActivityNotFoundException ex) {
+					Toast.makeText(MainActivity.this, "There are no email clients installed.",
+							Toast.LENGTH_SHORT).show();
+				}
 				break;
 			case R.id.nav_cloud_backup:
 				//TODO:

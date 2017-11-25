@@ -7,8 +7,8 @@ android {
         applicationId "ogl4jo3.shaowei.ogl4jo3.accounting"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 6
-        versionName "0.0.6"
+        versionCode 7
+        versionName "0.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -33,5 +33,6 @@ dependencies {
     compile 'com.android.support:support-v13:25.2.0'
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
     compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.opencsv:opencsv:4.1'
     testCompile 'junit:junit:4.12'
 }
