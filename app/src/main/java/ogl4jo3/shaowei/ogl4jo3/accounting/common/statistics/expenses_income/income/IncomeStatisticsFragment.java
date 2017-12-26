@@ -147,15 +147,15 @@ public class IncomeStatisticsFragment extends Fragment {
 		SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 		// 初始化統計資料
 		statisticsItems =
-				new IncomeDAO(db).getStatistics(fromDateStr, toDateStr, AccountDAO.ALL_ACOUNT);
+				new IncomeDAO(db).getStatistics(fromDateStr, toDateStr, AccountDAO.ALL_ACCOUNT);
 		accountList = new AccountDAO(db).getAll();//取得所有帳戶
 		accountsName = new ArrayList<>();
-		accountsName.add(AccountDAO.ALL_ACOUNT);//將第一個欄位設為所有帳戶
+		accountsName.add(AccountDAO.ALL_ACCOUNT);//將第一個欄位設為所有帳戶
 		for (Account account : accountList) {//取得所有帳戶名稱
 			accountsName.add(account.getName());
 		}
 		totalIncome = new IncomeDAO(db)
-				.getSumByDateAccount(fromDateStr, toDateStr, AccountDAO.ALL_ACOUNT);
+				.getSumByDateAccount(fromDateStr, toDateStr, AccountDAO.ALL_ACCOUNT);
 
 	}
 

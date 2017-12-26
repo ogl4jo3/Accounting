@@ -30,6 +30,10 @@
 					android:icon="@drawable/ic_nav_account_management"
 					android:title="@string/nav_account_management"/>
 				<item
+					android:id="@+id/nav_accounting_notification"
+					android:icon="@drawable/ic_nav_accounting_notification"
+					android:title="@string/nav_accounting_notification"/>
+				<item
 					android:id="@+id/nav_currency_selection"
 					android:icon="@drawable/ic_nav_currency_selection"
 					android:title="@string/nav_currency_selection"/>

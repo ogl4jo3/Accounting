@@ -18,7 +18,7 @@ import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeDAO;
 
 public class AccountDAO {
 
-	public static final String ALL_ACOUNT = "所有帳戶";
+	public static final String ALL_ACCOUNT = "所有帳戶";
 
 	// 表格名稱
 	private static final String ACCOUNT_TABLE_NAME = "account";
@@ -37,14 +37,14 @@ public class AccountDAO {
 	private static final int DEFAULT_BUDGET_NOTICE = 20;//預設的預算提醒
 
 	// CREATE_TABLE SQL指令
-	public static final String CREATE_EXPENSES_TABLE =
+	public static final String CREATE_ACCOUNT_TABLE =
 			"CREATE TABLE IF NOT EXISTS " + ACCOUNT_TABLE_NAME + " (" + KEY_ID +
 					" INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME_COLUMN + " VARCHAR NOT NULL " +
 					"UNIQUE," + STARTING_AMOUNT_COLUMN + " INTEGER," + ACCOUNT_CATEGORY_COLUMN +
 					" INTEGER," + DEFAULT_ACCOUNT_COLUMN + " INTEGER," + BUDGET_PRICE_COLUMN +
 					" INTEGER," + BUDGET_NOTICE_COLUMN + " INTEGER);";
 	// DROP_TABLE SQL指令
-	public static final String DROP_EXPENSES_TABLE = "DROP TABLE IF EXISTS " + ACCOUNT_TABLE_NAME;
+	public static final String DROP_ACCOUNT_TABLE = "DROP TABLE IF EXISTS " + ACCOUNT_TABLE_NAME;
 
 	private final SQLiteDatabase database;
 
@@ -289,7 +289,7 @@ public class AccountDAO {
 	 * Cursor目前的資料包裝為物件
 	 *
 	 * @param cursor Cursor
-	 * @return Expenses
+	 * @return Account
 	 */
 	private Account getAccount(Cursor cursor) {
 		// 準備回傳結果用的物件

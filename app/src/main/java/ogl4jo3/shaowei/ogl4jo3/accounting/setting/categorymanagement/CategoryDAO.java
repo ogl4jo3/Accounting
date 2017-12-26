@@ -6,11 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesDAO;
-import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeDAO;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesDAO;
+import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeDAO;
+import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountingnotification.AccountingNotificationDAO;
 
 import static android.content.ContentValues.TAG;
 
@@ -125,8 +126,10 @@ public class CategoryDAO {
 	 * @return 刪除成功
 	 */
 	public boolean deleteExpensesData(Category category) {
-		//刪除類別時，同時刪除此類別所有紀錄
+		//刪除類別時，同時刪除此類別所有支出紀錄
 		ExpensesDAO.delExpensesDataByCategory(database, category.getId());
+		//刪除類別時，同時刪除此類別記帳通知
+		AccountingNotificationDAO.delAccountNotificationByCategory(database, category.getId());
 		return deleteData(EXPENSES_CATEGORY_TABLE_NAME, category);
 	}
 
@@ -137,7 +140,7 @@ public class CategoryDAO {
 	 * @return 刪除成功
 	 */
 	public boolean deleteIncomeData(Category category) {
-		//刪除類別時，同時刪除此類別所有紀錄
+		//刪除類別時，同時刪除此類別所有收入紀錄
 		IncomeDAO.delIncomeDataByCategory(database, category.getId());
 		return deleteData(INCOME_CATEGORY_TABLE_NAME, category);
 	}

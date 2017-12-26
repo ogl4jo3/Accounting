@@ -30,9 +30,9 @@ public class ExpensesDAO {
 	private static final String KEY_ID = "_id";
 	// 表格欄位名稱
 	private static final String PRICE_COLUMN = "price";
-	private static final String CATEGORY_COLUMN = "category";
+	public static final String CATEGORY_COLUMN = "category";
 	private static final String ACCOUNT_NAME_COLUMN = "accountName";
-	private static final String DESCRIPTION_COLUMN = "description";
+	public static final String DESCRIPTION_COLUMN = "description";
 	private static final String RECORD_TIME_COLUMN = "recordTime";
 
 	// CREATE_TABLE SQL指令
@@ -175,7 +175,7 @@ public class ExpensesDAO {
 		String queryString;
 		String[] selectionArgs;
 
-		if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+		if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 			queryString =
 					"SELECT SUM(" + PRICE_COLUMN + ") FROM " + EXPENSES_TABLE_NAME + " WHERE (" +
 							RECORD_TIME_COLUMN + " BETWEEN ? AND ?)";
@@ -239,7 +239,7 @@ public class ExpensesDAO {
 		List<Expenses> result = new ArrayList<>();
 		String queryString;
 		String[] selectionArgs;
-		if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+		if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 			queryString = "SELECT * FROM " + EXPENSES_TABLE_NAME + " WHERE (" + RECORD_TIME_COLUMN +
 					" BETWEEN ? AND ?) AND " + CATEGORY_COLUMN + "=?" + " ORDER BY " +
 					PRICE_COLUMN + " DESC";
@@ -293,7 +293,7 @@ public class ExpensesDAO {
 		List<Integer> categoryIdList = new ArrayList<>();
 		String queryString;
 		String[] selectionArgs;
-		if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+		if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 			queryString =
 					"SELECT " + CATEGORY_COLUMN + " FROM " + EXPENSES_TABLE_NAME + " WHERE (" +
 							RECORD_TIME_COLUMN + " BETWEEN ? AND ?)";
@@ -329,7 +329,7 @@ public class ExpensesDAO {
 			int price = 0;
 			String queryPriceString;
 			String[] queryPriceArgs;
-			if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+			if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 				queryPriceString = "SELECT SUM(" + PRICE_COLUMN + ") FROM " + EXPENSES_TABLE_NAME +
 						" WHERE (" + RECORD_TIME_COLUMN + " BETWEEN ? AND ?) AND " +
 						CATEGORY_COLUMN + "=?";

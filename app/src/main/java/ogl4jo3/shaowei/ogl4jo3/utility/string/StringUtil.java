@@ -29,4 +29,17 @@ public class StringUtil {
 	public static String toMoneyStr(int money) {
 		return "$" + NumberFormat.getNumberInstance(Locale.getDefault()).format(money);
 	}
+	/**
+	 * 小於十的話前面補0
+	 *
+	 * @param time int
+	 * @return 0+time
+	 */
+	public static String lowerTenPlusZero(int time) {
+		String result=String.valueOf(time);
+		if(time<10){
+			result="0"+result;
+		}
+		return result;
+	}
 }

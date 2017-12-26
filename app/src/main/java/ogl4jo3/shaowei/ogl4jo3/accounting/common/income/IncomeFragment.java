@@ -303,7 +303,7 @@ public class IncomeFragment extends Fragment {
 		SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
 		return new IncomeDAO(db)
 				.getSumByDateAccount(DateUtil.fromDateStrByMonth(date, budgetStartDay),
-						DateUtil.toDateStrByMonth(date, budgetStartDay), AccountDAO.ALL_ACOUNT);
+						DateUtil.toDateStrByMonth(date, budgetStartDay), AccountDAO.ALL_ACCOUNT);
 
 	}
 }

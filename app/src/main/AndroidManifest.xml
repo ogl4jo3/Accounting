@@ -2,6 +2,8 @@
 <manifest package="ogl4jo3.shaowei.ogl4jo3.accounting"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+	<!-- 震動權限 -->
+	<uses-permission android:name="android.permission.VIBRATE"/>
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -34,6 +36,11 @@
 			android:theme="@style/AppTheme.NoActionBar"
 			android:windowSoftInputMode="adjustPan">
 		</activity>
+
+		<receiver
+			android:name=".setting.accountingnotification.AccountingAlarmReceiver"/>
+		<receiver
+			android:name=".setting.accountingnotification.AccountingDailyAlarmReceiver"/>
 	</application>
 
 </manifest>

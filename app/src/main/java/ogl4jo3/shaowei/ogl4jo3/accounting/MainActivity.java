@@ -17,18 +17,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.opencsv.CSVWriter;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
+import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.Expenses;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesFragment;
+import ogl4jo3.shaowei.ogl4jo3.accounting.common.expenses.ExpensesNewEditFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeDAO;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.common.statistics.StatisticsFragment;
+import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountingnotification.AccountingNotificationFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountmanagement.AccountMgmtFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.budgeting.BudgetingFragment;
 import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.expenses.ExpensesCategoryMgmtFragment;
@@ -36,6 +41,7 @@ import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.income.Inco
 import ogl4jo3.shaowei.ogl4jo3.accounting.useteaching.UseTeachingActivity;
 import ogl4jo3.shaowei.ogl4jo3.utility.csv.CsvUtil;
 import ogl4jo3.shaowei.ogl4jo3.utility.database.MyDBHelper;
+import ogl4jo3.shaowei.ogl4jo3.utility.date.DateUtil;
 import ogl4jo3.shaowei.ogl4jo3.utility.keyboard.KeyboardUtil;
 
 public class MainActivity extends AppCompatActivity
@@ -70,6 +76,21 @@ public class MainActivity extends AppCompatActivity
 		ExpensesFragment expensesFragment = ExpensesFragment.newInstance("", "");
 		fragmentManager.beginTransaction().replace(R.id.layout_main_content, expensesFragment,
 				ExpensesFragment.EXPENSES_FRAGMENT_TAG).commit();
+
+		if (getIntent().getExtras() != null) {//從記帳通知進入時
+			//直接帶入類別、描述
+			int categoryId = getIntent().getExtras().getInt(ExpensesDAO.CATEGORY_COLUMN);
+			String description = getIntent().getExtras().getString(ExpensesDAO.DESCRIPTION_COLUMN);
+			Expenses expenses = new Expenses();
+			expenses.setId(-1);
+			expenses.setCategoryId(categoryId);
+			expenses.setDescription(description);
+			ExpensesNewEditFragment expensesNewEditFragment = ExpensesNewEditFragment
+					.newInstance(DateUtil.dateToStr(new Date()), new Gson().toJson(expenses));
+			fragmentManager.beginTransaction()
+					.replace(R.id.layout_main_content, expensesNewEditFragment, null)
+					.addToBackStack(null).commit();
+		}
 	}
 
 	@Override
@@ -128,6 +149,14 @@ public class MainActivity extends AppCompatActivity
 				fragmentManager.beginTransaction()
 						.replace(R.id.layout_main_content, accountMgmtFragment,
 								AccountMgmtFragment.ACCOUNT_MGMT_FRAGMENT_TAG).commit();
+				break;
+			case R.id.nav_accounting_notification:
+				AccountingNotificationFragment accountingNotificationFragment =
+						AccountingNotificationFragment.newInstance("", "");
+				fragmentManager.beginTransaction()
+						.replace(R.id.layout_main_content, accountingNotificationFragment,
+								AccountingNotificationFragment.ACCOUNTING_NOTIFICATION_FRAGMENT_TAG)
+						.commit();
 				break;
 			case R.id.nav_currency_selection:
 				//TODO:

@@ -175,7 +175,7 @@ public class IncomeDAO {
 		String queryString;
 		String[] selectionArgs;
 
-		if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+		if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 			queryString =
 					"SELECT SUM(" + PRICE_COLUMN + ") FROM " + INCOME_TABLE_NAME + " WHERE (" +
 							RECORD_TIME_COLUMN + " BETWEEN ? AND ?)";
@@ -239,7 +239,7 @@ public class IncomeDAO {
 		List<Income> result = new ArrayList<>();
 		String queryString;
 		String[] selectionArgs;
-		if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+		if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 			queryString = "SELECT * FROM " + INCOME_TABLE_NAME + " WHERE (" + RECORD_TIME_COLUMN +
 					" BETWEEN ? AND ?) AND " + CATEGORY_COLUMN + "=?" + " ORDER BY " +
 					PRICE_COLUMN + " DESC";
@@ -292,7 +292,7 @@ public class IncomeDAO {
 		List<Integer> categoryIdList = new ArrayList<>();
 		String queryString;
 		String[] selectionArgs;
-		if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+		if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 			queryString = "SELECT " + CATEGORY_COLUMN + " FROM " + INCOME_TABLE_NAME + " WHERE (" +
 					RECORD_TIME_COLUMN + " BETWEEN ? AND ?)";
 			selectionArgs = new String[]{fromDateStr, toDateString};
@@ -325,7 +325,7 @@ public class IncomeDAO {
 			int price = 0;
 			String queryPriceString;
 			String[] queryPriceArgs;
-			if (accountName.equals(AccountDAO.ALL_ACOUNT)) {//搜尋所有帳戶
+			if (accountName.equals(AccountDAO.ALL_ACCOUNT)) {//搜尋所有帳戶
 				queryPriceString =
 						"SELECT SUM(" + PRICE_COLUMN + ") FROM " + INCOME_TABLE_NAME + " WHERE (" +
 								RECORD_TIME_COLUMN + " BETWEEN ? AND ?) AND " + CATEGORY_COLUMN +

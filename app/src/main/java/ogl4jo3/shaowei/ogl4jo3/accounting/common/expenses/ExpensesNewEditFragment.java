@@ -141,7 +141,13 @@ public class ExpensesNewEditFragment extends Fragment
 	 */
 	private void setViewData() {
 		tvDate.setText(dateStr);
-		if (!StringUtil.isNullorEmpty(expensesJson)) {//    編輯時
+		/*if (!StringUtil.isNullorEmpty(expensesJson) && expenses.getId() == -1) {
+			categoryId = expenses.getCategoryId();
+			SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
+			Category category = new CategoryDAO(db).getExpensesData(categoryId);
+			ivCategoryIcon.setImageResource(category.getIcon());
+			tvCategoryName.setText(category.getName());
+		} else if (!StringUtil.isNullorEmpty(expensesJson)) {//    編輯時
 			btnNew.setVisibility(View.GONE);
 			btnSave.setVisibility(View.VISIBLE);
 			btnDel.setVisibility(View.VISIBLE);
@@ -154,6 +160,22 @@ public class ExpensesNewEditFragment extends Fragment
 			tvCategoryName.setText(category.getName());
 			account = new AccountDAO(db).getAccountByName(expenses.getAccountName());
 			etDescription.setText(expenses.getDescription());
+		}*/
+		if (!StringUtil.isNullorEmpty(expensesJson)) {//    編輯和從通知進入時
+			categoryId = expenses.getCategoryId();
+			SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
+			Category category = new CategoryDAO(db).getExpensesData(categoryId);
+			ivCategoryIcon.setImageResource(category.getIcon());
+			tvCategoryName.setText(category.getName());
+			etDescription.setText(expenses.getDescription());
+			if(expenses.getId() != -1) {//    編輯時
+				btnNew.setVisibility(View.GONE);
+				btnSave.setVisibility(View.VISIBLE);
+				btnDel.setVisibility(View.VISIBLE);
+
+				etMoney.setText(String.valueOf(expenses.getPrice()));
+				account = new AccountDAO(db).getAccountByName(expenses.getAccountName());
+			}
 		}
 		tvAccountName.setText(account.getName());
 	}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="2dp"
+              android:paddingLeft="8dp"
+              android:paddingRight="8dp"
+              android:paddingTop="2dp">
+
+	<ImageView
+		android:id="@+id/iv_category_icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:contentDescription="@string/iv_category_icon"
+		android:src="@drawable/ic_category_afternoon_tea"/>
+
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="4dp"
+		android:layout_marginStart="4dp"
+		android:layout_weight="2"
+		android:orientation="vertical"
+		android:padding="2dp">
+
+		<TextView
+			android:id="@+id/tv_notification_name"
+			style="@style/TextStyle.f3"
+			android:ellipsize="end"
+			android:maxLines="1"
+			tools:text="早餐提醒測試資料長度超過"/>
+
+		<TextView
+			android:id="@+id/tv_category_name"
+			style="@style/TextStyle.f2"
+			tools:text="下午茶"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="2"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:padding="2dp">
+
+		<TextView
+			android:id="@+id/tv_notification_hour"
+			style="@style/TextStyle.f5"
+			tools:text="08"/>
+
+		<TextView
+			style="@style/TextStyle.f5"
+			android:text=":"/>
+
+		<TextView
+			android:id="@+id/tv_notification_minute"
+			style="@style/TextStyle.f5"
+			tools:text="45"/>
+
+	</LinearLayout>
+
+	<Switch
+		android:id="@+id/sw_alarm"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"/>
+
+</LinearLayout>

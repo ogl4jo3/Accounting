@@ -22,6 +22,7 @@
 	<string name="nav_title_setting">設定</string>
 	<string name="nav_budgeting">預算編列</string>
 	<string name="nav_account_management">帳戶管理</string>
+	<string name="nav_accounting_notification">記帳通知</string>
 	<string name="nav_currency_selection">貨幣選擇</string>
 	<string name="nav_password_setting">密碼設定</string>
 	<string name="nav_expenses_category_management">支出類別管理</string>
@@ -69,7 +70,7 @@
 	<string name="tv_none">無</string>
 	<string name="msg_input_money_category_account">請輸入金額、類別和帳戶</string>
 	<string name="msg_input_money">請輸入金額</string>
-	<string name="msg_input_category">請輸入類別</string>
+	<string name="msg_input_category">請選擇類別</string>
 	<string name="msg_input_account">請輸入帳戶</string>
 	<string name="msg_expenses_del_confirm">確定刪除此紀錄?</string>
 
@@ -148,6 +149,22 @@
 		<item>卡片</item>
 		<item>銀行</item>
 	</string-array>
+
+	<!-- AccountingNotificationFragment 記帳通知 -->
+	<string name="title_accounting_notification">記帳通知</string>
+	<string name="tv_daily_alarm">每日記帳提醒</string>
+	<string name="notification_daily_alarm">每日記帳</string>
+	<string name="notification_daily_alarm_content">記錄每天支出、收入</string>
+	<!-- AccountingNotificationNewEditFragment 新增/編輯帳戶 -->
+	<string name="title_accounting_notification_new">新增記帳通知</string>
+	<string name="title_accounting_notification_edit">編輯記帳通知</string>
+	<string name="tv_accounting_notification_name">記帳通知名稱</string>
+	<string name="hint_input_accounting_notification_name">請輸入記帳通知名稱</string>
+	<string name="tv_alarm_time">提醒時間</string>
+	<string name="msg_input_name">請輸入名稱</string>
+	<string name="msg_notification_del_confirm">確定刪除此通知?</string>
+	<string name="msg_notification_del_confirm_hint">刪除記帳通知:%s</string>
+	<string name="msg_notification_deleted">記帳通知:%s已刪除</string>
 
 	<!-- 類別名稱 -->
 	<string name="category_lunch">午餐</string>
