@@ -23,7 +23,6 @@ public class AccountingDailyAlarmReceiver extends BroadcastReceiver {
 	public static final int DEFAULT_DAILY_ALARM_HOUR = 22;
 	public static final int DEFAULT_DAILY_ALARM_MINUTE = 30;
 
-
 	public AccountingDailyAlarmReceiver() {
 		super();
 	}
@@ -31,18 +30,19 @@ public class AccountingDailyAlarmReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// 執行廣播元件的工作
-		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-				.setSmallIcon(R.mipmap.ic_launcher)
-				.setContentTitle(context.getString(R.string.notification_daily_alarm))
-				.setContentText(context.getString(R.string.notification_daily_alarm_content))
-				.setDefaults(Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND);
+		NotificationCompat.Builder mBuilder =
+				new NotificationCompat.Builder(context).setSmallIcon(R.drawable.ic_accounting)
+						.setContentTitle(context.getString(R.string.notification_daily_alarm))
+						.setContentText(
+								context.getString(R.string.notification_daily_alarm_content))
+						.setDefaults(Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND);
 		//點按通知直接返回至新增頁，並將類別輸入完成
 		Intent resultIntent = new Intent(context, MainActivity.class);
 		TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
 		stackBuilder.addParentStack(MainActivity.class);
 		stackBuilder.addNextIntent(resultIntent);
-		PendingIntent resultPendingIntent = stackBuilder
-				.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent resultPendingIntent =
+				stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 		mBuilder.setContentIntent(resultPendingIntent);
 		NotificationManager mNotificationManager =
 				(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

@@ -89,7 +89,7 @@ public class InitActivity extends AppCompatActivity {
 							.getInt(SharedPreferencesTag.prefsDailyAlarmMinute,
 									AccountingDailyAlarmReceiver.DEFAULT_DAILY_ALARM_MINUTE));
 			calendar.set(Calendar.SECOND, 0);
-
+			//TODO:DEBUG 第一次安裝完就會跳出通知
 			alarm.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
 					AlarmManager.INTERVAL_DAY, pending);
 		}
