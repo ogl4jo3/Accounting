@@ -17,7 +17,7 @@ import ogl4jo3.shaowei.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO
 
 public class MyDBHelper extends SQLiteOpenHelper {
 
-	private static final String DATABASE_NAME = "mydata"; // 資料庫名稱
+	private static final String DATABASE_NAME = "mydata.db"; // 資料庫名稱
 	private static final int DATABASE_VERSION = 62; // 版本,此一數字一改(不管變大變小),資料即刪並重建
 	private static SQLiteDatabase database;
 	private Context context;

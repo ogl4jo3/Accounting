@@ -1,7 +1,11 @@
 package ogl4jo3.shaowei.ogl4jo3.accounting;
 
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +27,8 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -47,15 +53,38 @@ import ogl4jo3.shaowei.ogl4jo3.utility.keyboard.KeyboardUtil;
 public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
 
+	/**
+	 * 雜湊密鑰For FaceBook
+	 */
+	private void printKeyHash() {
+		try {
+			@SuppressLint("PackageManagerGetSignatures") PackageInfo info = getPackageManager()
+					.getPackageInfo("ogl4jo3.shaowei" + ".ogl4jo3.accounting",
+							PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+				//Log.d("KeyHash :", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+			}
+
+		} catch (PackageManager.NameNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		printKeyHash();
 		setContentView(R.layout.activity_main);
 		KeyboardUtil.setupUI(this, findViewById(R.id.drawer_layout));
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
-		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		DrawerLayout drawer = findViewById(R.id.drawer_layout);
 		ActionBarDrawerToggle toggle =
 				new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
 						R.string.navigation_drawer_close) {
@@ -69,7 +98,7 @@ public class MainActivity extends AppCompatActivity
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
 
-		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+		NavigationView navigationView = findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
 
 		FragmentManager fragmentManager = getFragmentManager();
@@ -77,7 +106,7 @@ public class MainActivity extends AppCompatActivity
 		fragmentManager.beginTransaction().replace(R.id.layout_main_content, expensesFragment,
 				ExpensesFragment.EXPENSES_FRAGMENT_TAG).commit();
 
-		if (getIntent().getExtras() != null) {//從記帳通知進入時
+		if (getIntent().getExtras().getInt(ExpensesDAO.CATEGORY_COLUMN) > 0) {//從記帳通知進入時
 			//直接帶入類別、描述
 			int categoryId = getIntent().getExtras().getInt(ExpensesDAO.CATEGORY_COLUMN);
 			String description = getIntent().getExtras().getString(ExpensesDAO.DESCRIPTION_COLUMN);
@@ -96,7 +125,7 @@ public class MainActivity extends AppCompatActivity
 	@Override
 	public void onBackPressed() {
 		FragmentManager fragmentManager = getFragmentManager();
-		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		DrawerLayout drawer = findViewById(R.id.drawer_layout);
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START);
 		} else {
@@ -249,7 +278,7 @@ public class MainActivity extends AppCompatActivity
 				break;
 		}
 
-		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		DrawerLayout drawer = findViewById(R.id.drawer_layout);
 		drawer.closeDrawer(GravityCompat.START);
 		return true;
 	}
