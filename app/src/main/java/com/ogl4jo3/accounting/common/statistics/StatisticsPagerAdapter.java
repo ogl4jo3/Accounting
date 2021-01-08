@@ -2,7 +2,7 @@ package com.ogl4jo3.accounting.common.statistics;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v13.app.FragmentStatePagerAdapter;
+import androidx.legacy.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
