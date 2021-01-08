@@ -11,6 +11,7 @@ import com.ogl4jo3.accounting.R;
 /**
  * A simple {@link Fragment} subclass.
  */
+@Deprecated
 public class UseTeachingFunctionMenuFragment extends Fragment {
 
 	public UseTeachingFunctionMenuFragment() {

@@ -1,12 +1,14 @@
-package com.ogl4jo3.accounting
+package com.ogl4jo3.accounting.ui
 
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ogl4jo3.accounting.MainActivity
+import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.setting.accountingnotification.AccountingDailyAlarmReceiver
-import com.ogl4jo3.accounting.useteaching.UseTeachingActivity
+import com.ogl4jo3.accounting.ui.instruction.InstructionActivity
 import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesHelper
 import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag
 import java.util.*
@@ -24,7 +26,7 @@ class InitActivity : AppCompatActivity() {
         //切頁，需要與UI Thread分開
         Thread {
             val mainIntent = Intent(this@InitActivity,
-                    if (isFirstUse) UseTeachingActivity::class.java else MainActivity::class.java)
+                    if (isFirstUse) InstructionActivity::class.java else MainActivity::class.java)
 
             //等候N秒鐘
             try {

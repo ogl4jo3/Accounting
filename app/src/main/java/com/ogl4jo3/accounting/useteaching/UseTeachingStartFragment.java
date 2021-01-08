@@ -16,6 +16,7 @@ import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag;
 /**
  * A simple {@link Fragment} subclass.
  */
+@Deprecated
 public class UseTeachingStartFragment extends Fragment {
 
 	public UseTeachingStartFragment() {

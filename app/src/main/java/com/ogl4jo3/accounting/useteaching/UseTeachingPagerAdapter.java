@@ -11,7 +11,7 @@ import java.util.List;
  * FragmentPagerAdapter
  * Created by ogl4jo3 on 2017/7/31.
  */
-
+@Deprecated
 public class UseTeachingPagerAdapter extends FragmentStatePagerAdapter {
 
 	private List<Fragment> fragmentList;

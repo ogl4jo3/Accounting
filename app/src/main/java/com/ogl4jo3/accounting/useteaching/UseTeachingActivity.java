@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.ogl4jo3.accounting.R;
 
+@Deprecated
 public class UseTeachingActivity extends AppCompatActivity {
 
 

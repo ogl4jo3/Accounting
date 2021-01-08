@@ -8,15 +8,16 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.ogl4jo3.accounting.AccountingApplication"
+        android:name=".AccountingApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.instruction.InstructionActivity"></activity>
         <activity
-            android:name="com.ogl4jo3.accounting.InitActivity"
+            android:name=".ui.InitActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,19 +26,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity
-			android:name="com.ogl4jo3.accounting.useteaching.UseTeachingActivity"
-			android:screenOrientation="portrait"
-			android:theme="@style/AppTheme.NoActionBar" />
-		<activity
-			android:name="com.ogl4jo3.accounting.MainActivity"
-			android:label="@string/app_name"
-			android:screenOrientation="portrait"
-			android:theme="@style/AppTheme.NoActionBar"
-			android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".useteaching.UseTeachingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
 
-        <receiver android:name="com.ogl4jo3.accounting.setting.accountingnotification.AccountingAlarmReceiver" />
-        <receiver android:name="com.ogl4jo3.accounting.setting.accountingnotification.AccountingDailyAlarmReceiver" />
+        <receiver android:name=".setting.accountingnotification.AccountingAlarmReceiver" />
+        <receiver android:name=".setting.accountingnotification.AccountingDailyAlarmReceiver" />
     </application>
 
 </manifest>

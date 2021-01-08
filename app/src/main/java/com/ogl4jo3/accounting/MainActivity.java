@@ -31,7 +31,7 @@ import com.ogl4jo3.accounting.setting.accountmanagement.AccountMgmtFragment;
 import com.ogl4jo3.accounting.setting.budgeting.BudgetingFragment;
 import com.ogl4jo3.accounting.setting.categorymanagement.expenses.ExpensesCategoryMgmtFragment;
 import com.ogl4jo3.accounting.setting.categorymanagement.income.IncomeCategoryMgmtFragment;
-import com.ogl4jo3.accounting.useteaching.UseTeachingActivity;
+import com.ogl4jo3.accounting.ui.instruction.InstructionActivity;
 import com.ogl4jo3.accounting.utils.csv.CsvUtil;
 import com.ogl4jo3.accounting.utils.database.MyDBHelper;
 import com.ogl4jo3.accounting.utils.date.DateUtil;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.layout_main_content, expensesFragment,
                 ExpensesFragment.EXPENSES_FRAGMENT_TAG).commit();
 
-        if (getIntent().getExtras().getInt(ExpensesDAO.CATEGORY_COLUMN) > 0) {//從記帳通知進入時
+        if (getIntent().getExtras() != null && getIntent().getExtras().getInt(ExpensesDAO.CATEGORY_COLUMN) > 0) {//從記帳通知進入時
             //直接帶入類別、描述
             int categoryId = getIntent().getExtras().getInt(ExpensesDAO.CATEGORY_COLUMN);
             String description = getIntent().getExtras().getString(ExpensesDAO.DESCRIPTION_COLUMN);
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, getString(R.string.msg_todo), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_use_teaching:
-                Intent intent = new Intent(MainActivity.this, UseTeachingActivity.class);
+                Intent intent = new Intent(MainActivity.this, InstructionActivity.class);
                 startActivity(intent);
                 finish();
                 break;

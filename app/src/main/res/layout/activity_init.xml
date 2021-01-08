@@ -7,7 +7,7 @@
 	android:layout_height="match_parent"
 	android:gravity="center"
 	android:orientation="vertical"
-	tools:context="com.ogl4jo3.accounting.InitActivity">
+	tools:context="com.ogl4jo3.accounting.ui.InitActivity">
 
 	<ImageView
 		android:contentDescription="@string/iv_launch"
