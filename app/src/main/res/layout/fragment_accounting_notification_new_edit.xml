@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.setting.accountingnotification.AccountingNotificationNewEditFragment">
+	tools:context="com.ogl4jo3.accounting.setting.accountingnotification.AccountingNotificationNewEditFragment">
 
 	<LinearLayout
 		android:layout_width="match_parent"

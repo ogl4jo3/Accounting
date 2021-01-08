@@ -3,7 +3,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:background="@drawable/use_teaching_function_menu360"
-             tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.useteaching.UseTeachingFunctionMenuFragment">
+             tools:context="com.ogl4jo3.accounting.useteaching.UseTeachingFunctionMenuFragment">
 
 
 </FrameLayout>

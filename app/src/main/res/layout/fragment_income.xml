@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:orientation="vertical"
-	tools:context="ogl4jo3.shaowei.ogl4jo3.accounting.common.income.IncomeFragment">
+	tools:context="com.ogl4jo3.accounting.common.income.IncomeFragment">
 
 	<TextView
 		android:id="@+id/tv_date"
