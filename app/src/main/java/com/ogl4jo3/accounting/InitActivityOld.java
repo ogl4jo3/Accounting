@@ -14,7 +14,8 @@ import com.ogl4jo3.accounting.useteaching.UseTeachingActivity;
 import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesHelper;
 import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesTag;
 
-public class InitActivity extends AppCompatActivity {
+@Deprecated
+public class InitActivityOld extends AppCompatActivity {
 
 	private static final int WAIT_SECOND = 1000;// 等候秒數
 
@@ -34,7 +35,7 @@ public class InitActivity extends AppCompatActivity {
 
 			@Override
 			public void run() {
-				Intent mainIntent = new Intent(InitActivity.this,
+				Intent mainIntent = new Intent(InitActivityOld.this,
 						isFirstUse ? UseTeachingActivity.class : MainActivity.class);
 
 				//等候N秒鐘
