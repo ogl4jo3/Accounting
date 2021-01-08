@@ -14,7 +14,7 @@ import android.widget.Button;
 import java.util.List;
 
 import com.ogl4jo3.accounting.R;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.utility.dialog;
+package com.ogl4jo3.accounting.utils.dialog;
 
 import android.app.DialogFragment;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,7 +19,7 @@ import java.util.Map;
 import com.ogl4jo3.accounting.R;
 import com.ogl4jo3.accounting.setting.categorymanagement.Category;
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
 
 /**
  * 選擇類別對話框

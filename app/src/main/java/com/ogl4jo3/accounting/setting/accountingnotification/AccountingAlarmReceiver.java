@@ -13,7 +13,7 @@ import androidx.core.app.TaskStackBuilder;
 
 import com.ogl4jo3.accounting.MainActivity;
 import com.ogl4jo3.accounting.common.expenses.ExpensesDAO;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
 
 /**
  * 記帳提醒

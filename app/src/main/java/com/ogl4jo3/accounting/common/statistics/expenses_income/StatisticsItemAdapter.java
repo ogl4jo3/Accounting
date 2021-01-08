@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import com.ogl4jo3.accounting.R;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 
 /**
  * 支出、收入共用 統計Item的Adapter

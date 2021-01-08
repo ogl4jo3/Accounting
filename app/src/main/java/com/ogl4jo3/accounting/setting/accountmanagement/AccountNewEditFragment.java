@@ -20,8 +20,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import com.ogl4jo3.accounting.R;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.utility.sharedpreferences;
+package com.ogl4jo3.accounting.utils.sharedpreferences;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

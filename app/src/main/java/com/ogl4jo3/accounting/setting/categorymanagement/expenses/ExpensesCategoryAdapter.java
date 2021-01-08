@@ -10,7 +10,7 @@ import com.ogl4jo3.accounting.R;
 import com.ogl4jo3.accounting.setting.categorymanagement.Category;
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryAdapter;
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
 import com.google.gson.Gson;
 
 import java.util.Collections;

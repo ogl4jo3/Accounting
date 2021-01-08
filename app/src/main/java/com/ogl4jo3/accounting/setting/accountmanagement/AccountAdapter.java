@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ogl4jo3.accounting.R;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 import com.google.gson.Gson;
 
 import java.util.List;

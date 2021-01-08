@@ -20,9 +20,9 @@ import android.widget.Toast;
 import com.ogl4jo3.accounting.R;
 import com.ogl4jo3.accounting.setting.categorymanagement.Category;
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
-import com.ogl4jo3.accounting.utility.dialog.CategoryDialogFragment;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.dialog.CategoryDialogFragment;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 
 /**
  * A simple {@link Fragment} subclass.

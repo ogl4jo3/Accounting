@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.ogl4jo3.accounting.common.statistics.expenses_income.StatisticsItem;
 import com.ogl4jo3.accounting.common.statistics.expenses_income.StatisticsItemAdapter;
-import com.ogl4jo3.accounting.utility.dialog.StatisticsDialogFragment;
+import com.ogl4jo3.accounting.utils.dialog.StatisticsDialogFragment;
 import com.google.gson.Gson;
 
 import java.util.List;

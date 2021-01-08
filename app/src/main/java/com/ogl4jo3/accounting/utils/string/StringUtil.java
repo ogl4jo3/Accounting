@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.utility.string;
+package com.ogl4jo3.accounting.utils.string;
 
 import java.text.NumberFormat;
 import java.util.Locale;

@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.utility.keyboard;
+package com.ogl4jo3.accounting.utils.keyboard;
 
 import android.app.Activity;
 import android.content.Context;

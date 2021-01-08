@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.utility.date;
+package com.ogl4jo3.accounting.utils.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

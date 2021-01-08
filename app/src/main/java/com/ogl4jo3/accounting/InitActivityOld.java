@@ -11,8 +11,8 @@ import java.util.Calendar;
 
 import com.ogl4jo3.accounting.setting.accountingnotification.AccountingDailyAlarmReceiver;
 import com.ogl4jo3.accounting.useteaching.UseTeachingActivity;
-import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesHelper;
-import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesTag;
+import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesHelper;
+import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag;
 
 @Deprecated
 public class InitActivityOld extends AppCompatActivity {

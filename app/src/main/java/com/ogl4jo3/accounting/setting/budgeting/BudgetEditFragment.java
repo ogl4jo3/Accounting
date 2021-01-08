@@ -16,9 +16,9 @@ import com.google.gson.Gson;
 
 import com.ogl4jo3.accounting.setting.accountmanagement.Account;
 import com.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
-import com.ogl4jo3.accounting.utility.keyboard.KeyboardUtil;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.keyboard.KeyboardUtil;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.utility;
+package com.ogl4jo3.accounting.utils;
 
 /**
  * Constant

@@ -25,10 +25,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.ogl4jo3.accounting.R;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
-import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesHelper;
-import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesTag;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesHelper;
+import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 
 /**
  * A simple {@link Fragment} subclass.

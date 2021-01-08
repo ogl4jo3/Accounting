@@ -28,11 +28,11 @@ import com.ogl4jo3.accounting.common.income.IncomeDAO;
 import com.ogl4jo3.accounting.common.statistics.expenses_income.StatisticsItem;
 import com.ogl4jo3.accounting.setting.accountmanagement.Account;
 import com.ogl4jo3.accounting.setting.accountmanagement.AccountDAO;
-import com.ogl4jo3.accounting.utility.database.MyDBHelper;
-import com.ogl4jo3.accounting.utility.date.DateUtil;
-import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesHelper;
-import com.ogl4jo3.accounting.utility.sharedpreferences.SharedPreferencesTag;
-import com.ogl4jo3.accounting.utility.string.StringUtil;
+import com.ogl4jo3.accounting.utils.database.MyDBHelper;
+import com.ogl4jo3.accounting.utils.date.DateUtil;
+import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesHelper;
+import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag;
+import com.ogl4jo3.accounting.utils.string.StringUtil;
 
 /**
  * A simple {@link Fragment} subclass.
