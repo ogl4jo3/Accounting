@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/expenseFragment">
+
+    <fragment
+        android:id="@+id/expenseFragment"
+        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseFragment"
+        tools:layout="@layout/fragment_expense"
+        android:label="@string/title_expenses">
+
+        <action
+            android:id="@+id/action_expenseFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
+
+        <action
+            android:id="@+id/action_expenseFragment_to_expenseNemEditFragment"
+            app:destination="@id/expenseNemEditFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/expenseNemEditFragment"
+        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewEditFragment"
+        tools:layout="@layout/fragment_expense_new_edit"
+        android:label="{title}">
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="dateStr"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="expensesId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_incomeFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.ogl4jo3.accounting.common.income.IncomeFragment"
+        tools:layout="@layout/fragment_income"
+        android:label="@string/title_income">
+        <action
+            android:id="@+id/action_incomeFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+    </fragment>
+
+</navigation>

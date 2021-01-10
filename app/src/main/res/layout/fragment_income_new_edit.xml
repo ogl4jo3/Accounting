@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="com.ogl4jo3.accounting.common.expenses.ExpensesNewEditFragment">
+	tools:context="com.ogl4jo3.accounting.ui.expense.ExpenseNewEditFragment">
 
 	<TextView
 		android:id="@+id/tv_date"

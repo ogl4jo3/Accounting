@@ -1,6 +1,6 @@
 package com.ogl4jo3.accounting.common.income;
 
-import android.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import androidx.recyclerview.widget.RecyclerView;

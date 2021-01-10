@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.ogl4jo3.accounting.MainActivity;
+import com.ogl4jo3.accounting.ui.MainActivity;
 import com.ogl4jo3.accounting.R;
 import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesHelper;
 import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag;

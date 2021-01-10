@@ -1,8 +1,8 @@
 package com.ogl4jo3.accounting.common.income;
 
 import android.app.DatePickerDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -158,7 +158,7 @@ public class IncomeFragment extends Fragment {
 			IncomeNewEditFragment incomeNewEditFragment =
 					IncomeNewEditFragment.newInstance(tvDate.getText().toString(), "");
 			fragmentManager.beginTransaction()
-					.replace(R.id.layout_main_content, incomeNewEditFragment, null)
+					.replace(R.id.layout_main_content, incomeNewEditFragment)
 					.addToBackStack(null).commit();
 
 		}

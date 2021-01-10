@@ -6,19 +6,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_instruction"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:background="@drawable/use_teaching_custom_date360">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_start_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
             android:text="@string/btn_start_use"
-            android:textSize="@dimen/fs_5"
+            android:textSize="@dimen/fs_7"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

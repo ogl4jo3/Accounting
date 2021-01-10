@@ -5,7 +5,6 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ogl4jo3.accounting.MainActivity
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.setting.accountingnotification.AccountingDailyAlarmReceiver
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity

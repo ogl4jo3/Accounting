@@ -11,7 +11,7 @@ import android.os.Bundle;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.TaskStackBuilder;
 
-import com.ogl4jo3.accounting.MainActivity;
+import com.ogl4jo3.accounting.ui.MainActivity;
 import com.ogl4jo3.accounting.common.expenses.ExpensesDAO;
 import com.ogl4jo3.accounting.utils.database.MyDBHelper;
 

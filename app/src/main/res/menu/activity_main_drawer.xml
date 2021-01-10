@@ -4,11 +4,11 @@
 		<menu>
 			<group android:checkableBehavior="single">
 				<item
-					android:id="@+id/nav_expenses"
+					android:id="@id/expenseFragment"
 					android:icon="@drawable/ic_nav_expenses"
 					android:title="@string/nav_expenses"/>
 				<item
-					android:id="@+id/nav_income"
+					android:id="@id/incomeFragment"
 					android:icon="@drawable/ic_nav_income"
 					android:title="@string/nav_income"/>
 				<item

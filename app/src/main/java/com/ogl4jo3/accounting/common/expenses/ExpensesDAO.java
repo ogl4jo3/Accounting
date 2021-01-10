@@ -198,6 +198,20 @@ public class ExpensesDAO {
 		return sum;
 	}
 
+	public Expenses getById(String id) {
+		Expenses result = null;
+		String queryString =
+				"SELECT * FROM " + EXPENSES_TABLE_NAME + " WHERE " + KEY_ID + "=?";
+		Cursor cursor = database.rawQuery(queryString, new String[]{id});
+
+		while (cursor.moveToNext()) {
+			result = (getExpenses(cursor));
+		}
+
+		cursor.close();
+		return result;
+	}
+
 	/**
 	 * 依照日期取得所有資料
 	 *

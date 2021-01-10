@@ -9,7 +9,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.TaskStackBuilder;
 
-import com.ogl4jo3.accounting.MainActivity;
+import com.ogl4jo3.accounting.ui.MainActivity;
 import com.ogl4jo3.accounting.R;
 
 /**

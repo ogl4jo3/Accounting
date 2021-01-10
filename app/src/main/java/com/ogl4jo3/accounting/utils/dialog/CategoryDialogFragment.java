@@ -1,6 +1,6 @@
 package com.ogl4jo3.accounting.utils.dialog;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.annotation.Nullable;

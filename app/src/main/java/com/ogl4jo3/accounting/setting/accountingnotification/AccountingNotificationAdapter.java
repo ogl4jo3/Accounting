@@ -1,7 +1,7 @@
 package com.ogl4jo3.accounting.setting.accountingnotification;
 
 import android.app.AlarmManager;
-import android.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
