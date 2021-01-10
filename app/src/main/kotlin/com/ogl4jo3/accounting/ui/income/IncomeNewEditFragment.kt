@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.ui.expense
+package com.ogl4jo3.accounting.ui.income
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.ogl4jo3.accounting.R
-import com.ogl4jo3.accounting.common.expenses.Expenses
-import com.ogl4jo3.accounting.common.expenses.ExpensesDAO
+import com.ogl4jo3.accounting.common.income.Income
+import com.ogl4jo3.accounting.common.income.IncomeDAO
 import com.ogl4jo3.accounting.setting.accountmanagement.Account
 import com.ogl4jo3.accounting.setting.accountmanagement.AccountDAO
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO
@@ -20,9 +20,9 @@ import com.ogl4jo3.accounting.utils.dialog.CategoryDialogFragment.onCategoryList
 import com.ogl4jo3.accounting.utils.string.StringUtil
 import java.util.*
 
-class ExpenseNewEditFragment : Fragment(), onCategoryListener {
+class IncomeNewEditFragment : Fragment(), onCategoryListener {
 
-    private val args: ExpenseNewEditFragmentArgs by navArgs()
+    private val args: IncomeNewEditFragmentArgs by navArgs()
 
     //UI元件
     private var tvDate //日期
@@ -39,7 +39,7 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
             : LinearLayout? = null
     private var tvAccountName //帳戶名稱
             : TextView? = null
-    private var llFixedCharge //固定支出
+    private var llStableIncome //固定收入
             : LinearLayout? = null
     private var etDescription //描述
             : EditText? = null
@@ -49,13 +49,13 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
     private var account: Account? = null
 
     //編輯時用
-    private var expenses: Expenses? = null
+    private var income: Income? = null
     private var btnSave //儲存按鈕
             : Button? = null
     private var btnDel //刪除按鈕
             : Button? = null
     private var dateStr: String? = null
-    private var expensesJson //如果expensesJson為空或null代表是新增，否則為編輯
+    private var incomeJson //如果incomeJson為空或null代表是新增，否則為編輯
             : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,18 +63,15 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
         val sqLiteDatabase = MyDBHelper.getDatabase(activity)
         account = AccountDAO(sqLiteDatabase).defaultAccount
         dateStr = args.dateStr
-        args.expenseId?.let {
-            expenses = ExpensesDAO(sqLiteDatabase).getById(it)
+        args.incomeId?.let {
+            income = IncomeDAO(sqLiteDatabase).getById(it)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-//        //新增、編輯標題
-//        activity!!.setTitle(
-//                if (StringUtil.isNullorEmpty(expensesJson)) R.string.title_expenses_new else R.string.title_expenses_edit)
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_expense_new_edit, container, false)
+        val view = inflater.inflate(R.layout.fragment_income_new_edit, container, false)
         initUI(view)
         setViewData()
         setOnClickListener()
@@ -94,7 +91,7 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
         tvCategoryName = view.findViewById<View>(R.id.tv_category_name) as TextView
         llAccount = view.findViewById<View>(R.id.ll_account) as LinearLayout
         tvAccountName = view.findViewById<View>(R.id.tv_account_name) as TextView
-        llFixedCharge = view.findViewById<View>(R.id.ll_fixed_charge) as LinearLayout
+        llStableIncome = view.findViewById<View>(R.id.ll_stable_income) as LinearLayout
         etDescription = view.findViewById<View>(R.id.et_description) as EditText
         btnNew = view.findViewById<View>(R.id.btn_new) as Button
         //編輯時用
@@ -107,39 +104,18 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
      */
     private fun setViewData() {
         tvDate!!.text = dateStr
-        /*if (!StringUtil.isNullorEmpty(expensesJson) && expenses.getId() == -1) {
-			categoryId = expenses.getCategoryId();
-			SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
-			Category category = new CategoryDAO(db).getExpensesData(categoryId);
-			ivCategoryIcon.setImageResource(category.getIcon());
-			tvCategoryName.setText(category.getName());
-		} else if (!StringUtil.isNullorEmpty(expensesJson)) {//    編輯時
-			btnNew.setVisibility(View.GONE);
-			btnSave.setVisibility(View.VISIBLE);
-			btnDel.setVisibility(View.VISIBLE);
-
-			etMoney.setText(String.valueOf(expenses.getPrice()));
-			categoryId = expenses.getCategoryId();
-			SQLiteDatabase db = MyDBHelper.getDatabase(getActivity());
-			Category category = new CategoryDAO(db).getExpensesData(categoryId);
-			ivCategoryIcon.setImageResource(category.getIcon());
-			tvCategoryName.setText(category.getName());
-			account = new AccountDAO(db).getAccountByName(expenses.getAccountName());
-			etDescription.setText(expenses.getDescription());
-		}*/if (expenses != null) { //    編輯和從通知進入時
-            categoryId = expenses!!.categoryId
+        if (income != null) { //    編輯時
+            btnNew!!.visibility = View.GONE
+            btnSave!!.visibility = View.VISIBLE
+            btnDel!!.visibility = View.VISIBLE
+            etMoney!!.setText(income!!.price.toString())
+            categoryId = income!!.categoryId
             val db = MyDBHelper.getDatabase(activity)
-            val category = CategoryDAO(db).getExpensesData(categoryId)
+            val category = CategoryDAO(db).getIncomeData(categoryId)
             ivCategoryIcon!!.setImageResource(category.icon)
             tvCategoryName!!.text = category.name
-            etDescription!!.setText(expenses!!.description)
-            if (expenses!!.id != -1) { //    編輯時
-                btnNew!!.visibility = View.GONE
-                btnSave!!.visibility = View.VISIBLE
-                btnDel!!.visibility = View.VISIBLE
-                etMoney!!.setText(expenses!!.price.toString())
-                account = AccountDAO(db).getAccountByName(expenses!!.accountName)
-            }
+            account = AccountDAO(db).getAccountByName(income!!.accountName)
+            etDescription!!.setText(income!!.description)
         }
         tvAccountName!!.text = account!!.name
     }
@@ -149,8 +125,8 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
      */
     private fun setOnClickListener() {
         llCategory!!.setOnClickListener {
-            val categoryDialogFragment = CategoryDialogFragment.newInstance(CategoryDialogFragment.EXPENSES)
-            categoryDialogFragment.setTargetFragment(this@ExpenseNewEditFragment, 0)
+            val categoryDialogFragment = CategoryDialogFragment.newInstance(CategoryDialogFragment.INCOME)
+            categoryDialogFragment.setTargetFragment(this@IncomeNewEditFragment, 0)
             categoryDialogFragment.show(requireFragmentManager(), null)
         }
         btnNew!!.setOnClickListener(View.OnClickListener {
@@ -174,14 +150,14 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
                 return@OnClickListener
             }
             val price = Integer.valueOf(priceStr)
-            val expenses = Expenses()
-            expenses.price = price
-            expenses.categoryId = categoryId
-            expenses.accountName = account!!.name
-            expenses.description = description
-            expenses.recordTime = dateStr
+            val income = Income()
+            income.price = price
+            income.categoryId = categoryId
+            income.accountName = account!!.name
+            income.description = description
+            income.recordTime = dateStr
             val db = MyDBHelper.getDatabase(activity)
-            ExpensesDAO(db).newExpensesData(expenses)
+            IncomeDAO(db).newIncomeData(income)
             val fragmentManager = fragmentManager
             fragmentManager!!.popBackStack()
         })
@@ -200,7 +176,7 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
                         account = accountList[position]
                     }.show()
         }
-        llFixedCharge!!.setOnClickListener { //TODO:
+        llStableIncome!!.setOnClickListener { //TODO:
             Toast.makeText(activity, getString(R.string.msg_todo), Toast.LENGTH_SHORT)
                     .show()
         }
@@ -214,21 +190,21 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
                 return@OnClickListener
             }
             val price = Integer.valueOf(priceStr)
-            expenses!!.price = price
-            expenses!!.categoryId = categoryId
-            expenses!!.accountName = account!!.name
-            expenses!!.description = description
+            income!!.price = price
+            income!!.categoryId = categoryId
+            income!!.accountName = account!!.name
+            income!!.description = description
             val db = MyDBHelper.getDatabase(activity)
-            ExpensesDAO(db).saveExpensesData(expenses)
+            IncomeDAO(db).saveIncomeData(income)
             val fragmentManager = fragmentManager
             fragmentManager!!.popBackStack()
         })
         btnDel!!.setOnClickListener {
             val builder = AlertDialog.Builder(activity)
-            builder.setTitle(R.string.msg_expenses_del_confirm)
+            builder.setTitle(R.string.msg_income_del_confirm)
             builder.setPositiveButton(R.string.btn_del) { dialogInterface, i ->
                 val db = MyDBHelper.getDatabase(activity)
-                ExpensesDAO(db).delExpensesData(expenses!!.id)
+                IncomeDAO(db).delIncomeData(income!!.id)
                 val fragmentManager = fragmentManager
                 fragmentManager!!.popBackStack()
                 dialogInterface.dismiss()
@@ -243,33 +219,8 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
         //Toast.makeText(getActivity(), "CategoryID:" + categoryID, Toast.LENGTH_SHORT).show();
         categoryId = categoryID
         val db = MyDBHelper.getDatabase(activity)
-        val categoryTmp = CategoryDAO(db).getExpensesData(categoryID)
+        val categoryTmp = CategoryDAO(db).getIncomeData(categoryID)
         ivCategoryIcon!!.setImageResource(categoryTmp.icon)
         tvCategoryName!!.text = categoryTmp.name
-    }
-
-    companion object {
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val DATE_STR = "dateStr"
-        private const val EXPENSES_JSON = "expenses"
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExpensesNewEditFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String?, param2: String?): ExpenseNewEditFragment {
-            val fragment = ExpenseNewEditFragment()
-            val args = Bundle()
-            args.putString(DATE_STR, param1)
-            args.putString(EXPENSES_JSON, param2)
-            fragment.arguments = args
-            return fragment
-        }
     }
 }

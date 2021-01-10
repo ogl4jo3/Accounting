@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.ui.expense
+package com.ogl4jo3.accounting.ui.income
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,17 +10,17 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ogl4jo3.accounting.R
-import com.ogl4jo3.accounting.common.expenses.Expenses
+import com.ogl4jo3.accounting.common.income.Income
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO
 import com.ogl4jo3.accounting.utils.database.MyDBHelper
 import com.ogl4jo3.accounting.utils.string.StringUtil
 
 /**
- * 支出item Adapter
+ * 收入item Adapter
  * Created by ogl4jo3 on 2017/7/27.
  */
-class ExpenseAdapter(private val mContext: Context, private val fragmentManager: FragmentManager,
-                     private val expensesList: List<Expenses>) : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
+class IncomeAdapter(private val mContext: Context, private val fragmentManager: FragmentManager,
+                    private val incomeList: List<Income>) : RecyclerView.Adapter<IncomeAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //return null;
         val view = LayoutInflater.from(parent.context)
@@ -29,26 +29,26 @@ class ExpenseAdapter(private val mContext: Context, private val fragmentManager:
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val categoryID = expensesList[position].categoryId
+        val categoryID = incomeList[position].categoryId
         val db = MyDBHelper.getDatabase(mContext)
-        val categoryTmp = CategoryDAO(db).getExpensesData(categoryID)
+        val categoryTmp = CategoryDAO(db).getIncomeData(categoryID)
         holder.tvCategoryName.text = categoryTmp.name
         holder.ivCategoryIcon.setImageResource(categoryTmp.icon)
-        holder.tvMoney.text = StringUtil.toMoneyStr(expensesList[position].price)
-        holder.itemView.setOnClickListener { //Toast.makeText(mContext, "item click\n" + expensesList.get(position).toString(),
+        holder.tvMoney.text = StringUtil.toMoneyStr(incomeList[position].price)
+        holder.itemView.setOnClickListener { //Toast.makeText(mContext, "item click\n" + incomeList.get(position).toString(),
             //		Toast.LENGTH_SHORT).show();
-            val expenses = expensesList[holder.adapterPosition]
-            Navigation.findNavController(holder.itemView).navigate(ExpenseFragmentDirections
-                    .actionExpenseFragmentToExpenseNemEditFragment(
-                            title = mContext.getString(R.string.title_expenses_edit),
-                            dateStr = expenses.recordTime,
-                            expenseId = expenses.id.toString()
-                            ))
+            val income = incomeList[holder.adapterPosition]
+            Navigation.findNavController(holder.itemView).navigate(IncomeFragmentDirections
+                    .actionIncomeFragmentToIncomeNewEditFragment(
+                            title = mContext.getString(R.string.title_income_edit),
+                            dateStr = income.recordTime,
+                            incomeId = income.id.toString()
+                    ))
         }
     }
 
     override fun getItemCount(): Int {
-        return expensesList.size
+        return incomeList.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

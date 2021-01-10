@@ -45,7 +45,7 @@
 
 	<string name="str_money">$%1$d</string>
 	<!-- ExpensesFragment 支出 -->
-	<string name="title_expenses">支出</string>
+	<string name="title_expense">支出</string>
 	<string name="tv_this_day_no_expenses">本日尚未新增支出</string>
 	<string name="tv_this_day_expenses">本日支出</string>
 	<string name="tv_this_month">本月</string>

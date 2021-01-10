@@ -8,23 +8,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="expensesFragment">
+                  <entry key="expenseFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="122" />
+                            <option name="y" value="76" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_expensesFragment_to_expensesNemEditFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_expensesFragment_to_incomeFragment">
+                            <entry key="action_expenseFragment_to_expenseNemEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -34,23 +29,14 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="expensesNemEditFragment">
+                  <entry key="expenseNemEditFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-302" />
-                            <option name="y" value="90" />
+                            <option name="x" value="112" />
+                            <option name="y" value="-275" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_incomeFragment_to_expensesFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -60,18 +46,30 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-211" />
-                            <option name="y" value="-197" />
+                            <option name="x" value="-108" />
+                            <option name="y" value="-275" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_incomeFragment_to_expensesFragment">
+                            <entry key="action_incomeFragment_to_incomeNewEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="incomeNewEditFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-114" />
+                            <option name="y" value="79" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -99,18 +99,11 @@ class ExpenseFragment : Fragment() {
             }, mCalendar[Calendar.YEAR], mCalendar[Calendar.MONTH],
                     mCalendar[Calendar.DAY_OF_MONTH]).show()
         } else if (id == R.id.menu_new) {
-//            val fragmentManager = fragmentManager
-//            val expensesNewEditFragment = ExpensesNewEditFragment.newInstance(tvDate!!.text.toString(), "")
-//            fragmentManager!!.beginTransaction()
-//                    .replace(R.id.layout_main_content, expensesNewEditFragment, null)
-//                    .addToBackStack(null).commit()
-
-            //TODO:argument
             findNavController().navigate(ExpenseFragmentDirections
                     .actionExpenseFragmentToExpenseNemEditFragment(
-                            resources.getString(R.string.title_expenses_new),
-                            tvDate!!.text.toString(),
-                            null
+                            title = resources.getString(R.string.title_expenses_new),
+                            dateStr = tvDate!!.text.toString(),
+                            expenseId = null
                     ))
         }
         return super.onOptionsItemSelected(item)

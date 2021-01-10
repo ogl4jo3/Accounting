@@ -9,11 +9,7 @@
         android:id="@+id/expenseFragment"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseFragment"
         tools:layout="@layout/fragment_expense"
-        android:label="@string/title_expenses">
-
-        <action
-            android:id="@+id/action_expenseFragment_to_incomeFragment"
-            app:destination="@id/incomeFragment" />
+        android:label="@string/title_expense">
 
         <action
             android:id="@+id/action_expenseFragment_to_expenseNemEditFragment"
@@ -35,22 +31,38 @@
             app:argType="string"
             app:nullable="false" />
         <argument
-            android:name="expensesId"
+            android:name="expenseId"
             app:argType="string"
             app:nullable="true" />
-        <action
-            android:id="@+id/action_incomeFragment_to_expenseFragment"
-            app:destination="@id/expenseFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/incomeFragment"
-        android:name="com.ogl4jo3.accounting.common.income.IncomeFragment"
+        android:name="com.ogl4jo3.accounting.ui.income.IncomeFragment"
         tools:layout="@layout/fragment_income"
         android:label="@string/title_income">
         <action
-            android:id="@+id/action_incomeFragment_to_expenseFragment"
-            app:destination="@id/expenseFragment" />
+            android:id="@+id/action_incomeFragment_to_incomeNewEditFragment"
+            app:destination="@id/incomeNewEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/incomeNewEditFragment"
+        android:name="com.ogl4jo3.accounting.ui.income.IncomeNewEditFragment"
+        tools:layout="@layout/fragment_income_new_edit"
+        android:label="{title}">
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="dateStr"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="incomeId"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 
 </navigation>
