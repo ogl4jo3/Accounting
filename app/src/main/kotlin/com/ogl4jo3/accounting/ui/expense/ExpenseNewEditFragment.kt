@@ -225,7 +225,7 @@ class ExpenseNewEditFragment : Fragment(), onCategoryListener {
         })
         btnDel!!.setOnClickListener {
             val builder = AlertDialog.Builder(activity)
-            builder.setTitle(R.string.msg_expenses_del_confirm)
+            builder.setTitle(R.string.msg_expense_del_confirm)
             builder.setPositiveButton(R.string.btn_del) { dialogInterface, i ->
                 val db = MyDBHelper.getDatabase(activity)
                 ExpensesDAO(db).delExpensesData(expenses!!.id)

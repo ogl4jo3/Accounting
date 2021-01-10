@@ -40,7 +40,7 @@ class ExpenseAdapter(private val mContext: Context, private val fragmentManager:
             val expenses = expensesList[holder.adapterPosition]
             Navigation.findNavController(holder.itemView).navigate(ExpenseFragmentDirections
                     .actionExpenseFragmentToExpenseNemEditFragment(
-                            title = mContext.getString(R.string.title_expenses_edit),
+                            title = mContext.getString(R.string.title_expense_edit),
                             dateStr = expenses.recordTime,
                             expenseId = expenses.id.toString()
                             ))

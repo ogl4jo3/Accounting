@@ -105,14 +105,14 @@ public class ExpensesCategoryNewEditFragment extends Fragment {
 
 		if (newEdit.equalsIgnoreCase("new")) {  //新增
 			getActivity().setTitle(
-					com.ogl4jo3.accounting.R.string.title_expenses_category_new);
+					com.ogl4jo3.accounting.R.string.title_expense_category_new);
 			ivCategoryIcon.setImageResource(R.drawable.ic_category_other);
 			categoryIcon = R.drawable.ic_category_other;
 			categoryID = -1;
 			btnDel.setVisibility(View.GONE);    //新增時隱藏刪除按鈕
 		} else {     //編輯
 			getActivity().setTitle(
-					com.ogl4jo3.accounting.R.string.title_expenses_category_edit);
+					com.ogl4jo3.accounting.R.string.title_expense_category_edit);
 			ivCategoryIcon.setImageResource(category.getIcon());
 			categoryIcon = category.getIcon();
 			categoryID = category.getId();

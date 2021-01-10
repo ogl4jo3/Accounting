@@ -228,7 +228,7 @@ public class AccountNewEditFragment extends Fragment {
 			@Override
 			public void onClick(View view) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setTitle(R.string.msg_expenses_del_confirm);
+				builder.setTitle(R.string.msg_expense_del_confirm);
 				builder.setMessage(R.string.msg_account_del_confirm_hint);
 				builder.setPositiveButton(R.string.btn_del, new DialogInterface.OnClickListener() {
 

@@ -101,7 +101,7 @@ class ExpenseFragment : Fragment() {
         } else if (id == R.id.menu_new) {
             findNavController().navigate(ExpenseFragmentDirections
                     .actionExpenseFragmentToExpenseNemEditFragment(
-                            title = resources.getString(R.string.title_expenses_new),
+                            title = resources.getString(R.string.title_expense_new),
                             dateStr = tvDate!!.text.toString(),
                             expenseId = null
                     ))

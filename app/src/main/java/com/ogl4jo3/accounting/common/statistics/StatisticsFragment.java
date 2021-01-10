@@ -75,7 +75,7 @@ public class StatisticsFragment extends Fragment {
 		List<String> pageTitles = new ArrayList<>();
 		List<Fragment> fragmentList = new ArrayList<>();
 		fragmentList.add(ExpensesStatisticsFragment.newInstance("", ""));
-		pageTitles.add(getString(R.string.title_expenses_statistics));
+		pageTitles.add(getString(R.string.title_expense_statistics));
 		fragmentList.add(IncomeStatisticsFragment.newInstance("", ""));
 		pageTitles.add(getString(R.string.title_income_statistics));
 		fragmentList.add(AccountStatisticsFragment.newInstance("", ""));

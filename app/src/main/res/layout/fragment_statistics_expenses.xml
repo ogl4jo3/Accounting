@@ -20,7 +20,7 @@
 
 		<TextView
 			style="@style/TextStyle.f4"
-			android:text="@string/tv_total_expenses"/>
+			android:text="@string/tv_total_expense"/>
 
 		<TextView
 			android:id="@+id/tv_total_expenses"

@@ -88,7 +88,7 @@ public class ExpensesCategoryMgmtFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
-		getActivity().setTitle(R.string.title_expenses_category_mgmt);
+		getActivity().setTitle(R.string.title_expense_category_mgmt);
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_category_mgmt_expenses, container, false);
 		KeyboardUtil.closeKeyboard(getActivity());

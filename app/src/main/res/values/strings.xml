@@ -16,7 +16,7 @@
 	<!-- 主畫面 Navigation Drawer -->
 	<!-- 分類:常用 -->
 	<string name="nav_title_common">常用</string>
-	<string name="nav_expenses">支出</string>
+	<string name="nav_expense">支出</string>
 	<string name="nav_income">收入</string>
 	<string name="nav_statistics">統計</string>
 	<!-- 分類:設定 -->
@@ -26,7 +26,7 @@
 	<string name="nav_accounting_notification">記帳通知</string>
 	<string name="nav_currency_selection">貨幣選擇</string>
 	<string name="nav_password_setting">密碼設定</string>
-	<string name="nav_expenses_category_management">支出類別管理</string>
+	<string name="nav_expense_category_management">支出類別管理</string>
 	<string name="nav_income_category_management">收入類別管理</string>
 	<!-- 分類:其他 -->
 	<string name="nav_title_others">其他</string>
@@ -44,10 +44,10 @@
 	<string name="btn_start_use">開始使用</string>
 
 	<string name="str_money">$%1$d</string>
-	<!-- ExpensesFragment 支出 -->
+	<!-- ExpenseFragment 支出 -->
 	<string name="title_expense">支出</string>
-	<string name="tv_this_day_no_expenses">本日尚未新增支出</string>
-	<string name="tv_this_day_expenses">本日支出</string>
+	<string name="tv_this_day_no_expense">本日尚未新增支出</string>
+	<string name="tv_this_day_expense">本日支出</string>
 	<string name="tv_this_month">本月</string>
 	<string name="tv_remaining_budget">剩餘預算</string>
 	<string name="tv_total_budget">預算總額</string>
@@ -56,9 +56,9 @@
 	<string name="menu_date">日期</string>
 	<string name="menu_new">新增</string>
 
-	<!-- ExpensesNewEditFragment 新增編輯支出 -->
-	<string name="title_expenses_new">新增支出</string>
-	<string name="title_expenses_edit">編輯支出</string>
+	<!-- ExpenseNewEditFragment 新增編輯支出 -->
+	<string name="title_expense_new">新增支出</string>
+	<string name="title_expense_edit">編輯支出</string>
 	<string name="tv_money">金額</string>
 	<string name="tv_category">類別</string>
 	<string name="tv_choose_category_hint">請選擇類別</string>
@@ -73,7 +73,7 @@
 	<string name="msg_input_money">請輸入金額</string>
 	<string name="msg_input_category">請選擇類別</string>
 	<string name="msg_input_account">請輸入帳戶</string>
-	<string name="msg_expenses_del_confirm">確定刪除此紀錄?</string>
+	<string name="msg_expense_del_confirm">確定刪除此紀錄?</string>
 
 	<!-- IncomeFragment 收入 -->
 	<string name="title_income">收入</string>
@@ -95,9 +95,9 @@
 	<string name="tv_last_month">上月</string>
 	<string name="tv_half_year">半年</string>
 	<string name="tv_one_year">一年</string>
-	<!-- ExpensesStatisticsFragment 統計 -->
-	<string name="title_expenses_statistics">支出統計</string>
-	<string name="tv_total_expenses">總支出</string>
+	<!-- ExpenseStatisticsFragment 統計 -->
+	<string name="title_expense_statistics">支出統計</string>
+	<string name="tv_total_expense">總支出</string>
 	<string name="char_number">#</string>
 	<string name="tv_percentage">百分比</string>
 	<string name="tv_price">金額</string>
@@ -203,12 +203,12 @@
 	<string name="msg_category_del_confirm">確定刪除此類別?</string>
 	<string name="msg_category_del_confirm_hint">注意:此類別的所有紀錄將會一併刪除</string>
 
-	<!-- ExpensesCategoryMgmtFragment 支出類別管理 -->
-	<string name="title_expenses_category_mgmt">支出類別管理</string>
+	<!-- ExpenseCategoryMgmtFragment 支出類別管理 -->
+	<string name="title_expense_category_mgmt">支出類別管理</string>
 
-	<!-- ExpensesCategoryNewEditFragment 新增編輯支出類別 -->
-	<string name="title_expenses_category_new">新增支出類別</string>
-	<string name="title_expenses_category_edit">編輯支出類別</string>
+	<!-- ExpenseCategoryNewEditFragment 新增編輯支出類別 -->
+	<string name="title_expense_category_new">新增支出類別</string>
+	<string name="title_expense_category_edit">編輯支出類別</string>
 
 	<!-- IncomeCategoryMgmtFragment 收入類別管理 -->
 	<string name="title_income_category_mgmt">收入類別管理</string>
