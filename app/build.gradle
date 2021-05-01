@@ -62,6 +62,21 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Fragment features
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    // Koin AndroidX WorkManager
+    implementation "org.koin:koin-androidx-workmanager:$koin_version"
+    // Koin AndroidX Jetpack Compose
+    implementation "org.koin:koin-androidx-compose:$koin_version"
+    // Koin AndroidX Experimental features
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+    //Timber for log
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     //
     implementation 'androidx.appcompat:appcompat:1.2.0'

@@ -21,7 +21,7 @@
 		tools:text="其他"/>
 
 	<TextView
-		android:id="@+id/tv_money"
+		android:id="@+id/tv_money_label"
 		style="@style/TextStyle.f4"
 		android:layout_width="0dp"
 		android:layout_weight="1"

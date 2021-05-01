@@ -57,6 +57,7 @@
 	<string name="menu_new">新增</string>
 
 	<!-- ExpenseNewEditFragment 新增編輯支出 -->
+	<string name="menu_save">儲存</string>
 	<string name="title_expense_new">新增支出</string>
 	<string name="title_expense_edit">編輯支出</string>
 	<string name="tv_money">金額</string>

@@ -54,6 +54,6 @@ class InstructionFragment : Fragment() {
         //開始使用
         val intent = Intent(activity, MainActivity::class.java)
         startActivity(intent)
-        activity!!.finish()
+        activity?.finish()
     }
 }

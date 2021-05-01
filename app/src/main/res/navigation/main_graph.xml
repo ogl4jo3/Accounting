@@ -8,20 +8,37 @@
     <fragment
         android:id="@+id/expenseFragment"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseFragment"
-        tools:layout="@layout/fragment_expense"
-        android:label="@string/title_expense">
+        android:label="@string/title_expense"
+        tools:layout="@layout/fragment_expense">
 
         <action
-            android:id="@+id/action_expenseFragment_to_expenseNemEditFragment"
-            app:destination="@id/expenseNemEditFragment" />
+            android:id="@+id/action_expenseFragment_to_expenseNewEditFragment"
+            app:destination="@id/expenseNewEditFragment" />
+
+        <action
+            android:id="@+id/action_expenseFragment_to_expenseNewFragment"
+            app:destination="@id/expenseNewFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/expenseNemEditFragment"
+        android:id="@+id/expenseNewFragment"
+        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewFragment"
+        android:label="@string/title_expense_new"
+        tools:layout="@layout/fragment_expense_new">
+
+        <argument
+            android:name="date"
+            app:argType="java.util.Date"
+            app:nullable="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/expenseNewEditFragment"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewEditFragment"
-        tools:layout="@layout/fragment_expense_new_edit"
-        android:label="{title}">
+        android:label="{title}"
+        tools:layout="@layout/fragment_expense_new_edit">
         <argument
             android:name="title"
             app:argType="string"
@@ -39,8 +56,8 @@
     <fragment
         android:id="@+id/incomeFragment"
         android:name="com.ogl4jo3.accounting.ui.income.IncomeFragment"
-        tools:layout="@layout/fragment_income"
-        android:label="@string/title_income">
+        android:label="@string/title_income"
+        tools:layout="@layout/fragment_income">
         <action
             android:id="@+id/action_incomeFragment_to_incomeNewEditFragment"
             app:destination="@id/incomeNewEditFragment" />
@@ -49,8 +66,8 @@
     <fragment
         android:id="@+id/incomeNewEditFragment"
         android:name="com.ogl4jo3.accounting.ui.income.IncomeNewEditFragment"
-        tools:layout="@layout/fragment_income_new_edit"
-        android:label="{title}">
+        android:label="{title}"
+        tools:layout="@layout/fragment_income_new_edit">
         <argument
             android:name="title"
             app:argType="string"

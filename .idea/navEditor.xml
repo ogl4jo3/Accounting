@@ -19,7 +19,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_expenseFragment_to_expenseNemEditFragment">
+                            <entry key="action_expenseFragment_to_expenseNewEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_expenseFragment_to_expenseNewFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -29,13 +34,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="expenseNemEditFragment">
+                  <entry key="expenseNewEditFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="112" />
                             <option name="y" value="-275" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="expenseNewFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="309" />
+                            <option name="y" value="-278" />
                           </Point>
                         </option>
                       </LayoutPositions>

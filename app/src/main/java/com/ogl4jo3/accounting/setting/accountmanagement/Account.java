@@ -17,7 +17,7 @@ public class Account {
 	public static final String CATEGORY_BANK_STR = "銀行";  //類別:銀行
 
 	private int id;             //ID
-	private String name;        //帳戶名稱
+	private String name;        //帳戶名稱 //TODO: set unique
 	private int startingAmount; //起始金額
 	private int category;       //帳戶類別，0:現金、1:卡片、2:銀行
 	private boolean defaultAccount;//是否為預設帳戶

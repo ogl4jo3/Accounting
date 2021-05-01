@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.common.expenses.Expenses
 import com.ogl4jo3.accounting.common.expenses.ExpensesDAO
+import com.ogl4jo3.accounting.common.simpleDate
 import com.ogl4jo3.accounting.setting.accountmanagement.AccountDAO
 import com.ogl4jo3.accounting.utils.database.MyDBHelper
 import com.ogl4jo3.accounting.utils.date.DateUtil
@@ -37,7 +38,7 @@ class ExpenseFragment : Fragment() {
     private var rvExpensesItem: RecyclerView? = null
     private var mLayoutManager: RecyclerView.LayoutManager? = null
     private var mAdapter: ExpenseAdapter? = null
-    private var dateStr: String? = null
+    private var dateStr: String? = null //TODO:refactor，使用Date紀錄，不要使用字串
     private var expensesList: MutableList<Expenses>? = null
     private var totalRemainingBudget //剩餘預算總額，所有帳戶的
             = 0
@@ -99,12 +100,9 @@ class ExpenseFragment : Fragment() {
             }, mCalendar[Calendar.YEAR], mCalendar[Calendar.MONTH],
                     mCalendar[Calendar.DAY_OF_MONTH]).show()
         } else if (id == R.id.menu_new) {
-            findNavController().navigate(ExpenseFragmentDirections
-                    .actionExpenseFragmentToExpenseNemEditFragment(
-                            title = resources.getString(R.string.title_expense_new),
-                            dateStr = tvDate!!.text.toString(),
-                            expenseId = null
-                    ))
+            findNavController().navigate(
+                    ExpenseFragmentDirections.actionExpenseFragmentToExpenseNewFragment(
+                            dateStr?.simpleDate ?: Date()))
         }
         return super.onOptionsItemSelected(item)
     }

@@ -59,7 +59,7 @@ class IncomeAdapter(private val mContext: Context, private val fragmentManager: 
         init {
             ivCategoryIcon = itemView.findViewById<View>(R.id.iv_category_icon) as ImageView
             tvCategoryName = itemView.findViewById<View>(R.id.tv_category_name) as TextView
-            tvMoney = itemView.findViewById<View>(R.id.tv_money) as TextView
+            tvMoney = itemView.findViewById<View>(R.id.tv_money_label) as TextView
         }
     }
 }

@@ -12,7 +12,7 @@ public class Expenses {
 	private int categoryId;     //類別ID
 	private String accountName;      //帳戶名稱
 	private String description; //描述
-	private String recordTime;  //紀錄時間
+	private String recordTime;  //紀錄時間 //TODO: refactor type as Date
 
 	public int getId() {
 		return id;

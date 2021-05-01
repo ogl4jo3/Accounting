@@ -9,7 +9,7 @@ public class Category {
 
 	private int id;         //唯一keyID
 	private int orderNum;   //順序編號
-	private String name;    //分類名稱
+	private String name;    //分類名稱 //TODO: set unique
 	private int icon;       //分類圖示
 
 	public Category() {

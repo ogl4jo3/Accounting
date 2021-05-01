@@ -39,7 +39,7 @@ class ExpenseAdapter(private val mContext: Context, private val fragmentManager:
             //		Toast.LENGTH_SHORT).show();
             val expenses = expensesList[holder.adapterPosition]
             Navigation.findNavController(holder.itemView).navigate(ExpenseFragmentDirections
-                    .actionExpenseFragmentToExpenseNemEditFragment(
+                    .actionExpenseFragmentToExpenseNewEditFragment(
                             title = mContext.getString(R.string.title_expense_edit),
                             dateStr = expenses.recordTime,
                             expenseId = expenses.id.toString()
@@ -59,7 +59,7 @@ class ExpenseAdapter(private val mContext: Context, private val fragmentManager:
         init {
             ivCategoryIcon = itemView.findViewById<View>(R.id.iv_category_icon) as ImageView
             tvCategoryName = itemView.findViewById<View>(R.id.tv_category_name) as TextView
-            tvMoney = itemView.findViewById<View>(R.id.tv_money) as TextView
+            tvMoney = itemView.findViewById<View>(R.id.tv_money_label) as TextView
         }
     }
 }
