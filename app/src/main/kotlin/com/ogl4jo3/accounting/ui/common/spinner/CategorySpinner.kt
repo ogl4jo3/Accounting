@@ -23,17 +23,13 @@ class CategorySpinner : TextInputLayout {
     private val mapIconKey = "icon" //adapter 資料對應KEY
 
     private val view = View.inflate(context, R.layout.custom_spinner, this) as CategorySpinner
-    private var tvCategory: AutoCompleteTextView
+    private var tvCategory: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.tv_name).apply {
+        inputType = InputType.TYPE_NULL
+    }
     private lateinit var categoryAdapter: SimpleAdapter
 
     private var items: List<Category> = emptyList()
     private var selectedItem: Category? = null
-
-    init {
-        tvCategory = view.findViewById<AutoCompleteTextView>(R.id.tv_name).apply {
-            inputType = InputType.TYPE_NULL
-        }
-    }
 
     fun setAdapter(categoryList: List<Category>) {
         items = categoryList
