@@ -7,17 +7,15 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "category", indices = [Index(value = ["categoryName"], unique = true)])
+@Entity(tableName = "category", indices = [Index(value = ["name"], unique = true)])
 data class Category(
-        @PrimaryKey @ColumnInfo(name = "categoryId")
-        var categoryId: String = UUID.randomUUID().toString(),
+        @PrimaryKey @ColumnInfo(name = "id") var id: String = UUID.randomUUID().toString(),
+        @ColumnInfo(name = "name") var name: String,
         @ColumnInfo(name = "orderNumber") var orderNumber: Int, //排序編號
-        @ColumnInfo(name = "categoryName") var categoryName: String,
         @ColumnInfo(name = "iconResId") @DrawableRes var iconResId: Int,
-        @ColumnInfo(name = "categoryType") var categoryType: CategoryType,//TODO: Converter
+        @ColumnInfo(name = "categoryType") var categoryType: CategoryType,//TODO: Converter??
 )
 
-enum class CategoryType(type: Int) {
-    Expense(0),
-    Income(1)
+enum class CategoryType {
+    Expense, Income
 }

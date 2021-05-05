@@ -18,15 +18,14 @@ import timber.log.Timber
 class CategoryDaoTest {
 
     private lateinit var database: AppDatabase
-
-//    @Rule
-//    var instantTaskExecutorRule = InstantTaskExecutorRule()
+    private lateinit var categoryDao: CategoryDao
 
     @Before
     fun initDb() {
         database = Room.inMemoryDatabaseBuilder(
                 getApplicationContext(), AppDatabase::class.java
         ).allowMainThreadQueries().build()
+        categoryDao = database.categoryDao()
     }
 
     @After
@@ -36,20 +35,20 @@ class CategoryDaoTest {
 
     @Test
     fun `測試-新增類別和透過ID取得類別`() = runBlocking {
-        Timber.d("測試-新增類別")
+        Timber.d("測試-新增類別和透過ID取得類別")
         val category = Category(
                 orderNumber = 0,
-                categoryName = "test",
+                name = "test",
                 iconResId = 123,
                 categoryType = CategoryType.Expense
         )
-        database.categoryDao().insertCategory(category)
+        categoryDao.insertCategory(category)
         Timber.d("category: $category")
 
-        database.categoryDao().getCategoryById(category.categoryId)?.let { categoryLoaded ->
+        categoryDao.getCategoryById(category.id)?.let { categoryLoaded ->
             Timber.d("categoryLoaded: $categoryLoaded")
             Assert.assertEquals(categoryLoaded.orderNumber, (category.orderNumber))
-            Assert.assertEquals(categoryLoaded.categoryName, (category.categoryName))
+            Assert.assertEquals(categoryLoaded.name, (category.name))
             Assert.assertEquals(categoryLoaded.iconResId, (category.iconResId))
             Assert.assertEquals(categoryLoaded.categoryType, (category.categoryType))
         } ?: Assert.fail()
@@ -58,34 +57,34 @@ class CategoryDaoTest {
     @Test
     fun `測試-取得不存在的類別`() = runBlocking {
         Timber.d("測試-取得不存在的類別")
-        val category = database.categoryDao().getCategoryById("00")
+        val category = categoryDao.getCategoryById("00")
         Timber.d("category: $category")
         Assert.assertNull(category)
     }
 
     @Test
     fun `測試-更新類別和透過ID取得類別`() = runBlocking {
-        Timber.d("測試-新增類別")
+        Timber.d("測試-更新類別和透過ID取得類別")
         val category = Category(
                 orderNumber = 0,
-                categoryName = "test",
+                name = "test",
                 iconResId = 123,
                 categoryType = CategoryType.Expense
         )
-        database.categoryDao().insertCategory(category)
+        categoryDao.insertCategory(category)
         Timber.d("category: $category")
 
         category.orderNumber = 1
-        category.categoryName = "updatedName"
+        category.name = "updatedName"
         category.iconResId = 456
         category.categoryType = CategoryType.Income
-        database.categoryDao().updateCategory(category)
+        categoryDao.updateCategory(category)
         Timber.d("updated category: $category")
 
-        database.categoryDao().getCategoryById(category.categoryId)?.let { categoryLoaded ->
+        categoryDao.getCategoryById(category.id)?.let { categoryLoaded ->
             Timber.d("categoryLoaded: $categoryLoaded")
             Assert.assertEquals(categoryLoaded.orderNumber, (category.orderNumber))
-            Assert.assertEquals(categoryLoaded.categoryName, (category.categoryName))
+            Assert.assertEquals(categoryLoaded.name, (category.name))
             Assert.assertEquals(categoryLoaded.iconResId, (category.iconResId))
             Assert.assertEquals(categoryLoaded.categoryType, (category.categoryType))
         } ?: Assert.fail()
@@ -96,15 +95,15 @@ class CategoryDaoTest {
         Timber.d("測試-刪除類別")
         val category = Category(
                 orderNumber = 0,
-                categoryName = "test",
+                name = "test",
                 iconResId = 123,
                 categoryType = CategoryType.Expense
         )
-        database.categoryDao().insertCategory(category)
-        Assert.assertNotNull(database.categoryDao().getCategoryById(category.categoryId))
+        categoryDao.insertCategory(category)
+        Assert.assertNotNull(categoryDao.getCategoryById(category.id))
 
-        database.categoryDao().deleteCategory(category)
-        Assert.assertNull(database.categoryDao().getCategoryById(category.categoryId))
+        categoryDao.deleteCategory(category)
+        Assert.assertNull(categoryDao.getCategoryById(category.id))
     }
 
     @Test
@@ -113,26 +112,26 @@ class CategoryDaoTest {
         val categories = arrayOf(
                 Category(
                         orderNumber = 0,
-                        categoryName = "test1",
+                        name = "test1",
                         iconResId = 123,
                         categoryType = CategoryType.Expense
                 ),
                 Category(
                         orderNumber = 2,
-                        categoryName = "test2",
+                        name = "test2",
                         iconResId = 234,
                         categoryType = CategoryType.Expense
                 ),
                 Category(
                         orderNumber = 3,
-                        categoryName = "test3",
+                        name = "test3",
                         iconResId = 345,
                         categoryType = CategoryType.Expense
                 )
         )
-        database.categoryDao().insertCategory(*categories)
+        categoryDao.insertCategory(*categories)
         Assert.assertEquals(
-                3, database.categoryDao().getCategoriesByType(CategoryType.Expense).size
+                3, categoryDao.getCategoriesByType(CategoryType.Expense).size
         )
     }
 
@@ -142,33 +141,21 @@ class CategoryDaoTest {
         val categories = arrayOf(
                 Category(
                         orderNumber = 0,
-                        categoryName = "test1",
+                        name = "test1",
                         iconResId = 123,
                         categoryType = CategoryType.Income
                 ),
                 Category(
                         orderNumber = 2,
-                        categoryName = "test2",
+                        name = "test2",
                         iconResId = 234,
                         categoryType = CategoryType.Income
                 )
         )
-        database.categoryDao().insertCategory(*categories)
+        categoryDao.insertCategory(*categories)
         Assert.assertEquals(
-                2, database.categoryDao().getCategoriesByType(CategoryType.Income).size
+                2, categoryDao.getCategoriesByType(CategoryType.Income).size
         )
     }
 
-    @Test
-    fun test() = runBlocking {
-        Timber.d("test")
-        println("test")
-        val loaded = database.categoryDao().getCategoryById("123")
-        println("loaded: $loaded")
-
-//        Assert.assertEquals(loaded.orderNumber, (category.orderNumber))
-//        Assert.assertEquals(loaded.categoryName, (category.categoryName))
-//        Assert.assertEquals(loaded.iconResId, (category.iconResId))
-//        Assert.assertEquals(loaded.categoryType, (category.categoryType))
-    }
 }

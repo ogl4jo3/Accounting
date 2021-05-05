@@ -12,7 +12,7 @@ interface CategoryDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateCategory(category: Category)
 
-    @Query("SELECT * FROM category WHERE categoryId = :id")
+    @Query("SELECT * FROM category WHERE id = :id")
     suspend fun getCategoryById(id: String): Category?
 
     @Delete
