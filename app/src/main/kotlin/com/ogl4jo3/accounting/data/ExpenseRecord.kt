@@ -7,9 +7,9 @@ import com.ogl4jo3.accounting.setting.accountmanagement.Account
 import com.ogl4jo3.accounting.setting.categorymanagement.Category
 import java.util.*
 
-@Entity(tableName = "expense")
-data class Expense(
-        @PrimaryKey @ColumnInfo(name = "expenseId") var expenseId: String = UUID.randomUUID().toString(),
+@Entity(tableName = "expenseRecord")
+data class ExpenseRecord(
+        @PrimaryKey @ColumnInfo(name = "id") var id: String = UUID.randomUUID().toString(),
         @ColumnInfo(name = "price") var price: Int,
         @ColumnInfo(name = "category") var category: Category,
         @ColumnInfo(name = "account") var account: Account,

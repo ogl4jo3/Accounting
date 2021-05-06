@@ -17,12 +17,14 @@ interface AccountDao {
     @Delete
     suspend fun deleteAccount(account: Account)
 
-    //取得帳戶數量,TODO:
+    //取得帳戶數量
+    @Query("SELECT COUNT(id) FROM account")
+    suspend fun getNumberOfAccounts(): Int
 
     //取得所有帳戶預算總合,TODO:
 
     //取得預設帳戶
-    @Query("SELECT * FROM account WHERE isDefaultAccount=${true}")
+    @Query("SELECT * FROM account WHERE isDefaultAccount = 1")
     suspend fun getDefaultAccount(): Account?
 
     //透過ID取得帳戶

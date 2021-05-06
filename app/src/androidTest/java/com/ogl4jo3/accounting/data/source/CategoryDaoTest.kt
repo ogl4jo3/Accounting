@@ -34,8 +34,8 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun `測試-新增類別和透過ID取得類別`() = runBlocking {
-        Timber.d("測試-新增類別和透過ID取得類別")
+    fun `Test-InsertCategory_And_GetCategoryById`() = runBlocking {
+        Timber.d("Test-InsertCategory_And_GetCategoryById")
         val category = Category(
                 orderNumber = 0,
                 name = "test",
@@ -55,16 +55,16 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun `測試-取得不存在的類別`() = runBlocking {
-        Timber.d("測試-取得不存在的類別")
+    fun `Test-GetNullCategory`() = runBlocking {
+        Timber.d("Test-GetNullCategory")
         val category = categoryDao.getCategoryById("00")
         Timber.d("category: $category")
         Assert.assertNull(category)
     }
 
     @Test
-    fun `測試-更新類別和透過ID取得類別`() = runBlocking {
-        Timber.d("測試-更新類別和透過ID取得類別")
+    fun `Test-UpdateCategory_And_GetCategoryById`() = runBlocking {
+        Timber.d("Test-UpdateCategory_And_GetCategoryById")
         val category = Category(
                 orderNumber = 0,
                 name = "test",
@@ -91,8 +91,8 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun `測試-刪除類別`() = runBlocking {
-        Timber.d("測試-刪除類別")
+    fun `Test-DeleteCategory`() = runBlocking {
+        Timber.d("Test-DeleteCategory")
         val category = Category(
                 orderNumber = 0,
                 name = "test",
@@ -107,8 +107,8 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun `測試-取得所有支出類別`() = runBlocking {
-        Timber.d("測試-取得所有支出類別")
+    fun `Test-GetAllExpenseCategory`() = runBlocking {
+        Timber.d("Test-GetAllExpenseCategory")
         val categories = arrayOf(
                 Category(
                         orderNumber = 0,
@@ -136,8 +136,8 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun `測試-取得所有收入類別`() = runBlocking {
-        Timber.d("測試-取得所有收入類別")
+    fun `Test-GetAllIncomeCategory`() = runBlocking {
+        Timber.d("Test-GetAllIncomeCategory")
         val categories = arrayOf(
                 Category(
                         orderNumber = 0,

@@ -34,8 +34,8 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `測試-新增帳戶和取得所有帳戶`() = runBlocking {
-        Timber.d("測試-新增帳戶和取得所有帳戶")
+    fun `Test-InsertAccount_And_GetAllAccount`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetAllAccount")
         val accounts = arrayOf(
                 Account(
                         name = "test1",
@@ -61,8 +61,8 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `測試-新增帳戶和透過ID取得帳戶`() = runBlocking {
-        Timber.d("測試-新增帳戶和透過ID取得帳戶")
+    fun `Test-InsertAccount_And_GetAccountById`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetAccountById")
         val account = Account(
                 name = "test1",
                 initialAmount = 100,
@@ -88,16 +88,16 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `測試-取得不存在的帳戶`() = runBlocking {
-        Timber.d("測試-取得不存在的帳戶")
+    fun `Test-GetNullAccount`() = runBlocking {
+        Timber.d("Test-GetNullAccount")
         val account = accountDao.getAccountById("00")
         Timber.d("account: $account")
         Assert.assertNull(account)
     }
 
     @Test
-    fun `測試-更新帳戶和透過ID取得帳戶`() = runBlocking {
-        Timber.d("測試-更新帳戶和透過ID取得帳戶")
+    fun `Test-UpdateAccount_And_GetAccountById`() = runBlocking {
+        Timber.d("Test-UpdateAccount_And_GetAccountById")
         val account = Account(
                 name = "test1",
                 initialAmount = 100,
@@ -133,8 +133,8 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `測試-刪除帳戶`() = runBlocking {
-        Timber.d("測試-刪除帳戶")
+    fun `Test-DeleteAccount`() = runBlocking {
+        Timber.d("Test-DeleteAccount")
         val account = Account(
                 name = "test1",
                 initialAmount = 100,
@@ -152,8 +152,8 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `測試-新增帳戶和取得預設帳戶-1`() = runBlocking {
-        Timber.d("測試-新增帳戶和取得預設帳戶-1")
+    fun `Test-InsertAccount_And_GetDefaultAccount-1`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetDefaultAccount-1")
         val accounts = arrayOf(
                 Account(
                         name = "test1",
@@ -190,8 +190,8 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `測試-新增帳戶和取得預設帳戶-2`() = runBlocking {
-        Timber.d("測試-新增帳戶和取得預設帳戶-2")
+    fun `Test-InsertAccount_And_GetDefaultAccount-2`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetDefaultAccount-2")
         val account = Account(
                 name = "test1",
                 initialAmount = 100,
@@ -204,6 +204,33 @@ class AccountDaoTest {
         accountDao.insertAccount(account)
         Timber.d("account: $account")
         Assert.assertNull(accountDao.getDefaultAccount())
+    }
+
+    @Test
+    fun `Test-InsertAccount_And_GetNumberOfAccount`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetNumberOfAccount")
+        val accounts = arrayOf(
+                Account(
+                        name = "test1",
+                        initialAmount = 100,
+                        category = AccountCategory.Cash,
+                        isDefaultAccount = true,
+                        budgetPrice = 50,
+                        budgetNotice = 0.3f,
+                        balance = 10
+                ),
+                Account(
+                        name = "test2",
+                        initialAmount = 300,
+                        category = AccountCategory.Cash,
+                        isDefaultAccount = false,
+                        budgetPrice = 30,
+                        budgetNotice = 0.1f,
+                        balance = 30
+                )
+        )
+        accountDao.insertAccount(*accounts)
+        Assert.assertEquals(2, accountDao.getNumberOfAccounts())
     }
 
 }
