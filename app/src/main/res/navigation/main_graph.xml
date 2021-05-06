@@ -17,15 +17,15 @@
 
         <action
             android:id="@+id/action_expenseFragment_to_expenseNewFragment"
-            app:destination="@id/expenseNewFragment" />
+            app:destination="@id/expenseAddFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/expenseNewFragment"
-        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewFragment"
+        android:id="@+id/expenseAddFragment"
+        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseAddFragment"
         android:label="@string/title_expense_new"
-        tools:layout="@layout/fragment_expense_new">
+        tools:layout="@layout/fragment_expense_add">
 
         <argument
             android:name="date"

@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.common.expenses.ExpensesDAO
-import com.ogl4jo3.accounting.databinding.FragmentExpenseNewBinding
+import com.ogl4jo3.accounting.databinding.FragmentExpenseAddBinding
 import com.ogl4jo3.accounting.setting.accountmanagement.AccountDAO
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO
 import com.ogl4jo3.accounting.utils.database.MyDBHelper
@@ -19,13 +19,13 @@ import org.koin.core.parameter.parametersOf
 import java.util.*
 
 
-class ExpenseNewFragment : Fragment() {
+class ExpenseAddFragment : Fragment() {
 
-    private val args: ExpenseNewFragmentArgs by navArgs()
-    private val viewModel by viewModel<ExpenseNewViewModel> {
+    private val args: ExpenseAddFragmentArgs by navArgs()
+    private val viewModel by viewModel<ExpenseAddViewModel> {
         parametersOf(args.date)
     }
-    private lateinit var binding: FragmentExpenseNewBinding
+    private lateinit var binding: FragmentExpenseAddBinding
 
     private val database: SQLiteDatabase by lazy { MyDBHelper.getDatabase(activity) }
     private val accountDAO: AccountDAO by lazy { AccountDAO(database) }
@@ -38,7 +38,8 @@ class ExpenseNewFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         viewModel.apply {
             moneyInputError = {
                 binding.tilMoney.error = getString(R.string.msg_input_money)
@@ -55,8 +56,8 @@ class ExpenseNewFragment : Fragment() {
             }
         }
 
-        binding = FragmentExpenseNewBinding.inflate(inflater, container, false).apply {
-            viewModel = this@ExpenseNewFragment.viewModel
+        binding = FragmentExpenseAddBinding.inflate(inflater, container, false).apply {
+            viewModel = this@ExpenseAddFragment.viewModel
             lifecycleOwner = viewLifecycleOwner
             spAccount.setHasDefaultValue(true)
             spAccount.setAdapter(accountDAO.all.map { it.name })
@@ -82,7 +83,10 @@ class ExpenseNewFragment : Fragment() {
             binding.tilMoney.error = null
             binding.spAccount.error = null
             binding.spCategory.error = null
-            viewModel.saveExpenseRecord(binding.spAccount.getName(), binding.spCategory.getSelectedItem()?.id)
+            viewModel.saveExpenseRecord(
+                    binding.spAccount.getName(),
+                    binding.spCategory.getSelectedItem()?.id
+            )
         }
         return super.onOptionsItemSelected(item)
     }

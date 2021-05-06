@@ -3,8 +3,10 @@ package com.ogl4jo3.accounting.common.expenses;
 /**
  * 支出
  * Created by ogl4jo3 on 2017/7/26.
+ * @deprecated , use {@link com.ogl4jo3.accounting.data.ExpenseRecord} instead
  */
 
+@Deprecated
 public class Expenses {
 
 	private int id;             //ID

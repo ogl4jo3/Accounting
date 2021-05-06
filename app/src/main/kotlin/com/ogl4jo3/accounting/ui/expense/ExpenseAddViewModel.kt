@@ -8,7 +8,7 @@ import com.ogl4jo3.accounting.utils.safeLet
 import timber.log.Timber
 import java.util.*
 
-class ExpenseNewViewModel(
+class ExpenseAddViewModel(
         val date: Date
 ) : ViewModel() {
     val price = MutableLiveData<Int>()
@@ -29,14 +29,14 @@ class ExpenseNewViewModel(
                 expenses.accountName = accountName
                 expenses.description = description.value
                 expenses.recordTime = date.simpleDateString
-                saveExpenseToDB(expenses)
+                saveExpenseToDB(expenses)//TODO: refactor by repository
             }
         }
     }
 
-    private fun checkFormat(money: Int?, accountName: String, categoryId: Int?): Boolean {
+    fun checkFormat(price: Int?, accountName: String, categoryId: Int?): Boolean {
         var isSuccessful = true
-        if (money == null || money <= 0) {
+        if (price == null || price <= 0) {
             moneyInputError()
             isSuccessful = false
         } else if (accountName.isEmpty()) {

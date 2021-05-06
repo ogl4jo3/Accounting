@@ -1,7 +1,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.ogl4jo3.accounting.ui.expense.ExpenseNewFragment">
+    tools:context="com.ogl4jo3.accounting.ui.expense.ExpenseAddFragment">
 
     <data>
 
@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.ogl4jo3.accounting.ui.expense.ExpenseNewViewModel" />
+            type="com.ogl4jo3.accounting.ui.expense.ExpenseAddViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,27 +76,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/sp_account"
             app:layout_constraintTop_toTopOf="@id/sp_account" />
-
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:id="@+id/til_category"-->
-        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="@string/tv_category"-->
-        <!--            android:padding="12dp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@id/til_account"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/til_money">-->
-
-        <!--            <androidx.appcompat.widget.AppCompatAutoCompleteTextView-->
-        <!--                android:id="@+id/tv_category"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:imeOptions="actionNext"-->
-        <!--                android:inputType="@{InputType.TYPE_NULL}"-->
-        <!--                android:maxLines="1" />-->
-
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_description"
