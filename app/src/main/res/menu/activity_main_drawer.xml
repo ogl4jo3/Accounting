@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:title="@string/nav_title_common">
-		<menu>
-			<group android:checkableBehavior="single">
-				<item
-					android:id="@id/expenseFragment"
-					android:icon="@drawable/ic_nav_expenses"
-					android:title="@string/nav_expense"/>
-				<item
-					android:id="@id/incomeFragment"
-					android:icon="@drawable/ic_nav_income"
-					android:title="@string/nav_income"/>
-				<item
-					android:id="@+id/nav_statistics"
-					android:icon="@drawable/ic_nav_statistics"
-					android:title="@string/nav_statistics"/>
-			</group>
-		</menu>
-	</item>
-	<item android:title="@string/nav_title_setting">
-		<menu>
-			<group android:checkableBehavior="single">
-				<item
-					android:id="@+id/nav_budgeting"
-					android:icon="@drawable/ic_nav_budgeting"
-					android:title="@string/nav_budgeting"/>
-				<item
-					android:id="@+id/nav_account_management"
-					android:icon="@drawable/ic_nav_account_management"
-					android:title="@string/nav_account_management"/>
-				<item
-					android:id="@+id/nav_accounting_notification"
-					android:icon="@drawable/ic_nav_accounting_notification"
-					android:title="@string/nav_accounting_notification"/>
-				<item
-					android:id="@+id/nav_currency_selection"
-					android:icon="@drawable/ic_nav_currency_selection"
-					android:title="@string/nav_currency_selection"/>
-				<item
-					android:id="@+id/nav_password_setting"
-					android:icon="@drawable/ic_nav_password_setting"
-					android:title="@string/nav_password_setting"/>
-				<item
-					android:id="@+id/nav_expenses_category_management"
-					android:icon="@drawable/ic_nav_category_management"
-					android:title="@string/nav_expense_category_management"/>
-				<item
-					android:id="@+id/nav_income_category_management"
-					android:icon="@drawable/ic_nav_category_management"
-					android:title="@string/nav_income_category_management"/>
-			</group>
-		</menu>
-	</item>
+    <item android:title="@string/nav_title_common">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/ic_nav_expenses"
+                    android:id="@id/expenseFragment"
+                    android:title="@string/nav_expense" />
+                <item
+                    android:icon="@drawable/ic_nav_income"
+                    android:id="@id/incomeFragment"
+                    android:title="@string/nav_income" />
+                <item
+                    android:icon="@drawable/ic_nav_statistics"
+                    android:id="@+id/nav_statistics"
+                    android:title="@string/nav_statistics" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="@string/nav_title_setting">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/ic_nav_budgeting"
+                    android:id="@+id/nav_budgeting"
+                    android:title="@string/nav_budgeting" />
+                <item
+                    android:icon="@drawable/ic_nav_account_management"
+                    android:id="@id/accountMgmtFragment"
+                    android:title="@string/nav_account_management" />
+                <item
+                    android:icon="@drawable/ic_nav_accounting_notification"
+                    android:id="@+id/nav_accounting_notification"
+                    android:title="@string/nav_accounting_notification" />
+                <item
+                    android:icon="@drawable/ic_nav_currency_selection"
+                    android:id="@+id/nav_currency_selection"
+                    android:title="@string/nav_currency_selection" />
+                <item
+                    android:icon="@drawable/ic_nav_password_setting"
+                    android:id="@+id/nav_password_setting"
+                    android:title="@string/nav_password_setting" />
+                <item
+                    android:icon="@drawable/ic_nav_category_management"
+                    android:id="@+id/nav_expenses_category_management"
+                    android:title="@string/nav_expense_category_management" />
+                <item
+                    android:icon="@drawable/ic_nav_category_management"
+                    android:id="@+id/nav_income_category_management"
+                    android:title="@string/nav_income_category_management" />
+            </group>
+        </menu>
+    </item>
 
-	<item android:title="@string/nav_title_others">
-		<menu>
-			<group android:checkableBehavior="single">
-				<item
-					android:id="@+id/nav_export_file"
-					android:icon="@drawable/ic_nav_export_file"
-					android:title="@string/nav_export_file"/>
-				<item
-					android:id="@+id/nav_cloud_backup"
-					android:icon="@drawable/ic_nav_cloud_backup"
-					android:title="@string/nav_cloud_backup"/>
-				<item
-					android:id="@+id/nav_use_teaching"
-					android:icon="@drawable/ic_nav_use_teaching"
-					android:title="@string/nav_use_teaching"/>
-				<item
-					android:id="@+id/nav_about_us"
-					android:icon="@drawable/ic_nav_about_us"
-					android:title="@string/nav_about_us"/>
-				<item
-					android:id="@+id/nav_give_praise"
-					android:icon="@drawable/ic_nav_give_praise"
-					android:title="@string/nav_give_praise"/>
-			</group>
-		</menu>
-	</item>
+    <item android:title="@string/nav_title_others">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/ic_nav_export_file"
+                    android:id="@+id/nav_export_file"
+                    android:title="@string/nav_export_file" />
+                <item
+                    android:icon="@drawable/ic_nav_cloud_backup"
+                    android:id="@+id/nav_cloud_backup"
+                    android:title="@string/nav_cloud_backup" />
+                <item
+                    android:icon="@drawable/ic_nav_use_teaching"
+                    android:id="@+id/nav_use_teaching"
+                    android:title="@string/nav_use_teaching" />
+                <item
+                    android:icon="@drawable/ic_nav_about_us"
+                    android:id="@+id/nav_about_us"
+                    android:title="@string/nav_about_us" />
+                <item
+                    android:icon="@drawable/ic_nav_give_praise"
+                    android:id="@+id/nav_give_praise"
+                    android:title="@string/nav_give_praise" />
+            </group>
+        </menu>
+    </item>
 </menu>

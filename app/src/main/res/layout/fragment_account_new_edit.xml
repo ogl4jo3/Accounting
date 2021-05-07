@@ -1,167 +1,162 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="com.ogl4jo3.accounting.setting.accountmanagement.AccountNewEditFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ogl4jo3.accounting.ui.accountMgmt.AccountNewEditFragment">
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:paddingLeft="12dp"
-		android:paddingRight="12dp">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
-		<TextView
-			style="@style/TextStyle.f1"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/tv_account_name"/>
+        <TextView
+            style="@style/TextStyle.f1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/tv_account_name" />
 
-		<EditText
-			android:id="@+id/et_account_name"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:hint="@string/hint_input_account_name"
-			android:imeOptions="actionDone"
-			android:inputType="text"
-			android:maxLength="8"
-			android:textSize="@dimen/fs_4"/>
-	</LinearLayout>
-
-
-	<LinearLayout
-		style="@style/Sep_line_h"/>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:paddingBottom="4dp"
-		android:paddingLeft="12dp"
-		android:paddingRight="12dp"
-		android:paddingTop="4dp">
-
-		<TextView
-			style="@style/TextStyle.f1"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/tv_starting_amount"/>
-
-		<EditText
-			android:id="@+id/et_starting_amount"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:imeOptions="actionDone"
-			android:inputType="number"
-			android:maxLength="8"
-			android:text="0"
-			android:textSize="@dimen/fs_3"/>
-
-	</LinearLayout>
+        <EditText
+            android:gravity="end"
+            android:hint="@string/hint_input_account_name"
+            android:id="@+id/et_account_name"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:maxLength="8"
+            android:textSize="@dimen/fs_4" />
+    </LinearLayout>
 
 
-	<LinearLayout
-		style="@style/Sep_line_h"/>
+    <LinearLayout style="@style/Sep_line_h" />
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:paddingBottom="4dp"
-		android:paddingLeft="12dp"
-		android:paddingRight="12dp"
-		android:paddingTop="4dp">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="4dp">
 
-		<TextView
-			style="@style/TextStyle.f1"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/tv_account_category"/>
+        <TextView
+            style="@style/TextStyle.f1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/tv_starting_amount" />
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:gravity="center_vertical">
+        <EditText
+            android:gravity="end"
+            android:id="@+id/et_starting_amount"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:maxLength="8"
+            android:text="0"
+            android:textSize="@dimen/fs_3" />
 
-			<ImageView
-				android:id="@+id/iv_account_category_icon"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:contentDescription="@string/iv_account_category"
-				android:src="@drawable/ic_account_category_cash"/>
-
-			<Spinner
-				android:id="@+id/sp_account_category"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:entries="@array/accountCategories"
-				/>
-		</LinearLayout>
+    </LinearLayout>
 
 
-	</LinearLayout>
+    <LinearLayout style="@style/Sep_line_h" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="4dp">
+
+        <TextView
+            style="@style/TextStyle.f1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/tv_account_category" />
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <ImageView
+                android:contentDescription="@string/iv_account_category"
+                android:id="@+id/iv_account_category_icon"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_account_category_cash" />
+
+            <Spinner
+                android:entries="@array/accountCategories"
+                android:id="@+id/sp_account_category"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
 
 
-	<LinearLayout
-		style="@style/Sep_line_h"/>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:paddingBottom="4dp"
-		android:paddingLeft="12dp"
-		android:paddingRight="12dp"
-		android:paddingTop="4dp">
-
-		<TextView
-			style="@style/TextStyle.f1"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/tv_default_account"/>
+    </LinearLayout>
 
 
-		<Switch
-			android:id="@+id/sw_default_account"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="end"/>
+    <LinearLayout style="@style/Sep_line_h" />
 
-	</LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="4dp">
 
-	<LinearLayout
-		style="@style/Sep_line_h"/>
+        <TextView
+            style="@style/TextStyle.f1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/tv_default_account" />
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center_horizontal">
 
-		<Button
-			android:id="@+id/btn_new"
-			style="@style/Normal_btn"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/btn_new"/>
+        <Switch
+            android:id="@+id/sw_default_account"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
 
-		<Button
-			android:id="@+id/btn_save"
-			style="@style/Normal_btn"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/btn_save"
-			android:visibility="gone"/>
+    </LinearLayout>
 
-		<Button
-			android:id="@+id/btn_del"
-			style="@style/Normal_btn"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/btn_del"
-			android:visibility="gone"/>
-	</LinearLayout>
+    <LinearLayout style="@style/Sep_line_h" />
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <Button
+            style="@style/Normal_btn"
+            android:id="@+id/btn_new"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/btn_new" />
+
+        <Button
+            style="@style/Normal_btn"
+            android:id="@+id/btn_save"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/btn_save"
+            android:visibility="gone" />
+
+        <Button
+            style="@style/Normal_btn"
+            android:id="@+id/btn_del"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/btn_del"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </LinearLayout>
