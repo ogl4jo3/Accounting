@@ -20,6 +20,7 @@ import com.ogl4jo3.accounting.utils.dialog.CategoryDialogFragment.onCategoryList
 import com.ogl4jo3.accounting.utils.string.StringUtil
 import java.util.*
 
+//TODO: 重構編輯支出頁面
 class ExpenseNewEditFragment : Fragment(), onCategoryListener {
 
     private val args: ExpenseNewEditFragmentArgs by navArgs()
