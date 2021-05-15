@@ -3,7 +3,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
               android:orientation="vertical"
-             tools:context="com.ogl4jo3.accounting.setting.categorymanagement.income.IncomeCategoryMgmtFragment">
+             tools:context="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryMgmtFragment">
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/rv_income_category"

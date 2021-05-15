@@ -11,43 +11,43 @@
                     android:icon="@drawable/ic_nav_income"
                     android:id="@id/incomeFragment"
                     android:title="@string/nav_income" />
-                <item
-                    android:icon="@drawable/ic_nav_statistics"
-                    android:id="@+id/nav_statistics"
-                    android:title="@string/nav_statistics" />
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_statistics"-->
+                <!--                    android:id="@+id/nav_statistics"-->
+                <!--                    android:title="@string/nav_statistics" />-->
             </group>
         </menu>
     </item>
     <item android:title="@string/nav_title_setting">
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:icon="@drawable/ic_nav_budgeting"
-                    android:id="@+id/nav_budgeting"
-                    android:title="@string/nav_budgeting" />
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_budgeting"-->
+                <!--                    android:id="@+id/nav_budgeting"-->
+                <!--                    android:title="@string/nav_budgeting" />-->
                 <item
                     android:icon="@drawable/ic_nav_account_management"
                     android:id="@id/accountMgmtFragment"
                     android:title="@string/nav_account_management" />
-                <item
-                    android:icon="@drawable/ic_nav_accounting_notification"
-                    android:id="@+id/nav_accounting_notification"
-                    android:title="@string/nav_accounting_notification" />
-                <item
-                    android:icon="@drawable/ic_nav_currency_selection"
-                    android:id="@+id/nav_currency_selection"
-                    android:title="@string/nav_currency_selection" />
-                <item
-                    android:icon="@drawable/ic_nav_password_setting"
-                    android:id="@+id/nav_password_setting"
-                    android:title="@string/nav_password_setting" />
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_accounting_notification"-->
+                <!--                    android:id="@+id/nav_accounting_notification"-->
+                <!--                    android:title="@string/nav_accounting_notification" />-->
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_currency_selection"-->
+                <!--                    android:id="@+id/nav_currency_selection"-->
+                <!--                    android:title="@string/nav_currency_selection" />-->
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_password_setting"-->
+                <!--                    android:id="@+id/nav_password_setting"-->
+                <!--                    android:title="@string/nav_password_setting" />-->
                 <item
                     android:icon="@drawable/ic_nav_category_management"
-                    android:id="@+id/nav_expenses_category_management"
+                    android:id="@id/expenseCategoryMgmtFragment"
                     android:title="@string/nav_expense_category_management" />
                 <item
                     android:icon="@drawable/ic_nav_category_management"
-                    android:id="@+id/nav_income_category_management"
+                    android:id="@id/incomeCategoryMgmtFragment"
                     android:title="@string/nav_income_category_management" />
             </group>
         </menu>
@@ -56,18 +56,18 @@
     <item android:title="@string/nav_title_others">
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:icon="@drawable/ic_nav_export_file"
-                    android:id="@+id/nav_export_file"
-                    android:title="@string/nav_export_file" />
-                <item
-                    android:icon="@drawable/ic_nav_cloud_backup"
-                    android:id="@+id/nav_cloud_backup"
-                    android:title="@string/nav_cloud_backup" />
-                <item
-                    android:icon="@drawable/ic_nav_use_teaching"
-                    android:id="@+id/nav_use_teaching"
-                    android:title="@string/nav_use_teaching" />
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_export_file"-->
+                <!--                    android:id="@+id/nav_export_file"-->
+                <!--                    android:title="@string/nav_export_file" />-->
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_cloud_backup"-->
+                <!--                    android:id="@+id/nav_cloud_backup"-->
+                <!--                    android:title="@string/nav_cloud_backup" />-->
+                <!--                <item//TODO:refactor-->
+                <!--                    android:icon="@drawable/ic_nav_use_teaching"-->
+                <!--                    android:id="@+id/nav_use_teaching"-->
+                <!--                    android:title="@string/nav_use_teaching" />-->
                 <item
                     android:icon="@drawable/ic_nav_about_us"
                     android:id="@+id/nav_about_us"
