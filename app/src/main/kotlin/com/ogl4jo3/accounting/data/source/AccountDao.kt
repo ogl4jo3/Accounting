@@ -6,8 +6,8 @@ import com.ogl4jo3.accounting.data.Account
 @Dao
 interface AccountDao {
     //新增
-    @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insertAccount(vararg account: Account)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAccount(account: Account): Long
 
     //儲存
     @Update(onConflict = OnConflictStrategy.REPLACE)
@@ -37,5 +37,9 @@ interface AccountDao {
 
     //檢查帳戶名稱是否已存在,TODO:
 
+
+    //更新預設帳戶
+    @Query("UPDATE account SET isDefaultAccount = 0 WHERE id != :id")
+    suspend fun updateDefaultAccount(id: String)
 
 }

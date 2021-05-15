@@ -8,4 +8,5 @@ import java.util.*
 
 val appModule = module {
     viewModel { (date: Date) -> ExpenseAddViewModel(date) }
+//    viewModel { (accountDataSource: AccountDataSource) -> AccountAddViewModel(accountDataSource) }//TODO:check Koin usage
 }

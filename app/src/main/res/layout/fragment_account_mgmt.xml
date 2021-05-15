@@ -16,6 +16,6 @@
         android:id="@+id/btn_new"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/btn_new" />
+        android:text="@string/btn_add" />
 
 </LinearLayout>

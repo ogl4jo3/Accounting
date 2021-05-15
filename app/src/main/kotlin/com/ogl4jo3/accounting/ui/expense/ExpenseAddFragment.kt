@@ -38,7 +38,7 @@ class ExpenseAddFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         viewModel.apply {
             moneyInputError = {
@@ -84,8 +84,8 @@ class ExpenseAddFragment : Fragment() {
             binding.spAccount.error = null
             binding.spCategory.error = null
             viewModel.saveExpenseRecord(
-                    binding.spAccount.getName(),
-                    binding.spCategory.getSelectedItem()?.id
+                binding.spAccount.getName(),
+                binding.spCategory.getSelectedItem()?.id
             )
         }
         return super.onOptionsItemSelected(item)

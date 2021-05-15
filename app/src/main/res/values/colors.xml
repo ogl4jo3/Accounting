@@ -7,6 +7,7 @@
     <!-- 主要字型使用顏色 -->
     <color name="text_main_color">#0D47A1</color>
     <color name="text_minor_color">#26c6da</color>
+    <color name="switch_thumb_color">#C3CFF9</color>
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>

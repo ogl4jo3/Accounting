@@ -23,7 +23,7 @@ class AccountDaoTest {
     @Before
     fun initDb() {
         database = Room.inMemoryDatabaseBuilder(
-                getApplicationContext(), AppDatabase::class.java
+            getApplicationContext(), AppDatabase::class.java
         ).allowMainThreadQueries().build()
         accountDao = database.accountDao()
     }
@@ -36,34 +36,8 @@ class AccountDaoTest {
     @Test
     fun `Test-InsertAccount_And_GetAllAccount`() = runBlocking {
         Timber.d("Test-InsertAccount_And_GetAllAccount")
-        val accounts = arrayOf(
-                Account(
-                        name = "test1",
-                        initialAmount = 100,
-                        category = AccountCategory.Cash,
-                        isDefaultAccount = true,
-                        budgetPrice = 50,
-                        budgetNotice = 0.3f,
-                        balance = 10
-                ),
-                Account(
-                        name = "test2",
-                        initialAmount = 300,
-                        category = AccountCategory.Cash,
-                        isDefaultAccount = true,
-                        budgetPrice = 30,
-                        budgetNotice = 0.1f,
-                        balance = 30
-                )
-        )
-        accountDao.insertAccount(*accounts)
-        Assert.assertEquals(2, accountDao.getAllAccounts().size)
-    }
-
-    @Test
-    fun `Test-InsertAccount_And_GetAccountById`() = runBlocking {
-        Timber.d("Test-InsertAccount_And_GetAccountById")
-        val account = Account(
+        accountDao.insertAccount(
+            Account(
                 name = "test1",
                 initialAmount = 100,
                 category = AccountCategory.Cash,
@@ -71,6 +45,33 @@ class AccountDaoTest {
                 budgetPrice = 50,
                 budgetNotice = 0.3f,
                 balance = 10
+            )
+        )
+        accountDao.insertAccount(
+            Account(
+                name = "test2",
+                initialAmount = 300,
+                category = AccountCategory.Cash,
+                isDefaultAccount = true,
+                budgetPrice = 30,
+                budgetNotice = 0.1f,
+                balance = 30
+            )
+        )
+        Assert.assertEquals(2, accountDao.getAllAccounts().size)
+    }
+
+    @Test
+    fun `Test-InsertAccount_And_GetAccountById`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetAccountById")
+        val account = Account(
+            name = "test1",
+            initialAmount = 100,
+            category = AccountCategory.Cash,
+            isDefaultAccount = true,
+            budgetPrice = 50,
+            budgetNotice = 0.3f,
+            balance = 10
         )
         accountDao.insertAccount(account)
         Timber.d("account: $account")
@@ -99,13 +100,13 @@ class AccountDaoTest {
     fun `Test-UpdateAccount_And_GetAccountById`() = runBlocking {
         Timber.d("Test-UpdateAccount_And_GetAccountById")
         val account = Account(
-                name = "test1",
-                initialAmount = 100,
-                category = AccountCategory.Cash,
-                isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
+            name = "test1",
+            initialAmount = 100,
+            category = AccountCategory.Cash,
+            isDefaultAccount = true,
+            budgetPrice = 50,
+            budgetNotice = 0.3f,
+            balance = 10
         )
         accountDao.insertAccount(account)
         Timber.d("account: $account")
@@ -136,13 +137,13 @@ class AccountDaoTest {
     fun `Test-DeleteAccount`() = runBlocking {
         Timber.d("Test-DeleteAccount")
         val account = Account(
-                name = "test1",
-                initialAmount = 100,
-                category = AccountCategory.Cash,
-                isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
+            name = "test1",
+            initialAmount = 100,
+            category = AccountCategory.Cash,
+            isDefaultAccount = true,
+            budgetPrice = 50,
+            budgetNotice = 0.3f,
+            balance = 10
         )
         accountDao.insertAccount(account)
         Assert.assertNotNull(accountDao.getAccountById(account.id))
@@ -154,38 +155,38 @@ class AccountDaoTest {
     @Test
     fun `Test-InsertAccount_And_GetDefaultAccount-1`() = runBlocking {
         Timber.d("Test-InsertAccount_And_GetDefaultAccount-1")
-        val accounts = arrayOf(
-                Account(
-                        name = "test1",
-                        initialAmount = 100,
-                        category = AccountCategory.Cash,
-                        isDefaultAccount = true,
-                        budgetPrice = 50,
-                        budgetNotice = 0.3f,
-                        balance = 10
-                ),
-                Account(
-                        name = "test2",
-                        initialAmount = 300,
-                        category = AccountCategory.Cash,
-                        isDefaultAccount = false,
-                        budgetPrice = 30,
-                        budgetNotice = 0.1f,
-                        balance = 30
-                )
+        val defaultAccount = Account(
+            name = "test1",
+            initialAmount = 100,
+            category = AccountCategory.Cash,
+            isDefaultAccount = true,
+            budgetPrice = 50,
+            budgetNotice = 0.3f,
+            balance = 10
         )
-        accountDao.insertAccount(*accounts)
-        Timber.d("accounts: $accounts")
+        accountDao.insertAccount(defaultAccount)
+        accountDao.insertAccount(
+            Account(
+                name = "test2",
+                initialAmount = 300,
+                category = AccountCategory.Cash,
+                isDefaultAccount = false,
+                budgetPrice = 30,
+                budgetNotice = 0.1f,
+                balance = 30
+            )
+        )
+        Timber.d("defaultAccount: $defaultAccount")
 
         accountDao.getDefaultAccount()?.let { accountLoaded ->
             Timber.d("accountLoaded: $accountLoaded")
-            Assert.assertEquals(accountLoaded.name, (accounts[0].name))
-            Assert.assertEquals(accountLoaded.initialAmount, (accounts[0].initialAmount))
-            Assert.assertEquals(accountLoaded.category, (accounts[0].category))
-            Assert.assertEquals(accountLoaded.isDefaultAccount, (accounts[0].isDefaultAccount))
-            Assert.assertEquals(accountLoaded.budgetPrice, (accounts[0].budgetPrice))
-            Assert.assertEquals(accountLoaded.budgetNotice, (accounts[0].budgetNotice))
-            Assert.assertEquals(accountLoaded.balance, (accounts[0].balance))
+            Assert.assertEquals(accountLoaded.name, (defaultAccount.name))
+            Assert.assertEquals(accountLoaded.initialAmount, (defaultAccount.initialAmount))
+            Assert.assertEquals(accountLoaded.category, (defaultAccount.category))
+            Assert.assertEquals(accountLoaded.isDefaultAccount, (defaultAccount.isDefaultAccount))
+            Assert.assertEquals(accountLoaded.budgetPrice, (defaultAccount.budgetPrice))
+            Assert.assertEquals(accountLoaded.budgetNotice, (defaultAccount.budgetNotice))
+            Assert.assertEquals(accountLoaded.balance, (defaultAccount.balance))
         } ?: Assert.fail()
     }
 
@@ -193,13 +194,13 @@ class AccountDaoTest {
     fun `Test-InsertAccount_And_GetDefaultAccount-2`() = runBlocking {
         Timber.d("Test-InsertAccount_And_GetDefaultAccount-2")
         val account = Account(
-                name = "test1",
-                initialAmount = 100,
-                category = AccountCategory.Cash,
-                isDefaultAccount = false,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
+            name = "test1",
+            initialAmount = 100,
+            category = AccountCategory.Cash,
+            isDefaultAccount = false,
+            budgetPrice = 50,
+            budgetNotice = 0.3f,
+            balance = 10
         )
         accountDao.insertAccount(account)
         Timber.d("account: $account")
@@ -209,27 +210,29 @@ class AccountDaoTest {
     @Test
     fun `Test-InsertAccount_And_GetNumberOfAccount`() = runBlocking {
         Timber.d("Test-InsertAccount_And_GetNumberOfAccount")
-        val accounts = arrayOf(
-                Account(
-                        name = "test1",
-                        initialAmount = 100,
-                        category = AccountCategory.Cash,
-                        isDefaultAccount = true,
-                        budgetPrice = 50,
-                        budgetNotice = 0.3f,
-                        balance = 10
-                ),
-                Account(
-                        name = "test2",
-                        initialAmount = 300,
-                        category = AccountCategory.Cash,
-                        isDefaultAccount = false,
-                        budgetPrice = 30,
-                        budgetNotice = 0.1f,
-                        balance = 30
-                )
+        accountDao.insertAccount(
+
+            Account(
+                name = "test1",
+                initialAmount = 100,
+                category = AccountCategory.Cash,
+                isDefaultAccount = true,
+                budgetPrice = 50,
+                budgetNotice = 0.3f,
+                balance = 10
+            )
         )
-        accountDao.insertAccount(*accounts)
+        accountDao.insertAccount(
+            Account(
+                name = "test2",
+                initialAmount = 300,
+                category = AccountCategory.Cash,
+                isDefaultAccount = false,
+                budgetPrice = 30,
+                budgetNotice = 0.1f,
+                balance = 30
+            )
+        )
         Assert.assertEquals(2, accountDao.getNumberOfAccounts())
     }
 

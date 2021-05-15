@@ -88,8 +88,23 @@
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountMgmtFragment"
         tools:layout="@layout/fragment_account_mgmt">
         <action
+            android:id="@+id/action_accountMgmtFragment_to_accountAddFragment"
+            app:destination="@id/accountAddFragment" />
+
+        <action
             android:id="@+id/action_accountMgmtFragment_to_accountNewEditFragment"
             app:destination="@id/accountNewEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountAddFragment"
+        android:label="{title}"
+        android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountAddFragment"
+        tools:layout="@layout/fragment_account_add">
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 
     <fragment

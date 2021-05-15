@@ -91,8 +91,8 @@ class AccountMgmtFragment : Fragment() {
     private fun setOnClickListener() {
         btnNew!!.setOnClickListener {
             findNavController().navigate(
-                AccountMgmtFragmentDirections.actionAccountMgmtFragmentToAccountNewEditFragment(
-                    title = resources.getString(R.string.title_account_new), accountJsonStr = ""
+                AccountMgmtFragmentDirections.actionAccountMgmtFragmentToAccountAddFragment(
+                    title = resources.getString(R.string.title_account_new)
                 )
             )
         }

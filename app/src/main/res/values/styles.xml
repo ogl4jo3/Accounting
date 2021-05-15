@@ -1,74 +1,90 @@
 <resources>
 
-	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-		<!-- Customize your theme here. -->
-		<item name="colorPrimary">@color/colorPrimary</item>
-		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-		<item name="colorAccent">@color/colorAccent</item>
-	</style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
-	<style name="AppTheme.NoActionBar">
-		<item name="windowActionBar">false</item>
-		<item name="windowNoTitle">true</item>
-	</style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
-	<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-	<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <!-- 支出和收入版面 -->
+    <style name="frame_expenses_income">
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
 
-	<!-- 支出和收入版面 -->
-	<style name="frame_expenses_income">
-		<item name="android:padding">12dp</item>
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">match_parent</item>
-	</style>
+    <!-- 字型設定 -->
+    <style name="TextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/text_main_color</item>
+        <item name="android:padding">4dp</item>
+    </style>
+    <!-- 10sp  -->
+    <style name="TextStyle.f0">
+        <item name="android:textSize">@dimen/fs_0</item>
+    </style>
+    <!-- Caption 13sp -->
+    <style name="TextStyle.f1">
+        <item name="android:textSize">@dimen/fs_1</item>
+    </style>
+    <!-- Body,Button 15sp -->
+    <style name="TextStyle.f2">
+        <item name="android:textSize">@dimen/fs_2</item>
+    </style>
+    <!-- Subheading 17sp -->
+    <style name="TextStyle.f3">
+        <item name="android:textSize">@dimen/fs_3</item>
+    </style>
+    <!-- Title 21sp -->
+    <style name="TextStyle.f4">
+        <item name="android:textSize">@dimen/fs_4</item>
+    </style>
+    <!-- Headline 24sp  -->
+    <style name="TextStyle.f5">
+        <item name="android:textSize">@dimen/fs_5</item>
+    </style>
+    <!-- 34sp  -->
+    <style name="TextStyle.f6">
+        <item name="android:textSize">@dimen/fs_6</item>
+    </style>
+    <!-- 45sp  -->
+    <style name="TextStyle.f7">
+        <item name="android:textSize">@dimen/fs_7</item>
+    </style>
 
-	<!-- 字型設定 -->
-	<style name="TextStyle">
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:layout_width">wrap_content</item>
-		<item name="android:textColor">@color/text_main_color</item>
-		<item name="android:padding">4dp</item>
-	</style>
-	<!-- 10sp  -->
-	<style name="TextStyle.f0"><item name="android:textSize">@dimen/fs_0</item></style>
-	<!-- Caption 13sp -->
-	<style name="TextStyle.f1"><item name="android:textSize">@dimen/fs_1</item></style>
-	<!-- Body,Button 15sp -->
-	<style name="TextStyle.f2"><item name="android:textSize">@dimen/fs_2</item></style>
-	<!-- Subheading 17sp -->
-	<style name="TextStyle.f3"><item name="android:textSize">@dimen/fs_3</item></style>
-	<!-- Title 21sp -->
-	<style name="TextStyle.f4"><item name="android:textSize">@dimen/fs_4</item></style>
-	<!-- Headline 24sp  -->
-	<style name="TextStyle.f5"><item name="android:textSize">@dimen/fs_5</item></style>
-	<!-- 34sp  -->
-	<style name="TextStyle.f6"><item name="android:textSize">@dimen/fs_6</item></style>
-	<!-- 45sp  -->
-	<style name="TextStyle.f7"><item name="android:textSize">@dimen/fs_7</item></style>
+    <!-- 按鈕樣式 -->
+    <style name="Normal_btn" parent="Widget.AppCompat.Button">
+        <item name="android:textSize">@dimen/fs_3</item>
+    </style>
 
-	<!-- 按鈕樣式 -->
-	<style name="Normal_btn" parent="Widget.AppCompat.Button">
-		<item name="android:textSize">@dimen/fs_3</item>
-	</style>
+    <!-- 分隔線 -->
+    <style name="Sep_line_h">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/sep_line_color</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
 
-	<!-- 分隔線 -->
-	<style name="Sep_line_h">
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">1dp</item>
-		<item name="android:background">@color/sep_line_color</item>
-		<item name="android:layout_marginTop">4dp</item>
-		<item name="android:layout_marginBottom">4dp</item>
-	</style>
-	<style name="Sep_line_v">
-		<item name="android:layout_width">1dp</item>
-		<item name="android:layout_height">match_parent</item>
-		<item name="android:background">@color/sep_line_color</item>
-		<item name="android:layout_marginLeft">4dp</item>
-		<item name="android:layout_marginRight">4dp</item>
-	</style>
+    <style name="Sep_line_v">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/sep_line_color</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+    </style>
 
 </resources>
