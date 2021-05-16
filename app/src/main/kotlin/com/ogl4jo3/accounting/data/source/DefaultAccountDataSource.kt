@@ -10,7 +10,7 @@ class DefaultAccountDataSource(
         return accountDao.insertAccount(account)
     }
 
-    override suspend fun updateDefaultAccount(id: String) {
-        accountDao.updateDefaultAccount(id)
+    override suspend fun updateDefaultAccount(defaultAccountId: String) {
+        accountDao.updateDefaultAccount(defaultAccountId)
     }
 }

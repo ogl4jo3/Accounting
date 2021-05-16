@@ -8,7 +8,6 @@ import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.DefaultAccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
-import timber.log.Timber
 
 class AccountAddViewModel(
     private val accountDataSource: AccountDataSource = DefaultAccountDataSource()
@@ -41,21 +40,23 @@ class AccountAddViewModel(
                         budgetNotice = 0.0f,
                         balance = 0
                     )
-                    //TODO: add test case
-                    val id = accountDataSource.insertAccount(account)
-                    Timber.d("insertAccount id: $id")
-                    if (id < 0) { // insert failed.
-                        accountNameExistError()
-                    } else {
-                        if (account.isDefaultAccount) {
-                            accountDataSource.updateDefaultAccount(account.id)
-                        }
-                        navPopBackStack()
-                    }
+                    saveAccount(account)
                 }
             }
         } else {
             accountNameEmptyError()
+        }
+    }
+
+    suspend fun saveAccount(account: Account) {
+        val id = accountDataSource.insertAccount(account)
+        if (id < 0) { // insert failed.
+            accountNameExistError()
+        } else {
+            if (account.isDefaultAccount) {
+                accountDataSource.updateDefaultAccount(account.id)
+            }
+            navPopBackStack()
         }
     }
 
