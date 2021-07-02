@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:icon="@drawable/ic_menu_date"
-        android:id="@+id/menu_date"
-        android:title="@string/menu_date"
-        app:showAsAction="always" />
-    <item
         android:icon="@drawable/ic_menu_add"
-        android:id="@+id/menu_new"
+        android:id="@+id/menu_add"
         android:title="@string/menu_add"
         app:showAsAction="always" />
 </menu>

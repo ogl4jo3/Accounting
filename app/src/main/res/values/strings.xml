@@ -12,6 +12,8 @@
 
     <!-- menu -->
     <string name="menu_hint">提示</string>
+    <string name="menu_add">新增</string>
+    <string name="menu_save">儲存</string>
 
     <!-- 主畫面 Navigation Drawer -->
     <!-- 分類:常用 -->
@@ -54,10 +56,8 @@
     <string name="tv_budget_percent">%1$d</string>
     <string name="tv_percent">%</string>
     <string name="menu_date">日期</string>
-    <string name="menu_new">新增</string>
 
     <!-- ExpenseNewEditFragment 新增編輯支出 -->
-    <string name="menu_save">儲存</string>
     <string name="title_expense_new">新增支出</string>
     <string name="title_expense_edit">編輯支出</string>
     <string name="tv_money">金額</string>
@@ -125,6 +125,9 @@
 
     <!-- AccountMgmtFragment 帳戶管理 -->
     <string name="title_account_mgmt">帳戶管理</string>
+    <string name="default_cash_account_name">現金</string>
+    <string name="default_bank_account_name">銀行</string>
+    <string name="default_card_account_name">信用卡</string>
     <string name="iv_account_category">帳戶類別</string>
     <string name="tv_account_category_cash">現金</string>
     <string name="tv_account_category_card">卡片</string>
@@ -133,7 +136,7 @@
     <string name="tv_account_balance">帳戶餘額</string>
 
     <!-- AccountNewEditFragment 新增/編輯帳戶 -->
-    <string name="title_account_new">新增帳戶</string>
+    <string name="title_account_add">新增帳戶</string>
     <string name="title_account_edit">編輯帳戶</string>
     <string name="tv_account_name">帳戶名稱</string>
     <string name="tv_initial_amount">起始金額</string>

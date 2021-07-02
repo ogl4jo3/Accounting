@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.expenseFragment,
             R.id.incomeFragment,
-            R.id.accountMgmtFragment,
+            R.id.accountListFragment,
             R.id.expenseCategoryMgmtFragment,
             R.id.incomeCategoryMgmtFragment //TODO:
         ).setOpenableLayout(drawerLayout).build()

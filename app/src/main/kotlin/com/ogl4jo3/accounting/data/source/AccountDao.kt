@@ -1,6 +1,11 @@
 package com.ogl4jo3.accounting.data.source
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import com.ogl4jo3.accounting.data.Account
 
 @Dao

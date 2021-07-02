@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="center_vertical"
-              android:orientation="horizontal"
-              android:paddingBottom="2dp"
-              android:paddingLeft="8dp"
-              android:paddingRight="8dp"
-              android:paddingTop="2dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-	<ImageView
-		android:id="@+id/iv_account_category_icon"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:contentDescription="@string/iv_account_category"
-		android:src="@drawable/ic_account_category_cash"/>
+    <data>
 
-	<LinearLayout
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:orientation="vertical"
-		android:padding="2dp">
+        <variable
+            name="account"
+            type="com.ogl4jo3.accounting.data.Account" />
 
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal">
+        <variable
+            name="viewModel"
+            type="com.ogl4jo3.accounting.ui.accountMgmt.AccountListViewModel" />
+    </data>
 
-			<TextView
-				android:id="@+id/tv_account_name"
-				style="@style/TextStyle.f3"
-				tools:text="帳戶名稱"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:onClick="@{v -> viewModel.navigateToAccountEditFragment.invoke(account)}"
+        android:padding="16dp">
 
-			<TextView
-				android:id="@+id/tv_default_account"
-				style="@style/TextStyle.f2"
-				android:text="@string/tv_default"
-				android:visibility="gone"/>
-		</LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            imageResource="@{account.category.iconRes}"
+            android:id="@+id/iv_account_category"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_account_category_cash" />
 
-		<TextView
-			android:id="@+id/tv_account_category_name"
-			style="@style/TextStyle.f2"
-			tools:text="現金"/>
-	</LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_account_name"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:text="@{account.name}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_account_category"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="帳戶名稱" />
 
-	<LinearLayout
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:orientation="vertical"
-		android:padding="2dp">
+        <androidx.appcompat.widget.AppCompatTextView
+            visibleGone="@{account.defaultAccount}"
+            android:id="@+id/tv_default_account"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_width="wrap_content"
+            android:text="@string/tv_default"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_account_name"
+            app:layout_constraintStart_toEndOf="@id/tv_account_name"
+            app:layout_constraintTop_toTopOf="@id/tv_account_name" />
 
-		<TextView
-			style="@style/TextStyle.f1"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/tv_account_balance"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_account_category_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@{account.category.nameRes}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_account_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_account_name"
+            tools:text="現金" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            money="@{account.balance}"
+            android:id="@+id/tv_account_balance"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="$500" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-		<TextView
-			android:id="@+id/tv_account_balance"
-			style="@style/TextStyle.f4"
-			android:layout_width="match_parent"
-			android:gravity="end"
-			tools:text="$500"/>
-
-	</LinearLayout>
-
-</LinearLayout>
+</layout>

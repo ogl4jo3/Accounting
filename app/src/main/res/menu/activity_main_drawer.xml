@@ -27,7 +27,7 @@
                 <!--                    android:title="@string/nav_budgeting" />-->
                 <item
                     android:icon="@drawable/ic_nav_account_management"
-                    android:id="@id/accountMgmtFragment"
+                    android:id="@id/accountListFragment"
                     android:title="@string/nav_account_management" />
                 <!--                <item//TODO:refactor-->
                 <!--                    android:icon="@drawable/ic_nav_accounting_notification"-->

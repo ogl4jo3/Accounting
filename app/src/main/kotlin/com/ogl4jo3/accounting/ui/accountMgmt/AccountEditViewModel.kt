@@ -9,7 +9,8 @@ import com.ogl4jo3.accounting.data.source.DefaultAccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 
-class AccountAddViewModel(
+//TODO:未完成
+class AccountEditViewModel(
     private val accountDataSource: AccountDataSource = DefaultAccountDataSource()
 ) : ViewModel() {
 
@@ -38,9 +39,9 @@ class AccountAddViewModel(
                         isDefaultAccount = isDefaultAccount,
                         budgetPrice = 0,
                         budgetNotice = 0.0f,
-                        balance = initialAmount
+                        balance = 0
                     ).apply {
-                        insertAccount(this)
+                        saveAccount(this)
                     }
                 }
             }
@@ -49,7 +50,7 @@ class AccountAddViewModel(
         }
     }
 
-    suspend fun insertAccount(account: Account) {
+    suspend fun saveAccount(account: Account) {
         val id = accountDataSource.insertAccount(account)
         if (id < 0) { // insert failed.
             accountNameExistError()

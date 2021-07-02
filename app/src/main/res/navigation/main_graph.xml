@@ -83,16 +83,16 @@
     </fragment>
 
     <fragment
-        android:id="@+id/accountMgmtFragment"
+        android:id="@+id/accountListFragment"
         android:label="@string/title_account_mgmt"
-        android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountMgmtFragment"
-        tools:layout="@layout/fragment_account_mgmt">
+        android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountListFragment"
+        tools:layout="@layout/fragment_account_list">
         <action
-            android:id="@+id/action_accountMgmtFragment_to_accountAddFragment"
+            android:id="@+id/action_accountListFragment_to_accountAddFragment"
             app:destination="@id/accountAddFragment" />
 
         <action
-            android:id="@+id/action_accountMgmtFragment_to_accountNewEditFragment"
+            android:id="@+id/action_accountListFragment_to_accountNewEditFragment"
             app:destination="@id/accountNewEditFragment" />
     </fragment>
 
