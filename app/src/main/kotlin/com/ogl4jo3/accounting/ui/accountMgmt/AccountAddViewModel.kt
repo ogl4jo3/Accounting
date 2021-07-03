@@ -8,12 +8,13 @@ import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.DefaultAccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 
 class AccountAddViewModel(
     private val accountDataSource: AccountDataSource = DefaultAccountDataSource()
 ) : ViewModel() {
 
-    val accountName = MutableLiveData<String>()
+    val accountName = MutableLiveData("")
     val isDefaultAccount = MutableLiveData(true)
     val accountCategory = MutableLiveData(AccountCategory.Cash)
     val initialAmount = MutableLiveData(0)
@@ -23,41 +24,38 @@ class AccountAddViewModel(
     var navPopBackStack: () -> Unit = { }
 
     fun addAccount() {
-        if (!accountName.value.isNullOrEmpty()) {
-            safeLet(
-                accountName.value,
-                initialAmount.value,
-                accountCategory.value,
-                isDefaultAccount.value
-            ) { accountName, initialAmount, accountCategory, isDefaultAccount ->
-                runBlocking {
-                    Account(
-                        name = accountName,
-                        initialAmount = initialAmount,
-                        category = accountCategory,
-                        isDefaultAccount = isDefaultAccount,
-                        budgetPrice = 0,
-                        budgetNotice = 0.0f,
-                        balance = initialAmount
-                    ).apply {
-                        insertAccount(this)
-                    }
-                }
-            }
-        } else {
-            accountNameEmptyError()
-        }
+        safeLet(
+            accountName.value, initialAmount.value, accountCategory.value, isDefaultAccount.value
+        ) { accountName, initialAmount, accountCategory, isDefaultAccount ->
+            Account(
+                name = accountName,
+                initialAmount = initialAmount,
+                category = accountCategory,
+                isDefaultAccount = isDefaultAccount,
+                budgetPrice = 0,
+                budgetNotice = 0.0f,
+                balance = initialAmount
+            )
+        }?.let { account ->
+            runBlocking { addAccount(account) }
+        } ?: return
     }
 
-    suspend fun insertAccount(account: Account) {
-        val id = accountDataSource.insertAccount(account)
-        if (id < 0) { // insert failed.
+    suspend fun addAccount(account: Account) {
+        if (account.name.isBlank()) {
+            accountNameEmptyError()
+        } else if (accountDataSource.hasDuplicatedName(account.name)) {
             accountNameExistError()
         } else {
-            if (account.isDefaultAccount) {
-                accountDataSource.updateDefaultAccount(account.id)
+            val id = accountDataSource.insertAccount(account)
+            if (id < 0) {
+                Timber.e("insertAccount failed, account: $account")
+            } else {
+                if (account.isDefaultAccount) {
+                    accountDataSource.resetDefaultAccountExceptId(account.id)
+                }
+                navPopBackStack()
             }
-            navPopBackStack()
         }
     }
 

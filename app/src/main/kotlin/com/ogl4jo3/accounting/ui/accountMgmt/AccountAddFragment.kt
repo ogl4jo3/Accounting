@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountAddBinding
+import com.ogl4jo3.accounting.utils.keyboard.KeyboardUtil
 
 class AccountAddFragment : Fragment() {
 
@@ -38,4 +39,8 @@ class AccountAddFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        KeyboardUtil.closeKeyboard(activity)
+    }
 }

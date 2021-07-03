@@ -143,11 +143,13 @@
     <string name="tv_account_category">帳戶類別</string>
     <string name="tv_default_account">預設帳戶</string>
     <string name="hint_input_account_name">請輸入帳戶名稱</string>
-    <string name="msg_account_del_confirm">確定刪除此帳戶?</string>
+    <string name="msg_account_del_confirm">確定刪除帳戶 \"%s\" ?</string>
     <string name="msg_account_del_confirm_hint">注意:此帳戶的所有紀錄將會一併刪除</string>
-    <string name="msg_account_deleted">帳戶:%s已刪除</string>
+    <string name="msg_account_deleted">帳戶 \"%s\" 已刪除</string>
     <string name="msg_input_account_name">請輸入帳戶名稱</string>
     <string name="msg_account_name_exist">帳戶名稱已存在</string>
+    <string name="msg_at_least_one_default_account">至少要有一個預設帳戶</string>
+    <string name="msg_at_least_one_account">至少要有一個帳戶</string>
     <!-- 帳戶類別 -->
     <string-array name="accountCategories">
         <item>現金</item>

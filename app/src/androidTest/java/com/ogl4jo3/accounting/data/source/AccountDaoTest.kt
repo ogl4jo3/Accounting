@@ -208,10 +208,9 @@ class AccountDaoTest {
     }
 
     @Test
-    fun `Test-InsertAccount_And_GetNumberOfAccount`() = runBlocking {
-        Timber.d("Test-InsertAccount_And_GetNumberOfAccount")
+    fun `Test-InsertAccount_And_GetNumberOfAccounts`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetNumberOfAccounts")
         accountDao.insertAccount(
-
             Account(
                 name = "test1",
                 initialAmount = 100,
@@ -236,4 +235,31 @@ class AccountDaoTest {
         Assert.assertEquals(2, accountDao.getNumberOfAccounts())
     }
 
+    @Test
+    fun `Test-InsertAccount_And_GetNumberOfAccountsByName`() = runBlocking {
+        Timber.d("Test-InsertAccount_And_GetNumberOfAccountsByName")
+        accountDao.insertAccount(
+            Account(
+                name = "test1",
+                initialAmount = 100,
+                category = AccountCategory.Cash,
+                isDefaultAccount = true,
+                budgetPrice = 50,
+                budgetNotice = 0.3f,
+                balance = 10
+            )
+        )
+        accountDao.insertAccount(
+            Account(
+                name = "test2",
+                initialAmount = 300,
+                category = AccountCategory.Cash,
+                isDefaultAccount = false,
+                budgetPrice = 30,
+                budgetNotice = 0.1f,
+                balance = 30
+            )
+        )
+        Assert.assertEquals(1, accountDao.getNumberOfAccountsByName("test1"))
+    }
 }

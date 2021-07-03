@@ -92,32 +92,23 @@
             app:destination="@id/accountAddFragment" />
 
         <action
-            android:id="@+id/action_accountListFragment_to_accountNewEditFragment"
-            app:destination="@id/accountNewEditFragment" />
+            android:id="@+id/action_accountListFragment_to_accountEditFragment"
+            app:destination="@id/accountEditFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/accountAddFragment"
-        android:label="{title}"
+        android:label="@string/title_account_add"
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountAddFragment"
-        tools:layout="@layout/fragment_account_add">
-        <argument
-            android:name="title"
-            app:argType="string"
-            app:nullable="false" />
-    </fragment>
+        tools:layout="@layout/fragment_account_add" />
 
     <fragment
-        android:id="@+id/accountNewEditFragment"
-        android:label="{title}"
-        android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountNewEditFragment"
-        tools:layout="@layout/fragment_account_new_edit">
+        android:id="@+id/accountEditFragment"
+        android:label="@string/title_account_edit"
+        android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountEditFragment"
+        tools:layout="@layout/fragment_account_edit">
         <argument
-            android:name="title"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="accountJsonStr"
+            android:name="accountId"
             app:argType="string"
             app:nullable="false" />
     </fragment>

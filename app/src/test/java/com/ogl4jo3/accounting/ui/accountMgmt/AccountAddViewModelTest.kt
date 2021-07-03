@@ -20,9 +20,9 @@ class AccountAddViewModelTest {
     }
 
     @Test
-    fun `test save account`() = runBlocking {
+    fun `test add account`() = runBlocking {
         val accountsSize = fakeAccountDataSource.accounts.size
-        accountAddViewModel.insertAccount(
+        accountAddViewModel.addAccount(
             Account(
                 name = "test1",
                 initialAmount = 100,
@@ -40,9 +40,9 @@ class AccountAddViewModelTest {
     }
 
     @Test
-    fun `test save and update default account`() = runBlocking {
+    fun `test add and update default account`() = runBlocking {
         val accountsSize = fakeAccountDataSource.accounts.size
-        accountAddViewModel.insertAccount(
+        accountAddViewModel.addAccount(
             Account(
                 name = "test1",
                 initialAmount = 100,
@@ -53,7 +53,7 @@ class AccountAddViewModelTest {
                 balance = 10
             )
         )
-        accountAddViewModel.insertAccount(
+        accountAddViewModel.addAccount(
             Account(
                 name = "test1234",
                 initialAmount = 100,
@@ -71,9 +71,9 @@ class AccountAddViewModelTest {
     }
 
     @Test
-    fun `test save duplicate name account`() = runBlocking {
+    fun `test add duplicate name account`() = runBlocking {
         val accountsSize = fakeAccountDataSource.accounts.size
-        accountAddViewModel.insertAccount(
+        accountAddViewModel.addAccount(
             Account(
                 name = "test1",
                 initialAmount = 100,
@@ -84,7 +84,7 @@ class AccountAddViewModelTest {
                 balance = 10
             )
         )
-        accountAddViewModel.insertAccount(
+        accountAddViewModel.addAccount(
             Account(
                 name = "test1",
                 initialAmount = 100,

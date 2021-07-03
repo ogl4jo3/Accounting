@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountListBinding
 
@@ -31,9 +30,8 @@ class AccountListFragment : Fragment() {
         viewModel.apply {
             navigateToAccountEditFragment = { account ->
                 findNavController().navigate(
-                    AccountListFragmentDirections.actionAccountListFragmentToAccountNewEditFragment(
-                        title = getString(R.string.title_account_edit),
-                        accountJsonStr = Gson().toJson(account)
+                    AccountListFragmentDirections.actionAccountListFragmentToAccountEditFragment(
+                        accountId = account.id
                     )
                 )
             }
@@ -57,9 +55,7 @@ class AccountListFragment : Fragment() {
         val id = item.itemId
         if (id == R.id.menu_add) {
             findNavController().navigate(
-                AccountListFragmentDirections.actionAccountListFragmentToAccountAddFragment(
-                    title = getString(R.string.title_account_add)
-                )
+                AccountListFragmentDirections.actionAccountListFragmentToAccountAddFragment()
             )
         }
         return super.onOptionsItemSelected(item)
