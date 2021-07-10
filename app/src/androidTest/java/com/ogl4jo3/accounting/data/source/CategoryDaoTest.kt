@@ -1,8 +1,10 @@
 package com.ogl4jo3.accounting.data.source
 
+import android.content.Context
 import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import kotlinx.coroutines.runBlocking
@@ -17,13 +19,14 @@ import timber.log.Timber
 @RunWith(AndroidJUnit4::class)
 class CategoryDaoTest {
 
+    private val context: Context by lazy { ApplicationProvider.getApplicationContext() }
     private lateinit var database: AppDatabase
     private lateinit var categoryDao: CategoryDao
 
     @Before
     fun initDb() {
         database = Room.inMemoryDatabaseBuilder(
-                getApplicationContext(), AppDatabase::class.java
+            context, AppDatabase::class.java
         ).allowMainThreadQueries().build()
         categoryDao = database.categoryDao()
     }
@@ -37,10 +40,10 @@ class CategoryDaoTest {
     fun `Test-InsertCategory_And_GetCategoryById`() = runBlocking {
         Timber.d("Test-InsertCategory_And_GetCategoryById")
         val category = Category(
-                orderNumber = 0,
-                name = "test",
-                iconResId = 123,
-                categoryType = CategoryType.Expense
+            orderNumber = 0,
+            name = "test",
+            iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
+            categoryType = CategoryType.Expense
         )
         categoryDao.insertCategory(category)
         Timber.d("category: $category")
@@ -49,7 +52,7 @@ class CategoryDaoTest {
             Timber.d("categoryLoaded: $categoryLoaded")
             Assert.assertEquals(categoryLoaded.orderNumber, (category.orderNumber))
             Assert.assertEquals(categoryLoaded.name, (category.name))
-            Assert.assertEquals(categoryLoaded.iconResId, (category.iconResId))
+            Assert.assertEquals(categoryLoaded.iconResName, (category.iconResName))
             Assert.assertEquals(categoryLoaded.categoryType, (category.categoryType))
         } ?: Assert.fail()
     }
@@ -66,17 +69,17 @@ class CategoryDaoTest {
     fun `Test-UpdateCategory_And_GetCategoryById`() = runBlocking {
         Timber.d("Test-UpdateCategory_And_GetCategoryById")
         val category = Category(
-                orderNumber = 0,
-                name = "test",
-                iconResId = 123,
-                categoryType = CategoryType.Expense
+            orderNumber = 0,
+            name = "test",
+            iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
+            categoryType = CategoryType.Expense
         )
         categoryDao.insertCategory(category)
         Timber.d("category: $category")
 
         category.orderNumber = 1
         category.name = "updatedName"
-        category.iconResId = 456
+        category.iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_gift)
         category.categoryType = CategoryType.Income
         categoryDao.updateCategory(category)
         Timber.d("updated category: $category")
@@ -85,7 +88,7 @@ class CategoryDaoTest {
             Timber.d("categoryLoaded: $categoryLoaded")
             Assert.assertEquals(categoryLoaded.orderNumber, (category.orderNumber))
             Assert.assertEquals(categoryLoaded.name, (category.name))
-            Assert.assertEquals(categoryLoaded.iconResId, (category.iconResId))
+            Assert.assertEquals(categoryLoaded.iconResName, (category.iconResName))
             Assert.assertEquals(categoryLoaded.categoryType, (category.categoryType))
         } ?: Assert.fail()
     }
@@ -94,10 +97,10 @@ class CategoryDaoTest {
     fun `Test-DeleteCategory`() = runBlocking {
         Timber.d("Test-DeleteCategory")
         val category = Category(
-                orderNumber = 0,
-                name = "test",
-                iconResId = 123,
-                categoryType = CategoryType.Expense
+            orderNumber = 0,
+            name = "test",
+            iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
+            categoryType = CategoryType.Expense
         )
         categoryDao.insertCategory(category)
         Assert.assertNotNull(categoryDao.getCategoryById(category.id))
@@ -109,53 +112,53 @@ class CategoryDaoTest {
     @Test
     fun `Test-GetAllExpenseCategory`() = runBlocking {
         Timber.d("Test-GetAllExpenseCategory")
-        val categories = arrayOf(
-                Category(
-                        orderNumber = 0,
-                        name = "test1",
-                        iconResId = 123,
-                        categoryType = CategoryType.Expense
-                ),
-                Category(
-                        orderNumber = 2,
-                        name = "test2",
-                        iconResId = 234,
-                        categoryType = CategoryType.Expense
-                ),
-                Category(
-                        orderNumber = 3,
-                        name = "test3",
-                        iconResId = 345,
-                        categoryType = CategoryType.Expense
-                )
+        categoryDao.insertCategory(
+            Category(
+                orderNumber = 0,
+                name = "test1",
+                iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
+                categoryType = CategoryType.Expense
+            )
         )
-        categoryDao.insertCategory(*categories)
-        Assert.assertEquals(
-                3, categoryDao.getCategoriesByType(CategoryType.Expense).size
+        categoryDao.insertCategory(
+            Category(
+                orderNumber = 2,
+                name = "test2",
+                iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_dinner),
+                categoryType = CategoryType.Expense
+            )
         )
+        categoryDao.insertCategory(
+            Category(
+                orderNumber = 3,
+                name = "test3",
+                iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_lunch),
+                categoryType = CategoryType.Expense
+            )
+        )
+        Assert.assertEquals(3, categoryDao.getCategoriesByType(CategoryType.Expense).size)
     }
 
     @Test
     fun `Test-GetAllIncomeCategory`() = runBlocking {
         Timber.d("Test-GetAllIncomeCategory")
-        val categories = arrayOf(
-                Category(
-                        orderNumber = 0,
-                        name = "test1",
-                        iconResId = 123,
-                        categoryType = CategoryType.Income
-                ),
-                Category(
-                        orderNumber = 2,
-                        name = "test2",
-                        iconResId = 234,
-                        categoryType = CategoryType.Income
-                )
+        categoryDao.insertCategory(
+            Category(
+                orderNumber = 0,
+                name = "test1",
+                iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
+                categoryType = CategoryType.Income
+            )
         )
-        categoryDao.insertCategory(*categories)
-        Assert.assertEquals(
-                2, categoryDao.getCategoriesByType(CategoryType.Income).size
+        categoryDao.insertCategory(
+            Category(
+                orderNumber = 2,
+                name = "test2",
+                iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_dinner),
+                categoryType = CategoryType.Income
+            )
         )
+        Assert.assertEquals(2, categoryDao.getCategoriesByType(CategoryType.Income).size)
     }
 
 }

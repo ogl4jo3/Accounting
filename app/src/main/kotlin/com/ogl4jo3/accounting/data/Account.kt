@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.ogl4jo3.accounting.R
-import java.util.*
+import java.util.UUID
 
 @Entity(tableName = "account", indices = [Index(value = ["name"], unique = true)])
 data class Account(

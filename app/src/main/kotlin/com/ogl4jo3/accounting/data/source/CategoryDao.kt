@@ -1,19 +1,24 @@
 package com.ogl4jo3.accounting.data.source
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 
 @Dao
 interface CategoryDao {
-    @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insertCategory(vararg category: Category)
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateCategory(category: Category)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertCategory(category: Category): Long
 
     @Query("SELECT * FROM category WHERE id = :id")
     suspend fun getCategoryById(id: String): Category?
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateCategory(category: Category)
 
     @Delete
     suspend fun deleteCategory(category: Category)
@@ -24,6 +29,12 @@ interface CategoryDao {
     suspend fun getCategoriesByType(categoryType: CategoryType): List<Category>
 
     //檢查是否重複,TODO:確認是否必要
+
+    @Query("SELECT COUNT(id) FROM category WHERE name = :name")
+    suspend fun getNumberOfCategoriesByName(name: String): Int
+
+    @Query("SELECT MAX(orderNumber) FROM category WHERE categoryType = :categoryType")
+    suspend fun getMaxOrderNumber(categoryType: CategoryType): Int?
 
 
 }

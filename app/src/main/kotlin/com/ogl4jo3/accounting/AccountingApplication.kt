@@ -17,6 +17,20 @@ class AccountingApplication : Application() {
         database = Room.databaseBuilder(
             applicationContext, AppDatabase::class.java, "accounting"
         ).build()
+
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+
+        startKoin {
+            androidLogger()
+            androidContext(this@AccountingApplication)
+            modules(appModule)
+        }
+
+        initDBDefaultData()
+
+    }
+
+    private fun initDBDefaultData() {
         defaultAccounts = listOf(
             Account(
                 name = getString(R.string.default_cash_account_name),
@@ -46,15 +60,6 @@ class AccountingApplication : Application() {
                 balance = 0
             )
         )
-
-        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
-
-        startKoin {
-            androidLogger()
-            androidContext(this@AccountingApplication)
-            modules(appModule)
-        }
-
     }
 
     companion object {
