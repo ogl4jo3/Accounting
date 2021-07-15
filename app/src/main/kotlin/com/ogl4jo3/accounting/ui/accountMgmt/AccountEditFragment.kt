@@ -11,13 +11,14 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountEditBinding
+import com.ogl4jo3.accounting.ui.common.viewBinding
 import com.ogl4jo3.accounting.utils.keyboard.KeyboardUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class AccountEditFragment : Fragment() {
 
-    private lateinit var binding: FragmentAccountEditBinding
+    private val binding by viewBinding(FragmentAccountEditBinding::inflate)
     private val args by navArgs<AccountEditFragmentArgs>()
     private val viewModel by viewModel<AccountEditViewModel> {
         parametersOf(args.accountId)
@@ -26,6 +27,17 @@ class AccountEditFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        return binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@AccountEditFragment.viewModel
+        }.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            btnDel.setOnClickListener { showDelConfirmDialog() }
+        }
         viewModel.apply {
             navPopBackStack = { findNavController().popBackStack() }
             accountNameEmptyError = {
@@ -45,53 +57,38 @@ class AccountEditFragment : Fragment() {
             }
         }
 
-        binding = FragmentAccountEditBinding.inflate(inflater, container, false).apply {
-            lifecycleOwner = viewLifecycleOwner
-            viewModel = this@AccountEditFragment.viewModel.also { viewModel ->
-                btnDel.setOnClickListener {
-                    AlertDialog.Builder(activity).apply {
-                        setTitle(
-                            getString(
-                                R.string.msg_account_del_confirm, viewModel.account?.name
-                            )
-                        )
-                        setMessage(R.string.msg_account_del_confirm_hint)
-                        setPositiveButton(R.string.btn_del) { _, _ ->
-                            viewModel.deleteAccount(
-                                onSuccess = {
-                                    Snackbar.make(
-                                        binding.root,
-                                        getString(
-                                            R.string.msg_account_deleted,
-                                            viewModel.account?.name
-                                        ),
-                                        Snackbar.LENGTH_SHORT
-                                    ).show()
-                                    findNavController().popBackStack()
-                                },
-                                onFail = {
-                                    Snackbar.make(
-                                        binding.root,
-                                        getString(R.string.msg_at_least_one_account),
-                                        Snackbar.LENGTH_SHORT
-                                    ).show()
-                                }
-                            )
-                        }
-                        setNegativeButton(
-                            R.string.btn_cancel
-                        ) { dialogInterface, _ -> dialogInterface.dismiss() }
-                        create().show()
-                    }
-                }
-            }
-        }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         KeyboardUtil.closeKeyboard(activity)
+    }
+
+    private fun showDelConfirmDialog() {
+        AlertDialog.Builder(activity).apply {
+            setTitle(getString(R.string.msg_account_del_confirm, viewModel.account?.name))
+            setMessage(R.string.msg_account_del_confirm_hint)
+            setPositiveButton(R.string.btn_del) { _, _ ->
+                viewModel.deleteAccount(
+                    onSuccess = {
+                        Snackbar.make(
+                            binding.root,
+                            getString(R.string.msg_account_deleted, viewModel.account?.name),
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                        findNavController().popBackStack()
+                    },
+                    onFail = {
+                        Snackbar.make(
+                            binding.root,
+                            getString(R.string.msg_at_least_one_account),
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                )
+            }
+            setNegativeButton(R.string.btn_cancel) { dialogInterface, _ -> dialogInterface.dismiss() }
+            create().show()
+        }
     }
 }
