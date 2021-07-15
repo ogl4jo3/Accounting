@@ -30,8 +30,14 @@ interface CategoryDao {
 
     //檢查是否重複,TODO:確認是否必要
 
+    @Query("SELECT COUNT(id) FROM category WHERE categoryType = :categoryType")
+    suspend fun getNumberOfCategories(categoryType: CategoryType): Int
+
     @Query("SELECT COUNT(id) FROM category WHERE name = :name")
     suspend fun getNumberOfCategoriesByName(name: String): Int
+
+    @Query("SELECT COUNT(id) FROM category WHERE name = :name AND id != :excludeId")
+    suspend fun getNumberOfCategoriesByName(name: String, excludeId: String): Int
 
     @Query("SELECT MAX(orderNumber) FROM category WHERE categoryType = :categoryType")
     suspend fun getMaxOrderNumber(categoryType: CategoryType): Int?
