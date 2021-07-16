@@ -45,7 +45,7 @@ class AccountEditViewModelTest {
             )
         )
         fakeAccountDataSource = FakeAccountDataSource(defaultAccounts)
-        accountEditViewModel = AccountEditViewModel(fakeAccountDataSource, defaultAccounts[0].id)
+        accountEditViewModel = AccountEditViewModel(fakeAccountDataSource, defaultAccounts[0])
     }
 
     @Test

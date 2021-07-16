@@ -42,7 +42,7 @@ class AccountListFragment : Fragment() {
             navigateToAccountEditFragment = { account ->
                 findNavController().navigate(
                     AccountListFragmentDirections.actionAccountListFragmentToAccountEditFragment(
-                        accountId = account.id
+                        account = account
                     )
                 )
             }

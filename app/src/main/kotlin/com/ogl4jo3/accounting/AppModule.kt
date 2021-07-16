@@ -1,5 +1,6 @@
 package com.ogl4jo3.accounting
 
+import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
@@ -15,8 +16,8 @@ val appModule = module {
     viewModel { (date: Date) ->
         ExpenseAddViewModel(date)
     }
-    viewModel { (accountId: String) ->
-        AccountEditViewModel(accountId = accountId)
+    viewModel { (account: Account) ->
+        AccountEditViewModel(account = account)
     }
     viewModel { (defaultCategoryIcon: CategoryIcon) ->
         ExpenseCategoryAddViewModel(

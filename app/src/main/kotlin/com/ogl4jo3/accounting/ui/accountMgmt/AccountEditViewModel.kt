@@ -11,15 +11,13 @@ import timber.log.Timber
 
 class AccountEditViewModel(
     private val accountDataSource: AccountDataSource = DefaultAccountDataSource(),
-    private val accountId: String
+    val account: Account
 ) : ViewModel() {
-    var account: Account? = runBlocking { accountDataSource.getAccountById(accountId) }
 
-    //    val isShowDelBtn = runBlocking { accountDataSource.getNumberOfAccounts() > 1 }
-    val accountName = MutableLiveData(account?.name)
-    val isDefaultAccount = MutableLiveData(account?.isDefaultAccount)
-    val accountCategory = MutableLiveData(account?.category)
-    val initialAmount = MutableLiveData(account?.initialAmount)
+    val accountName = MutableLiveData(account.name)
+    val isDefaultAccount = MutableLiveData(account.isDefaultAccount)
+    val accountCategory = MutableLiveData(account.category)
+    val initialAmount = MutableLiveData(account.initialAmount)
 
     var accountNameEmptyError: () -> Unit = { }
     var accountNameExistError: () -> Unit = { }
@@ -28,9 +26,8 @@ class AccountEditViewModel(
 
     fun saveAccount() {
         safeLet(
-            accountName.value, initialAmount.value, accountCategory.value, isDefaultAccount.value,
-            account
-        ) { accountName, initialAmount, accountCategory, isDefaultAccount, account ->
+            accountName.value, initialAmount.value, accountCategory.value, isDefaultAccount.value
+        ) { accountName, initialAmount, accountCategory, isDefaultAccount ->
             account.name = accountName
             account.initialAmount = initialAmount
             account.category = accountCategory
@@ -65,16 +62,14 @@ class AccountEditViewModel(
 
     fun deleteAccount(onSuccess: () -> Unit = {}, onFail: () -> Unit = {}) {
         runBlocking {
-            account?.let { account ->
-                if (accountDataSource.getNumberOfAccounts() <= 1) {
-                    onFail()
-                } else {
-                    accountDataSource.deleteAccount(account)
-                    if (account.isDefaultAccount) {
-                        accountDataSource.setDefaultAccount(accountDataSource.getAllAccounts()[0].id)
-                    }
-                    onSuccess()
+            if (accountDataSource.getNumberOfAccounts() <= 1) {
+                onFail()
+            } else {
+                accountDataSource.deleteAccount(account)
+                if (account.isDefaultAccount) {
+                    accountDataSource.setDefaultAccount(accountDataSource.getAllAccounts()[0].id)
                 }
+                onSuccess()
             }
         }
     }

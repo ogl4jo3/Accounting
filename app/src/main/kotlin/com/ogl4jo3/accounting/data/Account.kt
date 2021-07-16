@@ -1,13 +1,15 @@
 package com.ogl4jo3.accounting.data
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.ogl4jo3.accounting.R
+import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
-//TODO: add parcelize for navigation
+@Parcelize
 @Entity(tableName = "account", indices = [Index(value = ["name"], unique = true)])
 data class Account(
     @PrimaryKey @ColumnInfo(name = "id") var id: String = UUID.randomUUID().toString(),
@@ -18,7 +20,7 @@ data class Account(
     @ColumnInfo(name = "budgetPrice") var budgetPrice: Int, //預算金額//TODO:
     @ColumnInfo(name = "budgetNotice") var budgetNotice: Float, //預算低於多少百分比提醒//TODO:
     @ColumnInfo(name = "balance") var balance: Int, //帳戶餘額//TODO: check is necessary??, use (initialAmount - expense + income) instead
-)
+) : Parcelable
 
 enum class AccountCategory(val nameRes: Int, val iconRes: Int) {
     Cash(R.string.tv_account_category_cash, R.drawable.ic_account_category_cash),
