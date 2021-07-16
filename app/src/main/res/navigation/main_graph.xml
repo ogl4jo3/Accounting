@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/expenseFragment"
-        android:label="@string/title_expense"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseFragment"
+        android:label="@string/title_expense"
         tools:layout="@layout/fragment_expense">
 
         <action
@@ -23,8 +23,8 @@
 
     <fragment
         android:id="@+id/expenseAddFragment"
-        android:label="@string/title_expense_new"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseAddFragment"
+        android:label="@string/title_expense_new"
         tools:layout="@layout/fragment_expense_add">
 
         <argument
@@ -36,8 +36,8 @@
 
     <fragment
         android:id="@+id/expenseNewEditFragment"
-        android:label="{title}"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewEditFragment"
+        android:label="{title}"
         tools:layout="@layout/fragment_expense_new_edit">
         <argument
             android:name="title"
@@ -55,8 +55,8 @@
 
     <fragment
         android:id="@+id/incomeFragment"
-        android:label="@string/title_income"
         android:name="com.ogl4jo3.accounting.ui.income.IncomeFragment"
+        android:label="@string/title_income"
         tools:layout="@layout/fragment_income">
         <action
             android:id="@+id/action_incomeFragment_to_incomeNewEditFragment"
@@ -65,8 +65,8 @@
 
     <fragment
         android:id="@+id/incomeNewEditFragment"
-        android:label="{title}"
         android:name="com.ogl4jo3.accounting.ui.income.IncomeNewEditFragment"
+        android:label="{title}"
         tools:layout="@layout/fragment_income_new_edit">
         <argument
             android:name="title"
@@ -84,8 +84,8 @@
 
     <fragment
         android:id="@+id/accountListFragment"
-        android:label="@string/title_account_mgmt"
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountListFragment"
+        android:label="@string/title_account_mgmt"
         tools:layout="@layout/fragment_account_list">
         <action
             android:id="@+id/action_accountListFragment_to_accountAddFragment"
@@ -98,14 +98,14 @@
 
     <fragment
         android:id="@+id/accountAddFragment"
-        android:label="@string/title_account_add"
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountAddFragment"
+        android:label="@string/title_account_add"
         tools:layout="@layout/fragment_account_add" />
 
     <fragment
         android:id="@+id/accountEditFragment"
-        android:label="@string/title_account_edit"
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountEditFragment"
+        android:label="@string/title_account_edit"
         tools:layout="@layout/fragment_account_edit">
         <argument
             android:name="accountId"
@@ -115,18 +115,27 @@
 
     <fragment
         android:id="@+id/expenseCategoryMgmtFragment"
-        android:label="@string/title_expense_category_mgmt"
         android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpensesCategoryMgmtFragment"
+        android:label="@string/title_expense_category_mgmt"
         tools:layout="@layout/fragment_category_mgmt_expenses">
         <action
             android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryNewEditFragment"
             app:destination="@id/expensesCategoryNewEditFragment" />
+        <action
+            android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryAddFragment"
+            app:destination="@id/expensesCategoryAddFragment" />
     </fragment>
 
     <fragment
+        android:id="@+id/expensesCategoryAddFragment"
+        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryAddFragment"
+        android:label="@string/title_expense_category_add"
+        tools:layout="@layout/fragment_category_add" />
+
+    <fragment
         android:id="@+id/expensesCategoryNewEditFragment"
-        android:label="{title}"
         android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpensesCategoryNewEditFragment"
+        android:label="{title}"
         tools:layout="@layout/fragment_category_new_edit">
         <argument
             android:name="title"
@@ -141,8 +150,8 @@
 
     <fragment
         android:id="@+id/incomeCategoryMgmtFragment"
-        android:label="@string/title_income_category_mgmt"
         android:name="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryMgmtFragment"
+        android:label="@string/title_income_category_mgmt"
         tools:layout="@layout/fragment_category_mgmt_income">
         <action
             android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryNewEditFragment"
@@ -151,8 +160,8 @@
 
     <fragment
         android:id="@+id/incomeCategoryNewEditFragment"
-        android:label="{title}"
         android:name="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryNewEditFragment"
+        android:label="{title}"
         tools:layout="@layout/fragment_category_new_edit">
         <argument
             android:name="title"

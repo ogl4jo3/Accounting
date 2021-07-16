@@ -48,24 +48,12 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_accountListFragment_to_accountNewEditFragment">
+                            <entry key="action_accountListFragment_to_accountEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="accountNewEditFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="165" />
-                            <option name="y" value="266" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -136,6 +124,18 @@
                           <Point>
                             <option name="x" value="112" />
                             <option name="y" value="-275" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="expensesCategoryAddFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>

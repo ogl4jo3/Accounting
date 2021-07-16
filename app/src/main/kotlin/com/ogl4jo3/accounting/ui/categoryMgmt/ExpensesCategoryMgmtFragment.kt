@@ -163,10 +163,7 @@ class ExpensesCategoryMgmtFragment : Fragment() {
     private fun setOnClickListener() {
         btnNew!!.setOnClickListener {
             findNavController().navigate(
-                ExpensesCategoryMgmtFragmentDirections.actionExpenseCategoryMgmtFragmentToExpensesCategoryNewEditFragment(
-                    title = resources.getString(R.string.title_expense_category_new),
-                    categoryJsonStr = null
-                )
+                ExpensesCategoryMgmtFragmentDirections.actionExpenseCategoryMgmtFragmentToExpensesCategoryAddFragment()
             )
         }
     }

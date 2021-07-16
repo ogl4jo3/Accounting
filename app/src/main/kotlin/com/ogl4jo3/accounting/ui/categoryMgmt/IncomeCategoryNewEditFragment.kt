@@ -159,7 +159,7 @@ class IncomeCategoryNewEditFragment : Fragment() {
             ) { //檢查是否重複
                 Toast.makeText(
                     activity, getString(
-                        R.string.hint_repeated_category
+                        R.string.hint_duplicated_category
                     ),
                     Toast.LENGTH_SHORT
                 ).show()

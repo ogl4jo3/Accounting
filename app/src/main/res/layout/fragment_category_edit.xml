@@ -1,0 +1,68 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_category_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_category_other"
+            app:layout_constraintBottom_toBottomOf="@id/et_category_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/et_category_name" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_category_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="16dp"
+            android:gravity="center"
+            android:hint="@string/et_name_hint"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLength="8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_category_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/category_other" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_categories"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/et_category_name"
+            tools:listitem="@layout/item_category_icon" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save"
+            app:layout_constraintEnd_toStartOf="@id/btn_del"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_categories" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/btn_del"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_save"
+            app:layout_constraintTop_toTopOf="@id/btn_save" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

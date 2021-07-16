@@ -164,7 +164,7 @@ class IncomeCategoryMgmtFragment : Fragment() {
         btnNew!!.setOnClickListener {
             findNavController().navigate(
                 IncomeCategoryMgmtFragmentDirections.actionIncomeCategoryMgmtFragmentToIncomeCategoryNewEditFragment(
-                    title = resources.getString(R.string.title_expense_category_new),
+                    title = resources.getString(R.string.title_expense_category_add),
                     categoryJsonStr = null
                 )
             )
