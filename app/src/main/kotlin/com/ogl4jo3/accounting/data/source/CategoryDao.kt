@@ -17,6 +17,9 @@ interface CategoryDao {
     @Query("SELECT * FROM category WHERE id = :id")
     suspend fun getCategoryById(id: String): Category?
 
+    @Query("SELECT * FROM category WHERE categoryType = :categoryType")
+    suspend fun getCategoriesByType(categoryType: CategoryType): List<Category>
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateCategory(category: Category)
 
@@ -25,8 +28,6 @@ interface CategoryDao {
 
     //更新類別排序編號,TODO:確認是否必要
 
-    @Query("SELECT * FROM category WHERE categoryType = :categoryType")
-    suspend fun getCategoriesByType(categoryType: CategoryType): List<Category>
 
     //檢查是否重複,TODO:確認是否必要
 

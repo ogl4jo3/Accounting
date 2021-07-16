@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 import com.ogl4jo3.accounting.R
 import java.util.UUID
 
+//TODO: add parcelize for navigation
 @Entity(tableName = "account", indices = [Index(value = ["name"], unique = true)])
 data class Account(
     @PrimaryKey @ColumnInfo(name = "id") var id: String = UUID.randomUUID().toString(),

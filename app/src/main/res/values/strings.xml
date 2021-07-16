@@ -202,13 +202,13 @@
 
     <!-- CategoryMgmtFragment 類別管理 不分支出或收入-->
     <string name="et_name_hint">名稱</string>
-    <string name="msg_category_deleted">%s已刪除</string>
+    <string name="msg_category_deleted">類別 \"%s\" 已刪除</string>
     <string name="hint_category_mgmt">左滑刪除項目\n長按移動項目順序</string>
     <string name="hint_input_category_name">請輸入名稱</string>
     <string name="hint_duplicated_category">此類別已存在</string>
-    <string name="msg_category_del_confirm">確定刪除此類別?</string>
+    <string name="msg_category_del_confirm">確定刪除類別  \"%s\" ?</string>
     <string name="msg_category_del_confirm_hint">注意:此類別的所有紀錄將會一併刪除</string>
-
+    <string name="msg_at_least_one_category">至少要有一個類別</string>
     <!-- ExpenseCategoryMgmtFragment 支出類別管理 -->
     <string name="title_expense_category_mgmt">支出類別管理</string>
 

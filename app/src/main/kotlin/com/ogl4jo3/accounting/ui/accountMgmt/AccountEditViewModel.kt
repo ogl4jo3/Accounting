@@ -63,7 +63,7 @@ class AccountEditViewModel(
         }
     }
 
-    fun deleteAccount(onSuccess: () -> Unit, onFail: () -> Unit) {
+    fun deleteAccount(onSuccess: () -> Unit = {}, onFail: () -> Unit = {}) {
         runBlocking {
             account?.let { account ->
                 if (accountDataSource.getNumberOfAccounts() <= 1) {

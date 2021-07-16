@@ -5,6 +5,7 @@ import com.ogl4jo3.accounting.data.CategoryType
 
 interface CategoryDataSource {
     suspend fun insertCategory(category: Category): Long
+    suspend fun getCategoriesByType(categoryType: CategoryType): List<Category>
     suspend fun updateCategory(category: Category)
     suspend fun deleteCategory(category: Category)
 

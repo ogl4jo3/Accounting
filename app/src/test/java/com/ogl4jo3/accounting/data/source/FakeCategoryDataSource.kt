@@ -18,6 +18,10 @@ class FakeCategoryDataSource(
         }
     }
 
+    override suspend fun getCategoriesByType(categoryType: CategoryType): List<Category> {
+        return categories.filter { it.categoryType == categoryType }
+    }
+
     override suspend fun updateCategory(category: Category) {
         categories.replaceAll { if (it.id == category.id) category else it }
     }

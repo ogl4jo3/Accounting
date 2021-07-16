@@ -22,6 +22,10 @@ class DefaultCategoryDataSource(
         return categoryDao.insertCategory(category)
     }
 
+    override suspend fun getCategoriesByType(categoryType: CategoryType): List<Category> {
+        return categoryDao.getCategoriesByType(categoryType)
+    }
+
     override suspend fun updateCategory(category: Category) {
         categoryDao.updateCategory(category)
     }
@@ -34,7 +38,7 @@ class DefaultCategoryDataSource(
         categoryDao.deleteCategory(category)
     }
 
-//    override suspend fun getAccountById(accountId: String): Account? {
+    //    override suspend fun getAccountById(accountId: String): Account? {
 //        return categoryDao.getAccountById(accountId)
 //    }
 //

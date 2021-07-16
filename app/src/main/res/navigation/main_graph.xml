@@ -119,8 +119,8 @@
         android:label="@string/title_expense_category_mgmt"
         tools:layout="@layout/fragment_category_mgmt_expenses">
         <action
-            android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryNewEditFragment"
-            app:destination="@id/expensesCategoryNewEditFragment" />
+            android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryEditFragment"
+            app:destination="@id/expensesCategoryEditFragment" />
         <action
             android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryAddFragment"
             app:destination="@id/expensesCategoryAddFragment" />
@@ -133,20 +133,15 @@
         tools:layout="@layout/fragment_category_add" />
 
     <fragment
-        android:id="@+id/expensesCategoryNewEditFragment"
-        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpensesCategoryNewEditFragment"
-        android:label="{title}"
-        tools:layout="@layout/fragment_category_new_edit">
+        android:id="@+id/expensesCategoryEditFragment"
+        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryEditFragment"
+        android:label="@string/title_expense_category_edit"
+        tools:layout="@layout/fragment_category_edit">
         <argument
-            android:name="title"
-            app:argType="string"
+            android:name="category"
+            app:argType="com.ogl4jo3.accounting.data.Category"
             app:nullable="false" />
-        <argument
-            android:name="categoryJsonStr"
-            app:argType="string"
-            app:nullable="true" />
     </fragment>
-
 
     <fragment
         android:id="@+id/incomeCategoryMgmtFragment"

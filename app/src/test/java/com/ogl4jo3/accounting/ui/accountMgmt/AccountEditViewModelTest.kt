@@ -84,7 +84,7 @@ class AccountEditViewModelTest {
 
     @Test
     fun `test delete account`() = runBlocking {
-        accountEditViewModel.deleteAccount({}, {})
+        accountEditViewModel.deleteAccount()
         Assert.assertEquals(2, fakeAccountDataSource.getNumberOfAccounts())
     }
 
@@ -102,13 +102,13 @@ class AccountEditViewModelTest {
             )
         )
         fakeAccountDataSource = FakeAccountDataSource(defaultAccounts)
-        accountEditViewModel.deleteAccount({}, {})
+        accountEditViewModel.deleteAccount()
         Assert.assertEquals(1, fakeAccountDataSource.getNumberOfAccounts())
     }
 
     @Test
     fun `test delete default account`() = runBlocking {
-        accountEditViewModel.deleteAccount({}, {})
+        accountEditViewModel.deleteAccount()
         Assert.assertEquals(2, fakeAccountDataSource.getNumberOfAccounts())
         Assert.assertEquals(true, fakeAccountDataSource.hasDefaultAccount(""))
     }

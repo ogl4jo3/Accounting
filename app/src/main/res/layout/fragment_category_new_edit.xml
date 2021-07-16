@@ -1,70 +1,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="com.ogl4jo3.accounting.ui.categoryMgmt.ExpensesCategoryNewEditFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center_vertical"
-		android:orientation="horizontal"
-		android:padding="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-		<ImageView
-			android:id="@+id/iv_icon"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:contentDescription="@string/iv_category_icon"
-			android:src="@drawable/ic_category_other"
-			android:tag="@drawable/ic_category_other"/>
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/iv_category_icon"
+            android:src="@drawable/ic_category_other"
+            android:tag="@drawable/ic_category_other" />
 
-		<EditText
-			android:id="@+id/et_name"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginLeft="16dp"
-			android:layout_marginRight="16dp"
-			android:gravity="center_horizontal"
-			android:hint="@string/et_name_hint"
-			android:imeOptions="actionDone"
-			android:inputType="text"
-			android:maxLength="8"/>
-	</LinearLayout>
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/et_name_hint"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLength="8" />
+    </LinearLayout>
 
-	<GridView
-		android:id="@+id/gv_category_icon"
-		android:layout_width="match_parent"
-		android:layout_height="276dp"
-		android:layout_marginBottom="24dp"
-		android:layout_marginLeft="12dp"
-		android:layout_marginRight="12dp"
-		android:layout_marginTop="24dp"
-		android:numColumns="5"/>
+    <GridView
+        android:id="@+id/gv_category_icon"
+        android:layout_width="match_parent"
+        android:layout_height="276dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="24dp"
+        android:numColumns="5" />
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center"
-		android:orientation="horizontal"
-		android:padding="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="4dp">
 
-		<Button
-			android:id="@+id/btn_new"
-			style="@style/Normal_btn"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/btn_save"/>
+        <Button
+            android:id="@+id/btn_new"
+            style="@style/Normal_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save" />
 
-		<Button
-			android:id="@+id/btn_del"
-			style="@style/Normal_btn"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/btn_del"/>
+        <Button
+            android:id="@+id/btn_del"
+            style="@style/Normal_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_del" />
 
-	</LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import com.google.gson.Gson
 import com.ogl4jo3.accounting.R
+import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.setting.categorymanagement.Category
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO
 import com.ogl4jo3.accounting.utils.database.MyDBHelper
@@ -22,9 +23,17 @@ class ExpensesCategoryAdapter(
 ) : CategoryAdapter(mContext, fragmentManager, categoryList) {
     override fun onItemClick(holder: ViewHolder) {
         Navigation.findNavController(holder.itemView).navigate(
-            ExpensesCategoryMgmtFragmentDirections.actionExpenseCategoryMgmtFragmentToExpensesCategoryNewEditFragment(
-                title = mContext.getString(R.string.title_expense_category_edit),
-                categoryJsonStr = Gson().toJson(categoryList[holder.adapterPosition])
+            ExpensesCategoryMgmtFragmentDirections.actionExpenseCategoryMgmtFragmentToExpensesCategoryEditFragment(
+                //TODO: workaround , for test
+                category = com.ogl4jo3.accounting.data.Category(
+                    id = "a1110637-5ad5-449b-a09e-6886228aa3c9",
+                    orderNumber = 0,
+                    name = "test",
+                    iconResName = mContext.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
+                    categoryType = CategoryType.Expense
+                )
+//                title = mContext.getString(R.string.title_expense_category_edit),
+//                categoryJsonStr = Gson().toJson(categoryList[holder.adapterPosition])
             )
         )
         //Toast.makeText(mContext, "Click on " + categoryList.get(position).getName(),
