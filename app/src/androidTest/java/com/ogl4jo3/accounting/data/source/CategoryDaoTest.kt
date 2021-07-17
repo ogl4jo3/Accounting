@@ -114,7 +114,7 @@ class CategoryDaoTest {
         Timber.d("Test-GetAllExpenseCategory")
         categoryDao.insertCategory(
             Category(
-                orderNumber = 0,
+                orderNumber = 5,
                 name = "test1",
                 iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
                 categoryType = CategoryType.Expense
@@ -137,6 +137,7 @@ class CategoryDaoTest {
             )
         )
         Assert.assertEquals(3, categoryDao.getCategoriesByType(CategoryType.Expense).size)
+        Assert.assertEquals("test2", categoryDao.getCategoriesByType(CategoryType.Expense)[0].name)
     }
 
     @Test
@@ -144,7 +145,7 @@ class CategoryDaoTest {
         Timber.d("Test-GetAllIncomeCategory")
         categoryDao.insertCategory(
             Category(
-                orderNumber = 0,
+                orderNumber = 3,
                 name = "test1",
                 iconResName = context.resources.getResourceEntryName(R.drawable.ic_category_afternoon_tea),
                 categoryType = CategoryType.Income
@@ -159,6 +160,7 @@ class CategoryDaoTest {
             )
         )
         Assert.assertEquals(2, categoryDao.getCategoriesByType(CategoryType.Income).size)
+        Assert.assertEquals("test2", categoryDao.getCategoriesByType(CategoryType.Income)[0].name)
     }
 
 }

@@ -12,5 +12,6 @@ interface CategoryDataSource {
     suspend fun getNumberOfCategories(categoryType: CategoryType): Int
     suspend fun hasDuplicatedName(name: String): Boolean
     suspend fun hasDuplicatedName(name: String, excludeId: String): Boolean
+    suspend fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category)
 
 }

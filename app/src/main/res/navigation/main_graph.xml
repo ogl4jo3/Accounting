@@ -115,9 +115,9 @@
 
     <fragment
         android:id="@+id/expenseCategoryMgmtFragment"
-        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpensesCategoryMgmtFragment"
+        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryMgmtFragment"
         android:label="@string/title_expense_category_mgmt"
-        tools:layout="@layout/fragment_category_mgmt_expenses">
+        tools:layout="@layout/fragment_category_mgmt_expense">
         <action
             android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryEditFragment"
             app:destination="@id/expensesCategoryEditFragment" />

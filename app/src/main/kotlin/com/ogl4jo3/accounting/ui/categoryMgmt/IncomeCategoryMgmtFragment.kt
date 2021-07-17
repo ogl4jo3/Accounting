@@ -47,7 +47,7 @@ class IncomeCategoryMgmtFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
-        inflater.inflate(R.menu.menu_category_mgmt, menu)
+        inflater.inflate(R.menu.menu_hint, menu)
         //super.onCreateOptionsMenu(menu, inflater);
     }
 

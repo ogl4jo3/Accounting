@@ -20,12 +20,14 @@ class ExpenseCategoryEditViewModelTest {
             Category(
                 name = "test",
                 iconResName = "ic_category_other",
-                categoryType = CategoryType.Expense
+                categoryType = CategoryType.Expense,
+                orderNumber = 0
             ),
             Category(
                 name = "test2",
                 iconResName = "Test2IconResName",
-                categoryType = CategoryType.Expense
+                categoryType = CategoryType.Expense,
+                orderNumber = 1
             )
         )
         fakeCategoryDataSource = FakeCategoryDataSource(defaultCategories)
@@ -43,7 +45,6 @@ class ExpenseCategoryEditViewModelTest {
         val category = categories[0]
         category.name = "test123"
         category.iconResName = "12345"
-        category.orderNumber = 12
         expenseCategoryEditViewModel.saveCategory(category)
         Assert.assertEquals(
             "test123",
@@ -52,9 +53,6 @@ class ExpenseCategoryEditViewModelTest {
         Assert.assertEquals(
             "12345",
             fakeCategoryDataSource.getCategoriesByType(CategoryType.Expense)[0].iconResName
-        )
-        Assert.assertEquals(
-            12, fakeCategoryDataSource.getCategoriesByType(CategoryType.Expense)[0].orderNumber
         )
     }
 

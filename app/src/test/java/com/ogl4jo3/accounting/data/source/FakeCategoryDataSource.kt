@@ -19,7 +19,7 @@ class FakeCategoryDataSource(
     }
 
     override suspend fun getCategoriesByType(categoryType: CategoryType): List<Category> {
-        return categories.filter { it.categoryType == categoryType }
+        return categories.filter { it.categoryType == categoryType }.sortedBy { it.orderNumber }
     }
 
     override suspend fun updateCategory(category: Category) {
@@ -58,6 +58,10 @@ class FakeCategoryDataSource(
 //    override suspend fun setDefaultAccount(id: String) {
 //        categories.find { it.id == id }?.isDefaultAccount = true
 //    }
+    override suspend fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category) {
+        categories.find { it.id == fromCategory.id }?.orderNumber = toCategory.orderNumber
+        categories.find { it.id == toCategory.id }?.orderNumber = fromCategory.orderNumber
+    }
 
     fun getCategory(index: Int): Category {
         return categories[index].copy()

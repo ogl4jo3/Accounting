@@ -3,18 +3,24 @@ package com.ogl4jo3.accounting.data.source
 import com.ogl4jo3.accounting.AccountingApplication
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
+import kotlinx.coroutines.runBlocking
 
 class DefaultCategoryDataSource(
-//    private val defaultAccounts: List<Category> = AccountingApplication.defaultAccounts,//TODO: add default category
+    private val defaultCategories: List<Category> = AccountingApplication.defaultCategories,
     val categoryDao: CategoryDao = AccountingApplication.database.categoryDao()
 ) : CategoryDataSource {
-//    init {
-//        runBlocking {
-//            if (getNumberOfAccounts() <= 0) {
-//                defaultAccounts.forEach { insertAccount(it) }
-//            }
-//        }
-//    }
+    init {
+        runBlocking {
+            if (getNumberOfCategories(CategoryType.Expense) <= 0) {
+                defaultCategories.filter { it.categoryType == CategoryType.Expense }
+                    .forEach { insertCategory(it) }
+            }
+            if (getNumberOfCategories(CategoryType.Income) <= 0) {
+                defaultCategories.filter { it.categoryType == CategoryType.Income }
+                    .forEach { insertCategory(it) }
+            }
+        }
+    }
 
     override suspend fun insertCategory(category: Category): Long {
         category.orderNumber =
@@ -58,7 +64,16 @@ class DefaultCategoryDataSource(
         return categoryDao.getNumberOfCategoriesByName(name, excludeId) > 0
     }
 
-//    override suspend fun hasDefaultAccount(excludeId: String): Boolean {
+    override suspend fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category) {
+        val fromOrderNumber = fromCategory.orderNumber
+        val toOrderNumber = toCategory.orderNumber
+        fromCategory.orderNumber = toOrderNumber
+        toCategory.orderNumber = fromOrderNumber
+        categoryDao.updateCategory(fromCategory)
+        categoryDao.updateCategory(toCategory)
+    }
+
+    //    override suspend fun hasDefaultAccount(excludeId: String): Boolean {
 //        return categoryDao.hasDefaultAccount(excludeId) > 0
 //    }
 //
