@@ -2,7 +2,12 @@ package com.ogl4jo3.accounting.ui.categoryMgmt
 
 import android.graphics.Canvas
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -163,10 +168,7 @@ class IncomeCategoryMgmtFragment : Fragment() {
     private fun setOnClickListener() {
         btnNew!!.setOnClickListener {
             findNavController().navigate(
-                IncomeCategoryMgmtFragmentDirections.actionIncomeCategoryMgmtFragmentToIncomeCategoryNewEditFragment(
-                    title = resources.getString(R.string.title_expense_category_add),
-                    categoryJsonStr = null
-                )
+                IncomeCategoryMgmtFragmentDirections.actionIncomeCategoryMgmtFragmentToIncomeCategoryAddFragment()
             )
         }
     }

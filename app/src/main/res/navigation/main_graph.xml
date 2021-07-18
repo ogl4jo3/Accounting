@@ -149,9 +149,18 @@
         android:label="@string/title_income_category_mgmt"
         tools:layout="@layout/fragment_category_mgmt_income">
         <action
+            android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryAddFragment"
+            app:destination="@id/incomeCategoryAddFragment" />
+        <action
             android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryNewEditFragment"
             app:destination="@id/incomeCategoryNewEditFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/incomeCategoryAddFragment"
+        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryAddFragment"
+        android:label="@string/title_income_category_add"
+        tools:layout="@layout/fragment_category_add" />
 
     <fragment
         android:id="@+id/incomeCategoryNewEditFragment"

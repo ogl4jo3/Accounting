@@ -10,7 +10,7 @@ import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
-class ExpenseCategoryAddViewModel(
+class IncomeCategoryAddViewModel(
     private val categoryDataSource: CategoryDataSource = DefaultCategoryDataSource(),
     val defaultCategoryIcon: CategoryIcon,
 ) : ViewModel(), CategoryAddViewModel {
@@ -31,7 +31,7 @@ class ExpenseCategoryAddViewModel(
             Category(
                 name = categoryName,
                 iconResName = categoryIcon.iconEntryName,
-                categoryType = CategoryType.Expense
+                categoryType = CategoryType.Income
             )
         }?.let { account ->
             runBlocking { addCategory(account) }

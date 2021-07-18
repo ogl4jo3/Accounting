@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryAddViewModel" />
+            type="com.ogl4jo3.accounting.ui.categoryMgmt.CategoryAddViewModel" />
 
         <variable
             name="categoryIconList"

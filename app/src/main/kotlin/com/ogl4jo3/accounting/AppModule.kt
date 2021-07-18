@@ -6,6 +6,7 @@ import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
 import com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryAddViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryEditViewModel
+import com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryAddViewModel
 import com.ogl4jo3.accounting.ui.expense.ExpenseAddViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -28,6 +29,11 @@ val appModule = module {
         ExpenseCategoryEditViewModel(
             categoryIcon = categoryIcon,
             category = category
+        )
+    }
+    viewModel { (defaultCategoryIcon: CategoryIcon) ->
+        IncomeCategoryAddViewModel(
+            defaultCategoryIcon = defaultCategoryIcon
         )
     }
 }

@@ -86,7 +86,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_expenseCategoryMgmtFragment_to_expensesCategoryNewEditFragment">
+                            <entry key="action_expenseCategoryMgmtFragment_to_expensesCategoryEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -158,7 +158,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="expensesCategoryNewEditFragment">
+                  <entry key="incomeCategoryAddFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
