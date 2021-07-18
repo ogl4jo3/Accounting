@@ -152,8 +152,8 @@
             android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryAddFragment"
             app:destination="@id/incomeCategoryAddFragment" />
         <action
-            android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryNewEditFragment"
-            app:destination="@id/incomeCategoryNewEditFragment" />
+            android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryEditFragment"
+            app:destination="@id/incomeCategoryEditFragment" />
     </fragment>
 
     <fragment
@@ -163,18 +163,14 @@
         tools:layout="@layout/fragment_category_add" />
 
     <fragment
-        android:id="@+id/incomeCategoryNewEditFragment"
-        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryNewEditFragment"
-        android:label="{title}"
-        tools:layout="@layout/fragment_category_new_edit">
+        android:id="@+id/incomeCategoryEditFragment"
+        android:name="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryEditFragment"
+        android:label="@string/title_income_category_edit"
+        tools:layout="@layout/fragment_category_edit">
         <argument
-            android:name="title"
-            app:argType="string"
+            android:name="category"
+            app:argType="com.ogl4jo3.accounting.data.Category"
             app:nullable="false" />
-        <argument
-            android:name="categoryJsonStr"
-            app:argType="string"
-            app:nullable="true" />
     </fragment>
 
 </navigation>

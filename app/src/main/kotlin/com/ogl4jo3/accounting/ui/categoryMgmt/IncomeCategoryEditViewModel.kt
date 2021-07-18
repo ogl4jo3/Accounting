@@ -9,7 +9,7 @@ import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
-class ExpenseCategoryEditViewModel(
+class IncomeCategoryEditViewModel(
     private val categoryDataSource: CategoryDataSource = DefaultCategoryDataSource(),
     val categoryIcon: CategoryIcon,
     val category: Category,
