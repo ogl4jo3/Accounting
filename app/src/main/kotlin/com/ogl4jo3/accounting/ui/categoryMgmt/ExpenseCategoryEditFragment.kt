@@ -21,7 +21,7 @@ class ExpenseCategoryEditFragment : Fragment() {
 
     private val binding by viewBinding(FragmentCategoryEditBinding::inflate)
     private val args by navArgs<ExpenseCategoryEditFragmentArgs>()
-    private val viewModel by viewModel<ExpenseCategoryEditViewModel> {
+    private val viewModel by viewModel<CategoryEditViewModel> {
         parametersOf(
             CategoryIcon(
                 args.category.iconResName.drawableId(activity, resources),
