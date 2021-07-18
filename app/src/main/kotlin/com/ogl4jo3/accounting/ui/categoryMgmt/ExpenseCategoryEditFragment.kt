@@ -31,12 +31,7 @@ class ExpenseCategoryEditFragment : Fragment() {
         )
     }
 
-    private val categoryIconList = mutableListOf<CategoryIcon>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initCategoryIconRes()
-    }
+    private val categoryIconList by lazy { R.array.category_icon.toCategoryIconList(resources) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -81,16 +76,6 @@ class ExpenseCategoryEditFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         activity?.hideKeyboard()
-    }
-
-    private fun initCategoryIconRes() {
-        val icons = resources.obtainTypedArray(R.array.category_icon)
-        for (i in 0 until icons.length()) {
-            val resId = icons.getResourceId(i, -1)
-            val resEntryName = resources.getResourceEntryName(resId)
-            categoryIconList.add(CategoryIcon(resId, resEntryName))
-        }
-        icons.recycle()
     }
 
     private fun showDelConfirmDialog() {

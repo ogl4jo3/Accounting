@@ -17,10 +17,11 @@ It's an Android App that can record the expense and income daily, and count data
 - Single-activity architecture(using Navigation component)
 
 ## Screenshots
-
+//TODO: add screenshots
 
 ## TODOs
 - Refactor
+- UI test
 - CI
 - Deploy on Google Play Store
 

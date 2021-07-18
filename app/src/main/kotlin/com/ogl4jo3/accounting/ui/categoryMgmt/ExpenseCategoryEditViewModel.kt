@@ -27,9 +27,7 @@ class ExpenseCategoryEditViewModel(
     }
 
     fun saveCategory() {
-        safeLet(
-            selectedCategoryIcon.value, categoryName.value
-        ) { categoryIcon, categoryName ->
+        safeLet(selectedCategoryIcon.value, categoryName.value) { categoryIcon, categoryName ->
             category.name = categoryName
             category.iconResName = categoryIcon.iconEntryName
             category

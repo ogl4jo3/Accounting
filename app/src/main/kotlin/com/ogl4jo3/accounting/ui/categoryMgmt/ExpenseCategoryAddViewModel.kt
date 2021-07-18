@@ -27,9 +27,7 @@ class ExpenseCategoryAddViewModel(
     }
 
     fun addCategory() {
-        safeLet(
-            selectedCategoryIcon.value, categoryName.value
-        ) { categoryIcon, categoryName ->
+        safeLet(selectedCategoryIcon.value, categoryName.value) { categoryIcon, categoryName ->
             Category(
                 name = categoryName,
                 iconResName = categoryIcon.iconEntryName,
