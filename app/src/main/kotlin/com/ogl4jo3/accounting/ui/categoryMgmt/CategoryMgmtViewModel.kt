@@ -35,7 +35,7 @@ class CategoryMgmtViewModel(
         }
     }
 
-    fun deleteCategory(category: Category, onSuccess: () -> Unit, onFail: () -> Unit) {
+    fun deleteCategory(category: Category, onSuccess: () -> Unit = {}, onFail: () -> Unit = {}) {
         runBlocking {
             if (categoryDataSource.getNumberOfCategories(category.categoryType) <= 1) {
                 onFail()

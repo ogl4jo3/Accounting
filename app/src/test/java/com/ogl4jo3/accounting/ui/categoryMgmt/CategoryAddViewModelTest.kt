@@ -1,27 +1,25 @@
 package com.ogl4jo3.accounting.ui.categoryMgmt
 
 import com.ogl4jo3.accounting.R
-import com.ogl4jo3.accounting.data.Account
-import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
-import com.ogl4jo3.accounting.data.source.FakeAccountDataSource
 import com.ogl4jo3.accounting.data.source.FakeCategoryDataSource
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class ExpenseCategoryAddViewModelTest {
+class CategoryAddViewModelTest {
 
-    private lateinit var expenseCategoryAddViewModel: ExpenseCategoryAddViewModel
+    private lateinit var categoryAddViewModel: CategoryAddViewModel
     private lateinit var fakeCategoryDataSource: FakeCategoryDataSource
 
     @Before
     fun setupViewModel() {
         fakeCategoryDataSource = FakeCategoryDataSource()
-        expenseCategoryAddViewModel = ExpenseCategoryAddViewModel(
+        categoryAddViewModel = CategoryAddViewModel(
             fakeCategoryDataSource,
+            CategoryType.Expense,
             CategoryIcon(R.drawable.ic_category_other, "ic_category_other")
         )
     }
@@ -29,7 +27,7 @@ class ExpenseCategoryAddViewModelTest {
     @Test
     fun `test add category`() = runBlocking {
         val categoriesSize = fakeCategoryDataSource.categories.size
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test",
                 iconResName = "TestIconResName",
@@ -42,14 +40,14 @@ class ExpenseCategoryAddViewModelTest {
     @Test
     fun `test add two category`() = runBlocking {
         val categoriesSize = fakeCategoryDataSource.categories.size
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test",
                 iconResName = "TestIconResName",
                 categoryType = CategoryType.Expense
             )
         )
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test2",
                 iconResName = "Test2IconResName",
@@ -62,14 +60,14 @@ class ExpenseCategoryAddViewModelTest {
     @Test
     fun `test add one expense category and one income category`() = runBlocking {
         val categoriesSize = fakeCategoryDataSource.categories.size
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test",
                 iconResName = "TestIconResName",
                 categoryType = CategoryType.Income
             )
         )
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test2",
                 iconResName = "Test2IconResName",
@@ -82,28 +80,28 @@ class ExpenseCategoryAddViewModelTest {
     @Test
     fun `test add two expense category and two income category`() = runBlocking {
         val categoriesSize = fakeCategoryDataSource.categories.size
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test",
                 iconResName = "TestIconResName",
                 categoryType = CategoryType.Income
             )
         )
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test3",
                 iconResName = "Test3IconResName",
                 categoryType = CategoryType.Income
             )
         )
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test2",
                 iconResName = "Test2IconResName",
                 categoryType = CategoryType.Expense
             )
         )
-        expenseCategoryAddViewModel.addCategory(
+        categoryAddViewModel.addCategory(
             Category(
                 name = "test4",
                 iconResName = "Test4IconResName",

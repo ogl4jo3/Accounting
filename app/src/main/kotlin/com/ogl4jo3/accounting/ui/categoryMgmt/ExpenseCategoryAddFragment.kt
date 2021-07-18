@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.ogl4jo3.accounting.R
+import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.databinding.FragmentCategoryAddBinding
 import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
 import com.ogl4jo3.accounting.ui.common.viewBinding
@@ -18,8 +19,9 @@ import org.koin.core.parameter.parametersOf
 class ExpenseCategoryAddFragment : Fragment() {
 
     private val binding by viewBinding(FragmentCategoryAddBinding::inflate)
-    private val viewModel by viewModel<ExpenseCategoryAddViewModel> {
+    private val viewModel by viewModel<CategoryAddViewModel> {
         parametersOf(
+            CategoryType.Expense,
             CategoryIcon(
                 R.drawable.ic_category_other,
                 R.drawable.ic_category_other.drawableName(resources)

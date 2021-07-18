@@ -9,9 +9,9 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class ExpenseCategoryEditViewModelTest {
+class CategoryEditViewModelTest {
 
-    private lateinit var expenseCategoryEditViewModel: ExpenseCategoryEditViewModel
+    private lateinit var categoryEditViewModel: CategoryEditViewModel
     private lateinit var fakeCategoryDataSource: FakeCategoryDataSource
 
     @Before
@@ -31,8 +31,8 @@ class ExpenseCategoryEditViewModelTest {
             )
         )
         fakeCategoryDataSource = FakeCategoryDataSource(defaultCategories)
-        expenseCategoryEditViewModel =
-            ExpenseCategoryEditViewModel(
+        categoryEditViewModel =
+            CategoryEditViewModel(
                 fakeCategoryDataSource,
                 CategoryIcon(R.drawable.ic_category_other, "ic_category_other"),
                 defaultCategories[0]
@@ -45,7 +45,7 @@ class ExpenseCategoryEditViewModelTest {
         val category = categories[0]
         category.name = "test123"
         category.iconResName = "12345"
-        expenseCategoryEditViewModel.saveCategory(category)
+        categoryEditViewModel.saveCategory(category)
         Assert.assertEquals(
             "test123",
             fakeCategoryDataSource.getCategoriesByType(CategoryType.Expense)[0].name
@@ -61,7 +61,7 @@ class ExpenseCategoryEditViewModelTest {
         val categories = fakeCategoryDataSource.getCategoriesByType(CategoryType.Expense)
         val category = categories[0]
         category.name = categories[1].name
-        expenseCategoryEditViewModel.saveCategory(category)
+        categoryEditViewModel.saveCategory(category)
         Assert.assertEquals(
             categories[0].name,
             fakeCategoryDataSource.getCategoriesByType(CategoryType.Expense)[0].name
@@ -70,7 +70,7 @@ class ExpenseCategoryEditViewModelTest {
 
     @Test
     fun `test delete category`() = runBlocking {
-        expenseCategoryEditViewModel.deleteCategory()
+        categoryEditViewModel.deleteCategory()
         Assert.assertEquals(1, fakeCategoryDataSource.getNumberOfCategories(CategoryType.Expense))
     }
 
@@ -84,7 +84,7 @@ class ExpenseCategoryEditViewModelTest {
             )
         )
         fakeCategoryDataSource = FakeCategoryDataSource(defaultCategories)
-        expenseCategoryEditViewModel.deleteCategory()
+        categoryEditViewModel.deleteCategory()
         Assert.assertEquals(1, fakeCategoryDataSource.getNumberOfCategories(CategoryType.Expense))
     }
 
@@ -104,7 +104,7 @@ class ExpenseCategoryEditViewModelTest {
                 )
             )
             fakeCategoryDataSource = FakeCategoryDataSource(defaultCategories)
-            expenseCategoryEditViewModel.deleteCategory()
+            categoryEditViewModel.deleteCategory()
             Assert.assertEquals(
                 1,
                 fakeCategoryDataSource.getNumberOfCategories(CategoryType.Expense)
