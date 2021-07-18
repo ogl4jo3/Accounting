@@ -2,8 +2,10 @@ package com.ogl4jo3.accounting
 
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
+import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
+import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryMgmtViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryAddViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryAddViewModel
@@ -20,6 +22,11 @@ val appModule = module {
     }
     viewModel { (account: Account) ->
         AccountEditViewModel(account = account)
+    }
+    viewModel { (categoryType: CategoryType) ->
+        CategoryMgmtViewModel(
+            categoryType = categoryType
+        )
     }
     viewModel { (defaultCategoryIcon: CategoryIcon) ->
         ExpenseCategoryAddViewModel(

@@ -16,7 +16,7 @@ class ExpenseCategoryMgmtViewModelTest {
     @JvmField
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var expenseCategoryMgmtViewModel: ExpenseCategoryMgmtViewModel
+    private lateinit var categoryMgmtViewModel: CategoryMgmtViewModel
     private lateinit var fakeCategoryDataSource: FakeCategoryDataSource
 
     @Before
@@ -36,12 +36,12 @@ class ExpenseCategoryMgmtViewModelTest {
             )
         )
         fakeCategoryDataSource = FakeCategoryDataSource(defaultCategories)
-        expenseCategoryMgmtViewModel = ExpenseCategoryMgmtViewModel(fakeCategoryDataSource)
+        categoryMgmtViewModel = CategoryMgmtViewModel(fakeCategoryDataSource, CategoryType.Expense)
     }
 
     @Test
     fun `test update category order number`() = runBlocking {
-        expenseCategoryMgmtViewModel.swapCategoryOrderNumber(
+        categoryMgmtViewModel.swapCategoryOrderNumber(
             fakeCategoryDataSource.getCategory(0),
             fakeCategoryDataSource.getCategory(1)
         )
