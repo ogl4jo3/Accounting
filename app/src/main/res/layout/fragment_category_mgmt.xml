@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryMgmtViewModel" />
+            type="com.ogl4jo3.accounting.ui.categoryMgmt.CategoryMgmtViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

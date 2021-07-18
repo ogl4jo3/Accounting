@@ -11,5 +11,5 @@ fun bindCategoryIconList(recyclerView: RecyclerView, categoryIconList: List<Cate
 
 @BindingAdapter("categories")
 fun bindCategories(recyclerView: RecyclerView, categories: List<Category>) {
-    (recyclerView.adapter as ExpenseCategoryAdapter).submitList(categories)
+    (recyclerView.adapter as CategoryAdapter).submitList(categories)
 }

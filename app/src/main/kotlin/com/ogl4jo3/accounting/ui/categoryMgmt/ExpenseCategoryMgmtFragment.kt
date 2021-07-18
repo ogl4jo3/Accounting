@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.ogl4jo3.accounting.R
-import com.ogl4jo3.accounting.databinding.FragmentCategoryMgmtExpenseBinding
+import com.ogl4jo3.accounting.databinding.FragmentCategoryMgmtBinding
 import com.ogl4jo3.accounting.ui.common.viewBinding
 
 class ExpenseCategoryMgmtFragment : Fragment() {
 
-    private val binding by viewBinding(FragmentCategoryMgmtExpenseBinding::inflate)
+    private val binding by viewBinding(FragmentCategoryMgmtBinding::inflate)
     private val viewModel by viewModels<ExpenseCategoryMgmtViewModel>()
 
-    private var expenseCategoryAdapter: ExpenseCategoryAdapter? = null
+    private var categoryAdapter: CategoryAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -42,12 +42,13 @@ class ExpenseCategoryMgmtFragment : Fragment() {
         binding.apply {
             btnAdd.setOnClickListener {
                 findNavController().navigate(
-                    ExpenseCategoryMgmtFragmentDirections.actionExpenseCategoryMgmtFragmentToExpensesCategoryAddFragment()
+                    ExpenseCategoryMgmtFragmentDirections
+                        .actionExpenseCategoryMgmtFragmentToExpensesCategoryAddFragment()
                 )
             }
-            expenseCategoryAdapter =
-                ExpenseCategoryAdapter(this@ExpenseCategoryMgmtFragment.viewModel)
-            rvExpenseCategories.adapter = expenseCategoryAdapter
+            categoryAdapter =
+                CategoryAdapter(this@ExpenseCategoryMgmtFragment.viewModel)
+            rvExpenseCategories.adapter = categoryAdapter
             ItemTouchHelper(object :
                 ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
                 override fun isLongPressDragEnabled(): Boolean {
@@ -64,7 +65,7 @@ class ExpenseCategoryMgmtFragment : Fragment() {
                     }
 
                     // Notify the adapter of the move
-                    expenseCategoryAdapter?.onItemMove(
+                    categoryAdapter?.onItemMove(
                         viewHolder.absoluteAdapterPosition,
                         target.absoluteAdapterPosition
                     )
@@ -75,6 +76,14 @@ class ExpenseCategoryMgmtFragment : Fragment() {
             }).attachToRecyclerView(rvExpenseCategories)
         }
         viewModel.apply {
+            navToItem = { category ->
+                findNavController().navigate(
+                    ExpenseCategoryMgmtFragmentDirections
+                        .actionExpenseCategoryMgmtFragmentToExpensesCategoryEditFragment(
+                            category
+                        )
+                )
+            }
             updateAllCategories()
         }
     }

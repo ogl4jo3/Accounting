@@ -9,7 +9,7 @@ import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.DefaultCategoryDataSource
 import kotlinx.coroutines.runBlocking
 
-class ExpenseCategoryMgmtViewModel(
+class IncomeCategoryMgmtViewModel(
     private val categoryDataSource: CategoryDataSource = DefaultCategoryDataSource()
 ) : ViewModel(), CategoryMgmtViewModel {
 
@@ -20,7 +20,7 @@ class ExpenseCategoryMgmtViewModel(
 
     override fun updateAllCategories() {
         _allCategories.value =
-            runBlocking { categoryDataSource.getCategoriesByType(CategoryType.Expense) }
+            runBlocking { categoryDataSource.getCategoriesByType(CategoryType.Income) }
     }
 
     override fun navigateToItem(category: Category) {

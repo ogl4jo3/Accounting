@@ -117,7 +117,7 @@
         android:id="@+id/expenseCategoryMgmtFragment"
         android:name="com.ogl4jo3.accounting.ui.categoryMgmt.ExpenseCategoryMgmtFragment"
         android:label="@string/title_expense_category_mgmt"
-        tools:layout="@layout/fragment_category_mgmt_expense">
+        tools:layout="@layout/fragment_category_mgmt">
         <action
             android:id="@+id/action_expenseCategoryMgmtFragment_to_expensesCategoryEditFragment"
             app:destination="@id/expensesCategoryEditFragment" />
@@ -147,7 +147,7 @@
         android:id="@+id/incomeCategoryMgmtFragment"
         android:name="com.ogl4jo3.accounting.ui.categoryMgmt.IncomeCategoryMgmtFragment"
         android:label="@string/title_income_category_mgmt"
-        tools:layout="@layout/fragment_category_mgmt_income">
+        tools:layout="@layout/fragment_category_mgmt">
         <action
             android:id="@+id/action_incomeCategoryMgmtFragment_to_incomeCategoryAddFragment"
             app:destination="@id/incomeCategoryAddFragment" />
