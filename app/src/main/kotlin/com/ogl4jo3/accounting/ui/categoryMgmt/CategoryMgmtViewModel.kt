@@ -6,11 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
-import com.ogl4jo3.accounting.data.source.DefaultCategoryDataSource
 import kotlinx.coroutines.runBlocking
 
 class CategoryMgmtViewModel(
-    private val categoryDataSource: CategoryDataSource = DefaultCategoryDataSource(),
+    private val categoryDataSource: CategoryDataSource,
     val categoryType: CategoryType
 ) : ViewModel() {
 

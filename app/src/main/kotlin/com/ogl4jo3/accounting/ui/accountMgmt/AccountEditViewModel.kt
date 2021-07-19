@@ -4,13 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.source.AccountDataSource
-import com.ogl4jo3.accounting.data.source.DefaultAccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
 class AccountEditViewModel(
-    private val accountDataSource: AccountDataSource = DefaultAccountDataSource(),
+    private val accountDataSource: AccountDataSource,
     val account: Account
 ) : ViewModel() {
 

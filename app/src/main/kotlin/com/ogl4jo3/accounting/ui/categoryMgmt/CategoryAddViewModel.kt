@@ -5,15 +5,14 @@ import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
-import com.ogl4jo3.accounting.data.source.DefaultCategoryDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
 class CategoryAddViewModel(
-    private val categoryDataSource: CategoryDataSource = DefaultCategoryDataSource(),
+    private val categoryDataSource: CategoryDataSource,
     val categoryType: CategoryType,
-    val defaultCategoryIcon: CategoryIcon,
+    defaultCategoryIcon: CategoryIcon,
 ) : ViewModel() {
 
     val selectedCategoryIcon = MutableLiveData(defaultCategoryIcon)

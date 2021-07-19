@@ -5,11 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.source.AccountDataSource
-import com.ogl4jo3.accounting.data.source.DefaultAccountDataSource
 import kotlinx.coroutines.runBlocking
 
 class AccountListViewModel(
-    private val accountDataSource: AccountDataSource = DefaultAccountDataSource()
+    private val accountDataSource: AccountDataSource
 ) : ViewModel() {
     var navigateToAccountEditFragment: (account: Account) -> Unit = { }
 

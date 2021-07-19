@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountAddBinding
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import com.ogl4jo3.accounting.utils.keyboard.KeyboardUtil
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountAddFragment : Fragment() {
 
     private val binding by viewBinding(FragmentAccountAddBinding::inflate)
-    private val viewModel by viewModels<AccountAddViewModel>()
+    private val viewModel by viewModel<AccountAddViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

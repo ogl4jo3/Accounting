@@ -26,11 +26,6 @@ class FakeCategoryDataSource(
         categories.replaceAll { if (it.id == category.id) category else it }
     }
 
-    //
-//    override suspend fun resetDefaultAccountExceptId(defaultAccountId: String) {
-//        categories.filter { it.id != defaultAccountId }.forEach { it.isDefaultAccount = false }
-//    }
-
     override suspend fun deleteCategory(category: Category) {
         categories.remove(category)
     }
@@ -47,17 +42,6 @@ class FakeCategoryDataSource(
         return categories.any { it.name == name && it.id != excludeId }
     }
 
-    //    override suspend fun hasDefaultAccount(excludeId: String): Boolean {
-//        return categories.any { it.isDefaultAccount && it.id != excludeId }
-//    }
-//
-//    override suspend fun getDefaultAccount(): Account? {
-//        return categories.find { it.isDefaultAccount }?.copy()
-//    }
-//
-//    override suspend fun setDefaultAccount(id: String) {
-//        categories.find { it.id == id }?.isDefaultAccount = true
-//    }
     override suspend fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category) {
         categories.find { it.id == fromCategory.id }?.orderNumber = toCategory.orderNumber
         categories.find { it.id == toCategory.id }?.orderNumber = fromCategory.orderNumber

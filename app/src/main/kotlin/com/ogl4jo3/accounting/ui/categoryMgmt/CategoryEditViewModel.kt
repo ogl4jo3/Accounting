@@ -4,13 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
-import com.ogl4jo3.accounting.data.source.DefaultCategoryDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
 class CategoryEditViewModel(
-    private val categoryDataSource: CategoryDataSource = DefaultCategoryDataSource(),
+    private val categoryDataSource: CategoryDataSource,
     val categoryIcon: CategoryIcon,
     val category: Category,
 ) : ViewModel() {

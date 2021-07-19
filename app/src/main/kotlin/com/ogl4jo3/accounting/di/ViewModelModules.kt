@@ -1,9 +1,11 @@
-package com.ogl4jo3.accounting
+package com.ogl4jo3.accounting.di
 
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
+import com.ogl4jo3.accounting.ui.accountMgmt.AccountAddViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
+import com.ogl4jo3.accounting.ui.accountMgmt.AccountListViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryAddViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
@@ -13,29 +15,26 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import java.util.Date
 
-
-val appModule = module {
+val viewModelModules = module {
     viewModel { (date: Date) ->
         ExpenseAddViewModel(date)
     }
+    viewModel {
+        AccountListViewModel(get())
+    }
+    viewModel {
+        AccountAddViewModel(get())
+    }
     viewModel { (account: Account) ->
-        AccountEditViewModel(account = account)
+        AccountEditViewModel(get(), account)
     }
     viewModel { (categoryType: CategoryType) ->
-        CategoryMgmtViewModel(
-            categoryType = categoryType
-        )
+        CategoryMgmtViewModel(get(), categoryType)
     }
     viewModel { (categoryIcon: CategoryIcon, category: Category) ->
-        CategoryEditViewModel(
-            categoryIcon = categoryIcon,
-            category = category
-        )
+        CategoryEditViewModel(get(), categoryIcon, category)
     }
     viewModel { (categoryType: CategoryType, defaultCategoryIcon: CategoryIcon) ->
-        CategoryAddViewModel(
-            categoryType = categoryType,
-            defaultCategoryIcon = defaultCategoryIcon
-        )
+        CategoryAddViewModel(get(), categoryType, defaultCategoryIcon)
     }
 }

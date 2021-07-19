@@ -5,13 +5,12 @@ import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.source.AccountDataSource
-import com.ogl4jo3.accounting.data.source.DefaultAccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
 class AccountAddViewModel(
-    private val accountDataSource: AccountDataSource = DefaultAccountDataSource()
+    private val accountDataSource: AccountDataSource
 ) : ViewModel() {
 
     val accountName = MutableLiveData("")
