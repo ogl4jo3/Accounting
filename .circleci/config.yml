@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Assemble Debug build
           command: |
-          ./gradlew assembleDebug 
+            ./gradlew assembleDebug 
 
       # The next step will run the unit tests
       # - android/run-tests:
