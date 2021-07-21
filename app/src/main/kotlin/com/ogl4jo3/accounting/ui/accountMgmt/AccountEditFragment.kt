@@ -39,7 +39,11 @@ class AccountEditFragment : Fragment() {
             btnDel.setOnClickListener { showDelConfirmDialog() }
         }
         viewModel.apply {
-            navPopBackStack = { findNavController().popBackStack() }
+            navToAccountListFragment = {
+                findNavController().navigate(
+                    AccountEditFragmentDirections.actionAccountEditFragmentToAccountListFragment()
+                )
+            }
             accountNameEmptyError = {
                 binding.tilAccountName.error = null
                 binding.tilAccountName.error = getString(R.string.msg_input_account_name)

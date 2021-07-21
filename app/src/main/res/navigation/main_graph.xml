@@ -100,13 +100,20 @@
         android:id="@+id/accountAddFragment"
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountAddFragment"
         android:label="@string/title_account_add"
-        tools:layout="@layout/fragment_account_add" />
+        tools:layout="@layout/fragment_account_add">
+        <action
+            android:id="@+id/action_accountAddFragment_to_accountListFragment"
+            app:destination="@id/accountListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/accountEditFragment"
         android:name="com.ogl4jo3.accounting.ui.accountMgmt.AccountEditFragment"
         android:label="@string/title_account_edit"
         tools:layout="@layout/fragment_account_edit">
+        <action
+            android:id="@+id/action_accountEditFragment_to_accountListFragment"
+            app:destination="@id/accountListFragment" />
         <argument
             android:name="account"
             app:argType="com.ogl4jo3.accounting.data.Account"

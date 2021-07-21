@@ -125,9 +125,9 @@
 
     <!-- AccountMgmtFragment 帳戶管理 -->
     <string name="title_account_mgmt">帳戶管理</string>
-    <string name="default_cash_account_name">現金</string>
-    <string name="default_bank_account_name">銀行</string>
-    <string name="default_card_account_name">信用卡</string>
+    <string name="default_cash_account_name">現金帳戶</string>
+    <string name="default_bank_account_name">銀行帳戶</string>
+    <string name="default_card_account_name">信用卡帳戶</string>
     <string name="iv_account_category">帳戶類別</string>
     <string name="tv_account_category_cash">現金</string>
     <string name="tv_account_category_card">卡片</string>

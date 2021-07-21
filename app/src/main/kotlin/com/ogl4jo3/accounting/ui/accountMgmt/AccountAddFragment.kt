@@ -29,7 +29,11 @@ class AccountAddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.apply {
-            navPopBackStack = { findNavController().popBackStack() }
+            navToAccountListFragment = {
+                findNavController().navigate(
+                    AccountAddFragmentDirections.actionAccountAddFragmentToAccountListFragment()
+                )
+            }
             accountNameEmptyError = {
                 binding.tilAccountName.error = null
                 binding.tilAccountName.error = getString(R.string.msg_input_account_name)

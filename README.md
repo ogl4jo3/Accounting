@@ -11,9 +11,11 @@ It's an Android App that can record the expense and income daily, and count data
 ## Develop Features
 - Kotlin Project
 - MVVM Architecture
-- Test-Driven Development(TDD)
-- Data layer with data sources(using Room)
 - Dependency Injection(using Koin)
+- Data layer with data sources(using Room)
+- Unit Tests
+- UI Tests
+- Test-Driven Development(TDD)
 - Single-activity architecture(using Navigation component)
 
 ## Screenshots
@@ -21,7 +23,7 @@ It's an Android App that can record the expense and income daily, and count data
 
 ## TODOs
 - Refactor
-- UI test
+- UI test with DI(Koin)
 - CI
 - Deploy on Google Play Store
 
