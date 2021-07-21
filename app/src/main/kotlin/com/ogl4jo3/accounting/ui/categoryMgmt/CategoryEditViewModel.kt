@@ -19,7 +19,7 @@ class CategoryEditViewModel(
 
     var nameEmptyError: () -> Unit = { }
     var nameExistError: () -> Unit = { }
-    var navPopBackStack: () -> Unit = { }
+    var navToCategoryMgmtFragment: () -> Unit = { }
 
     fun selectCategoryIcon(categoryIcon: CategoryIcon) {
         selectedCategoryIcon.value = categoryIcon
@@ -34,7 +34,7 @@ class CategoryEditViewModel(
             runBlocking { saveCategory(category) }
         } ?: run {
             Timber.e("Something error")
-            navPopBackStack()
+            navToCategoryMgmtFragment()
         }
     }
 
@@ -47,7 +47,7 @@ class CategoryEditViewModel(
             return
         } else {
             categoryDataSource.updateCategory(category)
-            navPopBackStack()
+            navToCategoryMgmtFragment()
         }
     }
 

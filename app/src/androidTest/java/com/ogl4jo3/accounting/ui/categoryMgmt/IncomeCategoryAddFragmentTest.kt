@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.ui.accountMgmt
+package com.ogl4jo3.accounting.ui.categoryMgmt
 
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.Navigation
@@ -20,32 +20,32 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class AccountAddFragmentTest {
+class IncomeCategoryAddFragmentTest {
 
     @Test
     fun emptyName_isNotSaved() {
-        launchFragmentInContainer<AccountAddFragment>(null, R.style.AppTheme)
+        launchFragmentInContainer<IncomeCategoryAddFragment>(null, R.style.AppTheme)
 
-        onView(withId(R.id.et_account_name)).perform(clearText())
+        onView(withId(R.id.et_category_name)).perform(clearText())
         onView(withId(R.id.btn_add)).perform(click())
 
         onView(withId(R.id.btn_add)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun validAccount_navigatesBack() {
+    fun validCategory_navigatesBack() {
         val navController = TestNavHostController(ApplicationProvider.getApplicationContext())
-        val scenario = launchFragmentInContainer<AccountAddFragment>(null, R.style.AppTheme)
+        val scenario = launchFragmentInContainer<IncomeCategoryAddFragment>(null, R.style.AppTheme)
         scenario.onFragment {
             navController.setGraph(R.navigation.main_graph)
-            navController.setCurrentDestination(R.id.accountAddFragment)
+            navController.setCurrentDestination(R.id.incomeCategoryAddFragment)
             Navigation.setViewNavController(it.requireView(), navController)
         }
 
-        onView(withId(R.id.et_account_name)).perform(replaceText("帳戶名稱-1"))
+        onView(withId(R.id.et_category_name)).perform(replaceText("收入類別-1"))
         onView(withId(R.id.btn_add)).perform(click())
 
-        assertEquals(navController.currentDestination?.id, R.id.accountListFragment)
+        assertEquals(navController.currentDestination?.id, R.id.incomeCategoryMgmtFragment)
     }
 
 }
