@@ -16,6 +16,12 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      
+      - run:
+          name: chmod gradle permissions
+          command: |
+            chmod +x ./gradlew 
+
       - run:
           name: Assemble Debug build
           command: |
