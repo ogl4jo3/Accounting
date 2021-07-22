@@ -64,8 +64,11 @@ class ExpenseCategoryAddFragment : Fragment() {
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
-            navPopBackStack = {
-                findNavController().popBackStack()
+            navToCategoryMgmtFragment = {
+                findNavController().navigate(
+                    ExpenseCategoryAddFragmentDirections
+                        .actionExpensesCategoryAddFragmentToExpenseCategoryMgmtFragment()
+                )
             }
         }
     }

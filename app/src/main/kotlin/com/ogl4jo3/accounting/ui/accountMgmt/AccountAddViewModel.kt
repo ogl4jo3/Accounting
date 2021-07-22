@@ -20,7 +20,7 @@ class AccountAddViewModel(
 
     var accountNameEmptyError: () -> Unit = { }
     var accountNameExistError: () -> Unit = { }
-    var navPopBackStack: () -> Unit = { }
+    var navToAccountListFragment: () -> Unit = { }
 
     fun addAccount() {
         safeLet(
@@ -53,7 +53,7 @@ class AccountAddViewModel(
                 if (account.isDefaultAccount) {
                     accountDataSource.resetDefaultAccountExceptId(account.id)
                 }
-                navPopBackStack()
+                navToAccountListFragment()
             }
         }
     }

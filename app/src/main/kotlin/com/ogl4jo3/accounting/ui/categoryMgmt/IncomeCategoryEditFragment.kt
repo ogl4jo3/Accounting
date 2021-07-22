@@ -67,8 +67,11 @@ class IncomeCategoryEditFragment : Fragment() {
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
-            navPopBackStack = {
-                findNavController().popBackStack()
+            navToCategoryMgmtFragment = {
+                findNavController().navigate(
+                    IncomeCategoryEditFragmentDirections
+                        .actionIncomeCategoryEditFragmentToIncomeCategoryMgmtFragment()
+                )
             }
         }
     }

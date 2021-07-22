@@ -20,7 +20,7 @@ class CategoryAddViewModel(
 
     var nameEmptyError: () -> Unit = { }
     var nameExistError: () -> Unit = { }
-    var navPopBackStack: () -> Unit = { }
+    var navToCategoryMgmtFragment: () -> Unit = { }
 
     fun selectCategoryIcon(categoryIcon: CategoryIcon) {
         selectedCategoryIcon.value = categoryIcon
@@ -50,7 +50,7 @@ class CategoryAddViewModel(
             if (id < 0) {
                 Timber.e("insertCategory failed, category: $category")
             } else {
-                navPopBackStack()
+                navToCategoryMgmtFragment()
             }
         }
     }

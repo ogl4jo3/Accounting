@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -53,7 +52,7 @@ class ExpenseCategoryMgmtFragment : Fragment() {
             }
             categoryAdapter =
                 CategoryAdapter(this@ExpenseCategoryMgmtFragment.viewModel)
-            rvExpenseCategories.adapter = categoryAdapter
+            rvCategories.adapter = categoryAdapter
             ItemTouchHelper(object :
                 ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
                 override fun isLongPressDragEnabled(): Boolean {
@@ -78,7 +77,7 @@ class ExpenseCategoryMgmtFragment : Fragment() {
                 }
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
-            }).attachToRecyclerView(rvExpenseCategories)
+            }).attachToRecyclerView(rvCategories)
         }
         viewModel.apply {
             navToItem = { category ->

@@ -21,7 +21,7 @@ class AccountEditViewModel(
     var accountNameEmptyError: () -> Unit = { }
     var accountNameExistError: () -> Unit = { }
     var atLeastOneDefaultAccount: () -> Unit = { }
-    var navPopBackStack: () -> Unit = { }
+    var navToAccountListFragment: () -> Unit = { }
 
     fun saveAccount() {
         safeLet(
@@ -39,7 +39,7 @@ class AccountEditViewModel(
             runBlocking { saveAccount(account) }
         } ?: run {
             Timber.e("Something error")
-            navPopBackStack()
+            navToAccountListFragment()
         }
     }
 
@@ -55,7 +55,7 @@ class AccountEditViewModel(
             if (account.isDefaultAccount) {
                 accountDataSource.resetDefaultAccountExceptId(account.id)
             }
-            navPopBackStack()
+            navToAccountListFragment()
         }
     }
 
