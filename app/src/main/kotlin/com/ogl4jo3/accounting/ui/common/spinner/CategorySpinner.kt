@@ -11,7 +11,8 @@ import com.google.android.material.textfield.TextInputLayout
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.setting.categorymanagement.Category
 import timber.log.Timber
-import java.util.*
+import java.util.ArrayList
+import java.util.HashMap
 
 class CategorySpinner : TextInputLayout {
     constructor(context: Context) : super(context)
@@ -23,9 +24,10 @@ class CategorySpinner : TextInputLayout {
     private val mapIconKey = "icon" //adapter 資料對應KEY
 
     private val view = View.inflate(context, R.layout.custom_spinner, this) as CategorySpinner
-    private var tvCategory: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.tv_name).apply {
-        inputType = InputType.TYPE_NULL
-    }
+    private var tvCategory: AutoCompleteTextView =
+        view.findViewById<AutoCompleteTextView>(R.id.tv_name).apply {
+            inputType = InputType.TYPE_NULL
+        }
     private lateinit var categoryAdapter: SimpleAdapter
 
     private var items: List<Category> = emptyList()
@@ -41,8 +43,13 @@ class CategorySpinner : TextInputLayout {
             data[mapIconKey] = items[i].icon
             mapData.add(data)
         }
-        categoryAdapter = SimpleAdapter(context, mapData, R.layout.item_category_drop_down,
-                arrayOf(mapNameKey, mapIconKey), intArrayOf(R.id.tv_category_name, R.id.iv_category_icon))
+        categoryAdapter = SimpleAdapter(
+            context,
+            mapData,
+            R.layout.item_category_drop_down,
+            arrayOf(mapNameKey, mapIconKey),
+            intArrayOf(R.id.tv_category_name, R.id.iv_category_icon)
+        )
         tvCategory.setAdapter(categoryAdapter)
         tvCategory.onItemClickListener = OnItemClickListener { _, _, i, _ ->
             Timber.d("onItemClick: ${items[i].name}, ID: ${items[i].id}, icon: ${items[i].icon}")
@@ -56,6 +63,7 @@ class CategorySpinner : TextInputLayout {
     }
 
     fun getSelectedItem(): Category? {
+        //TODO: set Category NonNull
         return selectedItem
     }
 

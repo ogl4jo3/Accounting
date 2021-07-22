@@ -25,9 +25,8 @@ class CategoryDaoTest {
 
     @Before
     fun initDb() {
-        database = Room.inMemoryDatabaseBuilder(
-            context, AppDatabase::class.java
-        ).allowMainThreadQueries().build()
+        database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
+            .allowMainThreadQueries().build()
         categoryDao = database.categoryDao()
     }
 

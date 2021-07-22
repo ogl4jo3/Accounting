@@ -4,12 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.common.expenses.Expenses
 import com.ogl4jo3.accounting.common.simpleDateString
+import com.ogl4jo3.accounting.data.ExpenseRecord
+import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
 import com.ogl4jo3.accounting.utils.safeLet
 import timber.log.Timber
-import java.util.*
+import java.util.Date
 
 class ExpenseAddViewModel(
-        val date: Date
+    private val expenseRecordDataSource: ExpenseRecordDataSource,
+    val date: Date
 ) : ViewModel() {
     val price = MutableLiveData<Int>()
     val description = MutableLiveData<String>()
@@ -47,5 +50,14 @@ class ExpenseAddViewModel(
             isSuccessful = false
         }
         return isSuccessful
+    }
+
+    suspend fun addExpenseRecord(expenseRecord: ExpenseRecord) {
+        if (expenseRecord.price <= 0) {
+            moneyInputError()
+            return
+        } else {
+            expenseRecordDataSource.insertExpenseRecord(expenseRecord)
+        }
     }
 }

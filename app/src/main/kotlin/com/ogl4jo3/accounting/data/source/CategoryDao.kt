@@ -26,8 +26,6 @@ interface CategoryDao {
     @Delete
     suspend fun deleteCategory(category: Category)
 
-    //檢查是否重複,TODO:確認是否必要
-
     @Query("SELECT COUNT(id) FROM category WHERE categoryType = :categoryType")
     suspend fun getNumberOfCategories(categoryType: CategoryType): Int
 

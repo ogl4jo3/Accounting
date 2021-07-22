@@ -1,7 +1,8 @@
 package com.ogl4jo3.accounting.data.source
 
+import android.content.Context
 import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
@@ -17,14 +18,14 @@ import timber.log.Timber
 @RunWith(AndroidJUnit4::class)
 class AccountDaoTest {
 
+    private val context: Context by lazy { ApplicationProvider.getApplicationContext() }
     private lateinit var database: AppDatabase
     private lateinit var accountDao: AccountDao
 
     @Before
     fun initDb() {
-        database = Room.inMemoryDatabaseBuilder(
-            getApplicationContext(), AppDatabase::class.java
-        ).allowMainThreadQueries().build()
+        database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
+            .allowMainThreadQueries().build()
         accountDao = database.accountDao()
     }
 
