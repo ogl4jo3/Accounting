@@ -14,7 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.ogl4jo3.accounting.R
-import junit.framework.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -45,7 +45,7 @@ class ExpenseCategoryAddFragmentTest {
         onView(withId(R.id.et_category_name)).perform(replaceText("支出類別-1"))
         onView(withId(R.id.btn_add)).perform(click())
 
-        assertEquals(navController.currentDestination?.id, R.id.expenseCategoryMgmtFragment)
+        Assert.assertEquals(navController.currentDestination?.id, R.id.expenseCategoryMgmtFragment)
     }
 
 }

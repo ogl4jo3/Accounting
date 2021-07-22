@@ -64,7 +64,7 @@
             tools:text="現金" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            money="@{account.balance}"
+            money="@{viewModel.getAccountBalance(account)}"
             android:id="@+id/tv_account_balance"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"

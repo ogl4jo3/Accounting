@@ -31,9 +31,6 @@ class AccountEditViewModel(
             account.initialAmount = initialAmount
             account.category = accountCategory
             account.isDefaultAccount = isDefaultAccount
-            account.budgetPrice = 0
-            account.budgetNotice = 0.0f
-            account.balance = initialAmount
             account
         }?.let { account ->
             runBlocking { saveAccount(account) }

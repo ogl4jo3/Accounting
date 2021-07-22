@@ -28,9 +28,6 @@ class AccountAddViewModelTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         Assert.assertEquals(accountsSize + 1, fakeAccountDataSource.accounts.size)
@@ -48,9 +45,6 @@ class AccountAddViewModelTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         accountAddViewModel.addAccount(
@@ -59,9 +53,6 @@ class AccountAddViewModelTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         Assert.assertEquals(accountsSize + 2, fakeAccountDataSource.accounts.size)
@@ -79,9 +70,6 @@ class AccountAddViewModelTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         accountAddViewModel.addAccount(
@@ -90,9 +78,6 @@ class AccountAddViewModelTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         Assert.assertEquals(accountsSize + 1, fakeAccountDataSource.accounts.size)

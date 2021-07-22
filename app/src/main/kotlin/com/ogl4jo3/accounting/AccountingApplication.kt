@@ -69,27 +69,18 @@ class AccountingApplication : Application() {
             initialAmount = 0,
             category = AccountCategory.Cash,
             isDefaultAccount = true,
-            budgetPrice = 10000,
-            budgetNotice = 0.5f,
-            balance = 0
         ),
         Account(
             name = getString(R.string.default_bank_account_name),
             initialAmount = 0,
             category = AccountCategory.Bank,
             isDefaultAccount = false,
-            budgetPrice = 10000,
-            budgetNotice = 0.5f,
-            balance = 0
         ),
         Account(
             name = getString(R.string.default_card_account_name),
             initialAmount = 0,
             category = AccountCategory.Card,
             isDefaultAccount = false,
-            budgetPrice = 10000,
-            budgetNotice = 0.5f,
-            balance = 0
         )
     )
 

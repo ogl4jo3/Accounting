@@ -19,4 +19,8 @@ class AccountListViewModel(
         _accounts.value = runBlocking { accountDataSource.getAllAccounts() }
     }
 
+    fun getAccountBalance(account: Account): Int {
+        //TODO: calculate account balance , use (Account.initialAmount - expense + income) .
+        return 0
+    }
 }

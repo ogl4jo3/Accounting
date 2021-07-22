@@ -42,9 +42,6 @@ class AccountDaoTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         accountDao.insertAccount(
@@ -53,9 +50,6 @@ class AccountDaoTest {
                 initialAmount = 300,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 30,
-                budgetNotice = 0.1f,
-                balance = 30
             )
         )
         Assert.assertEquals(2, accountDao.getAllAccounts().size)
@@ -69,9 +63,6 @@ class AccountDaoTest {
             initialAmount = 100,
             category = AccountCategory.Cash,
             isDefaultAccount = true,
-            budgetPrice = 50,
-            budgetNotice = 0.3f,
-            balance = 10
         )
         accountDao.insertAccount(account)
         Timber.d("account: $account")
@@ -82,9 +73,6 @@ class AccountDaoTest {
             Assert.assertEquals(accountLoaded.initialAmount, (account.initialAmount))
             Assert.assertEquals(accountLoaded.category, (account.category))
             Assert.assertEquals(accountLoaded.isDefaultAccount, (account.isDefaultAccount))
-            Assert.assertEquals(accountLoaded.budgetPrice, (account.budgetPrice))
-            Assert.assertEquals(accountLoaded.budgetNotice, (account.budgetNotice))
-            Assert.assertEquals(accountLoaded.balance, (account.balance))
         } ?: Assert.fail()
     }
 
@@ -104,9 +92,6 @@ class AccountDaoTest {
             initialAmount = 100,
             category = AccountCategory.Cash,
             isDefaultAccount = true,
-            budgetPrice = 50,
-            budgetNotice = 0.3f,
-            balance = 10
         )
         accountDao.insertAccount(account)
         Timber.d("account: $account")
@@ -115,9 +100,6 @@ class AccountDaoTest {
         account.initialAmount = 50000
         account.category = AccountCategory.Bank
         account.isDefaultAccount = false
-        account.budgetPrice = 3000
-        account.budgetNotice = 0.9f
-        account.balance = 500
         accountDao.updateAccount(account)
         Timber.d("updated account: $account")
 
@@ -127,9 +109,6 @@ class AccountDaoTest {
             Assert.assertEquals(accountLoaded.initialAmount, (account.initialAmount))
             Assert.assertEquals(accountLoaded.category, (account.category))
             Assert.assertEquals(accountLoaded.isDefaultAccount, (account.isDefaultAccount))
-            Assert.assertEquals(accountLoaded.budgetPrice, (account.budgetPrice))
-            Assert.assertEquals(accountLoaded.budgetNotice, (account.budgetNotice))
-            Assert.assertEquals(accountLoaded.balance, (account.balance))
         } ?: Assert.fail()
     }
 
@@ -141,9 +120,6 @@ class AccountDaoTest {
             initialAmount = 100,
             category = AccountCategory.Cash,
             isDefaultAccount = true,
-            budgetPrice = 50,
-            budgetNotice = 0.3f,
-            balance = 10
         )
         accountDao.insertAccount(account)
         Assert.assertNotNull(accountDao.getAccountById(account.id))
@@ -160,9 +136,6 @@ class AccountDaoTest {
             initialAmount = 100,
             category = AccountCategory.Cash,
             isDefaultAccount = true,
-            budgetPrice = 50,
-            budgetNotice = 0.3f,
-            balance = 10
         )
         accountDao.insertAccount(defaultAccount)
         accountDao.insertAccount(
@@ -171,9 +144,6 @@ class AccountDaoTest {
                 initialAmount = 300,
                 category = AccountCategory.Cash,
                 isDefaultAccount = false,
-                budgetPrice = 30,
-                budgetNotice = 0.1f,
-                balance = 30
             )
         )
         Timber.d("defaultAccount: $defaultAccount")
@@ -184,9 +154,6 @@ class AccountDaoTest {
             Assert.assertEquals(accountLoaded.initialAmount, (defaultAccount.initialAmount))
             Assert.assertEquals(accountLoaded.category, (defaultAccount.category))
             Assert.assertEquals(accountLoaded.isDefaultAccount, (defaultAccount.isDefaultAccount))
-            Assert.assertEquals(accountLoaded.budgetPrice, (defaultAccount.budgetPrice))
-            Assert.assertEquals(accountLoaded.budgetNotice, (defaultAccount.budgetNotice))
-            Assert.assertEquals(accountLoaded.balance, (defaultAccount.balance))
         } ?: Assert.fail()
     }
 
@@ -198,9 +165,6 @@ class AccountDaoTest {
             initialAmount = 100,
             category = AccountCategory.Cash,
             isDefaultAccount = false,
-            budgetPrice = 50,
-            budgetNotice = 0.3f,
-            balance = 10
         )
         accountDao.insertAccount(account)
         Timber.d("account: $account")
@@ -216,9 +180,6 @@ class AccountDaoTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         accountDao.insertAccount(
@@ -227,9 +188,6 @@ class AccountDaoTest {
                 initialAmount = 300,
                 category = AccountCategory.Cash,
                 isDefaultAccount = false,
-                budgetPrice = 30,
-                budgetNotice = 0.1f,
-                balance = 30
             )
         )
         Assert.assertEquals(2, accountDao.getNumberOfAccounts())
@@ -244,9 +202,6 @@ class AccountDaoTest {
                 initialAmount = 100,
                 category = AccountCategory.Cash,
                 isDefaultAccount = true,
-                budgetPrice = 50,
-                budgetNotice = 0.3f,
-                balance = 10
             )
         )
         accountDao.insertAccount(
@@ -255,9 +210,6 @@ class AccountDaoTest {
                 initialAmount = 300,
                 category = AccountCategory.Cash,
                 isDefaultAccount = false,
-                budgetPrice = 30,
-                budgetNotice = 0.1f,
-                balance = 30
             )
         )
         Assert.assertEquals(1, accountDao.getNumberOfAccountsByName("test1"))

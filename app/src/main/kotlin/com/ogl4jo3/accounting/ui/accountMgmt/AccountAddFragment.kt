@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountAddBinding
+import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
 import com.ogl4jo3.accounting.ui.common.viewBinding
-import com.ogl4jo3.accounting.utils.keyboard.KeyboardUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountAddFragment : Fragment() {
@@ -48,6 +48,6 @@ class AccountAddFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        KeyboardUtil.closeKeyboard(activity)
+        activity?.hideKeyboard()
     }
 }

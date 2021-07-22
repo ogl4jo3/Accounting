@@ -31,9 +31,6 @@ class AccountAddViewModel(
                 initialAmount = initialAmount,
                 category = accountCategory,
                 isDefaultAccount = isDefaultAccount,
-                budgetPrice = 0,
-                budgetNotice = 0.0f,
-                balance = initialAmount
             )
         }?.let { account ->
             runBlocking { addAccount(account) }
