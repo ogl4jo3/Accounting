@@ -12,6 +12,11 @@ fun String.drawableId(activity: Activity?, resources: Resources?): Int =
         res.getIdentifier(this, "drawable", act.packageName)
     } ?: -1
 
+@DrawableRes
+fun String.drawableId(packageName: String, resources: Resources?): Int =
+    resources?.getIdentifier(this, "drawable", packageName) ?: -1
+
+
 fun @receiver:DrawableRes Int.drawableName(resources: Resources?): String =
     resources?.getResourceEntryName(this) ?: ""
 

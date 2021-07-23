@@ -10,12 +10,12 @@
     <merge>
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/tv_name"
+            android:id="@+id/tv_category_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:maxLines="1"
-            tools:text="飲食" />
+            tools:text="@string/category_other" />
 
     </merge>
 </layout>

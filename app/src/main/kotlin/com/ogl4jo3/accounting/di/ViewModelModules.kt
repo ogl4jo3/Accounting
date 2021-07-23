@@ -17,7 +17,7 @@ import java.util.Date
 
 val viewModelModules = module {
     viewModel { (date: Date) ->
-        ExpenseAddViewModel(get(), date)
+        ExpenseAddViewModel(get(), get(), get(), date)
     }
     viewModel {
         AccountListViewModel(get())

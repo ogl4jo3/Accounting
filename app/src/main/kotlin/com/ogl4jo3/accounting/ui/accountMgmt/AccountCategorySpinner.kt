@@ -11,7 +11,6 @@ import com.google.android.material.textfield.TextInputLayout
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.AccountCategory
 import timber.log.Timber
-import java.util.*
 
 class AccountCategorySpinner : TextInputLayout {
     constructor(context: Context) : super(context)
@@ -20,15 +19,14 @@ class AccountCategorySpinner : TextInputLayout {
             : super(context, attrs, defStyleAttr)
 
     private val view =
-        View.inflate(context, R.layout.custom_spinner, this) as AccountCategorySpinner
-    private var tvCategory: AutoCompleteTextView =
-        view.findViewById<AutoCompleteTextView>(R.id.tv_name).apply {
+        View.inflate(context, R.layout.spinner_account_category, this) as AccountCategorySpinner
+    private var tvAccountCategoryName: AutoCompleteTextView =
+        view.findViewById<AutoCompleteTextView>(R.id.tv_account_category_name).apply {
             inputType = InputType.TYPE_NULL
         }
     private lateinit var categoryAdapter: SimpleAdapter
 
-    private val items: List<AccountCategory> =
-        listOf(AccountCategory.Cash, AccountCategory.Card, AccountCategory.Bank)
+    private val items: Array<AccountCategory> = AccountCategory.values()
     private var selectedItem: AccountCategory? = null
 
     init {
@@ -36,36 +34,35 @@ class AccountCategorySpinner : TextInputLayout {
     }
 
     private fun setAdapter() {
-        val categoriesLen: Int = items.size
-        val mapData = ArrayList<Map<String, Any>>()
-        for (i in 0 until categoriesLen) {
-            val data: MutableMap<String, Any> = HashMap()
-            data[KEY_MAP_NAME] = context.getString(items[i].nameRes)
-            data[KEY_MAP_ICON] = items[i].iconRes
-            mapData.add(data)
+        val mapNameKey = "name"
+        val mapIconKey = "icon"
+        val mapData: List<Map<String, Any>> = items.map {
+            mapOf(
+                mapNameKey to context.getString(it.nameRes),
+                mapIconKey to it.iconRes
+            )
         }
         categoryAdapter = SimpleAdapter(
             context,
             mapData,
-            R.layout.item_category_drop_down,
-            arrayOf(KEY_MAP_NAME, KEY_MAP_ICON),
-            intArrayOf(R.id.tv_category_name, R.id.iv_category_icon)
+            R.layout.item_account_category_spinner,
+            arrayOf(mapNameKey, mapIconKey),
+            intArrayOf(R.id.tv_account_category_name, R.id.iv_account_category_icon)
         )
-        tvCategory.setAdapter(categoryAdapter)
+        tvAccountCategoryName.setAdapter(categoryAdapter)
     }
 
     fun setOnItemClickListener(onChange: () -> Unit) {
-        tvCategory.onItemClickListener = OnItemClickListener { _, _, i, _ ->
+        tvAccountCategoryName.onItemClickListener = OnItemClickListener { _, _, i, _ ->
             Timber.d("onItemClick name: ${context.getString(items[i].nameRes)}, iconRes: ${items[i].iconRes}")
             selectItem(items[i])
             onChange()
         }
-
     }
 
     fun selectItem(item: AccountCategory) {
         selectedItem = item
-        tvCategory.setText(context.getString(item.nameRes), false)
+        tvAccountCategoryName.setText(context.getString(item.nameRes), false)
         //TODO: show icon
 //            tvCategory.setCompoundDrawablesWithIntrinsicBounds(
 //                    ContextCompat.getDrawable(context, items[i].icon), null, null, null)
@@ -75,8 +72,4 @@ class AccountCategorySpinner : TextInputLayout {
         return selectedItem
     }
 
-    companion object {
-        private const val KEY_MAP_NAME = "name" //adapter 資料對應KEY
-        private const val KEY_MAP_ICON = "icon" //adapter 資料對應KEY
-    }
 }

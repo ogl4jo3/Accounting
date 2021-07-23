@@ -12,8 +12,9 @@ import com.ogl4jo3.accounting.common.expenses.ExpensesDAO
 import com.ogl4jo3.accounting.databinding.FragmentExpenseAddBinding
 import com.ogl4jo3.accounting.setting.accountmanagement.AccountDAO
 import com.ogl4jo3.accounting.setting.categorymanagement.CategoryDAO
+import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
+import com.ogl4jo3.accounting.ui.common.viewBinding
 import com.ogl4jo3.accounting.utils.database.MyDBHelper
-import com.ogl4jo3.accounting.utils.keyboard.KeyboardUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.util.*
@@ -21,15 +22,13 @@ import java.util.*
 
 class ExpenseAddFragment : Fragment() {
 
+    private val binding by viewBinding(FragmentExpenseAddBinding::inflate)
     private val args: ExpenseAddFragmentArgs by navArgs()
     private val viewModel by viewModel<ExpenseAddViewModel> {
         parametersOf(args.date)
     }
-    private lateinit var binding: FragmentExpenseAddBinding
 
     private val database: SQLiteDatabase by lazy { MyDBHelper.getDatabase(activity) }
-    private val accountDAO: AccountDAO by lazy { AccountDAO(database) }
-    private val categoryDAO: CategoryDAO by lazy { CategoryDAO(database) }
     private val expensesDAO: ExpensesDAO by lazy { ExpensesDAO(database) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +39,17 @@ class ExpenseAddFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        return binding.apply {
+            viewModel = this@ExpenseAddFragment.viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+
+        }
         viewModel.apply {
             moneyInputError = {
                 binding.tilMoney.error = getString(R.string.msg_input_money)
@@ -51,25 +61,19 @@ class ExpenseAddFragment : Fragment() {
                 binding.spCategory.error = getString(R.string.msg_input_category)
             }
             saveExpenseToDB = { expense ->
+                //TODO:
                 expensesDAO.newExpensesData(expense)
                 findNavController().popBackStack()
             }
+            updateAllAccounts()
+            updateAllCategories()
         }
 
-        binding = FragmentExpenseAddBinding.inflate(inflater, container, false).apply {
-            viewModel = this@ExpenseAddFragment.viewModel
-            lifecycleOwner = viewLifecycleOwner
-            spAccount.setHasDefaultValue(true)
-            spAccount.setAdapter(accountDAO.all.map { it.name })
-            spCategory.setAdapter(categoryDAO.allExpensesCategories)
-        }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        KeyboardUtil.closeKeyboard(activity)
+        activity?.hideKeyboard()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -83,10 +87,11 @@ class ExpenseAddFragment : Fragment() {
             binding.tilMoney.error = null
             binding.spAccount.error = null
             binding.spCategory.error = null
-            viewModel.saveExpenseRecord(
-                binding.spAccount.getName(),
-                binding.spCategory.getSelectedItem()?.id
-            )
+            //TODO:
+//            viewModel.saveExpenseRecord(
+//                binding.spAccount.getName(),
+//                binding.spCategory.getSelectedItem().id
+//            )
         }
         return super.onOptionsItemSelected(item)
     }
