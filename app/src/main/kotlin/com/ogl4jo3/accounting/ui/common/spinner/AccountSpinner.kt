@@ -23,28 +23,31 @@ class AccountSpinner : TextInputLayout {
         view.findViewById<AutoCompleteTextView>(R.id.tv_account_name).apply {
             inputType = InputType.TYPE_NULL
         }
-    private lateinit var selectedItem: Account
+
+    private lateinit var accounts: List<Account>
+    private var selectedItem: Account? = null
 
     fun setAdapter(items: List<Account>) {
+        accounts = items
         val itemsName = items.map { it.name }
         tvAccountName.setAdapter(ArrayAdapter(context, R.layout.item_account_spinner, itemsName))
+    }
+
+    fun setOnItemClickListener(onChange: () -> Unit) {
         tvAccountName.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-            Timber.d("onItemClick: ${items[i].name}, ID: ${items[i].id}")
-            selectedItem = items[i]
-        }
-        if (items.isNotEmpty()) { // set items[0] as default item
-            selectedItem = items[0]
-            tvAccountName.setText(itemsName[0], false)
+            Timber.d("onItemClick: ${accounts[i].name}, ID: ${accounts[i].id}")
+            selectItem(accounts[i])
+            onChange()
         }
     }
 
-    fun getName(): String {
-        return tvAccountName.text.toString()
+    fun selectItem(item: Account) {
+        selectedItem = item
+        tvAccountName.setText(item.name, false)
     }
 
-    fun getSelectedItem(): Account {
+    fun getSelectedItem(): Account? {
         return selectedItem
     }
-
 
 }

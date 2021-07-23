@@ -26,12 +26,13 @@
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseAddFragment"
         android:label="@string/title_expense_new"
         tools:layout="@layout/fragment_expense_add">
-
+        <action
+            android:id="@+id/action_expenseAddFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
         <argument
             android:name="date"
             app:argType="java.util.Date"
             app:nullable="false" />
-
     </fragment>
 
     <fragment

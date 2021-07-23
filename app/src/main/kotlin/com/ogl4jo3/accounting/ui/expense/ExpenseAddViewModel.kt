@@ -3,7 +3,6 @@ package com.ogl4jo3.accounting.ui.expense
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ogl4jo3.accounting.common.expenses.Expenses
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
@@ -11,6 +10,7 @@ import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
+import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 import java.util.Date
 
@@ -28,52 +28,38 @@ class ExpenseAddViewModel(
         MutableLiveData(emptyList())
     val allExpenseCategories: LiveData<List<Category>> = _allExpenseCategories
 
-    fun updateAllAccounts() = runBlocking {
-        _allAccounts.value = accountDataSource.getAllAccounts()
-    }
-
-    fun updateAllCategories() = runBlocking {
-        _allExpenseCategories.value = categoryDataSource.getCategoriesByType(CategoryType.Expense)
-    }
-
-
     val price = MutableLiveData<Int>()
-    val description = MutableLiveData<String>()
+    val account = MutableLiveData<Account>()
+    val category = MutableLiveData<Category>()
+    val description = MutableLiveData("")
 
     var moneyInputError: () -> Unit = { }
-    var accountInputError: () -> Unit = { }
-    var categoryInputError: () -> Unit = { }
-    var saveExpenseToDB: (expense: Expenses) -> Unit = { }
+    var navToExpenseFragment: () -> Unit = { }
 
-    //TODO:
-//    fun saveExpenseRecord(accountName: String, categoryId: Int?) {
-//        Timber.d("money: ${price.value}, accountName: ${accountName}, categoryId: ${categoryId}, description: ${description.value}")
-//        if (checkFormat(price.value, accountName, categoryId)) {
-//            safeLet(price.value, categoryId) { price, categoryID ->
-//                val expenses = Expenses()
-//                expenses.price = price
-//                expenses.categoryId = categoryID
-//                expenses.accountName = accountName
-//                expenses.description = description.value
-//                expenses.recordTime = date.simpleDateString
-//                saveExpenseToDB(expenses)//TODO: refactor by repository
-//            }
-//        }
-//    }
-
-    fun checkFormat(price: Int?, accountName: String, categoryId: Int?): Boolean {
-        var isSuccessful = true
-        if (price == null || price <= 0) {
-            moneyInputError()
-            isSuccessful = false
-        } else if (accountName.isEmpty()) {
-            accountInputError()
-            isSuccessful = false
-        } else if (categoryId == null || categoryId == -1) {
-            categoryInputError()
-            isSuccessful = false
+    init {
+        runBlocking {
+            _allAccounts.value = accountDataSource.getAllAccounts()
+            _allExpenseCategories.value =
+                categoryDataSource.getCategoriesByType(CategoryType.Expense)
+            account.value = allAccounts.value?.get(0)
+            category.value = allExpenseCategories.value?.get(0)
         }
-        return isSuccessful
+    }
+
+    fun addExpenseRecord() {
+        safeLet(
+            price.value, account.value, category.value, description.value
+        ) { price, account, category, description ->
+            ExpenseRecord(
+                price = price,
+                accountId = account.id,
+                categoryId = category.id,
+                description = description,
+                recordTime = date
+            )
+        }?.let { expenseRecord ->
+            runBlocking { addExpenseRecord(expenseRecord) }
+        } ?: return
     }
 
     suspend fun addExpenseRecord(expenseRecord: ExpenseRecord) {
@@ -82,6 +68,7 @@ class ExpenseAddViewModel(
             return
         } else {
             expenseRecordDataSource.insertExpenseRecord(expenseRecord)
+            navToExpenseFragment()
         }
     }
 }

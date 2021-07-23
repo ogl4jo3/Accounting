@@ -4,7 +4,7 @@ import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
-import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import android.widget.SimpleAdapter
 import com.google.android.material.textfield.TextInputLayout
@@ -25,9 +25,12 @@ class CategorySpinner : TextInputLayout {
         view.findViewById<AutoCompleteTextView>(R.id.tv_category_name).apply {
             inputType = InputType.TYPE_NULL
         }
-    private lateinit var selectedItem: Category
+
+    private lateinit var categories: List<Category>
+    private var selectedItem: Category? = null
 
     fun setAdapter(items: List<Category>) {
+        categories = items
         val mapNameKey = "name"
         val mapIconKey = "icon"
         val mapData: List<Map<String, Any>> = items.map {
@@ -45,17 +48,25 @@ class CategorySpinner : TextInputLayout {
                 intArrayOf(R.id.tv_category_name, R.id.iv_category_icon)
             )
         )
-        tvCategoryName.onItemClickListener = OnItemClickListener { _, _, i, _ ->
-            Timber.d("onItemClick: ${items[i].name}, ID: ${items[i].id}, icon: ${items[i].iconResName}")
-            selectedItem = items[i]
-            //TODO: show icon
-//            tvCategory.setCompoundDrawablesWithIntrinsicBounds(
-//                    ContextCompat.getDrawable(context, items[i].icon), null, null, null)
-            tvCategoryName.setText(items[i].name, false)
+    }
+
+    fun setOnItemClickListener(onChange: () -> Unit) {
+        tvCategoryName.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
+            Timber.d("onItemClick: ${categories[i].name}, ID: ${categories[i].id}, icon: ${categories[i].iconResName}")
+            selectItem(categories[i])
+            onChange()
         }
     }
 
-    fun getSelectedItem(): Category {
+    fun selectItem(item: Category) {
+        selectedItem = item
+        tvCategoryName.setText(item.name, false)
+        //TODO: show icon
+//            tvCategory.setCompoundDrawablesWithIntrinsicBounds(
+//                    ContextCompat.getDrawable(context, items[i].icon), null, null, null)
+    }
+
+    fun getSelectedItem(): Category? {
         return selectedItem
     }
 
