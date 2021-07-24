@@ -19,7 +19,7 @@ import static android.content.ContentValues.TAG;
  * 類別資料庫存取
  * Created by ogl4jo3 on 2017/7/14.
  */
-
+@Deprecated
 public class CategoryDAO {
 
 	// 表格名稱

@@ -20,7 +20,7 @@ import com.ogl4jo3.accounting.utils.string.StringUtil;
  * 支出 資料庫存取
  * Created by ogl4jo3 on 2017/7/26.
  */
-
+@Deprecated
 public class ExpensesDAO {
 
 	// 表格名稱

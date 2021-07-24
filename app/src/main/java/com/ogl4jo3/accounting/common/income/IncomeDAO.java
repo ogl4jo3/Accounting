@@ -20,7 +20,7 @@ import com.ogl4jo3.accounting.utils.string.StringUtil;
  * 收入 資料庫存取
  * Created by ogl4jo3 on 2017/7/26.
  */
-
+@Deprecated
 public class IncomeDAO {
 
 	// 表格名稱

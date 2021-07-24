@@ -15,7 +15,7 @@ import com.ogl4jo3.accounting.common.income.IncomeDAO;
  * 帳戶相關資料庫存取
  * Created by ogl4jo3 on 2017/8/10.
  */
-
+@Deprecated
 public class AccountDAO {
 
 	public static final String ALL_ACCOUNT = "所有帳戶";
