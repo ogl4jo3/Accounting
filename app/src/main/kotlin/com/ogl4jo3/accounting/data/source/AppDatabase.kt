@@ -7,9 +7,10 @@ import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.Converters
 import com.ogl4jo3.accounting.data.ExpenseRecord
+import com.ogl4jo3.accounting.data.IncomeRecord
 
 @Database(
-    entities = [Category::class, Account::class, ExpenseRecord::class],
+    entities = [Category::class, Account::class, ExpenseRecord::class, IncomeRecord::class],
     version = 1,
     exportSchema = false
 )
@@ -18,4 +19,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun categoryDao(): CategoryDao
     abstract fun accountDao(): AccountDao
     abstract fun expenseRecordDao(): ExpenseRecordDao
+    abstract fun incomeRecordDao(): IncomeRecordDao
 }

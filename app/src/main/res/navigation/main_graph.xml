@@ -57,27 +57,44 @@
         android:label="@string/title_income"
         tools:layout="@layout/fragment_income">
         <action
-            android:id="@+id/action_incomeFragment_to_incomeNewEditFragment"
-            app:destination="@id/incomeNewEditFragment" />
+            android:id="@+id/action_incomeFragment_to_incomeEditFragment"
+            app:destination="@id/incomeEditFragment" />
+        <action
+            android:id="@+id/action_incomeFragment_to_incomeAddFragment"
+            app:destination="@id/incomeAddFragment" />
+        <argument
+            android:name="date"
+            android:defaultValue="@null"
+            app:argType="java.util.Date"
+            app:nullable="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/incomeNewEditFragment"
-        android:name="com.ogl4jo3.accounting.ui.income.IncomeNewEditFragment"
-        android:label="{title}"
-        tools:layout="@layout/fragment_income_new_edit">
+        android:id="@+id/incomeAddFragment"
+        android:name="com.ogl4jo3.accounting.ui.income.IncomeAddFragment"
+        android:label="@string/title_income_add"
+        tools:layout="@layout/fragment_income_add">
+        <action
+            android:id="@+id/action_incomeAddFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
         <argument
-            android:name="title"
-            app:argType="string"
+            android:name="date"
+            app:argType="java.util.Date"
             app:nullable="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/incomeEditFragment"
+        android:name="com.ogl4jo3.accounting.ui.income.IncomeEditFragment"
+        android:label="@string/title_income_edit"
+        tools:layout="@layout/fragment_income_edit">
+        <action
+            android:id="@+id/action_incomeEditFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
         <argument
-            android:name="dateStr"
-            app:argType="string"
+            android:name="incomeRecord"
+            app:argType="com.ogl4jo3.accounting.data.IncomeRecord"
             app:nullable="false" />
-        <argument
-            android:name="incomeId"
-            app:argType="string"
-            app:nullable="true" />
     </fragment>
 
     <fragment

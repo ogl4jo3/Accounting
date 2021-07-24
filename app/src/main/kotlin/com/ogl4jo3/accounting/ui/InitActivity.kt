@@ -80,6 +80,6 @@ class InitActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val WAIT_SECOND = 1000 // 等候秒數
+        private const val WAIT_SECOND = 200 // 等候秒數
     }
 }

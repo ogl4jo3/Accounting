@@ -10,13 +10,13 @@ import com.daimajia.swipe.SwipeLayout
 import com.google.android.material.snackbar.Snackbar
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.Category
-import com.ogl4jo3.accounting.databinding.ItemExpenseCategoryBinding
+import com.ogl4jo3.accounting.databinding.ItemCategoryBinding
 
 class CategoryAdapter(val viewModel: CategoryMgmtViewModel) :
     ListAdapter<Category, CategoryViewHolder>(CategoryDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
-            ItemExpenseCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         ).apply {
             binding.apply {
                 swipeLayoutCategory.showMode = SwipeLayout.ShowMode.PullOut
@@ -56,7 +56,7 @@ class CategoryAdapter(val viewModel: CategoryMgmtViewModel) :
     }
 }
 
-class CategoryViewHolder(val binding: ItemExpenseCategoryBinding) :
+class CategoryViewHolder(val binding: ItemCategoryBinding) :
     RecyclerView.ViewHolder(binding.root)
 
 class CategoryDiffCallback : DiffUtil.ItemCallback<Category>() {

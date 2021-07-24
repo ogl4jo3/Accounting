@@ -40,7 +40,12 @@ class AppNavigationTest {
         // ExpenseFragment
         navToFragment(R.id.expenseFragment)
         onView(withId(R.id.tv_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_expense_records)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_no_data)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_total_amount)).check(matches(isDisplayed()))
+        // IncomeFragment
+        navToFragment(R.id.incomeFragment)
+        onView(withId(R.id.tv_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_no_data)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_total_amount)).check(matches(isDisplayed()))
 
 

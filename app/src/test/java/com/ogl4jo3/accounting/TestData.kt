@@ -5,6 +5,7 @@ import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecord
+import com.ogl4jo3.accounting.data.IncomeRecord
 import java.util.Calendar
 import java.util.Date
 
@@ -23,9 +24,9 @@ val testExpenseCategories: List<Category> = listOf(
 )
 
 val testIncomeCategories: List<Category> = listOf(
-    Category("0", "Salary", 0, "R.drawable.salary", CategoryType.Expense),
-    Category("1", "Bonus", 1, "R.drawable.bonus", CategoryType.Expense),
-    Category("2", "Investment", 2, "R.drawable.investment", CategoryType.Expense),
+    Category("0", "Salary", 0, "R.drawable.salary", CategoryType.Income),
+    Category("1", "Bonus", 1, "R.drawable.bonus", CategoryType.Income),
+    Category("2", "Investment", 2, "R.drawable.investment", CategoryType.Income),
 )
 
 val testDateArray: Array<Date> = arrayOf(
@@ -69,6 +70,33 @@ val testExpenseRecords: List<ExpenseRecord> = listOf(
         2150,
         testAccounts[1].id,
         testExpenseCategories[2].id,
+        "測試用支出",
+        testDateArray[0]
+    )
+)
+
+val testIncomeRecords: List<IncomeRecord> = listOf(
+    IncomeRecord(
+        "0",
+        50,
+        testAccounts[0].id,
+        testIncomeCategories[0].id,
+        "測試用支出",
+        testDateArray[0]
+    ),
+    IncomeRecord(
+        "1",
+        150,
+        testAccounts[0].id,
+        testIncomeCategories[1].id,
+        "測試用支出",
+        testDateArray[0]
+    ),
+    IncomeRecord(
+        "2",
+        2150,
+        testAccounts[1].id,
+        testIncomeCategories[2].id,
         "測試用支出",
         testDateArray[0]
     )

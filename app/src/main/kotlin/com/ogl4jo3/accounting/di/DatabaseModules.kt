@@ -6,6 +6,7 @@ import com.ogl4jo3.accounting.data.source.AccountDao
 import com.ogl4jo3.accounting.data.source.AppDatabase
 import com.ogl4jo3.accounting.data.source.CategoryDao
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDao
+import com.ogl4jo3.accounting.data.source.IncomeRecordDao
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -14,6 +15,7 @@ val databaseModules = module {
     single { provideAccountDao(get()) }
     single { provideCategoryDao(get()) }
     single { provideExpenseRecordDao(get()) }
+    single { provideIncomeRecordDao(get()) }
 }
 
 private fun provideDatabase(applicationContext: Context): AppDatabase {
@@ -32,4 +34,8 @@ private fun provideCategoryDao(database: AppDatabase): CategoryDao {
 
 private fun provideExpenseRecordDao(database: AppDatabase): ExpenseRecordDao {
     return database.expenseRecordDao()
+}
+
+private fun provideIncomeRecordDao(database: AppDatabase): IncomeRecordDao {
+    return database.incomeRecordDao()
 }

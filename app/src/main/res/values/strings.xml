@@ -68,25 +68,19 @@
     <string name="tv_description">描述</string>
     <string name="tv_account">帳戶</string>
     <string name="tv_cash">現金</string>
-    <string name="tv_fixed_charge">固定支出</string>
-    <string name="tv_none">無</string>
-    <string name="msg_input_money_category_account">請輸入金額、類別和帳戶</string>
     <string name="msg_input_money">請輸入金額</string>
     <string name="msg_input_category">請選擇類別</string>
-    <string name="msg_input_account">請輸入帳戶</string>
     <string name="msg_expense_del_confirm">確定刪除此紀錄?</string>
 
     <!-- IncomeFragment 收入 -->
     <string name="title_income">收入</string>
     <string name="tv_this_day_no_income">本日尚未新增收入</string>
     <string name="tv_income">收入</string>
-    <string name="tv_this_day">本日</string>
-    <string name="tv_income_percent">%1$d</string>
+    <string name="tv_this_day_income">本日收入</string>
 
     <!-- IncomeNewEditFragment 新增編輯收入 -->
-    <string name="title_income_new">新增收入</string>
+    <string name="title_income_add">新增收入</string>
     <string name="title_income_edit">編輯收入</string>
-    <string name="tv_stable_income">固定收入</string>
     <string name="msg_income_del_confirm">確定刪除此紀錄?</string>
 
     <!-- StatisticsFragment 統計 -->
@@ -150,12 +144,6 @@
     <string name="msg_account_name_exist">帳戶名稱已存在</string>
     <string name="msg_at_least_one_default_account">至少要有一個預設帳戶</string>
     <string name="msg_at_least_one_account">至少要有一個帳戶</string>
-    <!-- 帳戶類別 -->
-    <string-array name="accountCategories">
-        <item>現金</item>
-        <item>卡片</item>
-        <item>銀行</item>
-    </string-array>
 
     <!-- AccountingNotificationFragment 記帳通知 -->
     <string name="title_accounting_notification">記帳通知</string>

@@ -1,95 +1,85 @@
-<LinearLayout
-	style="@style/frame_expenses_income"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:orientation="vertical"
-	tools:context="com.ogl4jo3.accounting.ui.income.IncomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-	<TextView
-		android:id="@+id/tv_date"
-		style="@style/TextStyle.f5"
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
-		android:gravity="center_horizontal"
-		tools:text="2017/07/08"/>
+    <data>
 
+        <import type="com.ogl4jo3.accounting.ui.common.Converter" />
 
-	<!--TODO:沒資料時顯示-->
-	<TextView
-		android:id="@+id/tv_no_data"
-		style="@style/TextStyle.f4"
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="6"
-		android:gravity="center"
-		android:text="@string/tv_this_day_no_income"
-		android:textColor="@color/gray_dark"
-		android:visibility="gone"/>
+        <variable
+            name="viewModel"
+            type="com.ogl4jo3.accounting.ui.income.IncomeViewModel" />
+    </data>
 
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/rv_income_item"
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="6"
-		android:scrollbars="vertical"/>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1.2"
-		android:gravity="center_vertical"
-		android:orientation="horizontal">
-
-		<TextView
-			style="@style/TextStyle.f4"
-			android:text="@string/tv_income"/>
-
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:orientation="vertical">
-
-			<TextView
-				style="@style/TextStyle.f3"
-				android:text="@string/tv_this_day"/>
-
-			<TextView
-				android:id="@+id/tv_this_day_income"
-				style="@style/TextStyle.f3"
-				android:layout_width="match_parent"
-				android:gravity="end"
-				tools:text="100"/>
-		</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="32dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="40dp">
 
 
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            dateText="@={viewModel.date}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_gray_press"
+            android:onClick="@{v -> viewModel.switchToToday()}"
+            android:padding="12dp"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2021/07/23" />
 
-			<TextView
-				style="@style/TextStyle.f3"
-				android:text="@string/tv_this_month"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_no_data"
+            visibleGone="@{viewModel.incomeRecords.size() &lt;= 0}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="24dp"
+            android:gravity="center"
+            android:text="@string/tv_this_day_no_income"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_total_amount_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
-			<TextView
-				android:id="@+id/tv_this_month_income"
-				style="@style/TextStyle.f3"
-				android:layout_width="match_parent"
-				android:gravity="end"
-				tools:text="10000"/>
-		</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_income_records"
+            incomeRecords="@{viewModel.incomeRecords}"
+            visibleGone="@{viewModel.incomeRecords.size() > 0}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/tv_total_amount_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_date"
+            tools:listitem="@layout/item_income_record" />
 
-		<TextView
-			android:id="@+id/tv_income_percent"
-			style="@style/TextStyle.f4"
-			tools:text="10"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_total_amount_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/tv_this_day_income"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-		<TextView
-			style="@style/TextStyle.f4"
-			android:text="@string/tv_percent"/>
-	</LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_total_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{Converter.intToString(viewModel.totalAmount)}"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_total_amount_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_total_amount_label"
+            app:layout_constraintTop_toTopOf="@id/tv_total_amount_label"
+            tools:text="2550" />
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
