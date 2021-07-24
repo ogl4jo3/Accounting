@@ -48,7 +48,7 @@ class ExpenseAddFragment : Fragment() {
             }
             navToExpenseFragment = {
                 findNavController().navigate(
-                    ExpenseAddFragmentDirections.actionExpenseAddFragmentToExpenseFragment()
+                    ExpenseAddFragmentDirections.actionExpenseAddFragmentToExpenseFragment(args.date)
                 )
             }
         }

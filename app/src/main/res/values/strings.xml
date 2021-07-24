@@ -58,7 +58,7 @@
     <string name="menu_date">日期</string>
 
     <!-- ExpenseNewEditFragment 新增編輯支出 -->
-    <string name="title_expense_new">新增支出</string>
+    <string name="title_expense_add">新增支出</string>
     <string name="title_expense_edit">編輯支出</string>
     <string name="tv_money">金額</string>
     <string name="tv_category">類別</string>

@@ -18,6 +18,10 @@ class FakeCategoryDataSource(
         }
     }
 
+    override suspend fun getCategoryById(categoryId: String): Category? {
+        return categories.find { it.id == categoryId }
+    }
+
     override suspend fun getCategoriesByType(categoryType: CategoryType): List<Category> {
         return categories.filter { it.categoryType == categoryType }.sortedBy { it.orderNumber }
     }

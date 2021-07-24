@@ -11,11 +11,15 @@ import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryMgmtViewModel
 import com.ogl4jo3.accounting.ui.expense.ExpenseAddViewModel
+import com.ogl4jo3.accounting.ui.expense.ExpenseViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import java.util.Date
 
 val viewModelModules = module {
+    viewModel { (date: Date?) ->
+        ExpenseViewModel(get(), get(), get(), date)
+    }
     viewModel { (date: Date) ->
         ExpenseAddViewModel(get(), get(), get(), date)
     }

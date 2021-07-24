@@ -13,6 +13,10 @@ class DefaultCategoryDataSource(
         return categoryDao.insertCategory(category)
     }
 
+    override suspend fun getCategoryById(categoryId: String): Category? {
+        return categoryDao.getCategoryById(categoryId)
+    }
+
     override suspend fun getCategoriesByType(categoryType: CategoryType): List<Category> {
         return categoryDao.getCategoriesByType(categoryType)
     }

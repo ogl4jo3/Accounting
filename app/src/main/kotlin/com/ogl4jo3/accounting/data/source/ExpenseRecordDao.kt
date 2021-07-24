@@ -13,4 +13,7 @@ interface ExpenseRecordDao {
     @Query("SELECT * FROM expenseRecord")
     suspend fun getAllRecords(): List<ExpenseRecord>
 
+    @Query("SELECT * FROM expenseRecord WHERE recordTime BETWEEN :startTime AND :endTime")
+    suspend fun getExpenseRecordsByDate(startTime: Long, endTime: Long): List<ExpenseRecord>
+
 }

@@ -64,7 +64,7 @@ class IncomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
-        inflater.inflate(R.menu.menu_expenses_income, menu)
+        inflater.inflate(R.menu.menu_date_n_add, menu)
         //super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -92,7 +92,7 @@ class IncomeFragment : Fragment() {
                 updateIncomeList(dateStr)
             }, mCalendar[Calendar.YEAR], mCalendar[Calendar.MONTH],
                     mCalendar[Calendar.DAY_OF_MONTH]).show()
-        } else if (id == R.id.menu_new) {
+        } else if (id == R.id.menu_add) {
             findNavController().navigate(IncomeFragmentDirections
                     .actionIncomeFragmentToIncomeNewEditFragment(
                             title = resources.getString(R.string.title_income_new),
