@@ -18,4 +18,17 @@ class FakeExpenseRecordDataSource(
             it.recordTime.after(date.beginOfDay) && it.recordTime.before(date.endOfDay)
         }
     }
+
+    override suspend fun updateExpenseRecord(expenseRecord: ExpenseRecord) {
+        expenseRecords.replaceAll { if (it.expenseRecordId == expenseRecord.expenseRecordId) expenseRecord else it }
+    }
+
+    override suspend fun deleteExpenseRecord(expenseRecord: ExpenseRecord) {
+        expenseRecords.remove(expenseRecord)
+    }
+
+    fun getRecord(index: Int): ExpenseRecord {
+        return expenseRecords[index].copy()
+    }
+
 }

@@ -51,26 +51,6 @@
             app:nullable="false" />
     </fragment>
 
-    <!--  TODO: remove expenseNewEditFragment related  -->
-    <fragment
-        android:id="@+id/expenseNewEditFragment"
-        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewEditFragment"
-        android:label="{title}"
-        tools:layout="@layout/fragment_expense_new_edit">
-        <argument
-            android:name="title"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="dateStr"
-            app:argType="string"
-            app:nullable="false" />
-        <argument
-            android:name="expenseId"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
-
     <fragment
         android:id="@+id/incomeFragment"
         android:name="com.ogl4jo3.accounting.ui.income.IncomeFragment"

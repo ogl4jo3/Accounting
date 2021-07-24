@@ -43,15 +43,5 @@ val testDateArray: Array<Date> = arrayOf(
         it[Calendar.MONTH] = 6
         it[Calendar.DAY_OF_MONTH] = 13
         it.time
-    }, Calendar.getInstance().let {
-        it[Calendar.YEAR] = 2021
-        it[Calendar.MONTH] = 6
-        it[Calendar.DAY_OF_MONTH] = 14
-        it.time
-    }, Calendar.getInstance().let {
-        it[Calendar.YEAR] = 2021
-        it[Calendar.MONTH] = 6
-        it[Calendar.DAY_OF_MONTH] = 15
-        it.time
     }
 )

@@ -42,7 +42,7 @@
             android:gravity="center"
             android:text="@string/tv_this_day_no_expense"
             android:textSize="21sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_this_day_expense_label"
+            app:layout_constraintBottom_toTopOf="@id/tv_total_amount_label"
             app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -53,12 +53,12 @@
             android:layout_height="0dp"
             android:layout_marginVertical="24dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/tv_this_day_expense_label"
+            app:layout_constraintBottom_toTopOf="@id/tv_total_amount_label"
             app:layout_constraintTop_toBottomOf="@id/tv_date"
             tools:listitem="@layout/item_expense_record" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_this_day_expense_label"
+            android:id="@+id/tv_total_amount_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -74,10 +74,10 @@
             android:gravity="end"
             android:text="@{Converter.intToString(viewModel.totalAmount)}"
             android:textSize="21sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_this_day_expense_label"
+            app:layout_constraintBottom_toBottomOf="@id/tv_total_amount_label"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_this_day_expense_label"
-            app:layout_constraintTop_toTopOf="@id/tv_this_day_expense_label"
+            app:layout_constraintStart_toEndOf="@id/tv_total_amount_label"
+            app:layout_constraintTop_toTopOf="@id/tv_total_amount_label"
             tools:text="2550" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

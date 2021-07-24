@@ -27,26 +27,31 @@ class AppNavigationTest {
     @Test
     fun navigateToAllFragmentsInDrawer() {
         // AccountListFragment
-        onView(withId(R.id.drawer_layout)).check(matches(isClosed(Gravity.START))).perform(open())
-        onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.accountListFragment))
-        onView(withId(R.id.drawer_layout)).perform(close())
+        navToFragment(R.id.accountListFragment)
         onView(withId(R.id.rv_account)).check(matches(isDisplayed()))
         // ExpenseCategoryMgmtFragment
-        onView(withId(R.id.drawer_layout)).check(matches(isClosed(Gravity.START))).perform(open())
-        onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.expenseCategoryMgmtFragment))
-        onView(withId(R.id.drawer_layout)).perform(close())
+        navToFragment(R.id.expenseCategoryMgmtFragment)
         onView(withId(R.id.rv_categories)).check(matches(isDisplayed()))
         onView(withId(R.id.btn_add)).check(matches(isDisplayed()))
         // IncomeCategoryMgmtFragment
-        onView(withId(R.id.drawer_layout)).check(matches(isClosed(Gravity.START))).perform(open())
-        onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.incomeCategoryMgmtFragment))
-        onView(withId(R.id.drawer_layout)).perform(close())
+        navToFragment(R.id.incomeCategoryMgmtFragment)
         onView(withId(R.id.rv_categories)).check(matches(isDisplayed()))
         onView(withId(R.id.btn_add)).check(matches(isDisplayed()))
+        // ExpenseFragment
+        navToFragment(R.id.expenseFragment)
+        onView(withId(R.id.tv_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_expense_records)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_total_amount)).check(matches(isDisplayed()))
 
 
         //TODO: add more navigate fragment test
 
+    }
+
+    private fun navToFragment(menuItemId: Int) {
+        onView(withId(R.id.drawer_layout)).check(matches(isClosed(Gravity.START))).perform(open())
+        onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(menuItemId))
+        onView(withId(R.id.drawer_layout)).perform(close())
     }
 
 }

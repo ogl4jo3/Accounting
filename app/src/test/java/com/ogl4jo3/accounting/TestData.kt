@@ -4,6 +4,9 @@ import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
+import com.ogl4jo3.accounting.data.ExpenseRecord
+import java.util.Calendar
+import java.util.Date
 
 val testAccounts: List<Account> = listOf(
     Account("0", "AccountName-Cash", 1000, AccountCategory.Cash, true),
@@ -18,8 +21,55 @@ val testExpenseCategories: List<Category> = listOf(
     Category("3", "Dessert", 3, "R.drawable.dessert", CategoryType.Expense),
     Category("4", "Fitness", 4, "R.drawable.fitness", CategoryType.Expense)
 )
+
 val testIncomeCategories: List<Category> = listOf(
     Category("0", "Salary", 0, "R.drawable.salary", CategoryType.Expense),
     Category("1", "Bonus", 1, "R.drawable.bonus", CategoryType.Expense),
     Category("2", "Investment", 2, "R.drawable.investment", CategoryType.Expense),
+)
+
+val testDateArray: Array<Date> = arrayOf(
+    Calendar.getInstance().let {
+        it[Calendar.YEAR] = 2021
+        it[Calendar.MONTH] = 6
+        it[Calendar.DAY_OF_MONTH] = 11
+        it.time
+    }, Calendar.getInstance().let {
+        it[Calendar.YEAR] = 2021
+        it[Calendar.MONTH] = 6
+        it[Calendar.DAY_OF_MONTH] = 12
+        it.time
+    }, Calendar.getInstance().let {
+        it[Calendar.YEAR] = 2021
+        it[Calendar.MONTH] = 6
+        it[Calendar.DAY_OF_MONTH] = 13
+        it.time
+    }
+)
+
+val testExpenseRecords: List<ExpenseRecord> = listOf(
+    ExpenseRecord(
+        "0",
+        50,
+        testAccounts[0].id,
+        testExpenseCategories[0].id,
+        "測試用支出",
+        testDateArray[0]
+    ),
+    ExpenseRecord(
+        "1",
+        150,
+        testAccounts[0].id,
+        testExpenseCategories[1].id,
+        "測試用支出",
+        testDateArray[0]
+    ),
+    ExpenseRecord(
+        "2",
+        2150,
+        testAccounts[1].id,
+        testExpenseCategories[2].id,
+        "測試用支出",
+        testDateArray[0]
+    )
 )

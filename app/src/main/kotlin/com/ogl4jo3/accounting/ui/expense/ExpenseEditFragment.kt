@@ -1,5 +1,6 @@
 package com.ogl4jo3.accounting.ui.expense
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.*
@@ -40,7 +41,7 @@ class ExpenseEditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-
+            btnDel.setOnClickListener { showDelConfirmDialog() }
         }
         viewModel.apply {
             moneyInputError = {
@@ -48,7 +49,7 @@ class ExpenseEditFragment : Fragment() {
             }
             navToExpenseFragment = {
                 findNavController().navigate(
-                    ExpenseAddFragmentDirections.actionExpenseAddFragmentToExpenseFragment(
+                    ExpenseEditFragmentDirections.actionExpenseEditFragmentToExpenseFragment(
                         args.expenseRecord.recordTime
                     )
                 )
@@ -70,9 +71,20 @@ class ExpenseEditFragment : Fragment() {
         val id = item.itemId
         if (id == R.id.menu_save) {
             binding.tilMoney.error = null
-//            viewModel.addExpenseRecord()//TODO:
+            viewModel.saveExpenseRecord()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showDelConfirmDialog() {
+        AlertDialog.Builder(activity).apply {
+            setTitle(getString(R.string.msg_expense_del_confirm))
+            setPositiveButton(R.string.btn_del) { _, _ ->
+                viewModel.deleteExpenseRecord()
+            }
+            setNegativeButton(R.string.btn_cancel) { dialog, _ -> dialog.dismiss() }
+            create().show()
+        }
     }
 
 }

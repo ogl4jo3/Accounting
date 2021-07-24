@@ -80,7 +80,7 @@ class AccountEditFragment : Fragment() {
                             getString(R.string.msg_account_deleted, viewModel.account.name),
                             Snackbar.LENGTH_SHORT
                         ).show()
-                        findNavController().popBackStack()
+                        viewModel.navToAccountListFragment()
                     },
                     onFail = {
                         Snackbar.make(

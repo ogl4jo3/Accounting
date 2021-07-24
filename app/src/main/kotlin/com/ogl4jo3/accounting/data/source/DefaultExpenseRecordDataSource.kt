@@ -15,4 +15,12 @@ class DefaultExpenseRecordDataSource(
     override suspend fun getExpenseRecordsByDate(date: Date): List<ExpenseRecord> {
         return expenseRecordDao.getExpenseRecordsByDate(date.beginOfDay.time, date.endOfDay.time)
     }
+
+    override suspend fun updateExpenseRecord(expenseRecord: ExpenseRecord) {
+        expenseRecordDao.updateExpenseRecord(expenseRecord)
+    }
+
+    override suspend fun deleteExpenseRecord(expenseRecord: ExpenseRecord) {
+        expenseRecordDao.deleteExpenseRecord(expenseRecord)
+    }
 }

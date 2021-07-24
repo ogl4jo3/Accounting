@@ -123,7 +123,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="expenseEdFragment">
+                  <entry key="expenseEditFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -134,7 +134,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_expenseAddFragment_to_expenseFragment">
+                            <entry key="action_expenseEditFragment_to_expenseFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -160,7 +160,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_expenseFragment_to_expenseNewEditFragment">
+                            <entry key="action_expenseFragment_to_expenseEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

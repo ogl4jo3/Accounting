@@ -10,6 +10,7 @@ import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
+import com.ogl4jo3.accounting.utils.safeLet
 import kotlinx.coroutines.runBlocking
 
 class ExpenseEditViewModel(
@@ -26,7 +27,7 @@ class ExpenseEditViewModel(
         MutableLiveData(emptyList())
     val allExpenseCategories: LiveData<List<Category>> = _allExpenseCategories
 
-    val price = MutableLiveData<Int>(expenseRecord.price)
+    val price = MutableLiveData(expenseRecord.price)
     val account = MutableLiveData<Account>()
     val category = MutableLiveData<Category>()
     val description = MutableLiveData(expenseRecord.description)
@@ -44,39 +45,35 @@ class ExpenseEditViewModel(
         }
     }
 
-    //TODO: saveExpenseRecord
     fun saveExpenseRecord() {
-
+        safeLet(
+            price.value, account.value, category.value, description.value
+        ) { price, account, category, description ->
+            expenseRecord.price = price
+            expenseRecord.accountId = account.id
+            expenseRecord.categoryId = category.id
+            expenseRecord.description = description
+            expenseRecord
+        }?.let { expenseRecord ->
+            runBlocking { saveExpenseRecord(expenseRecord) }
+        } ?: return
     }
 
-    //TODO: deleteExpenseRecord
+    suspend fun saveExpenseRecord(expenseRecord: ExpenseRecord) {
+        if (expenseRecord.price <= 0) {
+            moneyInputError()
+            return
+        } else {
+            expenseRecordDataSource.updateExpenseRecord(expenseRecord)
+            navToExpenseFragment()
+        }
+    }
+
     fun deleteExpenseRecord() {
-
+        runBlocking {
+            expenseRecordDataSource.deleteExpenseRecord(expenseRecord)
+            navToExpenseFragment()
+        }
     }
 
-//    fun addExpenseRecord() {
-//        safeLet(
-//            price.value, account.value, category.value, description.value
-//        ) { price, account, category, description ->
-//            ExpenseRecord(
-//                price = price,
-//                accountId = account.id,
-//                categoryId = category.id,
-//                description = description,
-//                recordTime = date
-//            )
-//        }?.let { expenseRecord ->
-//            runBlocking { addExpenseRecord(expenseRecord) }
-//        } ?: return
-//    }
-//
-//    suspend fun addExpenseRecord(expenseRecord: ExpenseRecord) {
-//        if (expenseRecord.price <= 0) {
-//            moneyInputError()
-//            return
-//        } else {
-//            expenseRecordDataSource.insertExpenseRecord(expenseRecord)
-//            navToExpenseFragment()
-//        }
-//    }
 }

@@ -58,7 +58,7 @@ class ExpenseRecordDaoTest {
 
     @Test
     fun `Test-InsertExpenseRecord_And_GetExpenseRecordsByDate`() = runBlocking {
-        Timber.d("Test-InsertExpenseRecord_And_GetAllRecords")
+        Timber.d("Test-InsertExpenseRecord_And_GetExpenseRecordsByDate")
         expenseRecordDao.insertExpenseRecord(
             ExpenseRecord(
                 price = 50,
@@ -102,4 +102,39 @@ class ExpenseRecordDaoTest {
             ).size
         )
     }
+
+    @Test
+    fun `Test-InsertExpenseRecord_And_Update`() = runBlocking {
+        Timber.d("Test-InsertExpenseRecord_And_Update")
+        val expenseRecord = ExpenseRecord(
+            price = 50,
+            accountId = testAccounts[0].id,
+            categoryId = testExpenseCategories[0].id,
+            description = "測試用支出",
+            recordTime = testDateArray[0]
+        )
+        expenseRecordDao.insertExpenseRecord(expenseRecord)
+        Assert.assertEquals(1, expenseRecordDao.getAllRecords().size)
+        expenseRecord.price = 100
+        expenseRecordDao.updateExpenseRecord(expenseRecord)
+        Assert.assertEquals(1, expenseRecordDao.getAllRecords().size)
+        Assert.assertEquals(100, expenseRecordDao.getAllRecords()[0].price)
+    }
+
+    @Test
+    fun `Test-InsertExpenseRecord_And_Delete`() = runBlocking {
+        Timber.d("Test-InsertExpenseRecord_And_Delete")
+        val expenseRecord = ExpenseRecord(
+            price = 50,
+            accountId = testAccounts[0].id,
+            categoryId = testExpenseCategories[0].id,
+            description = "測試用支出",
+            recordTime = testDateArray[0]
+        )
+        expenseRecordDao.insertExpenseRecord(expenseRecord)
+        Assert.assertEquals(1, expenseRecordDao.getAllRecords().size)
+        expenseRecordDao.deleteExpenseRecord(expenseRecord)
+        Assert.assertEquals(0, expenseRecordDao.getAllRecords().size)
+    }
+
 }
