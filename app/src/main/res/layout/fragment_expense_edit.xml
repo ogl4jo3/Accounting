@@ -1,0 +1,128 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.InputType" />
+
+        <import type="com.ogl4jo3.accounting.ui.common.Converter" />
+
+        <variable
+            name="viewModel"
+            type="com.ogl4jo3.accounting.ui.expense.ExpenseEditViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            dateText="@{viewModel.expenseRecord.recordTime}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:textSize="34sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2017-07-30" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_money"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tv_money"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_date"
+            app:startIconDrawable="@drawable/ic_money">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="8"
+                android:text="@={Converter.intToString(viewModel.price)}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.ogl4jo3.accounting.ui.common.spinner.AccountSpinner
+            android:id="@+id/sp_account"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            spinnerAccounts="@{viewModel.allAccounts}"
+            spinnerItemAccount="@={viewModel.account}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/tv_account"
+            android:padding="12dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@id/sp_category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_money" />
+
+        <com.ogl4jo3.accounting.ui.common.spinner.CategorySpinner
+            android:id="@+id/sp_category"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            spinnerCategories="@{viewModel.allExpenseCategories}"
+            spinnerItemCategory="@={viewModel.category}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/tv_category"
+            android:padding="12dp"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@id/sp_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sp_account"
+            app:layout_constraintTop_toTopOf="@id/sp_account" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tv_description"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/sp_account">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="40"
+                android:text="@={viewModel.description}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:onClick="@{v -> viewModel.saveExpenseRecord()}"
+            android:text="@string/btn_save"
+            app:layout_constraintEnd_toStartOf="@id/btn_del"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_description" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:onClick="@{v -> viewModel.deleteExpenseRecord()}"
+            android:text="@string/btn_del"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_save"
+            app:layout_constraintTop_toTopOf="@id/btn_save" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

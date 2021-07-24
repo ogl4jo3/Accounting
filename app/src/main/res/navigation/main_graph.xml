@@ -11,8 +11,8 @@
         android:label="@string/title_expense"
         tools:layout="@layout/fragment_expense">
         <action
-            android:id="@+id/action_expenseFragment_to_expenseNewEditFragment"
-            app:destination="@id/expenseNewEditFragment" />
+            android:id="@+id/action_expenseFragment_to_expenseEditFragment"
+            app:destination="@id/expenseEditFragment" />
         <action
             android:id="@+id/action_expenseFragment_to_expenseAddFragment"
             app:destination="@id/expenseAddFragment" />
@@ -37,6 +37,21 @@
             app:nullable="false" />
     </fragment>
 
+    <fragment
+        android:id="@+id/expenseEditFragment"
+        android:name="com.ogl4jo3.accounting.ui.expense.ExpenseEditFragment"
+        android:label="@string/title_expense_edit"
+        tools:layout="@layout/fragment_expense_edit">
+        <action
+            android:id="@+id/action_expenseEditFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+        <argument
+            android:name="expenseRecord"
+            app:argType="com.ogl4jo3.accounting.data.ExpenseRecord"
+            app:nullable="false" />
+    </fragment>
+
+    <!--  TODO: remove expenseNewEditFragment related  -->
     <fragment
         android:id="@+id/expenseNewEditFragment"
         android:name="com.ogl4jo3.accounting.ui.expense.ExpenseNewEditFragment"

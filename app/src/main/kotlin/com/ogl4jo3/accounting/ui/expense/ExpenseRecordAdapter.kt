@@ -2,6 +2,7 @@ package com.ogl4jo3.accounting.ui.expense
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +23,9 @@ class ExpenseRecordAdapter(val viewModel: ExpenseViewModel) :
     override fun onBindViewHolder(holder: ExpenseRecordViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-//            Navigation.findNavController(it).navigate(
-//                //TODO:
-//                ExpenseFragmentDirections.actionExpenseFragmentToExpenseNewEditFragment(item)
-//            )
+            Navigation.findNavController(it).navigate(
+                ExpenseFragmentDirections.actionExpenseFragmentToExpenseEditFragment(item)
+            )
         }
         holder.binding.apply {
             this.expenseRecord = item

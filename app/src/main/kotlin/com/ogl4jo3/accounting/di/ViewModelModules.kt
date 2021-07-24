@@ -3,6 +3,7 @@ package com.ogl4jo3.accounting.di
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
+import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountAddViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountListViewModel
@@ -11,6 +12,7 @@ import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryMgmtViewModel
 import com.ogl4jo3.accounting.ui.expense.ExpenseAddViewModel
+import com.ogl4jo3.accounting.ui.expense.ExpenseEditViewModel
 import com.ogl4jo3.accounting.ui.expense.ExpenseViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -22,6 +24,9 @@ val viewModelModules = module {
     }
     viewModel { (date: Date) ->
         ExpenseAddViewModel(get(), get(), get(), date)
+    }
+    viewModel { (expenseRecord: ExpenseRecord) ->
+        ExpenseEditViewModel(get(), get(), get(), expenseRecord)
     }
     viewModel {
         AccountListViewModel(get())
