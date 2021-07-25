@@ -4,7 +4,7 @@ orbs:
   android: circleci/android@1.0.3
 
 jobs:
-  build-and-test:  
+  run-test:  
     executor:
       name: android/android-machine
 
@@ -27,35 +27,45 @@ jobs:
           system-image: system-images;android-29;google_apis;x86
           post-emulator-launch-assemble-command: ./gradlew assembleFreeDebugAndroidTest
           max-tries: 1
+  
+  build-and-upload-debug-version:
+    executor:
+      name: android/android-machine
+    
+    steps:
+      - run:
+        name: Build and Upload Free Debug
+        command: |
+          ./gradlew assembleFreeDebug appDistributionUploadFreeDebug
+      # save artifact
+
+  build-and-upload-release-version:
+    executor:
+      name: android/android-machine
+    
+    steps:
+      - run:
+        name: Build and Upload Free Release
+        command: |
+          ./gradlew bundleFreeRelease appDistributionUploadFreeRelease
+      # save artifact
 
 # References:
 # circleCI android command list: https://circleci.com/developer/orbs/orb/circleci/android
 # circleCI android example: https://circleci.com/blog/building-android-on-circleci/
 # firebase app-distribution: https://firebase.google.com/docs/app-distribution/android/distribute-gradle?authuser=0&apptype=aab
 
-
-      # TODO: build debug apk/aab then upload to firebase and save into artifact
-      # - run:
-          # name: Assemble Debug build
-          # command: |
-          # ./gradlew assembleDebug    
-
-      # TODO: build release apk/aab
-      # - run:
-          # name: Assemble release build
-          # command: |
-          # ./gradlew assembleRelease    
-          
-      # TODO: sign release apk/aab then upload to firebase and save into artifact
-      # - run:
-          # name: Assemble release build
-          # command: |
-          # ./gradlew assembleRelease    
-
 workflows:
   android-build-and-test:
     jobs:
-      - build-and-test:
+      - run-test
+      - build-and-upload-debug-version:
+        filters:
+          branches:
+            only:
+              - master
+              - develop
+      - build-and-upload-release-version:
         filters:
           branches:
             only:
