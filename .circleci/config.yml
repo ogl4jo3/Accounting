@@ -46,12 +46,27 @@ jobs:
     working_directory: ~/project
     steps:
       - run:
+          name: generate keystore.properties
+          command: |
+            touch $KEY_PROPERTIES
+            echo keyAlias = $KEY_ALIAS > $KEY_PROPERTIES
+            echo keyPassword = $KEY_PASSWORD >> $KEY_PROPERTIES
+            echo storeFile = $STORE_FILE >> $KEY_PROPERTIES
+            echo storePassword = $STORE_PASSWORD >> $KEY_PROPERTIES
+          environment:
+            KEY_PROPERTIES: keystore.properties
+      - run:
+          name: generate jks
+          command: |
+            echo $ACCOUNTING_KEYSTORE_BASE64 | base64 -d > ../accounting.jks
+      - run:
           name: Build and Upload Free Release
           command: |
-            ./gradlew bundleFreeRelease 
-          # appDistributionUploadFreeRelease
+            ./gradlew assembleFreeRelease appDistributionUploadFreeRelease
+          # ./gradlew bundleFreeRelease appDistributionUploadFreeRelease
       - store_artifacts:
-          path: app/build/outputs/bundle/freeRelease
+          path: app/build/outputs/apk/free/release
+        # path: app/build/outputs/bundle/freeRelease
 
 # References:
 # circleCI android command list: https://circleci.com/developer/orbs/orb/circleci/android
@@ -65,16 +80,15 @@ workflows:
       - build-and-upload-debug-version:
           requires: 
             - setup-and-run-test
-        filters:
-          branches:
-            only:
-              - master
-              - develop
+          filters:
+            branches:
+              only:
+                - master
+                - develop
       - build-and-upload-release-version:
           requires: 
             - setup-and-run-test
-        filters:
-          branches:
-            only:
-              - master
-              - develop
+          filters:
+            branches:
+              only:
+                - master
