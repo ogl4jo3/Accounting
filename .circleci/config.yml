@@ -10,17 +10,14 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
-
       - run:
           name: chmod gradle permissions
           command: |
             chmod +x ./gradlew 
-
       - run:
           name: Run Unit Tests
           command: |
             ./gradlew test 
-
       # Run UI Tests
       - android/start-emulator-and-run-tests:
           test-command: ./gradlew connectedFreeDebugAndroidTest connectedProDebugAndroidTest
@@ -28,16 +25,21 @@ jobs:
           post-emulator-launch-assemble-command: ./gradlew assembleFreeDebugAndroidTest
           max-tries: 1
 
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project
+      # - persist_to_workspace:
+      #     root: ~/
+      #     paths:
+      #       - project
   
   build-and-upload-debug-version:
     executor:
       name: android/android-machine
     working_directory: ~/project
     steps:
+      - checkout
+      - run:
+          name: chmod gradle permissions
+          command: |
+            chmod +x ./gradlew 
       - run:
           name: Build and Upload Free Debug
           command: |
@@ -50,6 +52,13 @@ jobs:
       name: android/android-machine
     working_directory: ~/project
     steps:
+      - checkout
+      - run:
+          name: chmod gradle permissions
+          command: |
+            chmod +x ./gradlew 
+            ls
+            pwd
       - run:
           name: generate keystore.properties
           command: |
@@ -83,16 +92,16 @@ workflows:
     jobs:
       - setup-and-run-test
       - build-and-upload-debug-version:
-          requires: 
-            - setup-and-run-test
+          # requires: 
+          #   - setup-and-run-test
           filters:
             branches:
               only:
                 - master
                 - develop
       - build-and-upload-release-version:
-          requires: 
-            - setup-and-run-test
+          # requires: 
+          #   - setup-and-run-test
           filters:
             branches:
               only:
