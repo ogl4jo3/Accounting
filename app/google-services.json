@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "1020668879647",
+    "project_id": "accounting-36df3",
+    "storage_bucket": "accounting-36df3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020668879647:android:d53b30df5acc98f98d462a",
+        "android_client_info": {
+          "package_name": "com.ogl4jo3.accounting.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzkm0H6JmNXeArU69JB7vl9KrOGX4ymp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020668879647:android:16632ef0b6ac86ce8d462a",
+        "android_client_info": {
+          "package_name": "com.ogl4jo3.accounting.free.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzkm0H6JmNXeArU69JB7vl9KrOGX4ymp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020668879647:android:7ed3dbf484e554938d462a",
+        "android_client_info": {
+          "package_name": "com.ogl4jo3.accounting.pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzkm0H6JmNXeArU69JB7vl9KrOGX4ymp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020668879647:android:83855def990e6e8c8d462a",
+        "android_client_info": {
+          "package_name": "com.ogl4jo3.accounting.pro.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzkm0H6JmNXeArU69JB7vl9KrOGX4ymp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020668879647-hn05f323jopg17joipq2f69rssoi09le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
