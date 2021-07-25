@@ -34,9 +34,9 @@ jobs:
     
     steps:
       - run:
-        name: Build and Upload Free Debug
-        command: |
-          ./gradlew assembleFreeDebug appDistributionUploadFreeDebug
+          name: Build and Upload Free Debug
+          command: |
+            ./gradlew assembleFreeDebug appDistributionUploadFreeDebug
       # save artifact
 
   build-and-upload-release-version:
@@ -45,9 +45,9 @@ jobs:
     
     steps:
       - run:
-        name: Build and Upload Free Release
-        command: |
-          ./gradlew bundleFreeRelease appDistributionUploadFreeRelease
+          name: Build and Upload Free Release
+          command: |
+            ./gradlew bundleFreeRelease appDistributionUploadFreeRelease
       # save artifact
 
 # References:
