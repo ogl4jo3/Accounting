@@ -27,6 +27,11 @@ jobs:
           system-image: system-images;android-29;google_apis;x86
           post-emulator-launch-assemble-command: ./gradlew assembleFreeDebugAndroidTest
           max-tries: 1
+
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project
   
   build-and-upload-debug-version:
     executor:
