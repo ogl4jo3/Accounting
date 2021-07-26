@@ -98,7 +98,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
                 - develop
       - build-and-upload-release-version:
           requires: 
