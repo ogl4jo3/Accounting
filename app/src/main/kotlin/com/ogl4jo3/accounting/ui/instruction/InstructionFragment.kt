@@ -29,18 +29,21 @@ class InstructionFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentInstructionBinding.inflate(inflater, container, false).apply {
             clInstruction.setBackgroundResource(
-                    when (instructionPagePosition) {
-                        0 -> R.drawable.use_teaching_new_expenses360
-                        1 -> R.drawable.use_teaching_choose_date360
-                        2 -> R.drawable.use_teaching_function_menu360
-                        else -> R.drawable.use_teaching_custom_date360
-                    }
+                when (instructionPagePosition) {
+                    0 -> R.drawable.instruction_drawer
+                    1 -> R.drawable.instruction_add_expense
+                    2 -> R.drawable.instruction_date_picker
+                    else -> R.drawable.instruction_category_mgmt
+                }
             )
-            btnStartUse.visibility = if (instructionPagePosition == INSTRUCTION_PAGE_COUNT - 1) VISIBLE else GONE
+            btnStartUse.visibility =
+                if (instructionPagePosition == INSTRUCTION_PAGE_COUNT - 1) VISIBLE else GONE
             btnStartUse.setOnClickListener { startUse() }
         }
 
@@ -50,7 +53,7 @@ class InstructionFragment : Fragment() {
     private fun startUse() {
         //將第一次使用改為否
         SharedPreferencesHelper(activity, SharedPreferencesTag.prefsData)
-                .setBoolean(SharedPreferencesTag.prefsFirstUse, false)
+            .setBoolean(SharedPreferencesTag.prefsFirstUse, false)
         //開始使用
         val intent = Intent(activity, MainActivity::class.java)
         startActivity(intent)

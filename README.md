@@ -19,7 +19,10 @@ It's an Android App that can record the expense and income daily, and count data
 - Single-activity architecture(using Navigation component)
 
 ## Screenshots
-//TODO: add screenshots
+
+<img src="AccountingData/Screenshot/Screenshot_20210724-233508.png" alt="Drawer" width="200"/>
+<img src="AccountingData/Screenshot/Screenshot_20210724-233524.png" alt="Expense" width="200"/>
+<img src="AccountingData/Screenshot/Screenshot_20210726-101121.png" alt="Category Management" width="200"/>
 
 ## TODOs
 - Refactor

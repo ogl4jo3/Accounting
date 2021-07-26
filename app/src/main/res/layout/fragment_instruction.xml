@@ -7,7 +7,7 @@
         android:id="@+id/cl_instruction"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@drawable/use_teaching_custom_date360">
+        tools:background="@drawable/instruction_add_expense">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_start_use"
