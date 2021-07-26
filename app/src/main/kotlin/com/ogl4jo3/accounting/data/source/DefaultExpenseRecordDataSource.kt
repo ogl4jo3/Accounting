@@ -6,7 +6,7 @@ import com.ogl4jo3.accounting.data.ExpenseRecord
 import java.util.Date
 
 class DefaultExpenseRecordDataSource(
-    val expenseRecordDao: ExpenseRecordDao
+    private val expenseRecordDao: ExpenseRecordDao
 ) : ExpenseRecordDataSource {
     override suspend fun insertExpenseRecord(expenseRecord: ExpenseRecord) {
         expenseRecordDao.insertExpenseRecord(expenseRecord)

@@ -9,12 +9,12 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ogl4jo3.accounting.R
+import com.ogl4jo3.accounting.data.local.SharedPreferencesHelper
 import com.ogl4jo3.accounting.databinding.FragmentInstructionBinding
 import com.ogl4jo3.accounting.ui.MainActivity
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity.Companion.ARG_INSTRUCTION_PAGE_NUM
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity.Companion.INSTRUCTION_PAGE_COUNT
-import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesHelper
-import com.ogl4jo3.accounting.utils.sharedpreferences.SharedPreferencesTag
+import org.koin.android.ext.android.inject
 
 class InstructionFragment : Fragment() {
 
@@ -51,10 +51,9 @@ class InstructionFragment : Fragment() {
     }
 
     private fun startUse() {
-        //將第一次使用改為否
-        SharedPreferencesHelper(activity, SharedPreferencesTag.prefsData)
-            .setBoolean(SharedPreferencesTag.prefsFirstUse, false)
-        //開始使用
+        val sharedPreferencesHelper: SharedPreferencesHelper by inject()
+        sharedPreferencesHelper.isFirstUse = false
+
         val intent = Intent(activity, MainActivity::class.java)
         startActivity(intent)
         activity?.finish()

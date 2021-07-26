@@ -7,6 +7,7 @@ import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
+import com.ogl4jo3.accounting.di.appModules
 import com.ogl4jo3.accounting.di.dataSourceModules
 import com.ogl4jo3.accounting.di.databaseModules
 import com.ogl4jo3.accounting.di.viewModelModules
@@ -29,6 +30,7 @@ class AccountingApplication : Application() {
             androidLogger()
             androidContext(this@AccountingApplication)
             modules(
+                appModules,
                 databaseModules,
                 dataSourceModules,
                 viewModelModules

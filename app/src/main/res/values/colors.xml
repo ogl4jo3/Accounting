@@ -4,20 +4,12 @@
     <color name="colorPrimaryDark">#080B30</color>
     <color name="colorAccent">#302D08</color>
     <color name="colorBlack">#000000</color>
-    <!-- 主要字型使用顏色 -->
-    <color name="text_main_color">#0D47A1</color>
-    <color name="text_minor_color">#26c6da</color>
+
     <color name="switch_thumb_color">#C3CFF9</color>
 
-    <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#FF3B00</color>
     <color name="red_press">#990000</color>
     <color name="gray_press">#E0E0E0</color>
-    <color name="gray">#BDBDBD</color>
-    <color name="gray_dark">#757575</color>
-
-    <!-- 分隔線顏色 -->
-    <color name="sep_line_color">#4D4B4B</color>
 
 </resources>

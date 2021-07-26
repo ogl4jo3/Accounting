@@ -7,15 +7,15 @@
         android:id="@+id/cl_instruction"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@drawable/instruction_add_expense">
+        tools:background="@drawable/instruction_category_mgmt">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_start_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="120dp"
+            android:layout_marginBottom="150dp"
             android:text="@string/btn_start_use"
-            android:textSize="@dimen/fs_7"
+            android:textSize="52sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

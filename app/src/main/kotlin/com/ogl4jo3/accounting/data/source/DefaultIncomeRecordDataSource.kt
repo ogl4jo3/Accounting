@@ -6,7 +6,7 @@ import com.ogl4jo3.accounting.data.IncomeRecord
 import java.util.Date
 
 class DefaultIncomeRecordDataSource(
-    val incomeRecordDao: IncomeRecordDao
+    private val incomeRecordDao: IncomeRecordDao
 ) : IncomeRecordDataSource {
     override suspend fun insertIncomeRecord(incomeRecord: IncomeRecord) {
         incomeRecordDao.insertIncomeRecord(incomeRecord)
