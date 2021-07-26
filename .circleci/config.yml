@@ -58,6 +58,7 @@ jobs:
           name: chmod gradle permissions
           command: |
             chmod +x ./gradlew 
+      # use sh .circleci/gen_key_store_and_properties.sh instead
       - run:
           name: generate keystore.properties
           command: |
@@ -68,6 +69,7 @@ jobs:
             echo storePassword = $STORE_PASSWORD >> $KEY_PROPERTIES
           environment:
             KEY_PROPERTIES: keystore.properties
+      # use sh .circleci/gen_key_store_and_properties.sh instead
       - run:
           name: generate jks
           command: |
@@ -96,7 +98,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
                 - develop
       - build-and-upload-release-version:
           requires: 

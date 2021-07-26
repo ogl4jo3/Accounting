@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 
 class AccountListViewModel(
     private val accountDataSource: AccountDataSource
@@ -21,6 +22,7 @@ class AccountListViewModel(
 
     fun getAccountBalance(account: Account): Int {
         //TODO: calculate account balance , use (Account.initialAmount - expense + income) .
+        Timber.d("todo account balance, account: $account")
         return 0
     }
 }

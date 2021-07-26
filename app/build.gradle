@@ -15,8 +15,8 @@ android {
         applicationId "com.ogl4jo3.accounting"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "0.0.1"
+        versionCode 2
+        versionName "0.0.2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -97,6 +97,7 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.preference:preference-ktx:1.1.1"
 
     implementation 'androidx.annotation:annotation:1.2.0'
 
@@ -141,7 +142,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v13:1.0.0'
     implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.opencsv:opencsv:4.1'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation "androidx.test:core:1.3.0"

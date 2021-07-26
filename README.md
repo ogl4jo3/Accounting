@@ -16,6 +16,7 @@ It's an Android App that can record the expense and income daily, and count data
 - Unit Tests
 - UI Tests
 - Test-Driven Development(TDD)
+- CI(using CircleCI)
 - Single-activity architecture(using Navigation component)
 
 ## Screenshots
@@ -25,8 +26,9 @@ It's an Android App that can record the expense and income daily, and count data
 <img src="AccountingData/Screenshot/Screenshot_20210726-101121.png" alt="Category Management" width="200"/>
 
 ## TODOs
-- Refactor
+- Feature - Statistic
+- Feature - Budget
+- Feature - Notification
 - UI test with DI(Koin)
-- CI
 - Deploy on Google Play Store
 
