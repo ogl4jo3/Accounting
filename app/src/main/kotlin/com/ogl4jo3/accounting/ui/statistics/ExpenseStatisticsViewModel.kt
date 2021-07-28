@@ -12,6 +12,7 @@ import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
+import com.ogl4jo3.accounting.ui.common.PieChartData
 import kotlinx.coroutines.runBlocking
 import java.util.Date
 
@@ -100,6 +101,16 @@ class ExpenseStatisticsViewModel(
     suspend fun getCategoryById(categoryId: String): Category? {
         return categoryDataSource.getCategoryById(categoryId)
     }
+
+    fun getPieChartData(statisticsItemList: List<StatisticsItem>): List<PieChartData> =
+        runBlocking {
+            return@runBlocking statisticsItemList.map {
+                PieChartData(
+                    name = getCategoryById(it.categoryId)?.name ?: "",
+                    value = it.amount
+                )
+            }
+        }
 }
 
 enum class TabStatisticsUnit {
