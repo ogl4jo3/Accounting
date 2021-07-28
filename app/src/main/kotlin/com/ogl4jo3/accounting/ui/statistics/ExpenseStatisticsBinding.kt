@@ -2,6 +2,8 @@ package com.ogl4jo3.accounting.ui.statistics
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.ogl4jo3.accounting.R
@@ -34,4 +36,35 @@ fun setPercentText(textView: TextView, percent: Float) {
     textView.apply {
         text = String.format(context.getString(R.string.tv_percent), percent * 100)
     }
+}
+
+@BindingAdapter("statisticsUnit")
+fun setStatisticsUnit(tabLayout: TabLayout, statisticsUnit: TabStatisticsUnit) {
+    if (tabLayout.selectedTabPosition != statisticsUnit.ordinal) {
+        tabLayout.selectTab(tabLayout.getTabAt(statisticsUnit.ordinal))
+    }
+}
+
+@InverseBindingAdapter(attribute = "statisticsUnit")
+fun getStatisticsUnit(tabLayout: TabLayout): TabStatisticsUnit? {
+    return try {
+        TabStatisticsUnit.values()[tabLayout.selectedTabPosition]
+    } catch (e: IndexOutOfBoundsException) {
+        null
+    }
+}
+
+@BindingAdapter("statisticsUnitAttrChanged")
+fun setListeners(tabLayout: TabLayout, attrChange: InverseBindingListener) {
+    tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        override fun onTabSelected(tab: TabLayout.Tab?) {
+            attrChange.onChange()
+        }
+
+        override fun onTabUnselected(tab: TabLayout.Tab?) {
+        }
+
+        override fun onTabReselected(tab: TabLayout.Tab?) {
+        }
+    })
 }

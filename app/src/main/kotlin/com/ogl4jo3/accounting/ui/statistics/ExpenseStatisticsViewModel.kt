@@ -21,8 +21,8 @@ class ExpenseStatisticsViewModel(
     private val expenseRecordDataSource: ExpenseRecordDataSource,
 ) : ViewModel() {
 
-    val tabUnit = MutableLiveData(TabStatisticsUnit.MONTH)
-    private val tabUnitObserver = Observer<TabStatisticsUnit?> {
+    val statisticsUnit = MutableLiveData(TabStatisticsUnit.MONTH)
+    private val statisticsUnitObserver = Observer<TabStatisticsUnit?> {
         if (it == null) return@Observer
         date.value?.let { date ->
             updateStatisticsItemList(it, date)
@@ -32,8 +32,8 @@ class ExpenseStatisticsViewModel(
     val date = MutableLiveData(Date())
     private val dateObserver = Observer<Date?> {
         if (it == null) return@Observer
-        tabUnit.value?.let { tabUnit ->
-            updateStatisticsItemList(tabUnit, it)
+        statisticsUnit.value?.let { statisticsUnit ->
+            updateStatisticsItemList(statisticsUnit, it)
         }
     }
 
@@ -43,17 +43,17 @@ class ExpenseStatisticsViewModel(
 
     init {
         date.observeForever(dateObserver)
-        tabUnit.observeForever(tabUnitObserver)
+        statisticsUnit.observeForever(statisticsUnitObserver)
     }
 
     override fun onCleared() {
         super.onCleared()
         date.removeObserver(dateObserver)
-        tabUnit.removeObserver(tabUnitObserver)
+        statisticsUnit.removeObserver(statisticsUnitObserver)
     }
 
     fun previousDate() {
-        tabUnit.value?.let { tabUnit ->
+        statisticsUnit.value?.let { tabUnit ->
             date.value = when (tabUnit) {
                 TabStatisticsUnit.MONTH -> date.value?.previousMonth
                 TabStatisticsUnit.YEAR -> date.value?.previousYear
@@ -62,8 +62,8 @@ class ExpenseStatisticsViewModel(
     }
 
     fun nextDate() {
-        tabUnit.value?.let { tabUnit ->
-            date.value = when (tabUnit) {
+        statisticsUnit.value?.let { statisticsUnit ->
+            date.value = when (statisticsUnit) {
                 TabStatisticsUnit.MONTH -> date.value?.nextMonth
                 TabStatisticsUnit.YEAR -> date.value?.nextYear
             }

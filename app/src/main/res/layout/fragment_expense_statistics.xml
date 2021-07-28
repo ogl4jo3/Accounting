@@ -36,7 +36,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_date"
                 tabBarDate="@{viewModel.date}"
-                tabBarUnit="@{viewModel.tabUnit}"
+                tabBarUnit="@{viewModel.statisticsUnit}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -61,26 +61,14 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
+                statisticsUnit="@={viewModel.statisticsUnit}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ib_next"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_item_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tab_month" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_item_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tab_year" />
-            </com.google.android.material.tabs.TabLayout>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
