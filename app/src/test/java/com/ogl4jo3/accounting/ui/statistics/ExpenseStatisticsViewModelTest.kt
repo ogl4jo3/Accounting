@@ -1,65 +1,43 @@
 package com.ogl4jo3.accounting.ui.statistics
 
-import com.ogl4jo3.accounting.data.ExpenseRecord
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.ogl4jo3.accounting.data.source.FakeCategoryDataSource
+import com.ogl4jo3.accounting.data.source.FakeExpenseRecordDataSource
+import com.ogl4jo3.accounting.testExpenseCategories
 import com.ogl4jo3.accounting.testExpenseRecords
 import org.junit.Assert
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class ExpenseStatisticsViewModelTest {
 
-    //TODO: add test
-//    @Rule
-//    @JvmField
-//    val instantTaskExecutorRule = InstantTaskExecutorRule()
-//
-//    private lateinit var viewModel: ExpenseAddViewModel
-//    private lateinit var fakeExpenseRecordDataSource: FakeExpenseRecordDataSource
+    @Rule
+    @JvmField
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-//    @Before
-//    fun setup() {
-//        fakeExpenseRecordDataSource = FakeExpenseRecordDataSource()
-//        viewModel = ExpenseAddViewModel(
-//            FakeAccountDataSource(testAccounts.toMutableList()),
-//            FakeCategoryDataSource(testExpenseCategories.toMutableList()),
-//            fakeExpenseRecordDataSource,
-//            Date()
-//        )
-//    }
+    private lateinit var viewModel: ExpenseStatisticsViewModel
+
+    @Before
+    fun setup() {
+        viewModel = ExpenseStatisticsViewModel(
+            FakeCategoryDataSource(testExpenseCategories.toMutableList()),
+            FakeExpenseRecordDataSource(testExpenseRecords.toMutableList()),
+        )
+    }
 
     @Test
     fun `test getStatisticsItemList`() {
-
-        val statisticsItemList = getStatisticsItemList(testExpenseRecords)
-
+        val statisticsItemList = viewModel.getStatisticsItemList(testExpenseRecords)
 
         println(statisticsItemList)
 
         Assert.assertEquals("2", statisticsItemList[0].categoryId)
         Assert.assertEquals(0, statisticsItemList[0].orderNumber)
         Assert.assertEquals(4300, statisticsItemList[0].amount)
-        Assert.assertEquals(955, (statisticsItemList[0].percent*1000).toInt())
+        Assert.assertEquals(955, (statisticsItemList[0].percent * 1000).toInt())
         Assert.assertEquals(1, statisticsItemList[1].orderNumber)
         Assert.assertEquals(2, statisticsItemList[2].orderNumber)
-    }
-
-
-    fun getStatisticsItemList(expenseRecords: List<ExpenseRecord>): List<StatisticsItem> {
-        val statisticsItemList = expenseRecords.groupBy { it.categoryId }
-            .map {
-                StatisticsItem(
-                    categoryId = it.key,
-                    amount = it.value.sumOf { record -> record.price },
-                    percent = 0.0f,
-                    orderNumber = 0
-                )
-            }
-            .sortedByDescending { it.amount }
-        val sum = statisticsItemList.sumOf { it.amount }
-        statisticsItemList.forEachIndexed { index, statisticsItem ->
-            statisticsItem.orderNumber = index
-            statisticsItem.percent = statisticsItem.amount.div(sum.toFloat())
-        }
-        return statisticsItemList
     }
 
 }
