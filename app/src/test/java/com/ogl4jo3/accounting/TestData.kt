@@ -72,6 +72,14 @@ val testExpenseRecords: List<ExpenseRecord> = listOf(
         testExpenseCategories[2].id,
         "測試用支出",
         testDateArray[0]
+    ),
+    ExpenseRecord(
+        "3",
+        2150,
+        testAccounts[1].id,
+        testExpenseCategories[2].id,
+        "測試用支出",
+        testDateArray[0]
     )
 )
 

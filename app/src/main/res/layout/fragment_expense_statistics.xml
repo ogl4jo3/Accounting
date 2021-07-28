@@ -1,0 +1,101 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ogl4jo3.accounting.ui.statistics.ExpenseStatisticsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_date_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ib_previous"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/selector_gray_press"
+                android:onClick="@{v -> viewModel.previousDate()}"
+                android:src="@drawable/ic_arrow_previous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_date"
+                tabBarDate="@{viewModel.date}"
+                tabBarUnit="@{viewModel.tabUnit}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ib_next"
+                app:layout_constraintStart_toEndOf="@id/ib_previous"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2021年7月" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ib_next"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/selector_gray_press"
+                android:onClick="@{v -> viewModel.nextDate()}"
+                android:src="@drawable/ic_arrow_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tab_layout"
+                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ib_next"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_item_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_month" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_item_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_year" />
+            </com.google.android.material.tabs.TabLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_statistics_items"
+            statisticsItems="@{viewModel.statisticsItemList}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_date_bar"
+            tools:listitem="@layout/item_expense_record" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
