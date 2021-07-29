@@ -12,7 +12,6 @@
     <color name="red_press">#990000</color>
     <color name="gray_press">#E0E0E0</color>
 
-    <color name="pie_chart_background">#11000000</color>
     <array name="pie_chart_color_array">
         <item>#002e3c</item>
         <item>#0e4353</item>
