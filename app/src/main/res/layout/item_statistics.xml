@@ -1,0 +1,91 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.ogl4jo3.accounting.ui.common.Converter" />
+
+        <variable
+            name="category"
+            type="com.ogl4jo3.accounting.data.Category" />
+
+        <variable
+            name="item"
+            type="com.ogl4jo3.accounting.ui.statistics.StatisticsItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_order_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Converter.intToString(item.orderNumber+1)}"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_category_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_category_icon"
+            imgRscByDrawableName="@{category.iconResName}"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_category_name"
+            app:layout_constraintStart_toEndOf="@id/tv_order_num"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_category_other" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_category_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@{category.name}"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_amount"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toEndOf="@id/iv_category_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/category_other" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_amount"
+            price="@{item.amount}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_percent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toEndOf="@id/tv_category_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="$1234" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_percent"
+            percent="@{item.percent}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/tv_amount"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12.5%" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

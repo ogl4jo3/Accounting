@@ -5,11 +5,16 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ogl4jo3.accounting.common.beginOfDay
+import com.ogl4jo3.accounting.common.beginOfMonth
+import com.ogl4jo3.accounting.common.beginOfYear
 import com.ogl4jo3.accounting.common.endOfDay
+import com.ogl4jo3.accounting.common.endOfMonth
+import com.ogl4jo3.accounting.common.endOfYear
 import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.utils.testAccounts
 import com.ogl4jo3.accounting.utils.testDateArray
 import com.ogl4jo3.accounting.utils.testExpenseCategories
+import com.ogl4jo3.accounting.utils.testExpenseRecords
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -99,6 +104,30 @@ class ExpenseRecordDaoTest {
             2,
             expenseRecordDao.getExpenseRecordsByDate(
                 testDateArray[1].beginOfDay.time, testDateArray[1].endOfDay.time
+            ).size
+        )
+    }
+
+    @Test
+    fun `Test-InsertExpenseRecord_And_GetExpenseRecordsByDate_2`() = runBlocking {
+        Timber.d("Test-InsertExpenseRecord_And_GetExpenseRecordsByDate_2")
+        testExpenseRecords.forEach { expenseRecordDao.insertExpenseRecord(it) }
+        Assert.assertEquals(
+            1,
+            expenseRecordDao.getExpenseRecordsByDate(
+                testDateArray[1].beginOfDay.time, testDateArray[1].endOfDay.time
+            ).size
+        )
+        Assert.assertEquals(
+            3,
+            expenseRecordDao.getExpenseRecordsByDate(
+                testDateArray[1].beginOfMonth.time, testDateArray[1].endOfMonth.time
+            ).size
+        )
+        Assert.assertEquals(
+            6,
+            expenseRecordDao.getExpenseRecordsByDate(
+                testDateArray[1].beginOfYear.time, testDateArray[1].endOfYear.time
             ).size
         )
     }
