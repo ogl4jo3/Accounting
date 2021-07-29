@@ -19,11 +19,12 @@ jobs:
           command: |
             ./gradlew test 
       # Run UI Tests
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedFreeDebugAndroidTest connectedProDebugAndroidTest
-          system-image: system-images;android-29;google_apis;x86
-          post-emulator-launch-assemble-command: ./gradlew assembleFreeDebugAndroidTest
-          max-tries: 1
+# workaround, remove UI tests, because it take too much time.
+#      - android/start-emulator-and-run-tests:
+#          test-command: ./gradlew connectedFreeDebugAndroidTest connectedProDebugAndroidTest
+#          system-image: system-images;android-29;google_apis;x86
+#          post-emulator-launch-assemble-command: ./gradlew assembleFreeDebugAndroidTest
+#          max-tries: 1
       
       # TODO:
       # - persist_to_workspace:

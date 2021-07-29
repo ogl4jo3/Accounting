@@ -48,9 +48,16 @@ class AppNavigationTest {
         // ExpenseStatisticsFragment
         navToFragment(R.id.expenseStatisticsFragment)
         onView(withId(R.id.cl_date_bar)).check(matches(isDisplayed()))
+        onView(withId(R.id.pie_chart)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_statistics_items)).check(matches(isDisplayed()))
-
-        //TODO: add more navigate fragment test
+        // IncomeStatisticsFragment
+        navToFragment(R.id.incomeStatisticsFragment)
+        onView(withId(R.id.cl_date_bar)).check(matches(isDisplayed()))
+        onView(withId(R.id.pie_chart)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_statistics_items)).check(matches(isDisplayed()))
+        // AboutFragment
+        navToFragment(R.id.aboutFragment)
+        onView(withId(R.id.tv_version)).check(matches(isDisplayed()))
 
     }
 

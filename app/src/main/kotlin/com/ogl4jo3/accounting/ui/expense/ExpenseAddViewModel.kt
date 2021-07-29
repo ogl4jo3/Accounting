@@ -41,7 +41,7 @@ class ExpenseAddViewModel(
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allExpenseCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Expense)
-            account.value = allAccounts.value?.get(0)//TODO: use default account instead
+            account.value = allAccounts.value?.find { it.isDefaultAccount }
             category.value = allExpenseCategories.value?.get(0)
         }
     }

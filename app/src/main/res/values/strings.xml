@@ -141,5 +141,8 @@
     <string name="title_income_category_add">新增收入類別</string>
     <string name="title_income_category_edit">編輯收入類別</string>
 
+    <!-- AboutFragment -->
+    <string name="title_about">關於</string>
+    <string name="tv_version">版本:</string>
 
 </resources>

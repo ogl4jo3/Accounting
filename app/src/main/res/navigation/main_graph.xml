@@ -220,5 +220,11 @@
         android:name="com.ogl4jo3.accounting.ui.statistics.income.IncomeStatisticsFragment"
         android:label="@string/title_income_statistics"
         tools:layout="@layout/fragment_income_statistics" />
-    
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.ogl4jo3.accounting.ui.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+
 </navigation>

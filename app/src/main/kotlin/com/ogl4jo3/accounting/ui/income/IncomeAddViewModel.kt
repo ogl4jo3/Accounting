@@ -41,7 +41,7 @@ class IncomeAddViewModel(
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allIncomeCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Income)
-            account.value = allAccounts.value?.get(0)//TODO: use default account instead
+            account.value = allAccounts.value?.find { it.isDefaultAccount }
             category.value = allIncomeCategories.value?.get(0)
         }
     }
