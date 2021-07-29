@@ -40,14 +40,15 @@ class AppNavigationTest {
         // ExpenseFragment
         navToFragment(R.id.expenseFragment)
         onView(withId(R.id.tv_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_no_data)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_total_amount)).check(matches(isDisplayed()))
         // IncomeFragment
         navToFragment(R.id.incomeFragment)
         onView(withId(R.id.tv_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_no_data)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_total_amount)).check(matches(isDisplayed()))
-
+        // ExpenseStatisticsFragment
+        navToFragment(R.id.expenseStatisticsFragment)
+        onView(withId(R.id.cl_date_bar)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_statistics_items)).check(matches(isDisplayed()))
 
         //TODO: add more navigate fragment test
 
