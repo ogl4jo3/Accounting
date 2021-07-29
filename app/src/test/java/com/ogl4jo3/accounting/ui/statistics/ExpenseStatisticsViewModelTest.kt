@@ -5,6 +5,7 @@ import com.ogl4jo3.accounting.data.source.FakeCategoryDataSource
 import com.ogl4jo3.accounting.data.source.FakeExpenseRecordDataSource
 import com.ogl4jo3.accounting.testExpenseCategories
 import com.ogl4jo3.accounting.testExpenseRecords
+import com.ogl4jo3.accounting.ui.statistics.expense.ExpenseStatisticsViewModel
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
