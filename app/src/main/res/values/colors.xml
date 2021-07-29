@@ -12,4 +12,15 @@
     <color name="red_press">#990000</color>
     <color name="gray_press">#E0E0E0</color>
 
+    <array name="pie_chart_color_array">
+        <item>#002e3c</item>
+        <item>#0e4353</item>
+        <item>#1d5667</item>
+        <item>#2b6a7d</item>
+        <item>#37788e</item>
+        <item>#558ca0</item>
+        <item>#70a1b4</item>
+        <item>#94bdcd</item>
+    </array>
+
 </resources>

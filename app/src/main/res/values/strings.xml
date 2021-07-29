@@ -17,7 +17,8 @@
     <string name="nav_title_common">常用</string>
     <string name="nav_expense">支出</string>
     <string name="nav_income">收入</string>
-    <string name="nav_statistics">統計</string>
+    <string name="nav_expense_statistics">支出統計</string>
+    <string name="nav_income_statistics">收入統計</string>
     <!-- 分類:設定 -->
     <string name="nav_title_setting">設定</string>
     <string name="nav_account_management">帳戶管理</string>
@@ -25,8 +26,7 @@
     <string name="nav_income_category_management">收入類別管理</string>
     <!-- 分類:其他 -->
     <string name="nav_title_others">其他</string>
-    <string name="nav_about_us">關於我們</string>
-    <string name="nav_give_praise">給予好評</string>
+    <string name="nav_about">關於</string>
 
     <!-- Instruction 使用教學 -->
     <string name="btn_start_use">開始使用</string>
@@ -57,12 +57,15 @@
     <string name="title_income_edit">編輯收入</string>
     <string name="msg_income_del_confirm">確定刪除此紀錄?</string>
 
-    <!-- StatisticsFragment 統計 -->
-    <string name="title_statistics">統計</string>
-    <!-- ExpenseStatisticsFragment 支出統計 -->
+    <!-- ExpenseStatisticsFragment/IncomeStatisticsFragment 支出/收入統計 -->
     <string name="title_expense_statistics">支出統計</string>
-    <!-- IncomeStatisticsFragment 收入統計 -->
     <string name="title_income_statistics">收入統計</string>
+    <string name="tab_year">年</string>
+    <string name="tab_month">月</string>
+    <string name="tab_year_text">%d年</string>
+    <string name="tab_year_n_month_text">%1$d年%2$d月</string>
+    <string name="tv_price">\$%d</string>
+    <string name="tv_percent">%.1f\%%</string>
 
     <!-- AccountMgmtFragment 帳戶管理 -->
     <string name="title_account_mgmt">帳戶管理</string>

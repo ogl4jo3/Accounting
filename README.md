@@ -1,7 +1,8 @@
 # Accounting Android App
 It's an Android App that can record the expense and income daily, and count data monthly and annually.
 
-//TODO: get it on google play store with picture
+<a href="https://play.google.com/store/apps/details?id=com.ogl4jo3.accounting.free"><img src="AccountingData/GooglePlayStore/google-play-badge.png" height="75"></a>
+
 
 ## App Features
 - record expense and income daily
@@ -21,14 +22,11 @@ It's an Android App that can record the expense and income daily, and count data
 
 ## Screenshots
 
-<img src="AccountingData/Screenshot/Screenshot_20210724-233508.png" alt="Drawer" width="200"/>
-<img src="AccountingData/Screenshot/Screenshot_20210724-233524.png" alt="Expense" width="200"/>
-<img src="AccountingData/Screenshot/Screenshot_20210726-101121.png" alt="Category Management" width="200"/>
+| <img src="AccountingData/Screenshot/Screenshot_20210724-233508.png"> | <img src="AccountingData/Screenshot/Screenshot_20210724-233524.png"> |  <img src="AccountingData/Screenshot/Screenshot_20210726-101121.png"> |
+| ---------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| <img src="AccountingData/Screenshot/Screenshot_20210729-094804.png"> | <img src="AccountingData/Screenshot/Screenshot_20210724-233547.png"> |  |
 
 ## TODOs
-- Feature - Statistic
 - Feature - Budget
 - Feature - Notification
 - UI test with DI(Koin)
-- Deploy on Google Play Store
-

@@ -209,4 +209,16 @@
             app:nullable="false" />
     </fragment>
 
+    <fragment
+        android:id="@+id/expenseStatisticsFragment"
+        android:name="com.ogl4jo3.accounting.ui.statistics.expense.ExpenseStatisticsFragment"
+        android:label="@string/title_expense_statistics"
+        tools:layout="@layout/fragment_expense_statistics" />
+
+    <fragment
+        android:id="@+id/incomeStatisticsFragment"
+        android:name="com.ogl4jo3.accounting.ui.statistics.income.IncomeStatisticsFragment"
+        android:label="@string/title_income_statistics"
+        tools:layout="@layout/fragment_income_statistics" />
+    
 </navigation>

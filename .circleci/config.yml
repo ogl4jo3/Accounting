@@ -77,11 +77,11 @@ jobs:
       - run:
           name: Build and Upload Free Release
           command: |
-            ./gradlew assembleFreeRelease appDistributionUploadFreeRelease
-          # ./gradlew bundleFreeRelease appDistributionUploadFreeRelease
+            ./gradlew bundleFreeRelease appDistributionUploadFreeRelease
+          # ./gradlew assembleFreeRelease appDistributionUploadFreeRelease
       - store_artifacts:
-          path: app/build/outputs/apk/free/release
-        # path: app/build/outputs/bundle/freeRelease
+          path: app/build/outputs/bundle/freeRelease
+        # path: app/build/outputs/apk/free/release
 
 # References:
 # circleCI android command list: https://circleci.com/developer/orbs/orb/circleci/android
