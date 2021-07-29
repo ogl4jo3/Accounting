@@ -41,7 +41,7 @@ class ExpenseAddViewModel(
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allExpenseCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Expense)
-            account.value = allAccounts.value?.get(0)
+            account.value = allAccounts.value?.get(0)//TODO: use default account instead
             category.value = allExpenseCategories.value?.get(0)
         }
     }
@@ -59,7 +59,13 @@ class ExpenseAddViewModel(
             )
         }?.let { expenseRecord ->
             runBlocking { addExpenseRecord(expenseRecord) }
-        } ?: return
+        } ?: run {
+            // check all necessary field
+            if (price.value == null) {
+                moneyInputError()
+            }
+            return
+        }
     }
 
     suspend fun addExpenseRecord(expenseRecord: ExpenseRecord) {

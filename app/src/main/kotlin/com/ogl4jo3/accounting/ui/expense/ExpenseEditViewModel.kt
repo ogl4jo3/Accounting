@@ -56,7 +56,13 @@ class ExpenseEditViewModel(
             expenseRecord
         }?.let { expenseRecord ->
             runBlocking { saveExpenseRecord(expenseRecord) }
-        } ?: return
+        } ?: run {
+            // check all necessary field
+            if (price.value == null) {
+                moneyInputError()
+            }
+            return
+        }
     }
 
     suspend fun saveExpenseRecord(expenseRecord: ExpenseRecord) {
