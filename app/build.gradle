@@ -52,7 +52,7 @@ android {
         release {
             signingConfig signingConfigs.release
             firebaseAppDistribution {
-//                artifactType = "AAB"
+                artifactType = "AAB"
                 releaseNotes = "Release Notes: from gradle auto build & upload."
                 groups = "qa"
             }
