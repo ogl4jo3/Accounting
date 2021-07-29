@@ -56,7 +56,13 @@ class IncomeEditViewModel(
             incomeRecord
         }?.let { incomeRecord ->
             runBlocking { saveIncomeRecord(incomeRecord) }
-        } ?: return
+        } ?: run {
+            // check all necessary field
+            if (price.value == null) {
+                moneyInputError()
+            }
+            return
+        }
     }
 
     suspend fun saveIncomeRecord(incomeRecord: IncomeRecord) {

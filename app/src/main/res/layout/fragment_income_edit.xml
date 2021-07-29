@@ -47,7 +47,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="8"
-                android:text="@={Converter.intToString(viewModel.price)}" />
+                android:text="@={Converter.priceToString(viewModel.price)}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,26 +102,26 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:onClick="@{v -> viewModel.saveIncomeRecord()}"
-            android:text="@string/btn_save"
-            app:layout_constraintEnd_toStartOf="@id/btn_del"
+            android:text="@string/btn_del"
+            app:layout_constraintEnd_toStartOf="@id/btn_save"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_description" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_del"
+            android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="@string/btn_del"
+            android:onClick="@{v -> viewModel.saveIncomeRecord()}"
+            android:text="@string/btn_save"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_save"
-            app:layout_constraintTop_toTopOf="@id/btn_save" />
+            app:layout_constraintStart_toEndOf="@id/btn_del"
+            app:layout_constraintTop_toTopOf="@id/btn_del" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

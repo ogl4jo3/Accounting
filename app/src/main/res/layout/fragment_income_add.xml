@@ -48,7 +48,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="8"
-                android:text="@={Converter.intToString(viewModel.price)}" />
+                android:text="@={Converter.priceToString(viewModel.price)}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
