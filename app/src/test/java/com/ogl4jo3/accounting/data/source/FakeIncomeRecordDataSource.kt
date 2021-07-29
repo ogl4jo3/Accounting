@@ -1,7 +1,11 @@
 package com.ogl4jo3.accounting.data.source
 
 import com.ogl4jo3.accounting.common.beginOfDay
+import com.ogl4jo3.accounting.common.beginOfMonth
+import com.ogl4jo3.accounting.common.beginOfYear
 import com.ogl4jo3.accounting.common.endOfDay
+import com.ogl4jo3.accounting.common.endOfMonth
+import com.ogl4jo3.accounting.common.endOfYear
 import com.ogl4jo3.accounting.data.IncomeRecord
 import java.util.Date
 
@@ -16,6 +20,18 @@ class FakeIncomeRecordDataSource(
     override suspend fun getIncomeRecordsByDate(date: Date): List<IncomeRecord> {
         return incomeRecords.filter {
             it.recordTime.after(date.beginOfDay) && it.recordTime.before(date.endOfDay)
+        }
+    }
+
+    override suspend fun getIncomeRecordsByMonth(date: Date): List<IncomeRecord> {
+        return incomeRecords.filter {
+            it.recordTime.after(date.beginOfMonth) && it.recordTime.before(date.endOfMonth)
+        }
+    }
+
+    override suspend fun getIncomeRecordsByYear(date: Date): List<IncomeRecord> {
+        return incomeRecords.filter {
+            it.recordTime.after(date.beginOfYear) && it.recordTime.before(date.endOfYear)
         }
     }
 

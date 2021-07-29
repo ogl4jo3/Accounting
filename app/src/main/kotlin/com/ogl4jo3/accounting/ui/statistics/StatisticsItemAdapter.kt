@@ -9,7 +9,7 @@ import com.ogl4jo3.accounting.databinding.ItemStatisticsBinding
 import kotlinx.coroutines.runBlocking
 
 class StatisticsItemAdapter(
-    val viewModel: ExpenseStatisticsViewModel
+    private val getCategoryImpl: IGetCategory
 ) :
     ListAdapter<StatisticsItem, StatisticsItemViewHolder>(StatisticsItemDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatisticsItemViewHolder {
@@ -27,7 +27,7 @@ class StatisticsItemAdapter(
         }
         holder.binding.apply {
             this.item = item
-            this.category = runBlocking { viewModel.getCategoryById(item.categoryId) }
+            this.category = runBlocking { getCategoryImpl.getCategoryById(item.categoryId) }
             executePendingBindings()
         }
     }

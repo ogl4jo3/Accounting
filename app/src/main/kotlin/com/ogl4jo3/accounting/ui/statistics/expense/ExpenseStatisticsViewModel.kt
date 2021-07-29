@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.ui.statistics
+package com.ogl4jo3.accounting.ui.statistics.expense
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,6 +13,9 @@ import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
 import com.ogl4jo3.accounting.ui.common.PieChartData
+import com.ogl4jo3.accounting.ui.statistics.IGetCategory
+import com.ogl4jo3.accounting.ui.statistics.StatisticsItem
+import com.ogl4jo3.accounting.ui.statistics.TabStatisticsUnit
 import kotlinx.coroutines.runBlocking
 import java.util.Date
 
@@ -20,7 +23,7 @@ import java.util.Date
 class ExpenseStatisticsViewModel(
     private val categoryDataSource: CategoryDataSource,
     private val expenseRecordDataSource: ExpenseRecordDataSource,
-) : ViewModel() {
+) : ViewModel(), IGetCategory {
 
     val statisticsUnit = MutableLiveData(TabStatisticsUnit.MONTH)
     private val statisticsUnitObserver = Observer<TabStatisticsUnit?> {
@@ -98,7 +101,7 @@ class ExpenseStatisticsViewModel(
         return statisticsItemList
     }
 
-    suspend fun getCategoryById(categoryId: String): Category? {
+    override suspend fun getCategoryById(categoryId: String): Category? {
         return categoryDataSource.getCategoryById(categoryId)
     }
 
@@ -111,8 +114,4 @@ class ExpenseStatisticsViewModel(
                 )
             }
         }
-}
-
-enum class TabStatisticsUnit {
-    MONTH, YEAR;
 }

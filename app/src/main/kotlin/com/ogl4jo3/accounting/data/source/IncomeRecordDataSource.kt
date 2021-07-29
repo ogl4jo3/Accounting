@@ -6,6 +6,8 @@ import java.util.Date
 interface IncomeRecordDataSource {
     suspend fun insertIncomeRecord(incomeRecord: IncomeRecord)
     suspend fun getIncomeRecordsByDate(date: Date): List<IncomeRecord>
+    suspend fun getIncomeRecordsByMonth(date: Date): List<IncomeRecord>
+    suspend fun getIncomeRecordsByYear(date: Date): List<IncomeRecord>
     suspend fun updateIncomeRecord(incomeRecord: IncomeRecord)
     suspend fun deleteIncomeRecord(incomeRecord: IncomeRecord)
 

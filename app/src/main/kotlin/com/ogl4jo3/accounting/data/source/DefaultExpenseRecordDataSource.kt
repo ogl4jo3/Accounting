@@ -20,12 +20,6 @@ class DefaultExpenseRecordDataSource(
         return expenseRecordDao.getExpenseRecordsByDate(date.beginOfDay.time, date.endOfDay.time)
     }
 
-    override suspend fun getExpenseRecordsByTime(
-        startTime: Long, endTime: Long
-    ): List<ExpenseRecord> {
-        return expenseRecordDao.getExpenseRecordsByDate(startTime, endTime)
-    }
-
     override suspend fun getExpenseRecordsByMonth(date: Date): List<ExpenseRecord> {
         return expenseRecordDao.getExpenseRecordsByDate(
             date.beginOfMonth.time, date.endOfMonth.time

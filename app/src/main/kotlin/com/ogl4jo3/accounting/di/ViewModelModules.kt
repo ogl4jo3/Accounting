@@ -18,7 +18,8 @@ import com.ogl4jo3.accounting.ui.expense.ExpenseViewModel
 import com.ogl4jo3.accounting.ui.income.IncomeAddViewModel
 import com.ogl4jo3.accounting.ui.income.IncomeEditViewModel
 import com.ogl4jo3.accounting.ui.income.IncomeViewModel
-import com.ogl4jo3.accounting.ui.statistics.ExpenseStatisticsViewModel
+import com.ogl4jo3.accounting.ui.statistics.expense.ExpenseStatisticsViewModel
+import com.ogl4jo3.accounting.ui.statistics.income.IncomeStatisticsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import java.util.Date
@@ -44,6 +45,9 @@ val viewModelModules = module {
     }
     viewModel {
         ExpenseStatisticsViewModel(get(), get())
+    }
+    viewModel {
+        IncomeStatisticsViewModel(get(), get())
     }
     viewModel {
         AccountListViewModel(get())

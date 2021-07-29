@@ -15,6 +15,10 @@
                     android:id="@id/expenseStatisticsFragment"
                     android:icon="@drawable/ic_nav_expense_statistics"
                     android:title="@string/nav_expense_statistics" />
+                <item
+                    android:id="@id/incomeStatisticsFragment"
+                    android:icon="@drawable/ic_nav_income_statistics"
+                    android:title="@string/nav_income_statistics" />
             </group>
         </menu>
     </item>
@@ -41,13 +45,9 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_about_us"
-                    android:icon="@drawable/ic_nav_about_us"
-                    android:title="@string/nav_about_us" />
-                <item
-                    android:id="@+id/nav_give_praise"
-                    android:icon="@drawable/ic_nav_give_praise"
-                    android:title="@string/nav_give_praise" />
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/ic_nav_about"
+                    android:title="@string/nav_about" />
             </group>
         </menu>
     </item>

@@ -107,5 +107,13 @@ val testIncomeRecords: List<IncomeRecord> = listOf(
         testIncomeCategories[2].id,
         "測試用支出",
         testDateArray[0]
+    ),
+    IncomeRecord(
+        "3",
+        250,
+        testAccounts[1].id,
+        testIncomeCategories[2].id,
+        "測試用支出",
+        testDateArray[0]
     )
 )

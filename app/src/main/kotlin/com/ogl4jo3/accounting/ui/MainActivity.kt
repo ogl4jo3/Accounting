@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
             R.id.accountListFragment,
             R.id.expenseCategoryMgmtFragment,
             R.id.incomeCategoryMgmtFragment,
-            R.id.expenseStatisticsFragment
-            //TODO: income statistics
+            R.id.expenseStatisticsFragment,
+            R.id.incomeStatisticsFragment
         ).setOpenableLayout(drawerLayout).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)

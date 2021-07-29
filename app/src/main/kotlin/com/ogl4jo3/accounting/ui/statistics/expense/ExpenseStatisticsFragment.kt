@@ -1,4 +1,4 @@
-package com.ogl4jo3.accounting.ui.statistics
+package com.ogl4jo3.accounting.ui.statistics.expense
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import com.google.android.material.tabs.TabLayout
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentExpenseStatisticsBinding
 import com.ogl4jo3.accounting.ui.common.viewBinding
+import com.ogl4jo3.accounting.ui.statistics.StatisticsItemAdapter
+import com.ogl4jo3.accounting.ui.statistics.TabStatisticsUnit
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ExpenseStatisticsFragment : Fragment() {

@@ -23,14 +23,6 @@ class FakeExpenseRecordDataSource(
         }
     }
 
-    override suspend fun getExpenseRecordsByTime(
-        startTime: Long, endTime: Long
-    ): List<ExpenseRecord> {
-        return expenseRecords.filter {
-            it.recordTime.after(Date(startTime)) && it.recordTime.before(Date(endTime))
-        }
-    }
-
     override suspend fun getExpenseRecordsByMonth(date: Date): List<ExpenseRecord> {
         return expenseRecords.filter {
             it.recordTime.after(date.beginOfMonth) && it.recordTime.before(date.endOfMonth)
