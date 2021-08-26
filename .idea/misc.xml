@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/drawable/ic_nav_about.xml" value="0.36354166666666665" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/drawable/ic_nav_account_management.xml" value="0.36354166666666665" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/drawable/ic_nav_accounting_notification.xml" value="0.36354166666666665" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/drawable/ic_nav_category_management.xml" value="0.36354166666666665" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_accounting_notification.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_category.xml" value="0.2723618090452261" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/menu/activity_main_drawer.xml" value="0.34322916666666664" />
       </map>
     </option>
   </component>

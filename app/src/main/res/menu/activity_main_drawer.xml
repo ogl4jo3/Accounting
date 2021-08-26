@@ -37,6 +37,10 @@
                     android:id="@id/incomeCategoryMgmtFragment"
                     android:icon="@drawable/ic_nav_category_management"
                     android:title="@string/nav_income_category_management" />
+                <item
+                    android:id="@id/accountingNotificationFragment"
+                    android:icon="@drawable/ic_nav_accounting_notification"
+                    android:title="@string/nav_accounting_notification" />
             </group>
         </menu>
     </item>
