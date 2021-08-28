@@ -7,6 +7,7 @@ import com.ogl4jo3.accounting.data.source.AppDatabase
 import com.ogl4jo3.accounting.data.source.CategoryDao
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDao
 import com.ogl4jo3.accounting.data.source.IncomeRecordDao
+import com.ogl4jo3.accounting.data.source.MIGRATION_1_2
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -21,7 +22,7 @@ val databaseModules = module {
 private fun provideDatabase(applicationContext: Context): AppDatabase {
     return Room.databaseBuilder(
         applicationContext, AppDatabase::class.java, "accounting"
-    ).build()
+    ).addMigrations(MIGRATION_1_2).build()
 }
 
 private fun provideAccountDao(database: AppDatabase): AccountDao {
