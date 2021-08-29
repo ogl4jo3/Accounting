@@ -1,5 +1,6 @@
 package com.ogl4jo3.accounting.data.source
 
+import androidx.annotation.VisibleForTesting
 import com.ogl4jo3.accounting.data.AccountingNotification
 
 class FakeAccountingNotificationDataSource(
@@ -7,7 +8,8 @@ class FakeAccountingNotificationDataSource(
 ) : AccountingNotificationDataSource {
 
     override suspend fun insertNotification(notification: AccountingNotification): Long {
-        return if (notifications.find { it.time == notification.time } != null) {
+        return if (notifications.find { it.hour == notification.hour && it.minute == notification.minute } != null
+            || !notification.is24HFormat()) {
             -1
         } else {
             notifications.add(notification)
@@ -16,7 +18,9 @@ class FakeAccountingNotificationDataSource(
     }
 
     override suspend fun updateNotification(notification: AccountingNotification) {
-        notifications.replaceAll { if (it.id == notification.id) notification else it }
+        if (notification.is24HFormat()) {
+            notifications.replaceAll { if (it.id == notification.id) notification else it }
+        }
     }
 
     override suspend fun deleteNotification(notification: AccountingNotification) {
@@ -33,5 +37,16 @@ class FakeAccountingNotificationDataSource(
 
     override suspend fun getNumberOfNotifications(): Int {
         return notifications.size
+    }
+
+    override suspend fun hasDuplicatedNotification(
+        hour: Int, minute: Int, excludeId: String
+    ): Boolean {
+        return notifications.any { it.hour == hour && it.minute == minute && it.id != excludeId }
+    }
+
+    @VisibleForTesting
+    fun getNotification(index: Int): AccountingNotification {
+        return notifications[index].copy()
     }
 }

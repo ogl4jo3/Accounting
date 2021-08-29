@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.databinding.ItemNotificationBinding
 
-class AccountingNotificationAdapter() :
+class AccountingNotificationAdapter(val viewModel: AccountingNotificationViewModel) :
     ListAdapter<AccountingNotification, AccountingNotificationViewHolder>(
         AccountingNotificationDiffCallback()
     ) {
@@ -23,8 +23,23 @@ class AccountingNotificationAdapter() :
     }
 
     override fun onBindViewHolder(holder: AccountingNotificationViewHolder, position: Int) {
+        val notification = getItem(position)
         holder.binding.apply {
-            this.item = getItem(position)
+            clItem.setOnClickListener {
+                viewModel.showDelConfirmDialog(notification)
+            }
+            clTime.setOnClickListener {
+                viewModel.showTimePickerDialog(notification) { updatedNotification ->
+                    notification.hour = updatedNotification.hour
+                    notification.minute = updatedNotification.minute
+                    notifyItemChanged(position)
+                }
+            }
+            swNotification.setOnCheckedChangeListener { _, isChecked ->
+                notification.isOn = isChecked
+                viewModel.updateNotification(notification)
+            }
+            this.item = notification
             executePendingBindings()
         }
     }
@@ -42,5 +57,6 @@ class AccountingNotificationDiffCallback : DiffUtil.ItemCallback<AccountingNotif
     override fun areContentsTheSame(
         oldItem: AccountingNotification,
         newItem: AccountingNotification
-    ): Boolean = oldItem.time == newItem.time && oldItem.isOn == newItem.isOn
+    ): Boolean =
+        oldItem.hour == newItem.hour && oldItem.minute == newItem.minute && oldItem.isOn == newItem.isOn
 }

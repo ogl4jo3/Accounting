@@ -28,7 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(database: SupportSQLiteDatabase) {
-        database.execSQL("CREATE TABLE IF NOT EXISTS `notification` (`id` TEXT NOT NULL, `time` TEXT NOT NULL, `isOn` INTEGER NOT NULL, PRIMARY KEY(`id`))")
-        database.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_notification_time` ON `notification` (`time`)")
+        database.execSQL("CREATE TABLE IF NOT EXISTS `notification` (`id` TEXT NOT NULL, `hour` INTEGER NOT NULL, `minute` INTEGER NOT NULL, `isOn` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        database.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_notification_hour_minute` ON `notification` (`hour`, `minute`)");
     }
 }

@@ -213,18 +213,6 @@ class AccountingApplication : Application() {
     )
 
     private fun getDefaultNotifications(): List<AccountingNotification> = listOf(
-        //TODO: update Default Notifications detail, below only for debug
-        AccountingNotification(
-            time = "15:30",
-            isOn = true,
-        ),
-        AccountingNotification(
-            time = "21:30",
-            isOn = false,
-        ),
-        AccountingNotification(
-            time = "22:30",
-            isOn = false,
-        )
+        AccountingNotification(hour = 21, minute = 30, isOn = false),
     )
 }

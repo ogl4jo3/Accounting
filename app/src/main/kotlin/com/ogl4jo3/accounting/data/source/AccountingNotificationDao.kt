@@ -27,4 +27,7 @@ interface AccountingNotificationDao {
 
     @Query("SELECT COUNT(id) FROM notification")
     suspend fun getNumberOfNotifications(): Int
+
+    @Query("SELECT COUNT(id) FROM notification WHERE hour = :hour AND minute = :minute AND id != :excludeId")
+    suspend fun getNumberOfNotificationByTime(hour: Int, minute: Int, excludeId: String): Int
 }
