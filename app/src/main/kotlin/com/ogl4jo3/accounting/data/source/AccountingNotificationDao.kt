@@ -24,4 +24,7 @@ interface AccountingNotificationDao {
 
     @Delete
     suspend fun deleteNotification(notification: AccountingNotification)
+
+    @Query("SELECT COUNT(id) FROM notification")
+    suspend fun getNumberOfNotifications(): Int
 }

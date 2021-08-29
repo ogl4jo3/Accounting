@@ -3,9 +3,11 @@ package com.ogl4jo3.accounting
 import android.app.Application
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
+import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.AccountDataSource
+import com.ogl4jo3.accounting.data.source.AccountingNotificationDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.di.appModules
 import com.ogl4jo3.accounting.di.dataSourceModules
@@ -39,7 +41,7 @@ class AccountingApplication : Application() {
 
         initDefaultAccounts()//TODO: workaround, maybe can add this in Koin modules, RoomDB.addCallBack??
         initDefaultCategories()//TODO: workaround, maybe can add this in Koin modules, RoomDB.addCallBack??
-
+        initDefaultNotifications()
     }
 
     private fun initDefaultAccounts() {
@@ -61,6 +63,15 @@ class AccountingApplication : Application() {
             if (categoryDataSource.getNumberOfCategories(CategoryType.Income) <= 0) {
                 getDefaultCategories().filter { it.categoryType == CategoryType.Income }
                     .forEach { categoryDataSource.insertCategory(it) }
+            }
+        }
+    }
+
+    private fun initDefaultNotifications() {
+        runBlocking {
+            val notificationDataSource: AccountingNotificationDataSource by inject()
+            if (notificationDataSource.getNumberOfNotifications() <= 0) {
+                getDefaultNotifications().forEach { notificationDataSource.insertNotification(it) }
             }
         }
     }
@@ -201,4 +212,19 @@ class AccountingApplication : Application() {
         )
     )
 
+    private fun getDefaultNotifications(): List<AccountingNotification> = listOf(
+        //TODO: update Default Notifications detail, below only for debug
+        AccountingNotification(
+            time = "15:30",
+            isOn = true,
+        ),
+        AccountingNotification(
+            time = "21:30",
+            isOn = false,
+        ),
+        AccountingNotification(
+            time = "22:30",
+            isOn = false,
+        )
+    )
 }

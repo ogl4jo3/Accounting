@@ -38,7 +38,7 @@ class AccountingNotificationFragment : Fragment() {
             rvNotification.adapter = AccountingNotificationAdapter()
         }
         viewModel.apply {
-
+            updateAllNotifications()
         }
     }
 
