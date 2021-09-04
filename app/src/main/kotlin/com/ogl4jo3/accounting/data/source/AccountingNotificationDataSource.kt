@@ -9,5 +9,4 @@ interface AccountingNotificationDataSource {
     suspend fun getNotificationById(notificationId: String): AccountingNotification?
     suspend fun getAllNotifications(): List<AccountingNotification>
     suspend fun getNumberOfNotifications(): Int
-    suspend fun hasDuplicatedNotification(hour: Int, minute: Int, excludeId: String): Boolean
 }

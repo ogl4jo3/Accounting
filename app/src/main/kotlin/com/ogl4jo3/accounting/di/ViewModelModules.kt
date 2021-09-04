@@ -69,6 +69,6 @@ val viewModelModules = module {
         CategoryAddViewModel(get(), categoryType, defaultCategoryIcon)
     }
     viewModel {
-        AccountingNotificationViewModel(get())
+        AccountingNotificationViewModel(get(), get())
     }
 }

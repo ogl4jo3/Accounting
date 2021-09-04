@@ -367,7 +367,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/notifications/baseline_notifications_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/assignment/baseline_assignment_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -377,7 +377,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_nav_accounting_notification" />
+                            <entry key="outputName" value="ic_accounting" />
                             <entry key="sourceFile" value="F:\GitHub\Accounting" />
                           </map>
                         </option>

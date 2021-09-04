@@ -4,7 +4,7 @@ import com.ogl4jo3.accounting.data.AccountingNotification
 import timber.log.Timber
 
 class DefaultAccountingNotificationDataSource(
-    val notificationDao: AccountingNotificationDao
+    private val notificationDao: AccountingNotificationDao
 ) : AccountingNotificationDataSource {
 
     override suspend fun insertNotification(notification: AccountingNotification): Long {
@@ -16,6 +16,7 @@ class DefaultAccountingNotificationDataSource(
         }
     }
 
+    //TODO: maybe return successful or throw exception
     override suspend fun updateNotification(notification: AccountingNotification) {
         if (notification.is24HFormat()) {
             notificationDao.updateNotification(notification)
@@ -40,9 +41,4 @@ class DefaultAccountingNotificationDataSource(
         return notificationDao.getNumberOfNotifications()
     }
 
-    override suspend fun hasDuplicatedNotification(
-        hour: Int, minute: Int, excludeId: String
-    ): Boolean {
-        return notificationDao.getNumberOfNotificationByTime(hour, minute, excludeId) > 0
-    }
 }

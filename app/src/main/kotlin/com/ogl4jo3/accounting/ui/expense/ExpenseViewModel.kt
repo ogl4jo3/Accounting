@@ -45,7 +45,7 @@ class ExpenseViewModel(
         expenseRecords.removeObserver(expenseRecordsObserver)
     }
 
-    fun updateExpenseRecords(date: Date) = runBlocking {
+    private fun updateExpenseRecords(date: Date) = runBlocking {
         _expenseRecords.value = expenseRecordDataSource.getExpenseRecordsByDate(date)
     }
 

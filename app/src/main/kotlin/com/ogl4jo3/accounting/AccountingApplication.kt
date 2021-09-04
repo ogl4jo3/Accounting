@@ -1,6 +1,10 @@
 package com.ogl4jo3.accounting
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.AccountingNotification
@@ -39,9 +43,32 @@ class AccountingApplication : Application() {
             )
         }
 
+        createChannel(
+            getString(R.string.accounting_notification_channel_id),
+            getString(R.string.accounting_notification_channel_name)
+        )
+
         initDefaultAccounts()//TODO: workaround, maybe can add this in Koin modules, RoomDB.addCallBack??
         initDefaultCategories()//TODO: workaround, maybe can add this in Koin modules, RoomDB.addCallBack??
         initDefaultNotifications()
+
+    }
+
+    private fun createChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                channelId, channelName, NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                setShowBadge(false)
+                enableLights(true)
+                lightColor = Color.RED
+                enableVibration(true)
+                description = getString(R.string.accounting_notification_channel_description)
+            }
+
+            getSystemService(NotificationManager::class.java)
+                ?.createNotificationChannel(notificationChannel)
+        }
     }
 
     private fun initDefaultAccounts() {

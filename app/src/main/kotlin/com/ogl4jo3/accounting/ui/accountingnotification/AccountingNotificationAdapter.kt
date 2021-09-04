@@ -25,9 +25,6 @@ class AccountingNotificationAdapter(val viewModel: AccountingNotificationViewMod
     override fun onBindViewHolder(holder: AccountingNotificationViewHolder, position: Int) {
         val notification = getItem(position)
         holder.binding.apply {
-            clItem.setOnClickListener {
-                viewModel.showDelConfirmDialog(notification)
-            }
             clTime.setOnClickListener {
                 viewModel.showTimePickerDialog(notification) { updatedNotification ->
                     notification.hour = updatedNotification.hour
@@ -37,7 +34,7 @@ class AccountingNotificationAdapter(val viewModel: AccountingNotificationViewMod
             }
             swNotification.setOnCheckedChangeListener { _, isChecked ->
                 notification.isOn = isChecked
-                viewModel.updateNotification(notification)
+                viewModel.switchNotification(notification)
             }
             this.item = notification
             executePendingBindings()

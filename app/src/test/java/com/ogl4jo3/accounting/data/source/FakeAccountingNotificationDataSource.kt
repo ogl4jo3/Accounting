@@ -4,7 +4,7 @@ import androidx.annotation.VisibleForTesting
 import com.ogl4jo3.accounting.data.AccountingNotification
 
 class FakeAccountingNotificationDataSource(
-    var notifications: MutableList<AccountingNotification> = mutableListOf()
+    private var notifications: MutableList<AccountingNotification> = mutableListOf()
 ) : AccountingNotificationDataSource {
 
     override suspend fun insertNotification(notification: AccountingNotification): Long {
@@ -37,12 +37,6 @@ class FakeAccountingNotificationDataSource(
 
     override suspend fun getNumberOfNotifications(): Int {
         return notifications.size
-    }
-
-    override suspend fun hasDuplicatedNotification(
-        hour: Int, minute: Int, excludeId: String
-    ): Boolean {
-        return notifications.any { it.hour == hour && it.minute == minute && it.id != excludeId }
     }
 
     @VisibleForTesting

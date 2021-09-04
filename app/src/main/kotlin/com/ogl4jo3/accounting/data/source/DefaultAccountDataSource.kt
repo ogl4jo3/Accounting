@@ -3,7 +3,7 @@ package com.ogl4jo3.accounting.data.source
 import com.ogl4jo3.accounting.data.Account
 
 class DefaultAccountDataSource(
-    val accountDao: AccountDao
+    private val accountDao: AccountDao
 ) : AccountDataSource {
 
     override suspend fun insertAccount(account: Account): Long {

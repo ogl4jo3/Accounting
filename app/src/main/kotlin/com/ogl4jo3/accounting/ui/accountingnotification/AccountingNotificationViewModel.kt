@@ -6,21 +6,16 @@ import androidx.lifecycle.ViewModel
 import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.source.AccountingNotificationDataSource
 import kotlinx.coroutines.runBlocking
-import timber.log.Timber
+import java.util.Calendar
 
 class AccountingNotificationViewModel(
-    private val notificationDataSource: AccountingNotificationDataSource
+    private val notificationDataSource: AccountingNotificationDataSource,
+    private val alarmSetter: AlarmSetter,
 ) : ViewModel() {
-    companion object {
-        const val NOTIFICATION_MAX = 3
-    }
 
-    var notificationMaximumError: () -> Unit = { }
-    var notificationExistError: () -> Unit = { }
-    var showDelConfirmDialog: (notification: AccountingNotification) -> Unit = { }
     var showTimePickerDialog: (
         notification: AccountingNotification,
-        onSuccess: (notification: AccountingNotification) -> Unit
+        notifyItemChanged: (notification: AccountingNotification) -> Unit
     ) -> Unit = { _, _ -> }
 
     private val _allNotifications: MutableLiveData<List<AccountingNotification>> =
@@ -31,67 +26,44 @@ class AccountingNotificationViewModel(
         _allNotifications.value = runBlocking { notificationDataSource.getAllNotifications() }
     }
 
-    fun addNotification(hour: Int, minute: Int, isOn: Boolean) {
-        addNotification(AccountingNotification(hour = hour, minute = minute, isOn = isOn))
-    }
-
-    fun addNotification(notification: AccountingNotification) {
-        runBlocking {
-            if (notificationDataSource.getNumberOfNotifications() >= NOTIFICATION_MAX) {
-                notificationMaximumError()
-            } else if (notificationDataSource.hasDuplicatedNotification(
-                    notification.hour, notification.minute, notification.id
-                )
-            ) {
-                notificationExistError()
-            } else {
-                val id = notificationDataSource.insertNotification(notification)
-                if (id < 0) {
-                    Timber.e("insertNotification failed, notification: $notification")
-                } else {
-                    updateNotificationList()
-                }
-            }
-        }
-    }
-
-    fun deleteNotification(
-        notification: AccountingNotification,
-        onSuccess: () -> Unit = {},
-        onFail: () -> Unit = {}
-    ) {
-        runBlocking {
-            if (notificationDataSource.getNumberOfNotifications() <= 1) {
-                onFail()
-            } else {
-                notificationDataSource.deleteNotification(notification)
-                //TODO: cancel all notification and alarm
-                updateNotificationList()
-                onSuccess()
-            }
-        }
-    }
-
     fun updateNotification(
         id: String, hour: Int, minute: Int, isOn: Boolean,
-        onSuccess: (notification: AccountingNotification) -> Unit = {}
+        notifyItemChanged: (notification: AccountingNotification) -> Unit = {}
     ) {
-        updateNotification(AccountingNotification(id, hour, minute, isOn), onSuccess)
+        updateNotification(AccountingNotification(id, hour, minute, isOn), notifyItemChanged)
     }
 
     fun updateNotification(
         notification: AccountingNotification,
-        onSuccess: (notification: AccountingNotification) -> Unit = {}
+        notifyItemChanged: (notification: AccountingNotification) -> Unit = {}
     ) {
+        //TODO: fix runBlocking
         runBlocking {
-            if (notificationDataSource.hasDuplicatedNotification(
-                    notification.hour, notification.minute, notification.id
-                )
-            ) {
-                notificationExistError()
-            } else {
-                notificationDataSource.updateNotification(notification)
-                onSuccess(notification)
+            notificationDataSource.updateNotification(notification)
+            notifyItemChanged(notification)
+            updateAlarm(notification)
+        }
+    }
+
+    fun switchNotification(notification: AccountingNotification) {
+        runBlocking {
+            notificationDataSource.updateNotification(notification)
+            updateAlarm(notification)
+        }
+    }
+
+    private fun updateAlarm(notification: AccountingNotification) {
+        when (notification.isOn) {
+            true -> {
+                val calendar: Calendar = Calendar.getInstance().apply {
+                    timeInMillis = System.currentTimeMillis()
+                    set(Calendar.HOUR_OF_DAY, notification.hour)
+                    set(Calendar.MINUTE, notification.minute)
+                }
+                alarmSetter.setInexactRepeating(calendar)
+            }
+            false -> {
+                alarmSetter.cancel()
             }
         }
     }

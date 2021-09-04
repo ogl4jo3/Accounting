@@ -45,7 +45,7 @@ class IncomeViewModel(
         incomeRecords.removeObserver(incomeRecordsObserver)
     }
 
-    fun updateIncomeRecords(date: Date) = runBlocking {
+    private fun updateIncomeRecords(date: Date) = runBlocking {
         _incomeRecords.value = incomeRecordDataSource.getIncomeRecordsByDate(date)
     }
 
