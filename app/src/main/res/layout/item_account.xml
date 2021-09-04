@@ -15,16 +15,16 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="@{v -> viewModel.navigateToAccountEditFragment.invoke(account)}"
         android:padding="16dp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            imageResource="@{account.category.iconRes}"
             android:id="@+id/iv_account_category"
-            android:layout_height="wrap_content"
+            imageResource="@{account.category.iconRes}"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,9 +32,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_account_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
             android:text="@{account.name}"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/iv_account_category"
@@ -42,11 +42,11 @@
             tools:text="帳戶名稱" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            visibleGone="@{account.defaultAccount}"
             android:id="@+id/tv_default_account"
+            visibleGone="@{account.defaultAccount}"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_width="wrap_content"
             android:text="@string/tv_default"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_account_name"
@@ -55,8 +55,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_account_category_name"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@{account.category.nameRes}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_account_name"
@@ -64,10 +64,10 @@
             tools:text="現金" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            money="@{viewModel.getAccountBalance(account)}"
             android:id="@+id/tv_account_balance"
-            android:layout_height="wrap_content"
+            money="@{viewModel.getAccountBalance(account)}"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

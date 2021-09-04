@@ -11,16 +11,16 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:paddingHorizontal="12dp"
         android:paddingVertical="30dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            accounts="@{viewModel.accounts}"
             android:id="@+id/rv_account"
-            android:layout_height="wrap_content"
+            accounts="@{viewModel.accounts}"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="3"

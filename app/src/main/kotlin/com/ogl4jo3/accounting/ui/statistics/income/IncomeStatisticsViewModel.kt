@@ -74,7 +74,7 @@ class IncomeStatisticsViewModel(
         }
     }
 
-    fun updateStatisticsItemList(statisticsUnit: TabStatisticsUnit, date: Date) = runBlocking {
+    private fun updateStatisticsItemList(statisticsUnit: TabStatisticsUnit, date: Date) = runBlocking {
         val incomeRecords = when (statisticsUnit) {
             TabStatisticsUnit.MONTH -> incomeRecordDataSource.getIncomeRecordsByMonth(date)
             TabStatisticsUnit.YEAR -> incomeRecordDataSource.getIncomeRecordsByYear(date)

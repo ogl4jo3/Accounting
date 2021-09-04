@@ -210,6 +210,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/accountingNotificationFragment"
+        android:name="com.ogl4jo3.accounting.ui.accountingnotification.AccountingNotificationFragment"
+        android:label="@string/title_accounting_notification"
+        tools:layout="@layout/fragment_accounting_notification" />
+
+    <fragment
         android:id="@+id/expenseStatisticsFragment"
         android:name="com.ogl4jo3.accounting.ui.statistics.expense.ExpenseStatisticsFragment"
         android:label="@string/title_expense_statistics"

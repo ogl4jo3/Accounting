@@ -4,7 +4,7 @@ import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 
 class DefaultCategoryDataSource(
-    val categoryDao: CategoryDao
+    private val categoryDao: CategoryDao
 ) : CategoryDataSource {
 
     override suspend fun insertCategory(category: Category): Long {
