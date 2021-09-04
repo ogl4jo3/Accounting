@@ -7,6 +7,7 @@ jobs:
   setup-and-run-test:  
     executor:
       name: android/android-machine
+      resource-class: medium
     working_directory: ~/project
     steps:
       - checkout
@@ -35,6 +36,7 @@ jobs:
   build-and-upload-debug-version:
     executor:
       name: android/android-machine
+      resource-class: medium
     working_directory: ~/project
     steps:
       - checkout
@@ -52,6 +54,7 @@ jobs:
   build-and-upload-release-version:
     executor:
       name: android/android-machine
+      resource-class: medium
     working_directory: ~/project
     steps:
       - checkout
