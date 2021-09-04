@@ -20,9 +20,9 @@ class AccountingNotificationViewModelTest {
     private lateinit var fakeAccountingNotificationDataSource: FakeAccountingNotificationDataSource
 
     @Before
-    fun setupViewModel() = runBlocking {
-        fakeAccountingNotificationDataSource = FakeAccountingNotificationDataSource()
-        fakeAccountingNotificationDataSource.insertNotification(testNotifications[0])
+    fun setupViewModel() {
+        fakeAccountingNotificationDataSource =
+            FakeAccountingNotificationDataSource(testNotifications.toMutableList())
         accountingNotificationViewModel =
             AccountingNotificationViewModel(fakeAccountingNotificationDataSource,
                 object : AlarmSetter {
@@ -34,20 +34,19 @@ class AccountingNotificationViewModelTest {
                         println("AlarmSetter cancel, Not yet implemented")
                     }
                 })
+        accountingNotificationViewModel.updateNotificationList()
     }
 
     @Test
-    fun `test get all notification`() = runBlocking {
-        val notifications = fakeAccountingNotificationDataSource.getAllNotifications()
-        Assert.assertEquals(1, notifications.size)
+    fun `test get all notification`() {
+        val notifications = accountingNotificationViewModel.allNotifications.value
+        Assert.assertEquals(1, notifications?.size)
     }
 
     @Test
     fun `test update notification`() = runBlocking {
-        val notification = fakeAccountingNotificationDataSource.getAllNotifications()[0]
-        notification.hour = 16
-        notification.minute = 25
-        accountingNotificationViewModel.updateNotification(notification)
+        val notification = accountingNotificationViewModel.allNotifications.value?.get(0)!!
+        accountingNotificationViewModel.updateNotification(notification.id, 16, 25, true)
         Assert.assertEquals(16, fakeAccountingNotificationDataSource.getNotification(0).hour)
         Assert.assertEquals(25, fakeAccountingNotificationDataSource.getNotification(0).minute)
     }

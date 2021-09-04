@@ -146,6 +146,7 @@
     <string name="title_accounting_notification">記帳通知</string>
     <string name="tv_am">早上</string>
     <string name="tv_pm">下午</string>
+    <string name="msg_update_notification_failed">更新通知失敗</string>
     <string name="tv_notification_time">%1$02d:%2$02d</string>
     <string name="msg_notification">紀錄今天的收入和支出</string>
     <string name="accounting_notification_channel_id" translatable="false">accounting_channel</string>

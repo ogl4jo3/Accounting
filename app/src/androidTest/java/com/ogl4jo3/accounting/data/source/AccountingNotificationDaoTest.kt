@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ogl4jo3.accounting.data.AccountingNotification
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -20,13 +21,16 @@ class AccountingNotificationDaoTest {
     private val context: Context by lazy { ApplicationProvider.getApplicationContext() }
     private lateinit var database: AppDatabase
     private lateinit var accountNotificationDao: AccountingNotificationDao
+    private val notificationA = AccountingNotification(hour = 5, minute = 30, isOn = true)
 
     @Before
-    fun initDb() {
+    fun initDb() = runBlocking {
         database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
             .allowMainThreadQueries().build()
         accountNotificationDao = database.accountingNotificationDao()
+        val res = accountNotificationDao.insertNotification(notificationA)
     }
+
 
     @After
     fun closeDb() {
@@ -34,37 +38,28 @@ class AccountingNotificationDaoTest {
     }
 
     @Test
-    fun `Test-Insert_And_GetAllAccount`() = runBlocking {
-        Timber.d("Test-Insert_And_GetAllAccount")
-        accountNotificationDao.insertNotification(
-            AccountingNotification(hour = 5, minute = 30, isOn = true)
-        )
-        accountNotificationDao.insertNotification(
-            AccountingNotification(hour = 16, minute = 30, isOn = false)
-        )
-        Assert.assertEquals(2, accountNotificationDao.getAllNotifications().size)
+    fun `Test-GetAllAccount`() = runBlocking {
+        Timber.d("Test-GetAllAccount")
+        val notifications = accountNotificationDao.getAllNotifications().first()
+        Assert.assertEquals(1, notifications.size)
     }
 
     @Test
-    fun `Test-Insert_And_GetById`() = runBlocking {
-        Timber.d("Test-Insert_And_GetById")
-        val notification = AccountingNotification(hour = 5, minute = 30, isOn = true)
-        accountNotificationDao.insertNotification(notification)
+    fun `Test-GetById`() = runBlocking {
+        Timber.d("Test-GetById")
+        val notification = accountNotificationDao.getNotificationById(notificationA.id).first()
+        Timber.d("notificationA: $notificationA")
         Timber.d("notification: $notification")
-
-        accountNotificationDao.getNotificationById(notification.id)?.let { notificationLoaded ->
-            Timber.d("notificationLoaded: $notificationLoaded")
-            Assert.assertEquals(notificationLoaded.hour, (notification.hour))
-            Assert.assertEquals(notificationLoaded.minute, (notification.minute))
-            Assert.assertEquals(notificationLoaded.isOn, (notification.isOn))
-        } ?: Assert.fail()
+        Assert.assertEquals(notificationA.hour, (notification?.hour))
+        Assert.assertEquals(notificationA.minute, (notification?.minute))
+        Assert.assertEquals(notificationA.isOn, (notification?.isOn))
     }
 
     @Test
     fun `Test-InsertDuplicateTime`() = runBlocking {
         Timber.d("Test-Insert_And_GetById")
-        val notification = AccountingNotification(hour = 5, minute = 30, isOn = true)
-        val notification2 = AccountingNotification(hour = 5, minute = 30, isOn = false)
+        val notification = AccountingNotification(hour = 15, minute = 30, isOn = true)
+        val notification2 = AccountingNotification(hour = 15, minute = 30, isOn = false)
         val res = accountNotificationDao.insertNotification(notification)
         Timber.d("res: $res")
         Timber.d("notification: $notification")
@@ -79,7 +74,7 @@ class AccountingNotificationDaoTest {
     @Test
     fun `Test-GetNullNotification`() = runBlocking {
         Timber.d("Test-GetNullNotification")
-        val notification = accountNotificationDao.getNotificationById("00")
+        val notification = accountNotificationDao.getNotificationById("00").first()
         Timber.d("notification: $notification")
         Assert.assertNull(notification)
     }
@@ -87,33 +82,18 @@ class AccountingNotificationDaoTest {
     @Test
     fun `Test-Update_And_GetById`() = runBlocking {
         Timber.d("Test-Update_And_GetById")
-        val notification = AccountingNotification(hour = 5, minute = 30, isOn = true)
-        accountNotificationDao.insertNotification(notification)
-        Timber.d("notification: $notification")
+        val notification =
+            AccountingNotification(id = notificationA.id, hour = 12, minute = 34, isOn = true)
 
-        notification.hour = 12
-        notification.minute = 34
-        notification.isOn = true
         accountNotificationDao.updateNotification(notification)
         Timber.d("updated notification: $notification")
 
-        accountNotificationDao.getNotificationById(notification.id)?.let { notificationLoaded ->
-            Timber.d("notificationLoaded: $notificationLoaded")
-            Assert.assertEquals(notificationLoaded.hour, (notification.hour))
-            Assert.assertEquals(notificationLoaded.minute, (notification.minute))
-            Assert.assertEquals(notificationLoaded.isOn, (notification.isOn))
-        } ?: Assert.fail()
-    }
-
-    @Test
-    fun `Test-DeleteNotification`() = runBlocking {
-        Timber.d("Test-DeleteNotification")
-        val notification = AccountingNotification(hour = 5, minute = 30, isOn = true)
-        accountNotificationDao.insertNotification(notification)
-        Assert.assertNotNull(accountNotificationDao.getNotificationById(notification.id))
-
-        accountNotificationDao.deleteNotification(notification)
-        Assert.assertNull(accountNotificationDao.getNotificationById(notification.id))
+        val updatedNotification =
+            accountNotificationDao.getNotificationById(notificationA.id).first()
+        Timber.d("updatedNotification: $updatedNotification")
+        Assert.assertEquals(notification.hour, (updatedNotification?.hour))
+        Assert.assertEquals(notification.minute, (updatedNotification?.minute))
+        Assert.assertEquals(notification.isOn, (updatedNotification?.isOn))
     }
 
 }

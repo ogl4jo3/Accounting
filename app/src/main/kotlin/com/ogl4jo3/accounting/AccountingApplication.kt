@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
+import com.ogl4jo3.accounting.common.launchInWithDefaultErrorHandler
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.AccountingNotification
@@ -18,6 +19,8 @@ import com.ogl4jo3.accounting.di.dataSourceModules
 import com.ogl4jo3.accounting.di.databaseModules
 import com.ogl4jo3.accounting.di.viewModelModules
 import com.ogl4jo3.accounting.ui.categoryMgmt.drawableName
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -95,12 +98,15 @@ class AccountingApplication : Application() {
     }
 
     private fun initDefaultNotifications() {
-        runBlocking {
-            val notificationDataSource: AccountingNotificationDataSource by inject()
-            if (notificationDataSource.getNumberOfNotifications() <= 0) {
-                getDefaultNotifications().forEach { notificationDataSource.insertNotification(it) }
+        val notificationDataSource: AccountingNotificationDataSource by inject()
+        notificationDataSource.getNumberOfNotifications().onEach { number ->
+            if (number <= 0) {
+                getDefaultNotifications().forEach {
+                    notificationDataSource.insertNotification(it)
+                        .launchInWithDefaultErrorHandler(GlobalScope)
+                }
             }
-        }
+        }.launchInWithDefaultErrorHandler(GlobalScope)
     }
 
     private fun getDefaultAccounts(): List<Account> = listOf(

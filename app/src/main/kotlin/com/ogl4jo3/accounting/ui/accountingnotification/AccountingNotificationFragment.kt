@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.databinding.FragmentAccountingNotificationBinding
 import com.ogl4jo3.accounting.ui.common.viewBinding
@@ -38,6 +40,13 @@ class AccountingNotificationFragment : Fragment() {
                 AccountingNotificationAdapter(this@AccountingNotificationFragment.viewModel)
         }
         viewModel.apply {
+            updateFailed = {
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.msg_update_notification_failed),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
             showTimePickerDialog = this@AccountingNotificationFragment::showTimePickerDialog
             updateNotificationList()
         }

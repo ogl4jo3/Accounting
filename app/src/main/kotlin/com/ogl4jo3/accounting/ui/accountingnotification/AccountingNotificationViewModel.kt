@@ -3,9 +3,12 @@ package com.ogl4jo3.accounting.ui.accountingnotification
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.ogl4jo3.accounting.common.launchInWithDefaultErrorHandler
 import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.source.AccountingNotificationDataSource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 import java.util.Calendar
 
 class AccountingNotificationViewModel(
@@ -13,6 +16,7 @@ class AccountingNotificationViewModel(
     private val alarmSetter: AlarmSetter,
 ) : ViewModel() {
 
+    var updateFailed: () -> Unit = {}
     var showTimePickerDialog: (
         notification: AccountingNotification,
         notifyItemChanged: (notification: AccountingNotification) -> Unit
@@ -23,33 +27,44 @@ class AccountingNotificationViewModel(
     val allNotifications: LiveData<List<AccountingNotification>> = _allNotifications
 
     fun updateNotificationList() {
-        _allNotifications.value = runBlocking { notificationDataSource.getAllNotifications() }
+        notificationDataSource.getAllNotifications()
+            .onEach { _allNotifications.value = it }
+            .launchInWithDefaultErrorHandler(viewModelScope)
     }
 
     fun updateNotification(
         id: String, hour: Int, minute: Int, isOn: Boolean,
         notifyItemChanged: (notification: AccountingNotification) -> Unit = {}
     ) {
-        updateNotification(AccountingNotification(id, hour, minute, isOn), notifyItemChanged)
-    }
-
-    fun updateNotification(
-        notification: AccountingNotification,
-        notifyItemChanged: (notification: AccountingNotification) -> Unit = {}
-    ) {
-        //TODO: fix runBlocking
-        runBlocking {
-            notificationDataSource.updateNotification(notification)
-            notifyItemChanged(notification)
-            updateAlarm(notification)
-        }
+        val notification = AccountingNotification(id, hour, minute, isOn)
+        notificationDataSource.updateNotification(notification)
+            .onEach { isSuccessful ->
+                if (isSuccessful) {
+                    notifyItemChanged(notification)
+                    updateAlarm(notification)
+                } else {
+                    Timber.e("updateNotification failed")
+                    updateFailed()
+                }
+            }
+            .launchInWithDefaultErrorHandler(viewModelScope) {
+                updateFailed()
+            }
     }
 
     fun switchNotification(notification: AccountingNotification) {
-        runBlocking {
-            notificationDataSource.updateNotification(notification)
-            updateAlarm(notification)
-        }
+        notificationDataSource.updateNotification(notification)
+            .onEach { isSuccessful ->
+                if (isSuccessful) {
+                    updateAlarm(notification)
+                } else {
+                    Timber.e("updateNotification failed")
+                    updateFailed()
+                }
+            }
+            .launchInWithDefaultErrorHandler(viewModelScope) {
+                updateFailed()
+            }
     }
 
     private fun updateAlarm(notification: AccountingNotification) {

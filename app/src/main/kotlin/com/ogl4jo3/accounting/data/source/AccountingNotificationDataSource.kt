@@ -1,12 +1,11 @@
 package com.ogl4jo3.accounting.data.source
 
 import com.ogl4jo3.accounting.data.AccountingNotification
+import kotlinx.coroutines.flow.Flow
 
 interface AccountingNotificationDataSource {
-    suspend fun insertNotification(notification: AccountingNotification): Long
-    suspend fun updateNotification(notification: AccountingNotification)
-    suspend fun deleteNotification(notification: AccountingNotification)
-    suspend fun getNotificationById(notificationId: String): AccountingNotification?
-    suspend fun getAllNotifications(): List<AccountingNotification>
-    suspend fun getNumberOfNotifications(): Int
+    fun insertNotification(notification: AccountingNotification): Flow<Long>
+    fun updateNotification(notification: AccountingNotification): Flow<Boolean>
+    fun getAllNotifications(): Flow<List<AccountingNotification>>
+    fun getNumberOfNotifications(): Flow<Int>
 }
