@@ -71,9 +71,13 @@ class AccountingNotificationViewModel(
         when (notification.isOn) {
             true -> {
                 val calendar: Calendar = Calendar.getInstance().apply {
-                    timeInMillis = System.currentTimeMillis()
+                    val now = System.currentTimeMillis()
+                    timeInMillis = now
                     set(Calendar.HOUR_OF_DAY, notification.hour)
                     set(Calendar.MINUTE, notification.minute)
+                    if (timeInMillis < now) { // Avoid this situation, "If the trigger time you specify is in the past, the alarm triggers immediately."
+                        add(Calendar.DATE, 1)
+                    }
                 }
                 alarmSetter.setInexactRepeating(calendar)
             }
