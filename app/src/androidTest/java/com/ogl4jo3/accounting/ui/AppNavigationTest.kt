@@ -56,7 +56,8 @@ class AppNavigationTest {
         onView(withId(R.id.pie_chart)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_statistics_items)).check(matches(isDisplayed()))
         navToFragment(R.id.accountingNotificationFragment)
-        onView(withId(R.id.rv_notification)).check(matches(isDisplayed()))
+        onView(withId(R.id.cl_time)).check(matches(isDisplayed()))
+        onView(withId(R.id.sw_notification)).check(matches(isDisplayed()))
         // AboutFragment
         navToFragment(R.id.aboutFragment)
         onView(withId(R.id.tv_version)).check(matches(isDisplayed()))

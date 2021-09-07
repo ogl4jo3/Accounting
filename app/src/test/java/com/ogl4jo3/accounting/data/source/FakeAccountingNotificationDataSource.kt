@@ -12,7 +12,8 @@ class FakeAccountingNotificationDataSource(
     override fun insertNotification(notification: AccountingNotification): Flow<Long> {
         return flow {
             if (notifications.find { it.hour == notification.hour && it.minute == notification.minute } != null
-                || !notification.is24HFormat()) {
+                || !notification.is24HFormat()
+                || notifications.size >= AccountingNotificationDataSource.MAX_SIZE) {
                 emit(-1)
             } else {
                 notifications.add(notification)
@@ -28,6 +29,16 @@ class FakeAccountingNotificationDataSource(
                 emit(true)
             } else {
                 emit(false)
+            }
+        }
+    }
+
+    override fun getDefaultNotification(): Flow<AccountingNotification?> {
+        return flow {
+            if (notifications.size != 1) {
+                emit(null)
+            } else {
+                emit(notifications[0].copy())
             }
         }
     }

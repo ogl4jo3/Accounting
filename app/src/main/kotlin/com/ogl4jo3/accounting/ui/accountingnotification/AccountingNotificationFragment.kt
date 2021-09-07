@@ -36,8 +36,7 @@ class AccountingNotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            rvNotification.adapter =
-                AccountingNotificationAdapter(this@AccountingNotificationFragment.viewModel)
+
         }
         viewModel.apply {
             updateFailed = {
@@ -48,14 +47,10 @@ class AccountingNotificationFragment : Fragment() {
                 ).show()
             }
             showTimePickerDialog = this@AccountingNotificationFragment::showTimePickerDialog
-            updateNotificationList()
         }
     }
 
-    private fun showTimePickerDialog(
-        notification: AccountingNotification,
-        notifyItemChanged: (notification: AccountingNotification) -> Unit = {}
-    ) {
+    private fun showTimePickerDialog(notification: AccountingNotification) {
         val picker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_12H)
             .setHour(notification.hour)
@@ -63,13 +58,7 @@ class AccountingNotificationFragment : Fragment() {
             .build()
 
         picker.addOnPositiveButtonClickListener {
-            viewModel.updateNotification(
-                notification.id,
-                picker.hour,
-                picker.minute,
-                notification.isOn,
-                notifyItemChanged
-            )
+            viewModel.updateNotificationTime(picker.hour, picker.minute, notification)
         }
         picker.show(parentFragmentManager, "tag")
     }

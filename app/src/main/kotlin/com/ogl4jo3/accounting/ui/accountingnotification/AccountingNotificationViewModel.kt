@@ -17,46 +17,41 @@ class AccountingNotificationViewModel(
 ) : ViewModel() {
 
     var updateFailed: () -> Unit = {}
-    var showTimePickerDialog: (
-        notification: AccountingNotification,
-        notifyItemChanged: (notification: AccountingNotification) -> Unit
-    ) -> Unit = { _, _ -> }
+    var showTimePickerDialog: (notification: AccountingNotification) -> Unit = { }
 
-    private val _allNotifications: MutableLiveData<List<AccountingNotification>> =
-        MutableLiveData(emptyList())
-    val allNotifications: LiveData<List<AccountingNotification>> = _allNotifications
+    private val _defaultNotification = MutableLiveData<AccountingNotification>()
+    val defaultNotification: LiveData<AccountingNotification> = _defaultNotification
 
-    fun updateNotificationList() {
-        notificationDataSource.getAllNotifications()
-            .onEach { _allNotifications.value = it }
-            .launchInWithDefaultErrorHandler(viewModelScope)
-    }
-
-    fun updateNotification(
-        id: String, hour: Int, minute: Int, isOn: Boolean,
-        notifyItemChanged: (notification: AccountingNotification) -> Unit = {}
-    ) {
-        val notification = AccountingNotification(id, hour, minute, isOn)
-        notificationDataSource.updateNotification(notification)
-            .onEach { isSuccessful ->
-                if (isSuccessful) {
-                    notifyItemChanged(notification)
-                    updateAlarm(notification)
+    init {
+        notificationDataSource.getDefaultNotification()
+            .onEach {
+                if (it == null) {
+                    //TODO: return home page
                 } else {
-                    Timber.e("updateNotification failed")
-                    updateFailed()
+                    _defaultNotification.value = it
                 }
-            }
-            .launchInWithDefaultErrorHandler(viewModelScope) {
-                updateFailed()
+            }.launchInWithDefaultErrorHandler(viewModelScope) {
+                //TODO: return home page
             }
     }
 
-    fun switchNotification(notification: AccountingNotification) {
+    fun updateNotificationTime(hour: Int, minute: Int, notification: AccountingNotification) {
+        notification.hour = hour
+        notification.minute = minute
+        updateNotification(notification)
+    }
+
+    fun switchNotification(isChecked: Boolean, notification: AccountingNotification) {
+        notification.isOn = isChecked
+        updateNotification(notification)
+    }
+
+    fun updateNotification(notification: AccountingNotification) {
         notificationDataSource.updateNotification(notification)
             .onEach { isSuccessful ->
                 if (isSuccessful) {
                     updateAlarm(notification)
+                    _defaultNotification.value = notification
                 } else {
                     Timber.e("updateNotification failed")
                     updateFailed()

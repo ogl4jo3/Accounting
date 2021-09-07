@@ -13,18 +13,57 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_notification"
-            notifications="@{viewModel.allNotifications}"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_time"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_notification" />
+            android:background="@drawable/selector_gray_press"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{v -> viewModel.showTimePickerDialog.invoke(viewModel.defaultNotification)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_am_pm"
+                ampm="@{viewModel.defaultNotification}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_time"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="上午" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_time"
+                time12HFormat="@{viewModel.defaultNotification}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_am_pm"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="07:30" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sw_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{viewModel.defaultNotification.on}"
+            android:onCheckedChanged="@{(v, isChecked) -> viewModel.switchNotification(isChecked, viewModel.defaultNotification)}"
+            android:padding="4dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/cl_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cl_time"
+            app:thumbTint="@color/switch_thumb_color" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
