@@ -8,7 +8,6 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.Calendar
 
 class AccountingNotificationViewModelTest {
 
@@ -26,7 +25,7 @@ class AccountingNotificationViewModelTest {
         viewModel =
             AccountingNotificationViewModel(fakeAccountingNotificationDataSource,
                 object : AlarmSetter {
-                    override fun setInexactRepeating(calendar: Calendar) {
+                    override fun setInexactRepeating(hour: Int, minute: Int) {
                         println("AlarmSetter setInexactRepeating, Not yet implemented")
                     }
 

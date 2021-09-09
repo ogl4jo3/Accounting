@@ -9,7 +9,6 @@ import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.source.AccountingNotificationDataSource
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
-import java.util.Calendar
 
 class AccountingNotificationViewModel(
     private val notificationDataSource: AccountingNotificationDataSource,
@@ -65,16 +64,7 @@ class AccountingNotificationViewModel(
     private fun updateAlarm(notification: AccountingNotification) {
         when (notification.isOn) {
             true -> {
-                val calendar: Calendar = Calendar.getInstance().apply {
-                    val now = System.currentTimeMillis()
-                    timeInMillis = now
-                    set(Calendar.HOUR_OF_DAY, notification.hour)
-                    set(Calendar.MINUTE, notification.minute)
-                    if (timeInMillis < now) { // Avoid this situation, "If the trigger time you specify is in the past, the alarm triggers immediately."
-                        add(Calendar.DATE, 1)
-                    }
-                }
-                alarmSetter.setInexactRepeating(calendar)
+                alarmSetter.setInexactRepeating(notification.hour, notification.minute)
             }
             false -> {
                 alarmSetter.cancel()

@@ -1,6 +1,5 @@
 package com.ogl4jo3.accounting.data.source
 
-import androidx.annotation.VisibleForTesting
 import com.ogl4jo3.accounting.data.AccountingNotification
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -55,8 +54,4 @@ class FakeAccountingNotificationDataSource(
         }
     }
 
-    @VisibleForTesting
-    fun getNotification(index: Int): AccountingNotification {
-        return notifications[index].copy()
-    }
 }
