@@ -1,5 +1,6 @@
 package com.ogl4jo3.accounting.data.source
 
+import androidx.annotation.VisibleForTesting
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 
@@ -51,6 +52,7 @@ class FakeCategoryDataSource(
         categories.find { it.id == toCategory.id }?.orderNumber = fromCategory.orderNumber
     }
 
+    @VisibleForTesting
     fun getCategory(index: Int): Category {
         return categories[index].copy()
     }

@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             R.id.accountListFragment,
             R.id.expenseCategoryMgmtFragment,
             R.id.incomeCategoryMgmtFragment,
+            R.id.accountingNotificationFragment,
             R.id.expenseStatisticsFragment,
             R.id.incomeStatisticsFragment,
             R.id.aboutFragment

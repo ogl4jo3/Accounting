@@ -8,6 +8,7 @@ import com.ogl4jo3.accounting.data.IncomeRecord
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountAddViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountListViewModel
+import com.ogl4jo3.accounting.ui.accountingnotification.AccountingNotificationViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryAddViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryEditViewModel
 import com.ogl4jo3.accounting.ui.categoryMgmt.CategoryIcon
@@ -66,5 +67,8 @@ val viewModelModules = module {
     }
     viewModel { (categoryType: CategoryType, defaultCategoryIcon: CategoryIcon) ->
         CategoryAddViewModel(get(), categoryType, defaultCategoryIcon)
+    }
+    viewModel {
+        AccountingNotificationViewModel(get(), get())
     }
 }

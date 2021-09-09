@@ -7,7 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity.Companion.ARG_INSTRUCTION_PAGE_NUM
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity.Companion.INSTRUCTION_PAGE_COUNT
 
-class InstructionAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class InstructionAdapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int = INSTRUCTION_PAGE_COUNT
 

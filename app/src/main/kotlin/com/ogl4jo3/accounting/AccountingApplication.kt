@@ -1,17 +1,26 @@
 package com.ogl4jo3.accounting
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
+import com.ogl4jo3.accounting.common.launchInWithDefaultErrorHandler
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
+import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.AccountDataSource
+import com.ogl4jo3.accounting.data.source.AccountingNotificationDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.di.appModules
 import com.ogl4jo3.accounting.di.dataSourceModules
 import com.ogl4jo3.accounting.di.databaseModules
 import com.ogl4jo3.accounting.di.viewModelModules
 import com.ogl4jo3.accounting.ui.categoryMgmt.drawableName
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -37,9 +46,32 @@ class AccountingApplication : Application() {
             )
         }
 
+        createChannel(
+            getString(R.string.accounting_notification_channel_id),
+            getString(R.string.accounting_notification_channel_name)
+        )
+
         initDefaultAccounts()//TODO: workaround, maybe can add this in Koin modules, RoomDB.addCallBack??
         initDefaultCategories()//TODO: workaround, maybe can add this in Koin modules, RoomDB.addCallBack??
+        initDefaultNotifications()
 
+    }
+
+    private fun createChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                channelId, channelName, NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                setShowBadge(false)
+                enableLights(true)
+                lightColor = Color.RED
+                enableVibration(true)
+                description = getString(R.string.accounting_notification_channel_description)
+            }
+
+            getSystemService(NotificationManager::class.java)
+                ?.createNotificationChannel(notificationChannel)
+        }
     }
 
     private fun initDefaultAccounts() {
@@ -63,6 +95,18 @@ class AccountingApplication : Application() {
                     .forEach { categoryDataSource.insertCategory(it) }
             }
         }
+    }
+
+    private fun initDefaultNotifications() {
+        val notificationDataSource: AccountingNotificationDataSource by inject()
+        notificationDataSource.getNumberOfNotifications().onEach { number ->
+            if (number <= 0) {
+                getDefaultNotifications().forEach {
+                    notificationDataSource.insertNotification(it)
+                        .launchInWithDefaultErrorHandler(GlobalScope)
+                }
+            }
+        }.launchInWithDefaultErrorHandler(GlobalScope)
     }
 
     private fun getDefaultAccounts(): List<Account> = listOf(
@@ -201,4 +245,7 @@ class AccountingApplication : Application() {
         )
     )
 
+    private fun getDefaultNotifications(): List<AccountingNotification> = listOf(
+        AccountingNotification(hour = 21, minute = 30, isOn = false),
+    )
 }

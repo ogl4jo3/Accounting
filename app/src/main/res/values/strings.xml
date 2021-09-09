@@ -24,6 +24,7 @@
     <string name="nav_account_management">帳戶管理</string>
     <string name="nav_expense_category_management">支出類別管理</string>
     <string name="nav_income_category_management">收入類別管理</string>
+    <string name="nav_accounting_notification">記帳通知</string>
     <!-- 分類:其他 -->
     <string name="nav_title_others">其他</string>
     <string name="nav_about">關於</string>
@@ -140,6 +141,17 @@
     <!-- IncomeCategoryNewEditFragment 新增編輯收入類別 -->
     <string name="title_income_category_add">新增收入類別</string>
     <string name="title_income_category_edit">編輯收入類別</string>
+
+    <!-- AccountingNotificationFragment 記帳通知 -->
+    <string name="title_accounting_notification">記帳通知</string>
+    <string name="tv_am">早上</string>
+    <string name="tv_pm">下午</string>
+    <string name="msg_update_notification_failed">更新通知失敗</string>
+    <string name="tv_notification_time">%1$02d:%2$02d</string>
+    <string name="msg_notification">紀錄今天的收入和支出</string>
+    <string name="accounting_notification_channel_id" translatable="false">accounting_channel</string>
+    <string name="accounting_notification_channel_name" translatable="true">Accounting</string>
+    <string name="accounting_notification_channel_description">Accounting reminder</string>
 
     <!-- AboutFragment -->
     <string name="title_about">關於</string>

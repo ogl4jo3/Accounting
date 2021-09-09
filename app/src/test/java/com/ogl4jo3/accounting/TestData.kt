@@ -2,6 +2,7 @@ package com.ogl4jo3.accounting
 
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
+import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecord
@@ -116,4 +117,8 @@ val testIncomeRecords: List<IncomeRecord> = listOf(
         "測試用支出",
         testDateArray[0]
     )
+)
+
+val testNotifications: List<AccountingNotification> = listOf(
+    AccountingNotification(hour = 21, minute = 30, isOn = false),
 )
