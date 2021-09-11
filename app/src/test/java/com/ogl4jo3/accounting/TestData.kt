@@ -6,6 +6,7 @@ import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecord
+import com.ogl4jo3.accounting.data.ExpenseRecordItem
 import com.ogl4jo3.accounting.data.IncomeRecord
 import java.util.Calendar
 import java.util.Date
@@ -47,6 +48,15 @@ val testDateArray: Array<Date> = arrayOf(
         it[Calendar.DAY_OF_MONTH] = 13
         it.time
     }
+)
+
+val testExpenseRecordItem: ExpenseRecordItem = ExpenseRecordItem(
+    "0",
+    50,
+    testAccounts[0],
+    testExpenseCategories[0],
+    "測試用支出",
+    testDateArray[0]
 )
 
 val testExpenseRecords: List<ExpenseRecord> = listOf(

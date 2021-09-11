@@ -7,6 +7,7 @@ import com.ogl4jo3.accounting.data.source.FakeExpenseRecordDataSource
 import com.ogl4jo3.accounting.testAccounts
 import com.ogl4jo3.accounting.testDateArray
 import com.ogl4jo3.accounting.testExpenseCategories
+import com.ogl4jo3.accounting.testExpenseRecordItem
 import com.ogl4jo3.accounting.testExpenseRecords
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -30,8 +31,7 @@ class ExpenseEditViewModelTest {
         viewModel = ExpenseEditViewModel(
             FakeAccountDataSource(testAccounts.toMutableList()),
             FakeCategoryDataSource(testExpenseCategories.toMutableList()),
-            fakeExpenseRecordDataSource,
-            testExpenseRecords[0]
+            fakeExpenseRecordDataSource, testExpenseRecordItem
         )
     }
 
