@@ -20,7 +20,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date"
-            dateText="@{viewModel.expenseRecord.recordTime}"
+            dateText="@{viewModel.expenseRecordItem.recordTime}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="8dp"

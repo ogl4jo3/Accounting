@@ -6,12 +6,11 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ogl4jo3.accounting.data.ExpenseRecord
+import com.ogl4jo3.accounting.data.ExpenseRecordItem
 import com.ogl4jo3.accounting.databinding.ItemExpenseRecordBinding
-import kotlinx.coroutines.runBlocking
 
 class ExpenseRecordAdapter(val viewModel: ExpenseViewModel) :
-    ListAdapter<ExpenseRecord, ExpenseRecordViewHolder>(ExpenseRecordDiffCallback()) {
+    ListAdapter<ExpenseRecordItem, ExpenseRecordViewHolder>(ExpenseRecordDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseRecordViewHolder {
         return ExpenseRecordViewHolder(
             ItemExpenseRecordBinding.inflate(
@@ -29,8 +28,6 @@ class ExpenseRecordAdapter(val viewModel: ExpenseViewModel) :
         }
         holder.binding.apply {
             this.expenseRecord = item
-            this.category = runBlocking { viewModel.getCategoryById(item.categoryId) }
-            this.account = runBlocking { viewModel.getAccountById(item.accountId) }
             executePendingBindings()
         }
     }
@@ -39,12 +36,12 @@ class ExpenseRecordAdapter(val viewModel: ExpenseViewModel) :
 class ExpenseRecordViewHolder(val binding: ItemExpenseRecordBinding) :
     RecyclerView.ViewHolder(binding.root)
 
-class ExpenseRecordDiffCallback : DiffUtil.ItemCallback<ExpenseRecord>() {
+class ExpenseRecordDiffCallback : DiffUtil.ItemCallback<ExpenseRecordItem>() {
     override fun areItemsTheSame(
-        oldItem: ExpenseRecord, newItem: ExpenseRecord,
+        oldItem: ExpenseRecordItem, newItem: ExpenseRecordItem,
     ): Boolean = oldItem == newItem
 
     override fun areContentsTheSame(
-        oldItem: ExpenseRecord, newItem: ExpenseRecord,
+        oldItem: ExpenseRecordItem, newItem: ExpenseRecordItem,
     ): Boolean = oldItem.expenseRecordId == newItem.expenseRecordId
 }

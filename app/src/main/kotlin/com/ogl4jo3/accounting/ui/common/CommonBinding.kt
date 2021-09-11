@@ -50,8 +50,10 @@ fun setImageResource(imageView: ImageView, image: Int) {
 }
 
 @BindingAdapter("imgRscByDrawableName")
-fun setImgRscByDrawableName(imageView: ImageView, drawableName: String) {
-    imageView.apply {
-        setImageResource(drawableName.drawableId(context.packageName, resources))
+fun setImgRscByDrawableName(imageView: ImageView, drawableName: String?) {
+    drawableName?.let {
+        imageView.apply {
+            setImageResource(it.drawableId(context.packageName, resources))
+        }
     }
 }

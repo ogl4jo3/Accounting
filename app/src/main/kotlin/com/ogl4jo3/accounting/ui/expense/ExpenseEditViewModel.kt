@@ -8,6 +8,7 @@ import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecord
+import com.ogl4jo3.accounting.data.ExpenseRecordItem
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
@@ -18,7 +19,7 @@ class ExpenseEditViewModel(
     private val accountDataSource: AccountDataSource,
     private val categoryDataSource: CategoryDataSource,
     private val expenseRecordDataSource: ExpenseRecordDataSource,
-    val expenseRecord: ExpenseRecord
+    val expenseRecordItem: ExpenseRecordItem
 ) : ViewModel() {
 
     private val _allAccounts: MutableLiveData<List<Account>> = MutableLiveData(emptyList())
@@ -28,10 +29,10 @@ class ExpenseEditViewModel(
         MutableLiveData(emptyList())
     val allExpenseCategories: LiveData<List<Category>> = _allExpenseCategories
 
-    val price = MutableLiveData(expenseRecord.price)
-    val account = MutableLiveData<Account>()
-    val category = MutableLiveData<Category>()
-    val description = MutableLiveData(expenseRecord.description)
+    val price = MutableLiveData(expenseRecordItem.price)
+    val account = MutableLiveData(expenseRecordItem.account)
+    val category = MutableLiveData(expenseRecordItem.category)
+    val description = MutableLiveData(expenseRecordItem.description)
 
     var moneyInputError: () -> Unit = { }
     var navToExpenseFragment: () -> Unit = { }
@@ -41,8 +42,6 @@ class ExpenseEditViewModel(
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allExpenseCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Expense)
-            account.value = allAccounts.value?.find { it.id == expenseRecord.accountId }
-            category.value = allExpenseCategories.value?.find { it.id == expenseRecord.categoryId }
         }
     }
 
@@ -50,11 +49,14 @@ class ExpenseEditViewModel(
         safeLet(
             price.value, account.value, category.value, description.value
         ) { price, account, category, description ->
-            expenseRecord.price = price
-            expenseRecord.accountId = account.id
-            expenseRecord.categoryId = category.id
-            expenseRecord.description = description
-            expenseRecord
+            ExpenseRecord(
+                expenseRecordItem.expenseRecordId,
+                price,
+                account.id,
+                category.id,
+                description,
+                expenseRecordItem.recordTime
+            )
         }?.let { expenseRecord ->
             viewModelScope.launch {
                 saveExpenseRecord(expenseRecord)
@@ -80,7 +82,7 @@ class ExpenseEditViewModel(
 
     fun deleteExpenseRecord() {
         viewModelScope.launch {
-            expenseRecordDataSource.deleteExpenseRecord(expenseRecord)
+            expenseRecordDataSource.deleteExpenseRecord(expenseRecordItem.expenseRecord)
             navToExpenseFragment()
         }
     }
