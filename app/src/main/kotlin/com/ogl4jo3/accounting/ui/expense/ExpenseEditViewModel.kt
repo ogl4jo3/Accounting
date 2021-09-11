@@ -3,6 +3,7 @@ package com.ogl4jo3.accounting.ui.expense
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
@@ -11,7 +12,7 @@ import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
 class ExpenseEditViewModel(
     private val accountDataSource: AccountDataSource,
@@ -36,7 +37,7 @@ class ExpenseEditViewModel(
     var navToExpenseFragment: () -> Unit = { }
 
     init {
-        runBlocking {
+        viewModelScope.launch {
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allExpenseCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Expense)
@@ -55,7 +56,9 @@ class ExpenseEditViewModel(
             expenseRecord.description = description
             expenseRecord
         }?.let { expenseRecord ->
-            runBlocking { saveExpenseRecord(expenseRecord) }
+            viewModelScope.launch {
+                saveExpenseRecord(expenseRecord)
+            }
         } ?: run {
             // check all necessary field
             if (price.value == null) {
@@ -76,7 +79,7 @@ class ExpenseEditViewModel(
     }
 
     fun deleteExpenseRecord() {
-        runBlocking {
+        viewModelScope.launch {
             expenseRecordDataSource.deleteExpenseRecord(expenseRecord)
             navToExpenseFragment()
         }

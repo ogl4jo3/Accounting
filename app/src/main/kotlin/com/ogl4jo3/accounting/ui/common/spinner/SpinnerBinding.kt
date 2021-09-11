@@ -12,9 +12,11 @@ fun bindSpinnerAccounts(spinner: AccountSpinner, accounts: List<Account>) {
 }
 
 @BindingAdapter("spinnerItemAccount")
-fun setSpinnerItemAccount(accountSpinner: AccountSpinner, account: Account) {
-    if (accountSpinner.getSelectedItem() != account) {
-        accountSpinner.selectItem(account)
+fun setSpinnerItemAccount(accountSpinner: AccountSpinner, account: Account?) {
+    account?.let {
+        if (accountSpinner.getSelectedItem() != it) {
+            accountSpinner.selectItem(it)
+        }
     }
 }
 
@@ -34,9 +36,11 @@ fun bindSpinnerCategories(spinner: CategorySpinner, categories: List<Category>) 
 }
 
 @BindingAdapter("spinnerItemCategory")
-fun setSpinnerItemCategory(categorySpinner: CategorySpinner, category: Category) {
-    if (categorySpinner.getSelectedItem() != category) {
-        categorySpinner.selectItem(category)
+fun setSpinnerItemCategory(categorySpinner: CategorySpinner, category: Category?) {
+    category?.let {
+        if (categorySpinner.getSelectedItem() != it) {
+            categorySpinner.selectItem(it)
+        }
     }
 }
 

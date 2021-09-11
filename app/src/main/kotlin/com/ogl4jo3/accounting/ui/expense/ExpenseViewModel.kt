@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.ExpenseRecordDataSource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class ExpenseViewModel(
@@ -45,7 +46,7 @@ class ExpenseViewModel(
         expenseRecords.removeObserver(expenseRecordsObserver)
     }
 
-    private fun updateExpenseRecords(date: Date) = runBlocking {
+    private fun updateExpenseRecords(date: Date) = viewModelScope.launch {
         _expenseRecords.value = expenseRecordDataSource.getExpenseRecordsByDate(date)
     }
 

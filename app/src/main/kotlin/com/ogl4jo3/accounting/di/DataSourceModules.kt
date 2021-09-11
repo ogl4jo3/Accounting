@@ -15,7 +15,7 @@ import org.koin.dsl.module
 val dataSourceModules = module {
     factory<AccountDataSource> { DefaultAccountDataSource(get()) }
     factory<CategoryDataSource> { DefaultCategoryDataSource(get()) }
-    factory<ExpenseRecordDataSource> { DefaultExpenseRecordDataSource(get()) }
+    factory<ExpenseRecordDataSource> { DefaultExpenseRecordDataSource(get(), get(IO)) }
     factory<IncomeRecordDataSource> { DefaultIncomeRecordDataSource(get()) }
     factory<AccountingNotificationDataSource> {
         DefaultAccountingNotificationDataSource(get(), get(IO))
