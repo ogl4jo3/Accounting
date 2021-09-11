@@ -17,5 +17,7 @@ val dataSourceModules = module {
     factory<CategoryDataSource> { DefaultCategoryDataSource(get()) }
     factory<ExpenseRecordDataSource> { DefaultExpenseRecordDataSource(get()) }
     factory<IncomeRecordDataSource> { DefaultIncomeRecordDataSource(get()) }
-    factory<AccountingNotificationDataSource> { DefaultAccountingNotificationDataSource(get()) }
+    factory<AccountingNotificationDataSource> {
+        DefaultAccountingNotificationDataSource(get(), get(IO))
+    }
 }

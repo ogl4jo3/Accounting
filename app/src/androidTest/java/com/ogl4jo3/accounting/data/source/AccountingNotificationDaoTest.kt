@@ -5,7 +5,6 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ogl4jo3.accounting.data.AccountingNotification
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -40,14 +39,14 @@ class AccountingNotificationDaoTest {
     @Test
     fun `Test-GetAllAccount`() = runBlocking {
         Timber.d("Test-GetAllAccount")
-        val notifications = accountNotificationDao.getAllNotifications().first()
+        val notifications = accountNotificationDao.getAllNotifications()
         Assert.assertEquals(1, notifications.size)
     }
 
     @Test
     fun `Test-GetById`() = runBlocking {
         Timber.d("Test-GetById")
-        val notification = accountNotificationDao.getNotificationById(notificationA.id).first()
+        val notification = accountNotificationDao.getNotificationById(notificationA.id)
         Timber.d("notificationA: $notificationA")
         Timber.d("notification: $notification")
         Assert.assertEquals(notificationA.hour, (notification?.hour))
@@ -74,7 +73,7 @@ class AccountingNotificationDaoTest {
     @Test
     fun `Test-GetNullNotification`() = runBlocking {
         Timber.d("Test-GetNullNotification")
-        val notification = accountNotificationDao.getNotificationById("00").first()
+        val notification = accountNotificationDao.getNotificationById("00")
         Timber.d("notification: $notification")
         Assert.assertNull(notification)
     }
@@ -89,7 +88,7 @@ class AccountingNotificationDaoTest {
         Timber.d("updated notification: $notification")
 
         val updatedNotification =
-            accountNotificationDao.getNotificationById(notificationA.id).first()
+            accountNotificationDao.getNotificationById(notificationA.id)
         Timber.d("updatedNotification: $updatedNotification")
         Assert.assertEquals(notification.hour, (updatedNotification?.hour))
         Assert.assertEquals(notification.minute, (updatedNotification?.minute))
