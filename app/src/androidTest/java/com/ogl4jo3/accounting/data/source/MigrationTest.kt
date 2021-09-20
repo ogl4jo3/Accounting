@@ -67,5 +67,5 @@ class MigrationTest {
             close()
         }
     }
-    
+
 }
