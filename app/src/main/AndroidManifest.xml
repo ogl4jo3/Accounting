@@ -16,7 +16,7 @@
 
         <activity
             android:name=".ui.InitActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -41,7 +41,7 @@
         <receiver
             android:name=".receiver.AccountingBootReceiver"
             android:enabled="false"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
