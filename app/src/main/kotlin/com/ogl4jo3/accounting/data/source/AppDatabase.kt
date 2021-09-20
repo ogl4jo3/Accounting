@@ -15,7 +15,7 @@ import com.ogl4jo3.accounting.data.IncomeRecord
 @Database(
     entities = [Category::class, Account::class, ExpenseRecord::class, IncomeRecord::class, AccountingNotification::class],
     version = 2,
-    exportSchema = false
+    exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

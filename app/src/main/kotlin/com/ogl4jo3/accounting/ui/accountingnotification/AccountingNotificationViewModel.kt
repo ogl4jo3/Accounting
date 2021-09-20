@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ogl4jo3.accounting.common.launchInWithDefaultErrorHandler
 import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.data.source.AccountingNotificationDataSource
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class AccountingNotificationViewModel(
@@ -22,16 +21,9 @@ class AccountingNotificationViewModel(
     val defaultNotification: LiveData<AccountingNotification> = _defaultNotification
 
     init {
-        notificationDataSource.getDefaultNotification()
-            .onEach {
-                if (it == null) {
-                    //TODO: return home page
-                } else {
-                    _defaultNotification.value = it
-                }
-            }.launchInWithDefaultErrorHandler(viewModelScope) {
-                //TODO: return home page
-            }
+        viewModelScope.launch {
+            _defaultNotification.value = notificationDataSource.getDefaultNotification()
+        }
     }
 
     fun updateNotificationTime(hour: Int, minute: Int, notification: AccountingNotification) {
@@ -46,19 +38,16 @@ class AccountingNotificationViewModel(
     }
 
     fun updateNotification(notification: AccountingNotification) {
-        notificationDataSource.updateNotification(notification)
-            .onEach { isSuccessful ->
-                if (isSuccessful) {
-                    updateAlarm(notification)
-                    _defaultNotification.value = notification
-                } else {
-                    Timber.e("updateNotification failed")
-                    updateFailed()
-                }
-            }
-            .launchInWithDefaultErrorHandler(viewModelScope) {
+        viewModelScope.launch {
+            val isSuccessful = notificationDataSource.updateNotification(notification)
+            if (isSuccessful) {
+                updateAlarm(notification)
+                _defaultNotification.value = notification
+            } else {
+                Timber.e("updateNotification failed")
                 updateFailed()
             }
+        }
     }
 
     private fun updateAlarm(notification: AccountingNotification) {

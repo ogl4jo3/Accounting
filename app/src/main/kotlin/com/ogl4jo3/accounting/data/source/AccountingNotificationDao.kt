@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.ogl4jo3.accounting.data.AccountingNotification
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AccountingNotificationDao {
@@ -14,15 +13,15 @@ interface AccountingNotificationDao {
     suspend fun insertNotification(notification: AccountingNotification): Long
 
     @Query("SELECT * FROM notification WHERE id = :id")
-    fun getNotificationById(id: String): Flow<AccountingNotification?>
+    suspend fun getNotificationById(id: String): AccountingNotification?
 
     @Query("SELECT * FROM notification")
-    fun getAllNotifications(): Flow<List<AccountingNotification>>
+    suspend fun getAllNotifications(): List<AccountingNotification>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateNotification(notification: AccountingNotification)
 
     @Query("SELECT COUNT(id) FROM notification")
-    fun getNumberOfNotifications(): Flow<Int>
+    suspend fun getNumberOfNotifications(): Int
 
 }

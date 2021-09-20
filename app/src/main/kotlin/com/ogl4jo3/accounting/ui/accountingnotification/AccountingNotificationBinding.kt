@@ -23,7 +23,7 @@ fun setAMPMText(textView: TextView, notification: AccountingNotification?) {
 fun setTimeTextWith12HFormat(textView: TextView, notification: AccountingNotification?) {
     textView.apply {
         text = notification?.let { notification ->
-            if (notification.hour < 12) {
+            if (notification.hour <= 12) {
                 context.getString(
                     R.string.tv_notification_time,
                     notification.hour,

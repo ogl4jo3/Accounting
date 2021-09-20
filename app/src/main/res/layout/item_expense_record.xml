@@ -8,15 +8,7 @@
 
         <variable
             name="expenseRecord"
-            type="com.ogl4jo3.accounting.data.ExpenseRecord" />
-
-        <variable
-            name="category"
-            type="com.ogl4jo3.accounting.data.Category" />
-
-        <variable
-            name="account"
-            type="com.ogl4jo3.accounting.data.Account" />
+            type="com.ogl4jo3.accounting.data.ExpenseRecordItem" />
 
     </data>
 
@@ -27,7 +19,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_category_icon"
-            imgRscByDrawableName="@{category.iconResName}"
+            imgRscByDrawableName="@{expenseRecord.category.iconResName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{category.name}"
+            android:text="@{expenseRecord.category.name}"
             android:textSize="21sp"
             app:layout_constraintBottom_toTopOf="@id/tv_description"
             app:layout_constraintStart_toEndOf="@id/iv_category_icon"
@@ -73,7 +65,7 @@
             android:id="@+id/tv_account_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{account.name}"
+            android:text="@{expenseRecord.account.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_amount"
             app:layout_constraintTop_toBottomOf="@id/tv_amount"

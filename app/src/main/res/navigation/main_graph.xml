@@ -47,7 +47,7 @@
             app:destination="@id/expenseFragment" />
         <argument
             android:name="expenseRecord"
-            app:argType="com.ogl4jo3.accounting.data.ExpenseRecord"
+            app:argType="com.ogl4jo3.accounting.data.ExpenseRecordItem"
             app:nullable="false" />
     </fragment>
 
