@@ -3,8 +3,8 @@ package com.ogl4jo3.accounting.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         setupNavigationDrawer()
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        val navController: NavController = findNavController(R.id.main_content)
+        val navController =
+            (supportFragmentManager.findFragmentById(R.id.main_content) as NavHostFragment).navController
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.expenseFragment,
             R.id.incomeFragment,
