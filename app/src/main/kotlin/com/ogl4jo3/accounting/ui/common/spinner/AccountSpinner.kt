@@ -3,6 +3,7 @@ package com.ogl4jo3.accounting.ui.common.spinner
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -10,6 +11,7 @@ import android.widget.AutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.Account
+import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
 import timber.log.Timber
 
 class AccountSpinner : TextInputLayout {
@@ -48,6 +50,11 @@ class AccountSpinner : TextInputLayout {
 
     fun getSelectedItem(): Account? {
         return selectedItem
+    }
+
+    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
+        this.hideKeyboard()
+        return super.onInterceptTouchEvent(ev)
     }
 
 }
