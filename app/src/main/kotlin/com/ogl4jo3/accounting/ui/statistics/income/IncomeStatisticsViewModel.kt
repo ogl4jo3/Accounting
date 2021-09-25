@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.common.nextMonth
 import com.ogl4jo3.accounting.common.nextYear
 import com.ogl4jo3.accounting.common.previousMonth
@@ -16,7 +17,8 @@ import com.ogl4jo3.accounting.ui.common.PieChartData
 import com.ogl4jo3.accounting.ui.statistics.IGetCategory
 import com.ogl4jo3.accounting.ui.statistics.StatisticsItem
 import com.ogl4jo3.accounting.ui.statistics.TabStatisticsUnit
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import java.util.Date
 
 
@@ -25,6 +27,7 @@ class IncomeStatisticsViewModel(
     private val incomeRecordDataSource: IncomeRecordDataSource,
 ) : ViewModel(), IGetCategory {
 
+    override val getCategoryScope: CoroutineScope = viewModelScope
     val statisticsUnit = MutableLiveData(TabStatisticsUnit.MONTH)
     private val statisticsUnitObserver = Observer<TabStatisticsUnit?> {
         if (it == null) return@Observer
@@ -44,6 +47,10 @@ class IncomeStatisticsViewModel(
     private val _statisticsItemList: MutableLiveData<List<StatisticsItem>> =
         MutableLiveData(emptyList())
     val statisticsItemList: LiveData<List<StatisticsItem>> = _statisticsItemList
+
+    private val _pieChartDataList: MutableLiveData<List<PieChartData>> =
+        MutableLiveData(emptyList())
+    val pieChartDataList: LiveData<List<PieChartData>> = _pieChartDataList
 
     init {
         date.observeForever(dateObserver)
@@ -74,13 +81,16 @@ class IncomeStatisticsViewModel(
         }
     }
 
-    private fun updateStatisticsItemList(statisticsUnit: TabStatisticsUnit, date: Date) = runBlocking {
-        val incomeRecords = when (statisticsUnit) {
-            TabStatisticsUnit.MONTH -> incomeRecordDataSource.getIncomeRecordsByMonth(date)
-            TabStatisticsUnit.YEAR -> incomeRecordDataSource.getIncomeRecordsByYear(date)
+    private fun updateStatisticsItemList(statisticsUnit: TabStatisticsUnit, date: Date) =
+        viewModelScope.launch {
+            val incomeRecords = when (statisticsUnit) {
+                TabStatisticsUnit.MONTH -> incomeRecordDataSource.getIncomeRecordsByMonth(date)
+                TabStatisticsUnit.YEAR -> incomeRecordDataSource.getIncomeRecordsByYear(date)
+            }
+            _statisticsItemList.value = getStatisticsItemList(incomeRecords).apply {
+                updatePieChartData(this)
+            }
         }
-        _statisticsItemList.value = getStatisticsItemList(incomeRecords)
-    }
 
     fun getStatisticsItemList(incomeRecords: List<IncomeRecord>): List<StatisticsItem> {
         val statisticsItemList = incomeRecords.groupBy { it.categoryId }
@@ -105,13 +115,14 @@ class IncomeStatisticsViewModel(
         return categoryDataSource.getCategoryById(categoryId)
     }
 
-    fun getPieChartData(statisticsItemList: List<StatisticsItem>): List<PieChartData> =
-        runBlocking {
-            return@runBlocking statisticsItemList.map {
+    private fun updatePieChartData(statisticsItemList: List<StatisticsItem>) {
+        viewModelScope.launch {
+            _pieChartDataList.value = statisticsItemList.map {
                 PieChartData(
                     name = getCategoryById(it.categoryId)?.name ?: "",
                     value = it.amount
                 )
             }
         }
+    }
 }

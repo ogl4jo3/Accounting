@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ogl4jo3.accounting.databinding.ItemStatisticsBinding
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
 class StatisticsItemAdapter(
     private val getCategoryImpl: IGetCategory
@@ -27,7 +27,9 @@ class StatisticsItemAdapter(
         }
         holder.binding.apply {
             this.item = item
-            this.category = runBlocking { getCategoryImpl.getCategoryById(item.categoryId) }
+            getCategoryImpl.getCategoryScope.launch {
+                this@apply.category = getCategoryImpl.getCategoryById(item.categoryId)
+            }
             executePendingBindings()
         }
     }
