@@ -3,10 +3,11 @@ package com.ogl4jo3.accounting.ui.categoryMgmt
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
 class CategoryMgmtViewModel(
     private val categoryDataSource: CategoryDataSource,
@@ -18,9 +19,8 @@ class CategoryMgmtViewModel(
 
     var navToItem: (category: Category) -> Unit = { }
 
-    fun updateAllCategories() {
-        _allCategories.value =
-            runBlocking { categoryDataSource.getCategoriesByType(categoryType) }
+    fun updateAllCategories() = viewModelScope.launch {
+        _allCategories.value = categoryDataSource.getCategoriesByType(categoryType)
     }
 
     fun navigateToItem(category: Category) {
@@ -28,14 +28,14 @@ class CategoryMgmtViewModel(
     }
 
     fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category) {
-        runBlocking {
+        viewModelScope.launch {
             categoryDataSource.swapCategoryOrderNumber(fromCategory, toCategory)
             updateAllCategories()
         }
     }
 
     fun deleteCategory(category: Category, onSuccess: () -> Unit = {}, onFail: () -> Unit = {}) {
-        runBlocking {
+        viewModelScope.launch {
             if (categoryDataSource.getNumberOfCategories(category.categoryType) <= 1) {
                 onFail()
             } else {

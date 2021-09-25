@@ -2,11 +2,12 @@ package com.ogl4jo3.accounting.ui.categoryMgmt
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class CategoryAddViewModel(
@@ -34,7 +35,9 @@ class CategoryAddViewModel(
                 categoryType = categoryType
             )
         }?.let { account ->
-            runBlocking { addCategory(account) }
+            viewModelScope.launch {
+                addCategory(account)
+            }
         } ?: return
     }
 

@@ -20,7 +20,6 @@ import com.ogl4jo3.accounting.di.viewModelModules
 import com.ogl4jo3.accounting.ui.categoryMgmt.drawableName
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -74,7 +73,7 @@ class AccountingApplication : Application() {
     }
 
     private fun initDefaultAccounts() {
-        runBlocking {
+        GlobalScope.launch {
             val accountDataSource: AccountDataSource by inject()
             if (accountDataSource.getNumberOfAccounts() <= 0) {
                 getDefaultAccounts().forEach { accountDataSource.insertAccount(it) }
@@ -83,7 +82,7 @@ class AccountingApplication : Application() {
     }
 
     private fun initDefaultCategories() {
-        runBlocking {
+        GlobalScope.launch {
             val categoryDataSource: CategoryDataSource by inject()
             if (categoryDataSource.getNumberOfCategories(CategoryType.Expense) <= 0) {
                 getDefaultCategories().filter { it.categoryType == CategoryType.Expense }
@@ -97,8 +96,8 @@ class AccountingApplication : Application() {
     }
 
     private fun initDefaultNotifications() {
-        val notificationDataSource: AccountingNotificationDataSource by inject()
         GlobalScope.launch {
+            val notificationDataSource: AccountingNotificationDataSource by inject()
             if (notificationDataSource.getNumberOfNotifications() <= 0) {
                 getDefaultNotifications().forEach {
                     notificationDataSource.insertNotification(it)
