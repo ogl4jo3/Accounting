@@ -3,6 +3,7 @@ package com.ogl4jo3.accounting.ui.income
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
@@ -11,7 +12,7 @@ import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.IncomeRecordDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class IncomeAddViewModel(
@@ -37,7 +38,7 @@ class IncomeAddViewModel(
     var navToIncomeFragment: () -> Unit = { }
 
     init {
-        runBlocking {
+        viewModelScope.launch {
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allIncomeCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Income)
@@ -58,7 +59,9 @@ class IncomeAddViewModel(
                 recordTime = date
             )
         }?.let { incomeRecord ->
-            runBlocking { addIncomeRecord(incomeRecord) }
+            viewModelScope.launch {
+                addIncomeRecord(incomeRecord)
+            }
         } ?: run {
             // check all necessary field
             if (price.value == null) {

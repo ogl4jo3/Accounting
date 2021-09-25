@@ -8,6 +8,7 @@ import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecord
 import com.ogl4jo3.accounting.data.ExpenseRecordItem
 import com.ogl4jo3.accounting.data.IncomeRecord
+import com.ogl4jo3.accounting.data.IncomeRecordItem
 import java.util.Calendar
 import java.util.Date
 
@@ -92,6 +93,15 @@ val testExpenseRecords: List<ExpenseRecord> = listOf(
         "測試用支出",
         testDateArray[0]
     )
+)
+
+val testIncomeRecordItem: IncomeRecordItem = IncomeRecordItem(
+    "0",
+    50,
+    testAccounts[0],
+    testIncomeCategories[0],
+    "測試用支出",
+    testDateArray[0]
 )
 
 val testIncomeRecords: List<IncomeRecord> = listOf(

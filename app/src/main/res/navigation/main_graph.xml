@@ -93,7 +93,7 @@
             app:destination="@id/incomeFragment" />
         <argument
             android:name="incomeRecord"
-            app:argType="com.ogl4jo3.accounting.data.IncomeRecord"
+            app:argType="com.ogl4jo3.accounting.data.IncomeRecordItem"
             app:nullable="false" />
     </fragment>
 

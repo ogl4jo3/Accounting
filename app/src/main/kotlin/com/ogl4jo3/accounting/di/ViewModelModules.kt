@@ -5,6 +5,7 @@ import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecordItem
 import com.ogl4jo3.accounting.data.IncomeRecord
+import com.ogl4jo3.accounting.data.IncomeRecordItem
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountAddViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountListViewModel
@@ -41,8 +42,8 @@ val viewModelModules = module {
     viewModel { (date: Date) ->
         IncomeAddViewModel(get(), get(), get(), date)
     }
-    viewModel { (incomeRecord: IncomeRecord) ->
-        IncomeEditViewModel(get(), get(), get(), incomeRecord)
+    viewModel { (incomeRecordItem: IncomeRecordItem) ->
+        IncomeEditViewModel(get(), get(), get(), incomeRecordItem)
     }
     viewModel {
         ExpenseStatisticsViewModel(get(), get())

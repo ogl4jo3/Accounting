@@ -16,12 +16,15 @@
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_account_edit.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_accounting_notification.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_category_mgmt.xml" value="0.1" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense.xml" value="0.1" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense_add.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense_edit.xml" value="0.34322916666666664" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_income.xml" value="0.1" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_account.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_category.xml" value="0.2723618090452261" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_category_spinner.xml" value="0.34322916666666664" />
-        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_income_record.xml" value="0.34322916666666664" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_expense_record.xml" value="0.1" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_income_record.xml" value="0.1" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_notification.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/spinner_account.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/spinner_category.xml" value="0.34322916666666664" />
