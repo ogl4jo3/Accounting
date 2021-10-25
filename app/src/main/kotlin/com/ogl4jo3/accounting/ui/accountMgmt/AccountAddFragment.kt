@@ -36,7 +36,7 @@ class AccountAddFragment : Fragment() {
             }
             accountNameEmptyError = {
                 binding.tilAccountName.error = null
-                binding.tilAccountName.error = getString(R.string.msg_input_account_name)
+                binding.tilAccountName.error = getString(R.string.msg_type_account_name)
             }
             accountNameExistError = {
                 binding.tilAccountName.error = null

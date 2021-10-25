@@ -44,7 +44,7 @@ class IncomeAddFragment : Fragment() {
         }
         viewModel.apply {
             moneyInputError = {
-                binding.tilMoney.error = getString(R.string.msg_input_money)
+                binding.tilMoney.error = getString(R.string.msg_type_amount)
             }
             navToIncomeFragment = {
                 findNavController().navigate(

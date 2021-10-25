@@ -53,7 +53,7 @@ class ExpenseCategoryAddFragment : Fragment() {
             nameEmptyError = {
                 Snackbar.make(
                     binding.root,
-                    getString(R.string.hint_input_category_name),
+                    getString(R.string.hint_type_category_name),
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
