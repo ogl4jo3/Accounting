@@ -4,7 +4,6 @@ import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.ExpenseRecordItem
-import com.ogl4jo3.accounting.data.IncomeRecord
 import com.ogl4jo3.accounting.data.IncomeRecordItem
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountAddViewModel
 import com.ogl4jo3.accounting.ui.accountMgmt.AccountEditViewModel

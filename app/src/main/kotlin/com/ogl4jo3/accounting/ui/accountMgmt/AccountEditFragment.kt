@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountEditBinding
+import com.ogl4jo3.accounting.ui.BaseFragment
 import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class AccountEditFragment : Fragment() {
+class AccountEditFragment : BaseFragment() {
 
     private val binding by viewBinding(FragmentAccountEditBinding::inflate)
     private val args by navArgs<AccountEditFragmentArgs>()

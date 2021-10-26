@@ -7,14 +7,14 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentAccountListBinding
+import com.ogl4jo3.accounting.ui.BaseFragment
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AccountListFragment : Fragment() {
+class AccountListFragment : BaseFragment() {
 
     private val binding by viewBinding(FragmentAccountListBinding::inflate)
     private val viewModel by viewModel<AccountListViewModel>()

@@ -7,16 +7,16 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.local.SharedPreferencesHelper
 import com.ogl4jo3.accounting.databinding.FragmentInstructionBinding
+import com.ogl4jo3.accounting.ui.BaseFragment
 import com.ogl4jo3.accounting.ui.MainActivity
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity.Companion.ARG_INSTRUCTION_PAGE_NUM
 import com.ogl4jo3.accounting.ui.instruction.InstructionActivity.Companion.INSTRUCTION_PAGE_COUNT
 import org.koin.android.ext.android.inject
 
-class InstructionFragment : Fragment() {
+class InstructionFragment : BaseFragment() {
 
     private lateinit var binding: FragmentInstructionBinding
 
