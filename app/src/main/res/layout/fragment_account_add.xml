@@ -33,7 +33,7 @@
                 android:gravity="end"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:maxLength="12"
+                android:maxLength="@integer/account_name_max_length"
                 android:text="@={viewModel.accountName}"
                 tools:text="Account-ABC" />
 
@@ -83,7 +83,7 @@
                 android:gravity="end"
                 android:imeOptions="actionDone"
                 android:inputType="number"
-                android:maxLength="8"
+                android:maxLength="@integer/price_max_length"
                 android:text="@={Converter.intToString(viewModel.initialAmount)}"
                 tools:text="0" />
         </com.google.android.material.textfield.TextInputLayout>

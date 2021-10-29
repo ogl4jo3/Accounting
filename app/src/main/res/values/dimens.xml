@@ -1,4 +1,6 @@
 <resources>
-    <!-- TODO:max length   -->
-
+    <integer name="category_name_max_length">16</integer>
+    <integer name="account_name_max_length">16</integer>
+    <integer name="price_max_length">10</integer>
+    <integer name="description_max_length">30</integer>
 </resources>

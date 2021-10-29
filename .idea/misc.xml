@@ -43,6 +43,8 @@
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_expense.xml" value="0.3472222222222222" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_expense_add.xml" value="0.3472222222222222" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_expense_edit.xml" value="0.3472222222222222" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_income_add.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_income_edit.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/item_expense_record.xml" value="0.3541666666666667" />
       </map>
     </option>

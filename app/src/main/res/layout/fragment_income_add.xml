@@ -47,7 +47,7 @@
                 android:gravity="end"
                 android:imeOptions="actionDone"
                 android:inputType="number"
-                android:maxLength="8"
+                android:maxLength="@integer/price_max_length"
                 android:text="@={Converter.priceToString(viewModel.price)}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +97,7 @@
                 android:gravity="end"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:maxLength="40"
+                android:maxLength="@integer/description_max_length"
                 android:text="@={viewModel.description}" />
 
         </com.google.android.material.textfield.TextInputLayout>

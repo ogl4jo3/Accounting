@@ -42,7 +42,7 @@
             android:hint="@string/et_name_hint"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:maxLength="8"
+            android:maxLength="@integer/category_name_max_length"
             android:text="@={viewModel.categoryName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_category_icon"
