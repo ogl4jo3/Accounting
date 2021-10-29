@@ -16,21 +16,35 @@
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_account_edit.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_accounting_notification.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_category_mgmt.xml" value="0.1" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense.xml" value="0.1" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense_add.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense_edit.xml" value="0.34322916666666664" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_expense_statistics.xml" value="0.3365679264555669" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_income.xml" value="0.1" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/fragment_income_statistics.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_account.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_category.xml" value="0.2723618090452261" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_category_spinner.xml" value="0.34322916666666664" />
-        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_income_record.xml" value="0.34322916666666664" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_expense_record.xml" value="0.1" />
+        <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_income_record.xml" value="0.1" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/item_notification.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/spinner_account.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/layout/spinner_category.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/menu/activity_main_drawer.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/menu/menu_add.xml" value="0.34322916666666664" />
         <entry key="..\:/GitHub/Accounting/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.36354166666666665" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/activity_init.xml" value="0.3175925925925926" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/activity_instruction.xml" value="0.3175925925925926" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_about.xml" value="0.3175925925925926" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_account_add.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_account_edit.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_category_add.xml" value="0.33796296296296297" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_category_edit.xml" value="0.3296296296296296" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_expense.xml" value="0.3472222222222222" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_expense_add.xml" value="0.3472222222222222" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_expense_edit.xml" value="0.3472222222222222" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_income_add.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/fragment_income_edit.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/willy_zhan/ogl4jo3/Accounting/app/src/main/res/layout/item_expense_record.xml" value="0.3541666666666667" />
       </map>
     </option>

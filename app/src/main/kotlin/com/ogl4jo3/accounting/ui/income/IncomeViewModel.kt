@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.ogl4jo3.accounting.data.Account
-import com.ogl4jo3.accounting.data.Category
-import com.ogl4jo3.accounting.data.IncomeRecord
+import androidx.lifecycle.viewModelScope
+import com.ogl4jo3.accounting.data.IncomeRecordItem
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.IncomeRecordDataSource
-import kotlinx.coroutines.runBlocking
+import com.ogl4jo3.accounting.utils.safeLet
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class IncomeViewModel(
@@ -25,9 +25,10 @@ class IncomeViewModel(
         updateIncomeRecords(it)
     }
 
-    private val _incomeRecords: MutableLiveData<List<IncomeRecord>> = MutableLiveData(emptyList())
-    val incomeRecords: LiveData<List<IncomeRecord>> = _incomeRecords
-    private val incomeRecordsObserver = Observer<List<IncomeRecord>> { incomeRecords ->
+    private val _incomeRecords: MutableLiveData<List<IncomeRecordItem>> =
+        MutableLiveData(emptyList())
+    val incomeRecords: LiveData<List<IncomeRecordItem>> = _incomeRecords
+    private val incomeRecordsObserver = Observer<List<IncomeRecordItem>> { incomeRecords ->
         _totalAmount.value = incomeRecords.sumOf { it.price }
     }
 
@@ -45,8 +46,23 @@ class IncomeViewModel(
         incomeRecords.removeObserver(incomeRecordsObserver)
     }
 
-    private fun updateIncomeRecords(date: Date) = runBlocking {
+    private fun updateIncomeRecords(date: Date) = viewModelScope.launch {
         _incomeRecords.value = incomeRecordDataSource.getIncomeRecordsByDate(date)
+            .mapNotNull {
+                safeLet(
+                    accountDataSource.getAccountById(it.accountId),
+                    categoryDataSource.getCategoryById(it.categoryId)
+                ) { account, category ->
+                    IncomeRecordItem(
+                        it.incomeRecordId,
+                        it.price,
+                        account,
+                        category,
+                        it.description,
+                        it.recordTime
+                    )
+                }
+            }
     }
 
     fun pickDate(time: Long) {
@@ -55,14 +71,6 @@ class IncomeViewModel(
 
     fun switchToToday() {
         date.value = Date()
-    }
-
-    suspend fun getCategoryById(categoryId: String): Category? {
-        return categoryDataSource.getCategoryById(categoryId)
-    }
-
-    suspend fun getAccountById(accountId: String): Account? {
-        return accountDataSource.getAccountById(accountId)
     }
 
 }

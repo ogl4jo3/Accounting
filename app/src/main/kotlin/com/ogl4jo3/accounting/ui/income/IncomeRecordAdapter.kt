@@ -6,12 +6,11 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ogl4jo3.accounting.data.IncomeRecord
+import com.ogl4jo3.accounting.data.IncomeRecordItem
 import com.ogl4jo3.accounting.databinding.ItemIncomeRecordBinding
-import kotlinx.coroutines.runBlocking
 
 class IncomeRecordAdapter(val viewModel: IncomeViewModel) :
-    ListAdapter<IncomeRecord, IncomeRecordViewHolder>(IncomeRecordDiffCallback()) {
+    ListAdapter<IncomeRecordItem, IncomeRecordViewHolder>(IncomeRecordDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IncomeRecordViewHolder {
         return IncomeRecordViewHolder(
             ItemIncomeRecordBinding.inflate(
@@ -29,8 +28,6 @@ class IncomeRecordAdapter(val viewModel: IncomeViewModel) :
         }
         holder.binding.apply {
             this.incomeRecord = item
-            this.category = runBlocking { viewModel.getCategoryById(item.categoryId) }
-            this.account = runBlocking { viewModel.getAccountById(item.accountId) }
             executePendingBindings()
         }
     }
@@ -39,12 +36,12 @@ class IncomeRecordAdapter(val viewModel: IncomeViewModel) :
 class IncomeRecordViewHolder(val binding: ItemIncomeRecordBinding) :
     RecyclerView.ViewHolder(binding.root)
 
-class IncomeRecordDiffCallback : DiffUtil.ItemCallback<IncomeRecord>() {
+class IncomeRecordDiffCallback : DiffUtil.ItemCallback<IncomeRecordItem>() {
     override fun areItemsTheSame(
-        oldItem: IncomeRecord, newItem: IncomeRecord,
+        oldItem: IncomeRecordItem, newItem: IncomeRecordItem,
     ): Boolean = oldItem == newItem
 
     override fun areContentsTheSame(
-        oldItem: IncomeRecord, newItem: IncomeRecord,
+        oldItem: IncomeRecordItem, newItem: IncomeRecordItem,
     ): Boolean = oldItem.incomeRecordId == newItem.incomeRecordId
 }

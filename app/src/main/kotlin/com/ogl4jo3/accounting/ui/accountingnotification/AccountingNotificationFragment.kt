@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.data.AccountingNotification
 import com.ogl4jo3.accounting.databinding.FragmentAccountingNotificationBinding
+import com.ogl4jo3.accounting.ui.BaseFragment
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AccountingNotificationFragment : Fragment() {
+class AccountingNotificationFragment : BaseFragment() {
 
     private val binding by viewBinding(FragmentAccountingNotificationBinding::inflate)
     private val viewModel by viewModel<AccountingNotificationViewModel>()

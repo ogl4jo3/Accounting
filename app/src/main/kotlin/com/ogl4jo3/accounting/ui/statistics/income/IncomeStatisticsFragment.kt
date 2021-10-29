@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentIncomeStatisticsBinding
+import com.ogl4jo3.accounting.ui.BaseFragment
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import com.ogl4jo3.accounting.ui.statistics.StatisticsItemAdapter
 import com.ogl4jo3.accounting.ui.statistics.TabStatisticsUnit
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class IncomeStatisticsFragment : Fragment() {
+class IncomeStatisticsFragment : BaseFragment() {
 
     private val binding by viewBinding(FragmentIncomeStatisticsBinding::inflate)
     private val viewModel by viewModel<IncomeStatisticsViewModel>()

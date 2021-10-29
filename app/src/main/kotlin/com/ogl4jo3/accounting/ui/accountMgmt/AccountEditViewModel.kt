@@ -2,10 +2,11 @@ package com.ogl4jo3.accounting.ui.accountMgmt
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class AccountEditViewModel(
@@ -33,7 +34,9 @@ class AccountEditViewModel(
             account.isDefaultAccount = isDefaultAccount
             account
         }?.let { account ->
-            runBlocking { saveAccount(account) }
+            viewModelScope.launch {
+                saveAccount(account)
+            }
         } ?: run {
             Timber.e("Something error")
             navToAccountListFragment()
@@ -57,7 +60,7 @@ class AccountEditViewModel(
     }
 
     fun deleteAccount(onSuccess: () -> Unit = {}, onFail: () -> Unit = {}) {
-        runBlocking {
+        viewModelScope.launch {
             if (accountDataSource.getNumberOfAccounts() <= 1) {
                 onFail()
             } else {

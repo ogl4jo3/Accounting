@@ -7,6 +7,7 @@ import com.ogl4jo3.accounting.data.source.FakeIncomeRecordDataSource
 import com.ogl4jo3.accounting.testAccounts
 import com.ogl4jo3.accounting.testDateArray
 import com.ogl4jo3.accounting.testIncomeCategories
+import com.ogl4jo3.accounting.testIncomeRecordItem
 import com.ogl4jo3.accounting.testIncomeRecords
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -30,8 +31,7 @@ class IncomeEditViewModelTest {
         viewModel = IncomeEditViewModel(
             FakeAccountDataSource(testAccounts.toMutableList()),
             FakeCategoryDataSource(testIncomeCategories.toMutableList()),
-            fakeIncomeRecordDataSource,
-            testIncomeRecords[0]
+            fakeIncomeRecordDataSource, testIncomeRecordItem
         )
     }
 

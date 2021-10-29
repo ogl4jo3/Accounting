@@ -2,11 +2,12 @@ package com.ogl4jo3.accounting.ui.accountMgmt
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.AccountCategory
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class AccountAddViewModel(
@@ -33,7 +34,9 @@ class AccountAddViewModel(
                 isDefaultAccount = isDefaultAccount,
             )
         }?.let { account ->
-            runBlocking { addAccount(account) }
+            viewModelScope.launch {
+                addAccount(account)
+            }
         } ?: return
     }
 

@@ -2,10 +2,11 @@ package com.ogl4jo3.accounting.ui.categoryMgmt
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class CategoryEditViewModel(
@@ -31,7 +32,9 @@ class CategoryEditViewModel(
             category.iconResName = categoryIcon.iconEntryName
             category
         }?.let { category ->
-            runBlocking { saveCategory(category) }
+            viewModelScope.launch {
+                saveCategory(category)
+            }
         } ?: run {
             Timber.e("Something error")
             navToCategoryMgmtFragment()
@@ -52,7 +55,7 @@ class CategoryEditViewModel(
     }
 
     fun deleteCategory(onSuccess: () -> Unit = {}, onFail: () -> Unit = {}) {
-        runBlocking {
+        viewModelScope.launch {
             if (categoryDataSource.getNumberOfCategories(category.categoryType) <= 1) {
                 onFail()
             } else {

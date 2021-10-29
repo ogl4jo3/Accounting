@@ -1,160 +1,160 @@
 <resources>
-    <string name="app_name">記帳本</string>
+    <string name="app_name">Accounting</string>
 
     <!-- 常用按鈕 -->
-    <string name="btn_add">新增</string>
-    <string name="btn_save">儲存</string>
-    <string name="btn_del">刪除</string>
-    <string name="btn_cancel">取消</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_del">Delete</string>
+    <string name="btn_cancel">Cancel</string>
 
     <!-- menu -->
-    <string name="menu_hint">提示</string>
-    <string name="menu_add">新增</string>
-    <string name="menu_save">儲存</string>
+    <string name="menu_hint">hint</string>
+    <string name="menu_add">add</string>
+    <string name="menu_save">save</string>
 
     <!-- 主畫面 Navigation Drawer -->
     <!-- 分類:常用 -->
-    <string name="nav_title_common">常用</string>
-    <string name="nav_expense">支出</string>
-    <string name="nav_income">收入</string>
-    <string name="nav_expense_statistics">支出統計</string>
-    <string name="nav_income_statistics">收入統計</string>
+    <string name="nav_title_common">Common</string>
+    <string name="nav_expense">Expense</string>
+    <string name="nav_income">Income</string>
+    <string name="nav_expense_statistics">Expense Statistics</string>
+    <string name="nav_income_statistics">Income Statistics</string>
     <!-- 分類:設定 -->
-    <string name="nav_title_setting">設定</string>
-    <string name="nav_account_management">帳戶管理</string>
-    <string name="nav_expense_category_management">支出類別管理</string>
-    <string name="nav_income_category_management">收入類別管理</string>
-    <string name="nav_accounting_notification">記帳通知</string>
+    <string name="nav_title_setting">Setting</string>
+    <string name="nav_account_management">Account Management</string>
+    <string name="nav_expense_category_management">Expense Category Management</string>
+    <string name="nav_income_category_management">Income Category Management</string>
+    <string name="nav_accounting_notification">Accounting Notification</string>
     <!-- 分類:其他 -->
-    <string name="nav_title_others">其他</string>
-    <string name="nav_about">關於</string>
+    <string name="nav_title_others">Others</string>
+    <string name="nav_about">About</string>
 
     <!-- Instruction 使用教學 -->
-    <string name="btn_start_use">開始使用</string>
+    <string name="btn_start_use">Start</string>
 
     <!-- ExpenseFragment 支出 -->
-    <string name="title_expense">支出</string>
-    <string name="tv_this_day_no_expense">本日尚未新增支出</string>
-    <string name="tv_this_day_expense">本日支出</string>
-    <string name="menu_date">日期</string>
+    <string name="title_expense">Expense</string>
+    <string name="tv_this_day_no_expense">No expenses</string>
+    <string name="tv_label_expense">Expense:</string>
+    <string name="menu_date">date</string>
 
     <!-- ExpenseAddFragment/ExpenseEditFragment 新增編輯支出 -->
-    <string name="title_expense_add">新增支出</string>
-    <string name="title_expense_edit">編輯支出</string>
-    <string name="tv_money">金額</string>
-    <string name="tv_category">類別</string>
-    <string name="tv_description">描述</string>
-    <string name="tv_account">帳戶</string>
-    <string name="msg_input_money">請輸入金額</string>
-    <string name="msg_expense_del_confirm">確定刪除此紀錄?</string>
+    <string name="title_expense_add">Add Expense</string>
+    <string name="title_expense_edit">Edit Expense</string>
+    <string name="tv_amount">Amount</string>
+    <string name="tv_category">Category</string>
+    <string name="tv_description">Description</string>
+    <string name="tv_account">Account</string>
+    <string name="msg_type_amount">Type Amount</string>
+    <string name="msg_expense_del_confirm">Are you sure you want to delete?</string>
 
     <!-- IncomeFragment 收入 -->
-    <string name="title_income">收入</string>
-    <string name="tv_this_day_no_income">本日尚未新增收入</string>
-    <string name="tv_this_day_income">本日收入</string>
+    <string name="title_income">Income</string>
+    <string name="tv_this_day_no_income">No incomes</string>
+    <string name="tv_label_income">Income:</string>
 
     <!-- IncomeAddFragment/IncomeEditFragment 新增編輯收入 -->
-    <string name="title_income_add">新增收入</string>
-    <string name="title_income_edit">編輯收入</string>
-    <string name="msg_income_del_confirm">確定刪除此紀錄?</string>
+    <string name="title_income_add">Add Income</string>
+    <string name="title_income_edit">Edit Income</string>
+    <string name="msg_income_del_confirm">Are you sure you want to delete?</string>
 
     <!-- ExpenseStatisticsFragment/IncomeStatisticsFragment 支出/收入統計 -->
-    <string name="title_expense_statistics">支出統計</string>
-    <string name="title_income_statistics">收入統計</string>
-    <string name="tab_year">年</string>
-    <string name="tab_month">月</string>
-    <string name="tab_year_text">%d年</string>
-    <string name="tab_year_n_month_text">%1$d年%2$d月</string>
+    <string name="title_expense_statistics">Expense Statistics</string>
+    <string name="title_income_statistics">Income Statistics</string>
+    <string name="tab_year">Year</string>
+    <string name="tab_month">Month</string>
+    <string name="tab_year_text">%d</string>
+    <string name="tab_year_n_month_text">%1$d-%2$d</string>
     <string name="tv_price">\$%d</string>
     <string name="tv_percent">%.1f\%%</string>
 
     <!-- AccountMgmtFragment 帳戶管理 -->
-    <string name="title_account_mgmt">帳戶管理</string>
-    <string name="default_cash_account_name">現金帳戶</string>
-    <string name="default_bank_account_name">銀行帳戶</string>
-    <string name="default_card_account_name">信用卡帳戶</string>
-    <string name="tv_account_category_cash">現金</string>
-    <string name="tv_account_category_card">卡片</string>
-    <string name="tv_account_category_bank">銀行</string>
-    <string name="tv_default">(預設)</string>
+    <string name="title_account_mgmt">Account Management</string>
+    <string name="default_cash_account_name">Cash Account</string>
+    <string name="default_bank_account_name">Bank Account</string>
+    <string name="default_card_account_name">Card Account</string>
+    <string name="tv_account_category_cash">Cash</string>
+    <string name="tv_account_category_card">Card</string>
+    <string name="tv_account_category_bank">Bank</string>
+    <string name="tv_default">(Default)</string>
 
     <!-- AccountAddFragment/AccountEditFragment 新增/編輯帳戶 -->
-    <string name="title_account_add">新增帳戶</string>
-    <string name="title_account_edit">編輯帳戶</string>
-    <string name="tv_account_name">帳戶名稱</string>
-    <string name="tv_initial_amount">起始金額</string>
-    <string name="tv_account_category">帳戶類別</string>
-    <string name="tv_default_account">預設帳戶</string>
-    <string name="msg_account_del_confirm">確定刪除帳戶 \"%s\" ?</string>
-    <string name="msg_account_del_confirm_hint">注意:此帳戶的所有紀錄將會一併刪除</string>
-    <string name="msg_account_deleted">帳戶 \"%s\" 已刪除</string>
-    <string name="msg_input_account_name">請輸入帳戶名稱</string>
-    <string name="msg_account_name_exist">帳戶名稱已存在</string>
-    <string name="msg_at_least_one_default_account">至少要有一個預設帳戶</string>
-    <string name="msg_at_least_one_account">至少要有一個帳戶</string>
+    <string name="title_account_add">Add Account</string>
+    <string name="title_account_edit">Edit Account</string>
+    <string name="tv_account_name">Account Name</string>
+    <string name="tv_initial_amount">Initial Amount</string>
+    <string name="tv_account_category">Account Category</string>
+    <string name="tv_default_account">Default Account</string>
+    <string name="msg_account_del_confirm">Are you sure you want to delete \"%s\" ?</string>
+    <string name="msg_account_del_confirm_hint">Warning:All records of this account will be deleted</string>
+    <string name="msg_account_deleted">\"%s\" deleted</string>
+    <string name="msg_type_account_name">type account name</string>
+    <string name="msg_account_name_exist">account name already exists</string>
+    <string name="msg_at_least_one_default_account">At least one default account is required</string>
+    <string name="msg_at_least_one_account">At least one account is required</string>
 
     <!-- 類別名稱 -->
-    <string name="category_lunch">午餐</string>
-    <string name="category_dinner">晚餐</string>
-    <string name="category_afternoon_tea">下午茶</string>
-    <string name="category_dessert">點心</string>
-    <string name="category_fitness">健身</string>
-    <string name="category_house">房租</string>
-    <string name="category_house_1">房租-1</string>
-    <string name="category_gift">禮物</string>
-    <string name="category_medical">醫療</string>
-    <string name="category_parenting">育兒</string>
-    <string name="category_pet">寵物</string>
-    <string name="category_phone">電話</string>
-    <string name="category_refueling">加油</string>
-    <string name="category_swim">游泳</string>
-    <string name="category_traffic">交通</string>
-    <string name="category_video_game">電玩</string>
-    <string name="category_other">其他</string>
-    <string name="category_salary">薪水</string>
-    <string name="category_bonus">獎金</string>
-    <string name="category_investment">投資</string>
-    <string name="category_subsidy">補助費</string>
+    <string name="category_lunch">Lunch</string>
+    <string name="category_dinner">Dinner</string>
+    <string name="category_afternoon_tea">Afternoon Tea</string>
+    <string name="category_dessert">Dessert</string>
+    <string name="category_fitness">Fitness</string>
+    <string name="category_house">House</string>
+    <string name="category_house_1">House-1</string>
+    <string name="category_gift">Gift</string>
+    <string name="category_medical">Medical</string>
+    <string name="category_parenting">Parenting</string>
+    <string name="category_pet">Pet</string>
+    <string name="category_phone">Phone</string>
+    <string name="category_refueling">Refueling</string>
+    <string name="category_swim">Swim</string>
+    <string name="category_traffic">Traffic</string>
+    <string name="category_video_game">Game</string>
+    <string name="category_other">Others</string>
+    <string name="category_salary">Salary</string>
+    <string name="category_bonus">Bonus</string>
+    <string name="category_investment">Investment</string>
+    <string name="category_subsidy">Subsidy</string>
 
     <!-- item_category 類別Item -->
-    <string name="tv_delete">刪除</string>
+    <string name="tv_delete">Delete</string>
 
     <!-- CategoryMgmtFragment 類別管理 不分支出或收入-->
-    <string name="et_name_hint">名稱</string>
-    <string name="msg_category_deleted">類別 \"%s\" 已刪除</string>
-    <string name="hint_category_mgmt">左滑刪除項目\n長按移動項目順序</string>
-    <string name="hint_input_category_name">請輸入名稱</string>
-    <string name="hint_duplicated_category">此類別已存在</string>
-    <string name="msg_category_del_confirm">確定刪除類別  \"%s\" ?</string>
-    <string name="msg_category_del_confirm_hint">注意:此類別的所有紀錄將會一併刪除</string>
-    <string name="msg_at_least_one_category">至少要有一個類別</string>
+    <string name="et_name_hint">Name</string>
+    <string name="msg_category_deleted">Category \"%s\" already deleted</string>
+    <string name="hint_category_mgmt">Swipe left to delete item\nLong press to move item order</string>
+    <string name="hint_type_category_name">type category name</string>
+    <string name="hint_duplicated_category">Duplicated Category</string>
+    <string name="msg_category_del_confirm">Are you sure you want to delete \"%s\" ?</string>
+    <string name="msg_category_del_confirm_hint">Warning: All records in this category will be deleted</string>
+    <string name="msg_at_least_one_category">At least one category is required</string>
     <!-- ExpenseCategoryMgmtFragment 支出類別管理 -->
-    <string name="title_expense_category_mgmt">支出類別管理</string>
+    <string name="title_expense_category_mgmt">Expense Category Management</string>
 
     <!-- ExpenseCategoryNewEditFragment 新增編輯支出類別 -->
-    <string name="title_expense_category_add">新增支出類別</string>
-    <string name="title_expense_category_edit">編輯支出類別</string>
+    <string name="title_expense_category_add">Add Expense Category</string>
+    <string name="title_expense_category_edit">Edit Expense Category</string>
 
     <!-- IncomeCategoryMgmtFragment 收入類別管理 -->
-    <string name="title_income_category_mgmt">收入類別管理</string>
+    <string name="title_income_category_mgmt">Income Category Management</string>
 
     <!-- IncomeCategoryNewEditFragment 新增編輯收入類別 -->
-    <string name="title_income_category_add">新增收入類別</string>
-    <string name="title_income_category_edit">編輯收入類別</string>
+    <string name="title_income_category_add">Add Income Category</string>
+    <string name="title_income_category_edit">Edit Income Category</string>
 
     <!-- AccountingNotificationFragment 記帳通知 -->
-    <string name="title_accounting_notification">記帳通知</string>
-    <string name="tv_am">早上</string>
-    <string name="tv_pm">下午</string>
-    <string name="msg_update_notification_failed">更新通知失敗</string>
+    <string name="title_accounting_notification">Accounting Notification</string>
+    <string name="tv_am">AM</string>
+    <string name="tv_pm">PM</string>
+    <string name="msg_update_notification_failed">update notification failed</string>
     <string name="tv_notification_time">%1$02d:%2$02d</string>
-    <string name="msg_notification">紀錄今天的收入和支出</string>
+    <string name="msg_notification">Record income and expenses</string>
     <string name="accounting_notification_channel_id" translatable="false">accounting_channel</string>
     <string name="accounting_notification_channel_name" translatable="true">Accounting</string>
     <string name="accounting_notification_channel_description">Accounting reminder</string>
 
     <!-- AboutFragment -->
-    <string name="title_about">關於</string>
-    <string name="tv_version">版本:</string>
+    <string name="title_about">About</string>
+    <string name="tv_label_version">Version:</string>
 
 </resources>

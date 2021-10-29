@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:text="@string/tv_version"
+            android:text="@string/tv_label_version"
             android:textSize="17sp"
             app:layout_constraintEnd_toStartOf="@id/tv_version"
             app:layout_constraintTop_toTopOf="parent" />

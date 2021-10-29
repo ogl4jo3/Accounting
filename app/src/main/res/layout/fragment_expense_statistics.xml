@@ -74,7 +74,7 @@
 
         <com.ogl4jo3.accounting.ui.common.PieChart
             android:id="@+id/pie_chart"
-            pieChartDataList="@{viewModel.getPieChartData(viewModel.statisticsItemList)}"
+            pieChartDataList="@{viewModel.pieChartDataList}"
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:layout_marginTop="24dp"

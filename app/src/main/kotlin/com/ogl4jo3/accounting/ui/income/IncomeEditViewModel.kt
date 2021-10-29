@@ -3,21 +3,23 @@ package com.ogl4jo3.accounting.ui.income
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ogl4jo3.accounting.data.Account
 import com.ogl4jo3.accounting.data.Category
 import com.ogl4jo3.accounting.data.CategoryType
 import com.ogl4jo3.accounting.data.IncomeRecord
+import com.ogl4jo3.accounting.data.IncomeRecordItem
 import com.ogl4jo3.accounting.data.source.AccountDataSource
 import com.ogl4jo3.accounting.data.source.CategoryDataSource
 import com.ogl4jo3.accounting.data.source.IncomeRecordDataSource
 import com.ogl4jo3.accounting.utils.safeLet
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
 class IncomeEditViewModel(
     private val accountDataSource: AccountDataSource,
     private val categoryDataSource: CategoryDataSource,
     private val incomeRecordDataSource: IncomeRecordDataSource,
-    val incomeRecord: IncomeRecord
+    val incomeRecordItem: IncomeRecordItem
 ) : ViewModel() {
 
     private val _allAccounts: MutableLiveData<List<Account>> = MutableLiveData(emptyList())
@@ -27,21 +29,19 @@ class IncomeEditViewModel(
         MutableLiveData(emptyList())
     val allIncomeCategories: LiveData<List<Category>> = _allIncomeCategories
 
-    val price = MutableLiveData(incomeRecord.price)
-    val account = MutableLiveData<Account>()
-    val category = MutableLiveData<Category>()
-    val description = MutableLiveData(incomeRecord.description)
+    val price = MutableLiveData(incomeRecordItem.price)
+    val account = MutableLiveData(incomeRecordItem.account)
+    val category = MutableLiveData(incomeRecordItem.category)
+    val description = MutableLiveData(incomeRecordItem.description)
 
     var moneyInputError: () -> Unit = { }
     var navToIncomeFragment: () -> Unit = { }
 
     init {
-        runBlocking {
+        viewModelScope.launch {
             _allAccounts.value = accountDataSource.getAllAccounts()
             _allIncomeCategories.value =
                 categoryDataSource.getCategoriesByType(CategoryType.Income)
-            account.value = allAccounts.value?.find { it.id == incomeRecord.accountId }
-            category.value = allIncomeCategories.value?.find { it.id == incomeRecord.categoryId }
         }
     }
 
@@ -49,13 +49,18 @@ class IncomeEditViewModel(
         safeLet(
             price.value, account.value, category.value, description.value
         ) { price, account, category, description ->
-            incomeRecord.price = price
-            incomeRecord.accountId = account.id
-            incomeRecord.categoryId = category.id
-            incomeRecord.description = description
-            incomeRecord
+            IncomeRecord(
+                incomeRecordItem.incomeRecordId,
+                price,
+                account.id,
+                category.id,
+                description,
+                incomeRecordItem.recordTime
+            )
         }?.let { incomeRecord ->
-            runBlocking { saveIncomeRecord(incomeRecord) }
+            viewModelScope.launch {
+                saveIncomeRecord(incomeRecord)
+            }
         } ?: run {
             // check all necessary field
             if (price.value == null) {
@@ -76,8 +81,8 @@ class IncomeEditViewModel(
     }
 
     fun deleteIncomeRecord() {
-        runBlocking {
-            incomeRecordDataSource.deleteIncomeRecord(incomeRecord)
+        viewModelScope.launch {
+            incomeRecordDataSource.deleteIncomeRecord(incomeRecordItem.incomeRecord)
             navToIncomeFragment()
         }
     }

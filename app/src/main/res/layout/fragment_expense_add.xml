@@ -35,7 +35,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/tv_money"
+            android:hint="@string/tv_amount"
             android:padding="12dp"
             app:layout_constraintTop_toBottomOf="@id/tv_date"
             app:startIconDrawable="@drawable/ic_money">
@@ -47,7 +47,7 @@
                 android:gravity="end"
                 android:imeOptions="actionDone"
                 android:inputType="number"
-                android:maxLength="8"
+                android:maxLength="@integer/price_max_length"
                 android:text="@={Converter.priceToString(viewModel.price)}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +97,7 @@
                 android:gravity="end"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:maxLength="40"
+                android:maxLength="@integer/description_max_length"
                 android:text="@={viewModel.description}" />
 
         </com.google.android.material.textfield.TextInputLayout>

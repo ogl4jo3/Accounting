@@ -37,3 +37,20 @@ data class ExpenseRecord(
     @ColumnInfo(name = "description") var description: String,
     @ColumnInfo(name = "recordTime") var recordTime: Date
 ) : Parcelable
+
+@Parcelize
+data class ExpenseRecordItem(
+    val expenseRecordId: String = UUID.randomUUID().toString(),
+    val price: Int,
+    val account: Account,
+    val category: Category,
+    val description: String,
+    val recordTime: Date
+) : Parcelable {
+    val expenseRecord
+        get() = ExpenseRecord(
+            expenseRecordId, price,
+            account.id, category.id,
+            description, recordTime
+        )
+}

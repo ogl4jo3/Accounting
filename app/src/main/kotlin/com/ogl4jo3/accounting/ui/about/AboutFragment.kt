@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.ogl4jo3.accounting.databinding.FragmentAboutBinding
+import com.ogl4jo3.accounting.ui.BaseFragment
 import com.ogl4jo3.accounting.ui.common.viewBinding
 
 
-class AboutFragment : Fragment() {
+class AboutFragment : BaseFragment() {
 
     private val binding by viewBinding(FragmentAboutBinding::inflate)
 
