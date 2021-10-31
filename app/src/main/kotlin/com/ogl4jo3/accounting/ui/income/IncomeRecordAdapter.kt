@@ -2,14 +2,13 @@ package com.ogl4jo3.accounting.ui.income
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ogl4jo3.accounting.data.IncomeRecordItem
 import com.ogl4jo3.accounting.databinding.ItemIncomeRecordBinding
 
-class IncomeRecordAdapter(val viewModel: IncomeViewModel) :
+class IncomeRecordAdapter(val onItemClick: (item: IncomeRecordItem) -> Unit) :
     ListAdapter<IncomeRecordItem, IncomeRecordViewHolder>(IncomeRecordDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IncomeRecordViewHolder {
         return IncomeRecordViewHolder(
@@ -22,9 +21,7 @@ class IncomeRecordAdapter(val viewModel: IncomeViewModel) :
     override fun onBindViewHolder(holder: IncomeRecordViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-            Navigation.findNavController(it).navigate(
-                IncomeFragmentDirections.actionIncomeFragmentToIncomeEditFragment(item)
-            )
+            onItemClick(item)
         }
         holder.binding.apply {
             this.incomeRecord = item

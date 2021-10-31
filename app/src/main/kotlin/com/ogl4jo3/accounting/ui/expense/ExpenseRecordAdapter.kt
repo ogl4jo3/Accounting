@@ -2,14 +2,14 @@ package com.ogl4jo3.accounting.ui.expense
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ogl4jo3.accounting.data.ExpenseRecordItem
 import com.ogl4jo3.accounting.databinding.ItemExpenseRecordBinding
+import com.ogl4jo3.accounting.ui.common.extensions.setOnSingleClickListener
 
-class ExpenseRecordAdapter(val viewModel: ExpenseViewModel) :
+class ExpenseRecordAdapter(val onItemClick: (item: ExpenseRecordItem) -> Unit) :
     ListAdapter<ExpenseRecordItem, ExpenseRecordViewHolder>(ExpenseRecordDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseRecordViewHolder {
         return ExpenseRecordViewHolder(
@@ -21,10 +21,8 @@ class ExpenseRecordAdapter(val viewModel: ExpenseViewModel) :
 
     override fun onBindViewHolder(holder: ExpenseRecordViewHolder, position: Int) {
         val item = getItem(position)
-        holder.itemView.setOnClickListener {
-            Navigation.findNavController(it).navigate(
-                ExpenseFragmentDirections.actionExpenseFragmentToExpenseEditFragment(item)
-            )
+        holder.itemView.setOnSingleClickListener {
+            onItemClick(item)
         }
         holder.binding.apply {
             this.expenseRecord = item
