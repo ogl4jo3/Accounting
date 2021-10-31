@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">記帳本(D)</string>
+    <!--  TODO: workaround, integrate with /debug/string.xml  -->
+    <string name="app_name">Accounting(D)</string>
 
 </resources>
