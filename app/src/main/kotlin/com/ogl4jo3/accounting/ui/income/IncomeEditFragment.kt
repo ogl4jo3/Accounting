@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentIncomeEditBinding
 import com.ogl4jo3.accounting.ui.BaseFragment
+import com.ogl4jo3.accounting.ui.common.extensions.focusAndShowKeyboard
 import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,6 +43,7 @@ class IncomeEditFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnDel.setOnClickListener { showDelConfirmDialog() }
+            etMoney.focusAndShowKeyboard()
         }
         viewModel.apply {
             moneyInputError = {

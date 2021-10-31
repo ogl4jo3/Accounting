@@ -81,7 +81,7 @@
         <action
             android:id="@+id/action_incomeAddFragment_to_incomeFragment"
             app:destination="@id/incomeFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/incomeFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="date"
@@ -97,7 +97,7 @@
         <action
             android:id="@+id/action_incomeEditFragment_to_incomeFragment"
             app:destination="@id/incomeFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/incomeFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="incomeRecord"
@@ -127,7 +127,7 @@
         <action
             android:id="@+id/action_accountAddFragment_to_accountListFragment"
             app:destination="@id/accountListFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/accountListFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -139,7 +139,7 @@
         <action
             android:id="@+id/action_accountEditFragment_to_accountListFragment"
             app:destination="@id/accountListFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/accountListFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="account"
@@ -168,7 +168,7 @@
         <action
             android:id="@+id/action_expensesCategoryAddFragment_to_expenseCategoryMgmtFragment"
             app:destination="@id/expenseCategoryMgmtFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/expenseCategoryMgmtFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -180,7 +180,7 @@
         <action
             android:id="@+id/action_expensesCategoryEditFragment_to_expenseCategoryMgmtFragment"
             app:destination="@id/expenseCategoryMgmtFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/expenseCategoryMgmtFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="category"
@@ -209,7 +209,7 @@
         <action
             android:id="@+id/action_incomeCategoryAddFragment_to_incomeCategoryMgmtFragment"
             app:destination="@id/incomeCategoryMgmtFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/incomeCategoryMgmtFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -221,7 +221,7 @@
         <action
             android:id="@+id/action_incomeCategoryEditFragment_to_incomeCategoryMgmtFragment"
             app:destination="@id/incomeCategoryMgmtFragment"
-            app:popUpTo="@id/expenseFragment"
+            app:popUpTo="@id/incomeCategoryMgmtFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="category"

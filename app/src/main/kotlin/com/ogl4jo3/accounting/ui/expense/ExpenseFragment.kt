@@ -47,7 +47,11 @@ class ExpenseFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            rvExpenseRecords.adapter = ExpenseRecordAdapter(this@ExpenseFragment.viewModel)
+            rvExpenseRecords.adapter = ExpenseRecordAdapter { item ->
+                findNavController().navigate(
+                    ExpenseFragmentDirections.actionExpenseFragmentToExpenseEditFragment(item)
+                )
+            }
         }
         viewModel.apply {
 

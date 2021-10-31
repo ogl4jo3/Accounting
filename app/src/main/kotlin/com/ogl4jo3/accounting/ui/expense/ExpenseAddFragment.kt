@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.ogl4jo3.accounting.R
 import com.ogl4jo3.accounting.databinding.FragmentExpenseAddBinding
 import com.ogl4jo3.accounting.ui.BaseFragment
+import com.ogl4jo3.accounting.ui.common.extensions.focusAndShowKeyboard
 import com.ogl4jo3.accounting.ui.common.extensions.hideKeyboard
 import com.ogl4jo3.accounting.ui.common.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,7 +41,7 @@ class ExpenseAddFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-
+            etMoney.focusAndShowKeyboard()
         }
         viewModel.apply {
             moneyInputError = {

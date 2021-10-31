@@ -44,7 +44,11 @@ class IncomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            rvIncomeRecords.adapter = IncomeRecordAdapter(this@IncomeFragment.viewModel)
+            rvIncomeRecords.adapter = IncomeRecordAdapter { item ->
+                findNavController().navigate(
+                    IncomeFragmentDirections.actionIncomeFragmentToIncomeEditFragment(item)
+                )
+            }
         }
         viewModel.apply {
 
