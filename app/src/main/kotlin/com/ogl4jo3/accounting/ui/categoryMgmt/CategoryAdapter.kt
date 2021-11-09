@@ -52,7 +52,11 @@ class CategoryAdapter(val viewModel: CategoryMgmtViewModel) :
     }
 
     fun onItemMove(fromPosition: Int, toPosition: Int) {
-        viewModel.swapCategoryOrderNumber(getItem(fromPosition), getItem(toPosition))
+        val fromItem = getItem(fromPosition)
+        val toItem = getItem(toPosition)
+        viewModel.swapCategoryOrderNumber(fromItem, toItem)
+        //FIXME: workaround, check how to fix order number bug
+        notifyItemMoved(fromPosition, toPosition)
     }
 }
 
