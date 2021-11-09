@@ -15,8 +15,8 @@ android {
         applicationId "com.ogl4jo3.accounting"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 6
-        versionName "0.0.6"
+        versionCode 7
+        versionName "0.0.7"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         javaCompileOptions {
             annotationProcessorOptions {
