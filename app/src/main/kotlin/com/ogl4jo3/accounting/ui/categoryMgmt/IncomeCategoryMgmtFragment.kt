@@ -56,7 +56,8 @@ class IncomeCategoryMgmtFragment : BaseFragment() {
             ItemTouchHelper(object :
                 ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
                 override fun isLongPressDragEnabled(): Boolean {
-                    return true
+                    //return true // TODO: workaround
+                    return false // FIXME: fix and test feature of order number
                 }
 
                 override fun onMove(
@@ -64,16 +65,18 @@ class IncomeCategoryMgmtFragment : BaseFragment() {
                     viewHolder: RecyclerView.ViewHolder,
                     target: RecyclerView.ViewHolder
                 ): Boolean {
-                    if (viewHolder.itemViewType != target.itemViewType) {
-                        return false
-                    }
-
-                    // Notify the adapter of the move
-                    categoryAdapter?.onItemMove(
-                        viewHolder.absoluteAdapterPosition,
-                        target.absoluteAdapterPosition
-                    )
-                    return true
+                    // FIXME: fix and test feature of order number
+                    return false // TODO: workaround
+//                    if (viewHolder.itemViewType != target.itemViewType) {
+//                        return false
+//                    }
+//
+//                    // Notify the adapter of the move
+//                    categoryAdapter?.onItemMove(
+//                        viewHolder.absoluteAdapterPosition,
+//                        target.absoluteAdapterPosition
+//                    )
+//                    return true
                 }
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}

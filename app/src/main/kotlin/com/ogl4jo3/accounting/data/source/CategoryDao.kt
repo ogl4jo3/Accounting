@@ -23,6 +23,10 @@ interface CategoryDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateCategory(category: Category)
 
+    // TODO: workaround, need a restrict to prevent saving same orderNumber
+    @Query("UPDATE category SET orderNumber=:orderNumber WHERE id = :id")
+    suspend fun updateCategoryOrderNumber(id: String, orderNumber: Int)
+
     @Delete
     suspend fun deleteCategory(category: Category)
 

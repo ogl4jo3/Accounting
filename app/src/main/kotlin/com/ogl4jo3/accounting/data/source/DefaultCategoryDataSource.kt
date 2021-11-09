@@ -44,10 +44,8 @@ class DefaultCategoryDataSource(
     override suspend fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category) {
         val fromOrderNumber = fromCategory.orderNumber
         val toOrderNumber = toCategory.orderNumber
-        fromCategory.orderNumber = toOrderNumber
-        toCategory.orderNumber = fromOrderNumber
-        categoryDao.updateCategory(fromCategory)
-        categoryDao.updateCategory(toCategory)
+        categoryDao.updateCategoryOrderNumber(fromCategory.id, toOrderNumber)
+        categoryDao.updateCategoryOrderNumber(toCategory.id, fromOrderNumber)
     }
 
 }

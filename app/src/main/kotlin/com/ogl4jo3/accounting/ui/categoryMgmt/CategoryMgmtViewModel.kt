@@ -30,7 +30,6 @@ class CategoryMgmtViewModel(
     fun swapCategoryOrderNumber(fromCategory: Category, toCategory: Category) {
         viewModelScope.launch {
             categoryDataSource.swapCategoryOrderNumber(fromCategory, toCategory)
-            updateAllCategories()
         }
     }
 
